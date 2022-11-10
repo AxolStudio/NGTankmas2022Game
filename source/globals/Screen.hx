@@ -1,7 +1,7 @@
 package globals;
 
 import flixel.system.scaleModes.PixelPerfectScaleMode;
-import lime.system.DisplayMode;
+
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 

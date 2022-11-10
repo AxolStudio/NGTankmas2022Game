@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "temp.tsx",
+    "activeFile": "test_room.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -15,7 +15,7 @@
         },
         "test_room.tmx": {
             "scale": 1.5,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": 133,
                 "y": 264
@@ -34,8 +34,8 @@
     ],
     "project": "tankmas.tiled-project",
     "recentFiles": [
-        "test_room.tmx",
-        "temp.tsx"
+        "temp.tsx",
+        "test_room.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
