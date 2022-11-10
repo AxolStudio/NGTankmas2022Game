@@ -1,0 +1,45 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "temp.tsx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "temp.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "test_room.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 133,
+                "y": 264
+            }
+        }
+    },
+    "last.exportedFilePath": "E:/Owner/Documents/NGTankmas2022Game/assets/data/maps",
+    "last.imagePath": "E:/Owner/Documents/NGTankmas2022Game/assets/images",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 24,
+    "map.tileWidth": 24,
+    "openFiles": [
+        "temp.tsx",
+        "test_room.tmx"
+    ],
+    "project": "tankmas.tiled-project",
+    "recentFiles": [
+        "test_room.tmx",
+        "temp.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 24,
+        "width": 24
+    }
+}

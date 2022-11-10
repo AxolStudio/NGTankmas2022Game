@@ -1,0 +1,13 @@
+ADd player
+add player movement/collision
+parse tmj map files in macro (adjust for firstgid)
+
+add card type
+add collection type
+add system for giving cards
+add screen for collection
+
+add npcs
+add battling
+...
+...
