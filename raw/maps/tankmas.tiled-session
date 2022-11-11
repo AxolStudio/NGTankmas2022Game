@@ -1,0 +1,28 @@
+{
+    "activeFile": "test_room.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "temp.tsx": {
+            "scaleInDock": 1
+        },
+        "test_room.tmx": {
+            "scale": 3.132361111111111,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 360.2713607945728,
+                "y": 240.0744911985102
+            }
+        }
+    },
+    "last.exportedFilePath": "E:/Owner/Documents/NGTankmas2022Game/assets/data/maps",
+    "map.lastUsedExportFilter": "All Files (*)",
+    "openFiles": [
+        "test_room.tmx"
+    ],
+    "project": "tankmas.tiled-project",
+    "recentFiles": [
+        "test_room.tmx"
+    ]
+}

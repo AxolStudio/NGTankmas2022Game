@@ -41,6 +41,7 @@
 
 	<haxelib name="flixel" />
 	<haxelib name="hscript" />
+	<haxelib name="tjson" />
 
 	<haxedef name="FLX_NO_MOUSE" if="mobile" />
 	<haxedef name="FLX_NO_KEYBOARD" if="mobile" />

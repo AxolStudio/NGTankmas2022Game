@@ -14,7 +14,7 @@ class GameObject extends FlxSprite
 
 	public function spawn(Which:String, X:Float, Y:Float):Void
 	{
-		loadGraphic('assets/images/${Which}.png', true, 24, 24, false, Which);
+		loadGraphic('assets/images/' + Which + '.png', true, 24, 24, false, Which);
 
 		animation.add('stand-DOWN', [0], 0, false);
 		animation.add('stand-UP', [3], 0, false);
@@ -58,8 +58,9 @@ class GameObject extends FlxSprite
 				return "LEFT";
 			case FlxObject.RIGHT:
 				return "RIGHT";
+			default:
+				return "DOWN";
 		}
-		return "DOWN";
 	}
 
 	public function move(DX:Int, DY:Int):Void

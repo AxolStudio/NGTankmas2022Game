@@ -69,11 +69,13 @@
                  "properties":[
                         {
                          "name":"facing",
+                         "propertytype":"FacingDirections",
                          "type":"string",
                          "value":"DOWN"
                         }, 
                         {
                          "name":"objectType",
+                         "propertytype":"ObjectTypes",
                          "type":"string",
                          "value":"npc"
                         }],
@@ -105,7 +107,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/raw\/maps\/temp.tsx"
+         "source":"temp.tsx"
         }],
  "tilewidth":24,
  "type":"map",

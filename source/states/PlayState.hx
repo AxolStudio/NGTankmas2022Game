@@ -56,7 +56,7 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		trace(Actions.leftStick.x, Actions.leftStick.y);
+		// trace(Actions.leftStick.x, Actions.leftStick.y);
 		var left:Bool = Actions.leftStick.x < -0.01 || Actions.left.triggered;
 		var right:Bool = Actions.leftStick.x > 0.01 || Actions.right.triggered;
 		var up:Bool = Actions.leftStick.y < -0.01 || Actions.up.triggered;

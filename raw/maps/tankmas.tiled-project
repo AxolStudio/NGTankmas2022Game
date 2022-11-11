@@ -1,0 +1,59 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "propertyTypes": [
+        {
+            "id": 4,
+            "name": "FacingDirections",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "UP",
+                "DOWN",
+                "LEFT",
+                "RIGHT"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "color": "#ff0000ff",
+            "id": 2,
+            "members": [
+                {
+                    "name": "facing",
+                    "propertyType": "FacingDirections",
+                    "type": "string",
+                    "value": "UP"
+                },
+                {
+                    "name": "objectType",
+                    "propertyType": "ObjectTypes",
+                    "type": "string",
+                    "value": "player"
+                }
+            ],
+            "name": "MapObject",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "ObjectTypes",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "player",
+                "npc"
+            ],
+            "valuesAsFlags": false
+        }
+    ]
+}

@@ -2,6 +2,7 @@ package globals;
 
 import states.PlayState;
 
+@:build(macros.MapBuilder.build()) // MapList
 class Globals
 {
 	public static var initialized:Bool = false;
@@ -14,5 +15,7 @@ class Globals
 			return;
 		initialized = true;
 		Actions.init();
+
+		trace(MapList.get("test room"));
 	}
 }
