@@ -20,7 +20,7 @@ class MapBuilder
 		var json:haxe.DynamicAccess<Dynamic>;
 		var mapData:MapStructure;
 
-		for (file in flixel.system.macros.FlxAssetPaths.getFileReferences(#if ADVENT 'assets/namespace/data/maps/' #else 'assets/data/maps/' #end, false,
+		for (file in flixel.system.macros.FlxAssetPaths.getFileReferences(#if ADVENT 'holidayccg/assets/data/maps/' #else 'assets/data/maps/' #end, false,
 			["tmj"]))
 		{
 			if (!file.name.startsWith("_"))

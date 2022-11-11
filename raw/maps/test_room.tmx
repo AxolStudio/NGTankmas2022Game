@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="7">
  <editorsettings>
-  <export target="../../assets/data/maps/test_room.tmj" format="json"/>
+  <export target="../../HolidayCCG/assets/data/maps/test_room.tmj" format="json"/>
  </editorsettings>
  <properties>
   <property name="exit_DOWN" value=""/>
@@ -33,7 +33,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="objects" tintcolor="#5500ff">
-  <object id="2" name="playerStart" class="PlayerStart" x="416" y="480" width="32" height="32">
+  <object id="2" name="playerStart" class="PlayerStart" x="448" y="480" width="32" height="32">
    <properties>
     <property name="facing" value="UP"/>
    </properties>
