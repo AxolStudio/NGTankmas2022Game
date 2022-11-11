@@ -5,24 +5,29 @@
     ],
     "fileStates": {
         "temp.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 2,
+            "scaleInEditor": 1
         },
         "test_room.tmx": {
-            "scale": 3.132361111111111,
-            "selectedLayer": 0,
+            "scale": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 360.2713607945728,
-                "y": 240.0744911985102
+                "x": 480.25,
+                "y": 272
             }
         }
     },
-    "last.exportedFilePath": "E:/Owner/Documents/NGTankmas2022Game/assets/data/maps",
+    "last.exportedFilePath": "E:/Owner/Documents/NGTankmas2022Game/HolidayCCG/assets/data/maps",
+    "last.imagePath": "E:/Owner/Documents/NGTankmas2022Game/HolidayCCG/assets/images",
     "map.lastUsedExportFilter": "All Files (*)",
     "openFiles": [
-        "test_room.tmx"
+        "test_room.tmx",
+        "temp.tsx"
     ],
     "project": "tankmas.tiled-project",
+    "property.type": "string",
     "recentFiles": [
+        "temp.tsx",
         "test_room.tmx"
     ]
 }

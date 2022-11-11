@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="player_SIDE_2-sprites.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+	<SubTexture name="npc_DOWN_0.png"	x="58"	y="95"	width="28"	height="32" frameX="-2" frameY="-0" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="npc_DOWN_1.png"	x="58"	y="64"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="npc_DOWN_2.png"	x="58"	y="33"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="npc_SIDE_0.png"	x="58"	y="0"	width="28"	height="32" frameX="-2" frameY="-0" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="npc_SIDE_1.png"	x="87"	y="95"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="npc_SIDE_2.png"	x="87"	y="95"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="npc_UP_0.png"	x="29"	y="62"	width="28"	height="32" frameX="-2" frameY="-0" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="npc_UP_1.png"	x="29"	y="31"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="npc_UP_2.png"	x="29"	y="0"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="player_DOWN_0.png"	x="0"	y="95"	width="28"	height="32" frameX="-2" frameY="-0" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="player_DOWN_1.png"	x="0"	y="64"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="player_DOWN_2.png"	x="0"	y="33"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="player_SIDE_0.png"	x="0"	y="0"	width="28"	height="32" frameX="-2" frameY="-0" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="player_SIDE_1.png"	x="29"	y="95"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="player_SIDE_2.png"	x="29"	y="95"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="player_UP_0.png"	x="87"	y="62"	width="28"	height="32" frameX="-2" frameY="-0" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="player_UP_1.png"	x="87"	y="31"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="player_UP_2.png"	x="87"	y="0"	width="28"	height="30" frameX="-2" frameY="-1" frameWidth="32" frameHeight="32"/>
+</TextureAtlas>

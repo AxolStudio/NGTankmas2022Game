@@ -21,23 +21,28 @@
             "valuesAsFlags": false
         },
         {
-            "color": "#ff0000ff",
-            "id": 2,
+            "color": "#ffff0000",
+            "id": 5,
             "members": [
                 {
                     "name": "facing",
                     "propertyType": "FacingDirections",
                     "type": "string",
-                    "value": "UP"
+                    "value": "DOWN"
                 },
                 {
                     "name": "objectType",
                     "propertyType": "ObjectTypes",
                     "type": "string",
-                    "value": "player"
+                    "value": "npc"
+                },
+                {
+                    "name": "sprite",
+                    "type": "string",
+                    "value": ""
                 }
             ],
-            "name": "MapObject",
+            "name": "NPC",
             "type": "class",
             "useAs": [
                 "property",
@@ -54,6 +59,30 @@
                 "npc"
             ],
             "valuesAsFlags": false
+        },
+        {
+            "color": "#ff0000ff",
+            "id": 6,
+            "members": [
+                {
+                    "name": "facing",
+                    "propertyType": "FacingDirections",
+                    "type": "string",
+                    "value": "UP"
+                },
+                {
+                    "name": "objectType",
+                    "propertyType": "ObjectTypes",
+                    "type": "string",
+                    "value": "player"
+                }
+            ],
+            "name": "PlayerStart",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object"
+            ]
         }
     ]
 }
