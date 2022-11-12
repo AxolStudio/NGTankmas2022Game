@@ -14,6 +14,8 @@ class GameObject extends FlxSprite
 	public var moving:Bool = false;
 	public var hasAnims:Bool = false;
 
+	public var name:String = "";
+
 	public function new():Void
 	{
 		super();
@@ -22,8 +24,9 @@ class GameObject extends FlxSprite
 		width = height = 32;
 	}
 
-	public function spawn(Which:String, X:Float, Y:Float, ?Facing:FlxDirectionFlags = FlxDirectionFlags.DOWN):Void
+	public function spawn(Name:String, Which:String, X:Float, Y:Float, ?Facing:FlxDirectionFlags = FlxDirectionFlags.DOWN):Void
 	{
+		name = Name;
 		buildAnimations(Which);
 
 		animation.finishCallback = (animName:String) ->
@@ -124,6 +127,9 @@ class GameObject extends FlxSprite
 
 		var map:FlxTilemap = GameGlobals.PlayState.map;
 		if (map.getTile(Std.int(x / GameGlobals.TILE_SIZE) + DX, Std.int(y / GameGlobals.TILE_SIZE) + DY) >= 40)
+			return;
+
+		if (GameGlobals.PlayState.checkForObjects(Std.int(x / GameGlobals.TILE_SIZE) + DX, Std.int(y / GameGlobals.TILE_SIZE) + DY) != null)
 			return;
 
 		moving = true;

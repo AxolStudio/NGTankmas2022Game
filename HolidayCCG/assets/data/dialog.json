@@ -1,0 +1,17 @@
+[
+  {
+    "who": "intro guy",
+    "dialogs": [
+      {
+        "requirements": ["flag!seenIntro"],
+        "text": "Hello, I'm the intro guy. I'm here to tell you about this game.",
+        "after": ["flag:seenIntro"]
+      },
+      {
+        "requirements":["flag:seenIntro"],
+        "text":"You've seen the first message!",
+        "after":[]
+    }
+    ]
+  }
+]

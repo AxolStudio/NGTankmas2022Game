@@ -1,5 +1,7 @@
 package holidayccg.states;
 
+import holidayccg.ui.DialogFrame;
+import holidayccg.globals.Dialog;
 import holidayccg.game.GameObject;
 import holidayccg.game.GameMap;
 import holidayccg.globals.GameGlobals;
@@ -12,6 +14,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
 import flixel.FlxG;
+import flixel.util.FlxDirectionFlags;
 
 class PlayState extends FlxState
 {
@@ -27,6 +30,10 @@ class PlayState extends FlxState
 
 	public var ready:Bool = false;
 
+	public var talking:Bool = false;
+
+	public var dialog:DialogFrame;
+
 	override public function create()
 	{
 		GameGlobals.PlayState = this;
@@ -35,6 +42,7 @@ class PlayState extends FlxState
 		add(mapLayer = new FlxTypedGroup<FlxTilemap>());
 		add(objectLayer = new FlxTypedGroup<GameObject>());
 		add(playerLayer = new FlxTypedGroup<GameObject>());
+		add(dialog = new DialogFrame());
 
 		playerLayer.add(player = new GameObject());
 
@@ -49,6 +57,8 @@ class PlayState extends FlxState
 		setMap("test room");
 
 		fadeIn();
+
+		trace(Dialog.DialogList);
 	}
 
 	public function fadeIn():Void
@@ -92,13 +102,13 @@ class PlayState extends FlxState
 			switch (obj.objectType)
 			{
 				case PLAYER:
-					player.spawn("player", obj.x, obj.y, GameObject.facingFromString(obj.facing));
+					player.spawn("player", "player", obj.x, obj.y, GameObject.facingFromString(obj.facing));
 
 				case NPC:
 					o = objectLayer.getFirstAvailable();
 					if (o == null)
 						objectLayer.add(o = new GameObject());
-					o.spawn(obj.sprite, obj.x, obj.y, GameObject.facingFromString(obj.facing));
+					o.spawn(obj.name, obj.sprite, obj.x, obj.y, GameObject.facingFromString(obj.facing));
 
 				default:
 			}
@@ -106,10 +116,56 @@ class PlayState extends FlxState
 		FlxG.camera.snapToTarget();
 	}
 
+	public function showDialog(Text:String):Void
+	{
+		talking = true;
+		dialog.display(Text);
+	}
+
+	public function checkForObjects(X:Float, Y:Float):GameObject
+	{
+		for (o in objectLayer.members)
+		{
+			if (Std.int(o.x / GameGlobals.TILE_SIZE) == X && Std.int(o.y / GameGlobals.TILE_SIZE) == Y)
+				return o;
+		}
+		return null;
+	}
+
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		if (!ready)
+		if (!ready || player.moving)
+			return;
+
+		var a:Bool = Controls.justPressed.A;
+
+		if (a)
+		{
+			// if talking, advance/close text
+			if (talking)
+			{
+				talking = false;
+				dialog.hide();
+				return;
+			}
+			else
+			{
+				var dX:Int = player.facing == FlxDirectionFlags.LEFT ? -1 : player.facing == FlxDirectionFlags.RIGHT ? 1 : 0;
+				var dY:Int = player.facing == FlxDirectionFlags.UP ? -1 : player.facing == FlxDirectionFlags.DOWN ? 1 : 0;
+
+				var talkTo:GameObject = checkForObjects(Std.int(player.x / GameGlobals.TILE_SIZE) + dX, Std.int(player.y / GameGlobals.TILE_SIZE) + dY);
+				if (talkTo != null)
+				{
+					if (Dialog.talk(talkTo.name))
+					{
+						return;
+					}
+				}
+			}
+			return;
+		}
+		if (talking)
 			return;
 
 		var left:Bool = Controls.pressed.LEFT;
