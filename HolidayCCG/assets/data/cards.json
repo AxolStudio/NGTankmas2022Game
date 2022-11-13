@@ -24,14 +24,14 @@
     "id": 4,
     "name": "yule goat",
     "value": 2,
-    "attacks": ["S", "W"],
+    "attacks": ["E", "W"],
     "rarity": "starter"
   },
   {
     "id": 5,
     "name": "frost fairy",
     "value": 2,
-    "attacks": ["N", "E"],
+    "attacks": ["N", "S"],
     "rarity": "starter"
   }
 ]

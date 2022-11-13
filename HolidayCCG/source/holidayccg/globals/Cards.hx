@@ -1,5 +1,8 @@
 package holidayccg.globals;
 
+import flixel.tweens.FlxTween;
+import flixel.group.FlxSpriteGroup;
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.FlxSprite;
@@ -87,19 +90,19 @@ class Collection
 	}
 }
 
-class CardGraphic extends FlxGroup
+class CardGraphic extends FlxSpriteGroup
 {
 	public var back:FlxSprite;
 	public var value:FlxSprite;
 	public var attacks:Array<FlxSprite> = [];
 
+	public var battleFieldPos:Int = -1;
+
 	public var card:Card;
 
-	public var x(get, set):Float;
-	public var y(get, set):Float;
-
-	public var alpha(default, set):Float;
-
+	// public var x(get, set):Float;
+	// public var y(get, set):Float;
+	// public var alpha(default, set):Float;
 	public var owner:CardOwner;
 	public var shown(default, set):Bool = false;
 
@@ -107,8 +110,10 @@ class CardGraphic extends FlxGroup
 
 	public var selected(default, set):Bool = false;
 
-	public var width(get, never):Float;
-	public var height(get, never):Float;
+	public var flipping:Bool = false;
+
+	// public var width(get, never):Float;
+	// public var height(get, never):Float;
 
 	public function new():Void
 	{
@@ -116,6 +121,10 @@ class CardGraphic extends FlxGroup
 
 		add(outline = new FlxSprite());
 		outline.loadGraphic(Global.asset("assets/images/card_outline.png"));
+		outline.offset.x = outline.offset.y = 5;
+		outline.width -= 10;
+		outline.height -= 10;
+		outline.x = outline.y -= 5;
 
 		add(back = GraphicsCache.loadFlxSpriteFromAtlas("card_backs"));
 
@@ -152,6 +161,10 @@ class CardGraphic extends FlxGroup
 		attacks[2].scrollFactor.set(0, 0);
 		attacks[3].scrollFactor.set(0, 0);
 
+		offset.x = offset.y = 5;
+		width -= 10;
+		height -= 10;
+
 		kill();
 	}
 
@@ -172,6 +185,28 @@ class CardGraphic extends FlxGroup
 		selected = false;
 
 		updateVisibility();
+	}
+
+	public function flip(NewOwner:CardOwner):Void
+	{
+		if (NewOwner == owner)
+		{
+			return;
+		}
+		flipping = true;
+		FlxTween.tween(scale, {x: 0}, .1, {
+			onComplete: (_) ->
+			{
+				owner = NewOwner;
+				back.animation.frameName = owner == PLAYER ? "player" : "enemy";
+				FlxTween.tween(scale, {x: 1}, .1, {
+					onComplete: (_) ->
+					{
+						flipping = false;
+					}
+				});
+			}
+		});
 	}
 
 	public function updateVisibility():Void
@@ -210,50 +245,41 @@ class CardGraphic extends FlxGroup
 		return selected;
 	}
 
-	public function set_x(Value:Float):Float
-	{
-		back.x = value.x = attacks[0].x = attacks[1].x = attacks[2].x = attacks[3].x = Value;
-
-		outline.x = back.x - 5;
-
-		return back.x;
-	}
-
-	public function set_y(Value:Float):Float
-	{
-		back.y = value.y = attacks[0].y = attacks[1].y = attacks[2].y = attacks[3].y = Value;
-
-		outline.y = back.y - 5;
-
-		return back.y;
-	}
-
-	public function get_x():Float
-	{
-		return back.x;
-	}
-
-	public function get_y():Float
-	{
-		return back.y;
-	}
-
-	public function set_alpha(Value:Float):Float
-	{
-		alpha = FlxMath.bound(0, 1, Value);
-		back.alpha = value.alpha = attacks[0].alpha = attacks[1].alpha = attacks[2].alpha = attacks[3].alpha = alpha;
-		return alpha;
-	}
-
-	public function get_width():Float
-	{
-		return back.width;
-	}
-
-	public function get_height():Float
-	{
-		return back.height;
-	}
+	// override public function set_x(Value:Float):Float
+	// {
+	// 	x = Value;
+	// 	back.x = value.x = attacks[0].x = attacks[1].x = attacks[2].x = attacks[3].x = Value;
+	// 	outline.x = back.x - 5;
+	// 	return back.x;
+	// }
+	// override public function set_y(Value:Float):Float
+	// {
+	// 	back.y = value.y = attacks[0].y = attacks[1].y = attacks[2].y = attacks[3].y = Value;
+	// 	outline.y = back.y - 5;
+	// 	return back.y;
+	// }
+	// private function get_x():Float
+	// {
+	// 	return back.x;
+	// }
+	// private function get_y():Float
+	// {
+	// 	return back.y;
+	// }
+	// override private function set_alpha(Value:Float):Float
+	// {
+	// 	alpha = FlxMath.bound(0, 1, Value);
+	// 	back.alpha = value.alpha = attacks[0].alpha = attacks[1].alpha = attacks[2].alpha = attacks[3].alpha = alpha;
+	// 	return alpha;
+	// }
+	// override private function get_width():Float
+	// {
+	// 	return back.width;
+	// }
+	// override private function get_height():Float
+	// {
+	// 	return back.height;
+	// }
 }
 
 @:enum abstract CardRarity(String)
