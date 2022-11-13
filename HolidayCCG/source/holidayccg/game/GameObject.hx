@@ -9,6 +9,8 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxObject;
 import flixel.util.FlxDirectionFlags;
 
+using holidayccg.globals.GraphicsCache;
+
 class GameObject extends FlxSprite
 {
 	public var moving:Bool = false;
@@ -20,7 +22,7 @@ class GameObject extends FlxSprite
 	{
 		super();
 
-		frames = FlxAtlasFrames.fromSparrow(Global.asset("assets/images/sprites.png"), Global.asset("assets/images/sprites.xml"));
+		GraphicsCache.loadAtlasGraphic(this, "sprites");
 		width = height = 32;
 	}
 

@@ -1,5 +1,6 @@
 package holidayccg.ui;
 
+import holidayccg.globals.Dialog;
 import flixel.tweens.FlxTween;
 import flixel.addons.ui.FlxUI9SliceSprite;
 import flixel.graphics.frames.FlxBitmapFont;
@@ -15,6 +16,8 @@ class DialogFrame extends FlxGroup
 	public var frame:FlxUI9SliceSprite;
 	public var text:FlxBitmapText;
 	public var cursor:FlxBitmapText;
+
+	public var after:Array<String> = [];
 
 	public function new():Void
 	{
@@ -47,8 +50,9 @@ class DialogFrame extends FlxGroup
 		cursor.visible = false;
 	}
 
-	public function display(Text:String):Void
+	public function display(Text:String, After:Array<String>):Void
 	{
+		after = After;
 		cursor.y = frame.y + frame.height - 12 - cursor.height;
 		text.text = Text;
 		frame.visible = true;
@@ -63,5 +67,6 @@ class DialogFrame extends FlxGroup
 		text.visible = false;
 		cursor.visible = false;
 		Global.cancelTweensOf(cursor);
+		Dialog.after(after);
 	}
 }

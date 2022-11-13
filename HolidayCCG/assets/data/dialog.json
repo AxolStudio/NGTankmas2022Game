@@ -5,13 +5,13 @@
       {
         "requirements": ["flag!seenIntro"],
         "text": "Hello, I'm the intro guy. I'm here to tell you about this game.",
-        "after": ["flag:seenIntro"]
+        "after": ["flag:seenIntro", "battle:intro guy"]
       },
       {
-        "requirements":["flag:seenIntro"],
-        "text":"You've seen the first message!",
-        "after":[]
-    }
+        "requirements": ["flag:seenIntro"],
+        "text": "You've seen the first message!",
+        "after": []
+      }
     ]
   }
 ]

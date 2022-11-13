@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "sugar plum fairy",
+    "value": 3,
+    "attacks": ["N", "E"],
+    "rarity": "starter"
+  },
+  {
+    "id": 2,
+    "name": "nutcracker",
+    "value": 5,
+    "attacks": ["W", "N"],
+    "rarity": "starter"
+  },
+  {
+    "id": 3,
+    "name": "mouse king",
+    "value": 5,
+    "attacks": ["S", "E"],
+    "rarity": "starter"
+  },
+  {
+    "id": 4,
+    "name": "yule goat",
+    "value": 2,
+    "attacks": ["S", "W"],
+    "rarity": "starter"
+  },
+  {
+    "id": 5,
+    "name": "frost fairy",
+    "value": 2,
+    "attacks": ["N", "E"],
+    "rarity": "starter"
+  }
+]

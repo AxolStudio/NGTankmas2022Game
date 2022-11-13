@@ -23,12 +23,9 @@ class DialogBuilder
 			dialogs = [];
 			for (d in 0...list[l].dialogs.length)
 			{
-				//trace($v{list[l].dialogs[d]});
 				e = macro new holidayccg.globals.DialogData($v{list[l].dialogs[d]});
 				dialogs.push(e);
 			}
-
-			// trace(dialogs);
 
 			map.push(macro $v{name} => $a{dialogs});
 		}

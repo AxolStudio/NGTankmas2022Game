@@ -1,5 +1,7 @@
 package holidayccg.states;
 
+import holidayccg.game.Player;
+import holidayccg.globals.Cards.Deck;
 import holidayccg.ui.DialogFrame;
 import holidayccg.globals.Dialog;
 import holidayccg.game.GameObject;
@@ -34,6 +36,8 @@ class PlayState extends FlxState
 
 	public var dialog:DialogFrame;
 
+	public var battleState:BattleState;
+
 	override public function create()
 	{
 		GameGlobals.PlayState = this;
@@ -55,6 +59,8 @@ class PlayState extends FlxState
 		super.create();
 
 		setMap("test room");
+
+		battleState = new BattleState();
 
 		fadeIn();
 
@@ -116,10 +122,10 @@ class PlayState extends FlxState
 		FlxG.camera.snapToTarget();
 	}
 
-	public function showDialog(Text:String):Void
+	public function showDialog(Text:String, After:Array<String>):Void
 	{
 		talking = true;
-		dialog.display(Text);
+		dialog.display(Text, After);
 	}
 
 	public function checkForObjects(X:Float, Y:Float):GameObject
@@ -186,5 +192,13 @@ class PlayState extends FlxState
 			player.move(-1, 0);
 		else if (right)
 			player.move(1, 0);
+	}
+
+	public function startBattle(Vs:String):Void
+	{
+		var enemyDeck:Deck = new Deck([1, 2, 3, 4, 5]); // eventually use VS to load enemy's deck!
+
+		battleState.init(GameGlobals.Player.deck, enemyDeck);
+		openSubState(battleState);
 	}
 }

@@ -1,5 +1,7 @@
 package holidayccg.globals;
 
+import flixel.FlxSprite;
+import holidayccg.game.Player;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import holidayccg.states.PlayState;
@@ -10,6 +12,8 @@ class GameGlobals
 	public static var initialized:Bool = false;
 
 	public static var PlayState:PlayState;
+
+	public static var Player:Player;
 
 	public static var ColorPalette:Array<FlxColor> = [
 		0xff000000, 0xff222034, 0xff45283c, 0xff663931, 0xff8f563b, 0xffdf7126, 0xffd9a066, 0xffeec39a, 0xfffbf236, 0xff99e550, 0xff6abe30, 0xff37946e,
@@ -26,5 +30,10 @@ class GameGlobals
 		if (initialized)
 			return;
 		initialized = true;
+
+		// check for a save file
+		// if none, make a new player!
+		Player = new Player();
+		// otherwise, load!
 	}
 }

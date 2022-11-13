@@ -29,14 +29,9 @@ class Dialog
 		return true;
 	}
 
-	public static function showDialog(Text:String):Void
+	public static function after(After:Array<String>):Void
 	{
-		GameGlobals.PlayState.showDialog(Text);
-	}
-
-	public static function setFlags(Flags:Array<String>):Void
-	{
-		for (f in Flags)
+		for (f in After)
 		{
 			if (f.startsWith("flag:"))
 			{
@@ -45,6 +40,15 @@ class Dialog
 			else if (f.startsWith("flag!"))
 			{
 				Dialog.Flags.set(f.substr(5), false);
+			}
+			else if (f.startsWith("dialog:"))
+			{
+				// show another dialog!
+			}
+			else if (f.startsWith("battle:"))
+			{
+				// start a battle!!
+				GameGlobals.PlayState.startBattle(f.substr(7));
 			}
 		}
 	}
@@ -59,8 +63,8 @@ class Dialog
 				if (meetsRequirements(dialogs[i].requirements))
 				{
 					// show the dialog box!
-					showDialog(dialogs[i].text);
-					setFlags(dialogs[i].after);
+
+					GameGlobals.PlayState.showDialog(dialogs[i].text, dialogs[i].after);
 					return true;
 				}
 			}
