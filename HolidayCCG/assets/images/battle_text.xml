@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="you_win-sprites.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+	<SubTexture name="lose" x="0" y="0" width="429" height="39" frameX="-0" frameY="-0" frameWidth="429" frameHeight="39"/>
+	<SubTexture name="win" x="0" y="40" width="238" height="31" frameX="-0" frameY="-0" frameWidth="238" frameHeight="31"/>
+</TextureAtlas>

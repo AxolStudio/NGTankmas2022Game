@@ -16,7 +16,7 @@
   {
     "id": 3,
     "name": "mouse king",
-    "value": 5,
+    "value": 4,
     "attacks": ["S", "E"],
     "rarity": "starter"
   },
@@ -30,7 +30,7 @@
   {
     "id": 5,
     "name": "frost fairy",
-    "value": 2,
+    "value": 1,
     "attacks": ["N", "S"],
     "rarity": "starter"
   }

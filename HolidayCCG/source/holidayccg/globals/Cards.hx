@@ -209,6 +209,40 @@ class CardGraphic extends FlxSpriteGroup
 		});
 	}
 
+	public function reveal():Void
+	{
+		flipping = true;
+		FlxTween.tween(scale, {x: 0}, .1, {
+			onComplete: (_) ->
+			{
+				shown = true;
+				FlxTween.tween(scale, {x: 1}, .1, {
+					onComplete: (_) ->
+					{
+						flipping = false;
+					}
+				});
+			}
+		});
+	}
+
+	public function hide():Void
+	{
+		flipping = true;
+		FlxTween.tween(scale, {x: 0}, .1, {
+			onComplete: (_) ->
+			{
+				shown = false;
+				FlxTween.tween(scale, {x: 1}, .1, {
+					onComplete: (_) ->
+					{
+						flipping = false;
+					}
+				});
+			}
+		});
+	}
+
 	public function updateVisibility():Void
 	{
 		back.visible = visible;

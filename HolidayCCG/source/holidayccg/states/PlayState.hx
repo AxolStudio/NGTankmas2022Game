@@ -63,8 +63,6 @@ class PlayState extends FlxState
 		battleState = new BattleState();
 
 		fadeIn();
-
-		trace(Dialog.DialogList);
 	}
 
 	public function fadeIn():Void
@@ -122,10 +120,10 @@ class PlayState extends FlxState
 		FlxG.camera.snapToTarget();
 	}
 
-	public function showDialog(Text:String, After:Array<String>):Void
+	public function showDialog(Dialog:DialogData):Void
 	{
 		talking = true;
-		dialog.display(Text, After);
+		dialog.display(Dialog);
 	}
 
 	public function checkForObjects(X:Float, Y:Float):GameObject
@@ -171,16 +169,23 @@ class PlayState extends FlxState
 			}
 			return;
 		}
-		if (talking)
-			return;
 
 		var left:Bool = Controls.pressed.LEFT;
 		var right:Bool = Controls.pressed.RIGHT;
+		if (left && right)
+			left = right = false;
+		if (talking && (left || right))
+		{
+			if (dialog.isQuestion)
+				dialog.changeSelection();
+			return;
+		}
+
+		if (talking)
+			return;
 		var up:Bool = Controls.pressed.UP;
 		var down:Bool = Controls.pressed.DOWN;
 
-		if (left && right)
-			left = right = false;
 		if (up && down)
 			up = down = false;
 
@@ -196,9 +201,7 @@ class PlayState extends FlxState
 
 	public function startBattle(Vs:String):Void
 	{
-		var enemyDeck:Deck = new Deck([1, 2, 3, 4, 5]); // eventually use VS to load enemy's deck!
-
-		battleState.init(GameGlobals.Player.deck, enemyDeck);
+		battleState.init(GameGlobals.Player.deck, Vs);
 		openSubState(battleState);
 	}
 }

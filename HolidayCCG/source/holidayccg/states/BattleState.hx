@@ -1,5 +1,8 @@
 package holidayccg.states;
 
+import holidayccg.ui.GameText;
+import holidayccg.globals.Opponent;
+import holidayccg.ui.GameFrame;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
 import holidayccg.globals.Cards;
@@ -19,7 +22,7 @@ class BattleState extends FlxSubState
 {
 	public var gameGrid:Array<Int> = [];
 	public var battlefield:FlxSprite;
-	public var blocker:FlxSprite;
+	// public var blocker:FlxSprite;
 	public var playerHand:Deck;
 	public var enemyHand:Deck;
 	public var enemyCards:FlxTypedGroup<CardGraphic>;
@@ -61,10 +64,14 @@ class BattleState extends FlxSubState
 	public var turnEndTimer:FlxTimer;
 	public var lastMode:BattleMode;
 
+	public var enemy:Opponent;
+
 	public function new():Void
 	{
 		super();
 		bgColor = GameGlobals.ColorPalette[14];
+
+		turnEndTimer = new FlxTimer();
 
 		add(battlefield = new FlxSprite());
 		battlefield.loadGraphic(Global.asset("assets/images/battlefield.png"));
@@ -73,9 +80,9 @@ class BattleState extends FlxSubState
 		battlefield.x = BattleFieldX;
 		battlefield.y = BattleFieldY;
 
-		add(blocker = new FlxSprite());
-		blocker.loadGraphic(Global.asset("assets/images/blocker.png"));
-		blocker.scrollFactor.set();
+		// add(blocker = new FlxSprite());
+		// blocker.loadGraphic(Global.asset("assets/images/blocker.png"));
+		// blocker.scrollFactor.set();
 
 		add(enemyCards = new FlxTypedGroup<CardGraphic>());
 
@@ -98,15 +105,18 @@ class BattleState extends FlxSubState
 		openCallback = start;
 	}
 
-	public function init(PlayerDeck:Deck, EnemyDeck:Deck):Void
+	public function init(PlayerDeck:Deck, VSWho:String):Void
 	{
 		playerHand = PlayerDeck;
-		enemyHand = EnemyDeck;
+
+		enemy = Opponent.OpponentList.get(VSWho);
+
+		enemyHand = enemy.deck;
 
 		currentMode = SETUP;
 
 		gameGrid = [for (i in 0...9) 0];
-		gameGrid[FlxG.random.int(0, 8)] = -1;
+		// gameGrid[FlxG.random.int(0, 8)] = -1;
 
 		blackout.alpha = 1;
 
@@ -136,8 +146,8 @@ class BattleState extends FlxSubState
 			enemyCards.add(cardG);
 		}
 
-		blocker.x = Global.width / 2 - blocker.width / 2;
-		blocker.y = Global.height + 100;
+		// blocker.x = Global.width / 2 - blocker.width / 2;
+		// blocker.y = Global.height + 100;
 
 		currentTurn = CardOwner.PLAYER; // RANDOMIZE THIS LATER!
 
@@ -150,25 +160,25 @@ class BattleState extends FlxSubState
 			type: FlxTweenType.ONESHOT,
 			onComplete: (_) ->
 			{
-				placeBlocker();
-			}
-		});
-	}
-
-	public function placeBlocker():Void
-	{
-		var blockerPosX:Int = BattleFieldCardX + ((gameGrid.indexOf(-1) % 3) * BattleFieldCardSpacingX);
-		var blockerPosY:Int = BattleFieldCardY + (Std.int(gameGrid.indexOf(-1) / 3) * BattleFieldCardSpacingY);
-
-		FlxTween.quadMotion(blocker, blocker.x, blocker.y, 200, 200, blockerPosX, blockerPosY, 1, true, {
-			type: FlxTweenType.ONESHOT,
-			onComplete: (_) ->
-			{
-				FlxG.camera.shake(0.01, 0.5);
+				// placeBlocker();
 				placeCards();
 			}
 		});
 	}
+
+	// public function placeBlocker():Void
+	// {
+	// 	var blockerPosX:Int = BattleFieldCardX + ((gameGrid.indexOf(-1) % 3) * BattleFieldCardSpacingX);
+	// 	var blockerPosY:Int = BattleFieldCardY + (Std.int(gameGrid.indexOf(-1) / 3) * BattleFieldCardSpacingY);
+	// 	FlxTween.quadMotion(blocker, blocker.x, blocker.y, 200, 200, blockerPosX, blockerPosY, 1, true, {
+	// 		type: FlxTweenType.ONESHOT,
+	// 		onComplete: (_) ->
+	// 		{
+	// 			FlxG.camera.shake(0.01, 0.5);
+	// 			placeCards();
+	// 		}
+	// 	});
+	// }
 
 	public function placeCards():Void
 	{
@@ -299,16 +309,31 @@ class BattleState extends FlxSubState
 				if (bestSpots[c][i] > bestValue)
 				{
 					bestValue = bestSpots[c][i];
-					bestSpot = i;
-					bestCard = c;
 				}
 			}
 		}
 
+		var choices:Array<String> = [];
+		for (c in 0...bestSpots.length)
+		{
+			for (i in 0...bestSpots[c].length)
+			{
+				if (bestSpots[c][i] == bestValue)
+				{
+					choices.push('$c$i');
+				}
+			}
+		}
+
+		FlxG.random.shuffle(choices);
+		var choice:Array<Int> = choices[0].split('').map(function(v:String) return Std.parseInt(v));
+		bestCard = choice[0];
+		bestSpot = choice[1];
+
 		// show the card then move it from the player's hand to the board
-		trace(bestSpots);
-		trace(enemyHand.cards);
-		trace("bestValue:", bestValue, "bestSpot:", bestSpot, "bestCard:", bestCard);
+		// trace(bestSpots);
+		// trace(enemyHand.cards);
+		// trace("bestValue:", bestValue, "bestSpot:", bestSpot, "bestCard:", bestCard);
 
 		var cardG:CardGraphic = getCardGraphicFromHand(bestCard, CardOwner.OPPONENT);
 		cardG.shown = true;
@@ -418,6 +443,21 @@ class BattleState extends FlxSubState
 		sortHand(CardOwner.PLAYER);
 	}
 
+	public function endTurn():Void
+	{
+		if (playedCards.length < 9)
+		{
+			if (lastMode == PLAYER_CARD_PLACING)
+				startEnemyTurn();
+			else if (lastMode == ENEMY_TURN)
+				startPlayerTurn();
+		}
+		else
+		{
+			battleEnd();
+		}
+	}
+
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
@@ -428,17 +468,11 @@ class BattleState extends FlxSubState
 				if (c.flipping)
 					return;
 			}
-			if (playerCards.length > 1 || enemyCards.length > 1)
+			currentMode == TURN_ENDING;
+			turnEndTimer.start(.5, (_) ->
 			{
-				if (lastMode == PLAYER_CARD_PLACING)
-					startEnemyTurn();
-				else if (lastMode == ENEMY_TURN)
-					startPlayerTurn();
-			}
-			else
-			{
-				battleEnd();
-			}
+				endTurn();
+			});
 		}
 		else if (ready)
 		{
@@ -707,20 +741,175 @@ class BattleState extends FlxSubState
 
 		// show new screen that shows winner, let's player pick card (if they won), and get money
 
-		openSubState(new BattleEndState(playerScore, enemyScore));
+		openSubState(new BattleEndState(playerScore, enemyScore, enemy));
 	}
 }
 
 class BattleEndState extends FlxSubState
 {
-	public function new(PlayerScore:Int, EnemyScore:Int):Void
+	public var back:GameFrame;
+	public var winText:FlxSprite;
+	public var cardSelections:FlxTypedGroup<CardGraphic>;
+	public var selectedCard:Int = -1;
+	public var doneButton:GameText;
+	public var cursor:GameText;
+	public var selecting:Bool = false;
+
+	public function new(PlayerScore:Int, EnemyScore:Int, Opponent:Opponent):Void
 	{
 		super();
-		var winner:FlxText = new FlxText(0, 0, FlxG.width, PlayerScore > EnemyScore ? "You won!" : (PlayerScore < EnemyScore ? "You Lost!" : "Tie!"));
-		winner.alignment = FlxTextAlign.CENTER;
-		winner.scrollFactor.set();
-		Global.screenCenter(winner);
-		add(winner);
+
+		add(back = new GameFrame(780, 440));
+		back.scrollFactor.set();
+		Global.screenCenter(back);
+
+		winText = holidayccg.globals.GraphicsCache.loadFlxSpriteFromAtlas("battle_text");
+		winText.x = back.x + (back.width / 2) - (winText.width / 2);
+		winText.y = back.y + 20;
+		winText.scrollFactor.set();
+		add(winText);
+
+		add(doneButton = new GameText());
+		doneButton.text = "Done";
+		doneButton.x = back.x + (back.width / 2) - (doneButton.width / 2);
+		doneButton.y = back.y + back.height - doneButton.height - 20;
+		doneButton.scrollFactor.set();
+		doneButton.visible = false;
+
+		add(cursor = new GameText());
+		cursor.text = ">";
+		cursor.x = doneButton.x - cursor.width - 10;
+		cursor.y = doneButton.y;
+		cursor.scrollFactor.set();
+		cursor.visible = false;
+
+		selectedCard = -1;
+
+		if (PlayerScore > EnemyScore)
+		{
+			winText.animation.frameName = "win";
+
+			add(cardSelections = new FlxTypedGroup<CardGraphic>());
+
+			var cG:CardGraphic = null;
+			for (c in Opponent.deck.cards)
+			{
+				cG = new CardGraphic();
+				cG.spawn(c, CardOwner.OPPONENT);
+				cG.x = back.x + 20 + (cardSelections.length * 100);
+				cG.y = back.y + winText.height + 100;
+				cardSelections.add(cG);
+			}
+
+			startFlippingCards();
+		}
+		else
+		{
+			winText.animation.frameName = "lose";
+
+			showExit();
+		}
+	}
+
+	public function startFlippingCards():Void
+	{
+		var t1:FlxTimer = new FlxTimer();
+		t1.start(1, (_) ->
+		{
+			cardSelections.members[0].reveal();
+		});
+		var t2:FlxTimer = new FlxTimer();
+		t2.start(1.2, (_) ->
+		{
+			cardSelections.members[1].reveal();
+		});
+		var t3:FlxTimer = new FlxTimer();
+		t3.start(1.4, (_) ->
+		{
+			cardSelections.members[2].reveal();
+		});
+		var t4:FlxTimer = new FlxTimer();
+		t4.start(1.6, (_) ->
+		{
+			cardSelections.members[3].reveal();
+		});
+		var t5:FlxTimer = new FlxTimer();
+		t5.start(1.8, (_) ->
+		{
+			cardSelections.members[4].reveal();
+		});
+		var t6:FlxTimer = new FlxTimer();
+		t6.start(2, (_) ->
+		{
+			selecting = true;
+			selectCard(4);
+			// selectedCard = 4;
+			// showExit();
+		});
+	}
+
+	public function deselectCard(Card:Int):Void
+	{
+		cardSelections.members[Card].selected = false;
+		cardSelections.members[Card].y -= 20;
+	}
+
+	public function selectCard(Card:Int):Void
+	{
+		if (selectedCard != -1)
+		{
+			deselectCard(selectedCard);
+		}
+		cardSelections.members[Card].selected = true;
+		cardSelections.members[Card].y += 20;
+		selectedCard = Card;
+	}
+
+	public function showExit():Void
+	{
+		doneButton.visible = true;
+
+		cursor.visible = true;
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (selecting)
+		{
+			if (Controls.justPressed.LEFT)
+			{
+				if (selectedCard == 0)
+					selectCard(4);
+				else
+					selectCard(selectedCard - 1);
+			}
+			else if (Controls.justPressed.RIGHT)
+			{
+				if (selectedCard == 4)
+					selectCard(0);
+				else
+					selectCard(selectedCard + 1);
+			}
+			else if (Controls.justPressed.A)
+			{
+				selecting = false;
+				deselectCard(selectedCard);
+				showExit();
+			}
+		}
+		else
+		{
+			if (Controls.justPressed.A)
+			{
+				// close substates!!
+			}
+			else if (Controls.justPressed.B)
+			{
+				// if we have a card selected, go back and let us select again...
+			}
+		}
 	}
 }
 
@@ -731,5 +920,6 @@ class BattleEndState extends FlxSubState
 	var PLAYER_CARD_PLACING = "player_card_placing";
 	var ENEMY_TURN = "enemy_turn";
 	var TURN_END = "turn_end";
+	var TURN_ENDING = "turn_ending";
 	var GAME_OVER = "game_over";
 }
