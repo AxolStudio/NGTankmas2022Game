@@ -108,6 +108,7 @@ class DialogFrame extends FlxGroup
 
 		frame.visible = true;
 		text.visible = true;
+		
 	}
 
 	public function hide():Void

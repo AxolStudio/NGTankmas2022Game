@@ -32,6 +32,11 @@ class GameGlobals
 		initialized = true;
 
 		// check for a save file
+
+		// if one exists, load the player's collection, money and deck(s)
+		// also load all the flags
+		// also load the opponents
+
 		// if none, make a new player!
 		Player = new Player();
 		// otherwise, load!

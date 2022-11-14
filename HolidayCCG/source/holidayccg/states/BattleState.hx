@@ -66,10 +66,19 @@ class BattleState extends FlxSubState
 
 	public var enemy:Opponent;
 
-	public function new():Void
+	public var win:String = "";
+	public var lose:String = "";
+
+	public var callback:String->Void;
+
+	public var winner:CardOwner;
+
+	public function new(Callback:String->Void):Void
 	{
 		super();
 		bgColor = GameGlobals.ColorPalette[14];
+
+		callback = Callback;
 
 		turnEndTimer = new FlxTimer();
 
@@ -109,9 +118,12 @@ class BattleState extends FlxSubState
 	{
 		playerHand = PlayerDeck;
 
-		enemy = Opponent.OpponentList.get(VSWho);
+		var vs:Array<String> = VSWho.split("?");
+		enemy = Opponent.OpponentList.get(vs[0]);
+		win = vs[1];
+		lose = vs[2];
 
-		enemyHand = enemy.deck;
+		enemyHand = new Deck(enemy.deck.cards.copy());
 
 		currentMode = SETUP;
 
@@ -468,7 +480,10 @@ class BattleState extends FlxSubState
 				if (c.flipping)
 					return;
 			}
-			currentMode == TURN_ENDING;
+
+			currentMode = TURN_ENDING;
+			trace(currentMode);
+
 			turnEndTimer.start(.5, (_) ->
 			{
 				endTurn();
@@ -740,8 +755,17 @@ class BattleState extends FlxSubState
 		}
 
 		// show new screen that shows winner, let's player pick card (if they won), and get money
+		winner = playerScore > enemyScore ? CardOwner.PLAYER : CardOwner.OPPONENT;
+		openSubState(new BattleEndState(playerScore, enemyScore, enemy, returnFromSubState));
+	}
 
-		openSubState(new BattleEndState(playerScore, enemyScore, enemy));
+	public function returnFromSubState():Void
+	{
+		closeCallback = () ->
+		{
+			callback(winner == CardOwner.PLAYER ? win : lose);
+		}
+		close();
 	}
 }
 
@@ -755,9 +779,14 @@ class BattleEndState extends FlxSubState
 	public var cursor:GameText;
 	public var selecting:Bool = false;
 
-	public function new(PlayerScore:Int, EnemyScore:Int, Opponent:Opponent):Void
+	public var opponent:Opponent;
+
+	public function new(PlayerScore:Int, EnemyScore:Int, Opponent:Opponent, Callback:Void->Void):Void
 	{
 		super();
+
+		opponent = Opponent;
+		closeCallback = Callback;
 
 		add(back = new GameFrame(780, 440));
 		back.scrollFactor.set();
@@ -777,7 +806,7 @@ class BattleEndState extends FlxSubState
 		doneButton.visible = false;
 
 		add(cursor = new GameText());
-		cursor.text = ">";
+		cursor.text = "]";
 		cursor.x = doneButton.x - cursor.width - 10;
 		cursor.y = doneButton.y;
 		cursor.scrollFactor.set();
@@ -895,7 +924,8 @@ class BattleEndState extends FlxSubState
 			else if (Controls.justPressed.A)
 			{
 				selecting = false;
-				deselectCard(selectedCard);
+				// deselectCard(selectedCard);
+				cardSelections.members[selectedCard].selected = false;
 				showExit();
 			}
 		}
@@ -904,12 +934,35 @@ class BattleEndState extends FlxSubState
 			if (Controls.justPressed.A)
 			{
 				// close substates!!
+				if (selectedCard == -1)
+				{
+					exitState();
+				}
+				else
+				{
+					GameGlobals.Player.collection.add(cardSelections.members[selectedCard].card.id, 1);
+					if (opponent.sideboard.length > 0)
+					{
+						// take a random card out of the sideboard, and replace the taken card with it
+						FlxG.random.shuffle(opponent.sideboard);
+						var c:Int = opponent.sideboard.pop();
+						opponent.deck.cards[selectedCard] = c;
+					}
+					exitState();
+				}
 			}
 			else if (Controls.justPressed.B)
 			{
 				// if we have a card selected, go back and let us select again...
+				selecting = true;
+				selectCard(0);
 			}
 		}
+	}
+
+	public function exitState():Void
+	{
+		close();
 	}
 }
 

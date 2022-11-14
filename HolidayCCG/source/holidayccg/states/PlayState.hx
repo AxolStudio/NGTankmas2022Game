@@ -60,7 +60,7 @@ class PlayState extends FlxState
 
 		setMap("test room");
 
-		battleState = new BattleState();
+		battleState = new BattleState(returnFromBattle);
 
 		fadeIn();
 	}
@@ -124,6 +124,7 @@ class PlayState extends FlxState
 	{
 		talking = true;
 		dialog.display(Dialog);
+		ready = true;
 	}
 
 	public function checkForObjects(X:Float, Y:Float):GameObject
@@ -199,8 +200,14 @@ class PlayState extends FlxState
 			player.move(1, 0);
 	}
 
+	public function returnFromBattle(Actions:String):Void
+	{
+		Dialog.parseScripts([Actions]);
+	}
+
 	public function startBattle(Vs:String):Void
 	{
+		ready = false;
 		battleState.init(GameGlobals.Player.deck, Vs);
 		openSubState(battleState);
 	}

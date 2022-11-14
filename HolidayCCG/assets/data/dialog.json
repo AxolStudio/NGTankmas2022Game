@@ -5,7 +5,7 @@
       {
         "requirements": ["flag!seenIntro"],
         "text": "Hello, I'm the intro guy. I'm here to tell you about this game.",
-        "yes": ["flag:seenIntro", "battle:intro guy?dialog:intro guy 2"],
+        "yes": ["flag:seenIntro", "battle:intro guy?dialog:intro guy 2?dialog:intro guy 3"],
         "no": []
       },
       {
@@ -22,6 +22,17 @@
       {
         "requirements": [],
         "text": "Talk to me again if you need a refresher.",
+        "yes": [],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 3",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Talk to me again and you can try again!",
         "yes": [],
         "no": []
       }
