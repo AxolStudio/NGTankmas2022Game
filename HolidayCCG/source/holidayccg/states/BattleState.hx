@@ -114,9 +114,36 @@ class BattleState extends FlxSubState
 		openCallback = start;
 	}
 
+	override public function close():Void
+	{
+		super.close();
+
+		for (e in enemyCards.members)
+		{
+			e.kill();
+			enemyCards.remove(e);
+		}
+
+		for (p in playerCards.members)
+		{
+			p.kill();
+			playerCards.remove(p);
+		}
+
+		for (p in playedCards.members)
+		{
+			p.kill();
+			playedCards.remove(p);
+		}
+
+		enemyCards.clear();
+		playerCards.clear();
+		playedCards.clear();
+	}
+
 	public function init(PlayerDeck:Deck, VSWho:String):Void
 	{
-		playerHand = PlayerDeck;
+		playerHand = new Deck(PlayerDeck.cards.copy());
 
 		var vs:Array<String> = VSWho.split("?");
 		enemy = Opponent.OpponentList.get(vs[0]);
@@ -143,6 +170,7 @@ class BattleState extends FlxSubState
 			cardG.x = -100 - cardG.width;
 			cardG.y = PlayerHandY + (i * HandCardSpacing);
 			cardG.shown = true;
+			cardG.scrollFactor.set();
 
 			playerCards.add(cardG);
 		}
@@ -154,6 +182,7 @@ class BattleState extends FlxSubState
 			cardG.x = Global.width + 100;
 			cardG.y = EnemyHandY + (i * HandCardSpacing);
 			cardG.shown = false;
+			cardG.scrollFactor.set();
 
 			enemyCards.add(cardG);
 		}
@@ -350,8 +379,8 @@ class BattleState extends FlxSubState
 		var cardG:CardGraphic = getCardGraphicFromHand(bestCard, CardOwner.OPPONENT);
 		cardG.shown = true;
 
-		var cardPosX:Int = BattleFieldCardX + ((bestSpot % 3) * BattleFieldCardSpacingX);
-		var cardPosY:Int = BattleFieldCardY + (Std.int(bestSpot / 3) * BattleFieldCardSpacingY);
+		var cardPosX:Int = 5 + BattleFieldCardX + ((bestSpot % 3) * BattleFieldCardSpacingX);
+		var cardPosY:Int = 5 + BattleFieldCardY + (Std.int(bestSpot / 3) * BattleFieldCardSpacingY);
 
 		FlxTween.linearMotion(cardG, cardG.x, cardG.y, cardPosX, cardPosY, .2, true, {
 			type: FlxTweenType.ONESHOT,
@@ -577,8 +606,8 @@ class BattleState extends FlxSubState
 			cardPlaceTarget.visible = false;
 			var c:CardGraphic = getCardGraphicFromHand(selectedCard, CardOwner.PLAYER);
 
-			var cardPosX:Int = BattleFieldCardX + ((selectedSpot % 3) * BattleFieldCardSpacingX);
-			var cardPosY:Int = BattleFieldCardY + (Std.int(selectedSpot / 3) * BattleFieldCardSpacingY);
+			var cardPosX:Int = 5 + BattleFieldCardX + ((selectedSpot % 3) * BattleFieldCardSpacingX);
+			var cardPosY:Int = 5 + BattleFieldCardY + (Std.int(selectedSpot / 3) * BattleFieldCardSpacingY);
 
 			FlxTween.linearMotion(c, c.x, c.y, cardPosX, cardPosY, .2, true, {
 				type: FlxTweenType.ONESHOT,
@@ -749,14 +778,14 @@ class BattleState extends FlxSubState
 		for (p in playedCards.members)
 		{
 			if (p.owner == CardOwner.PLAYER)
-				playerScore += p.card.value;
+				playerScore++;
 			else
-				enemyScore += p.card.value;
+				enemyScore++;
 		}
 
 		// show new screen that shows winner, let's player pick card (if they won), and get money
 		winner = playerScore > enemyScore ? CardOwner.PLAYER : CardOwner.OPPONENT;
-		openSubState(new BattleEndState(playerScore, enemyScore, enemy, returnFromSubState));
+		openSubState(new BattleEndState(winner, enemy, returnFromSubState));
 	}
 
 	public function returnFromSubState():Void
@@ -778,10 +807,11 @@ class BattleEndState extends FlxSubState
 	public var doneButton:GameText;
 	public var cursor:GameText;
 	public var selecting:Bool = false;
+	public var selectMessage:GameText;
 
 	public var opponent:Opponent;
 
-	public function new(PlayerScore:Int, EnemyScore:Int, Opponent:Opponent, Callback:Void->Void):Void
+	public function new(Winner:CardOwner, Opponent:Opponent, Callback:Void->Void):Void
 	{
 		super();
 
@@ -814,7 +844,9 @@ class BattleEndState extends FlxSubState
 
 		selectedCard = -1;
 
-		if (PlayerScore > EnemyScore)
+		var startX:Float = (Global.width / 2) - ((96 + 20) * 2.5);
+
+		if (Winner == CardOwner.PLAYER)
 		{
 			winText.animation.frameName = "win";
 
@@ -825,10 +857,18 @@ class BattleEndState extends FlxSubState
 			{
 				cG = new CardGraphic();
 				cG.spawn(c, CardOwner.OPPONENT);
-				cG.x = back.x + 20 + (cardSelections.length * 100);
+				cG.x = startX + ((cG.width + 20) * cardSelections.length);
+
 				cG.y = back.y + winText.height + 100;
 				cardSelections.add(cG);
 			}
+
+			selectMessage = new GameText();
+			selectMessage.text = "Select a card to add to your deck!";
+			selectMessage.scrollFactor.set();
+			Global.screenCenter(selectMessage);
+			selectMessage.y = back.y + winText.height + 50;
+			add(selectMessage);
 
 			startFlippingCards();
 		}
@@ -940,7 +980,8 @@ class BattleEndState extends FlxSubState
 				}
 				else
 				{
-					GameGlobals.Player.collection.add(cardSelections.members[selectedCard].card.id, 1);
+					var cG:CardGraphic = cardSelections.members[selectedCard];
+					GameGlobals.Player.collection.add(cG.card.id, 1);
 					if (opponent.sideboard.length > 0)
 					{
 						// take a random card out of the sideboard, and replace the taken card with it
@@ -948,7 +989,13 @@ class BattleEndState extends FlxSubState
 						var c:Int = opponent.sideboard.pop();
 						opponent.deck.cards[selectedCard] = c;
 					}
-					exitState();
+
+					FlxTween.linearMotion(cG, cG.x, cG.y, Global.width / 2 - cG.width / 2, Global.height + 10, .5, true, {
+						onComplete: (_) ->
+						{
+							exitState();
+						}
+					});
 				}
 			}
 			else if (Controls.justPressed.B)
