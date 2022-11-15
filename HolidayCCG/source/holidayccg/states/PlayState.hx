@@ -43,6 +43,8 @@ class PlayState extends FlxState
 		GameGlobals.PlayState = this;
 		GameGlobals.init();
 
+		destroySubStates = false;
+
 		add(mapLayer = new FlxTypedGroup<FlxTilemap>());
 		add(objectLayer = new FlxTypedGroup<GameObject>());
 		add(playerLayer = new FlxTypedGroup<GameObject>());
@@ -171,11 +173,7 @@ class PlayState extends FlxState
 			return;
 		}
 
-		var left:Bool = Controls.pressed.LEFT;
-		var right:Bool = Controls.pressed.RIGHT;
-		if (left && right)
-			left = right = false;
-		if (talking && (left || right))
+		if (talking && (Controls.justPressed.LEFT || Controls.justPressed.RIGHT))
 		{
 			if (dialog.isQuestion)
 				dialog.changeSelection();
@@ -184,9 +182,13 @@ class PlayState extends FlxState
 
 		if (talking)
 			return;
+
+		var left:Bool = Controls.pressed.LEFT;
+		var right:Bool = Controls.pressed.RIGHT;
 		var up:Bool = Controls.pressed.UP;
 		var down:Bool = Controls.pressed.DOWN;
-
+		if (left && right)
+			left = right = false;
 		if (up && down)
 			up = down = false;
 

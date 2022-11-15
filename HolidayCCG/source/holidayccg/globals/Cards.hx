@@ -1,5 +1,6 @@
 package holidayccg.globals;
 
+import flixel.util.FlxDestroyUtil;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxSpriteGroup;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
@@ -115,6 +116,18 @@ class CardGraphic extends FlxSpriteGroup
 	// public var width(get, never):Float;
 	// public var height(get, never):Float;
 
+	override function destroy()
+	{
+		back = FlxDestroyUtil.destroy(back);
+		value = FlxDestroyUtil.destroy(value);
+		attacks = FlxDestroyUtil.destroyArray(attacks);
+		card = null;
+		owner = null;
+		outline = FlxDestroyUtil.destroy(outline);
+
+		super.destroy();
+	}
+
 	public function new():Void
 	{
 		super();
@@ -193,11 +206,13 @@ class CardGraphic extends FlxSpriteGroup
 		{
 			return;
 		}
+
+		owner = NewOwner;
+
 		flipping = true;
 		FlxTween.tween(scale, {x: 0}, .1, {
 			onComplete: (_) ->
 			{
-				owner = NewOwner;
 				back.animation.frameName = owner == PLAYER ? "player" : "enemy";
 				FlxTween.tween(scale, {x: 1}, .1, {
 					onComplete: (_) ->

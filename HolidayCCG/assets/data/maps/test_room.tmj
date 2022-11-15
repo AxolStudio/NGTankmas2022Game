@@ -84,6 +84,33 @@
                  "width":32,
                  "x":448,
                  "y":320
+                }, 
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":9,
+                 "name":"choice test",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"npc"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":544,
+                 "y":384
                 }],
          "opacity":1,
          "tintcolor":"#5500ff",
@@ -93,7 +120,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":9,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "properties":[
         {

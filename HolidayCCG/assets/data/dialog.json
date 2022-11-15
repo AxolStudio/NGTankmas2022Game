@@ -11,7 +11,7 @@
       {
         "requirements": ["flag:seenIntro"],
         "text": "Q:Yes|No?Do you want a refresher on the rules?",
-        "yes": ["battle:intro guy"],
+        "yes": ["battle:intro guy?dialog:intro guy 2?dialog:intro guy 3"],
         "no": []
       }
     ]
@@ -33,6 +33,45 @@
       {
         "requirements": [],
         "text": "Talk to me again and you can try again!",
+        "yes": [],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "choice test",
+    "dialogs": [
+      {
+        "requirements": ["flag!CTwasBeat"],
+        "text": "Q:Yes|No?Do you want to fight?",
+        "yes": ["battle:choice test?dialog:choice test 2?dialog:choice test 3"],
+        "no": []
+      },
+      {
+        "requirements": ["flag:CTwasBeat"],
+        "text": "I'm still recovering...",
+        "yes": [],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "choice test 2",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Aw you beat me!",
+        "yes": ["flag:CTwasBeat"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "choice test 3",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "We can go again if you want!",
         "yes": [],
         "no": []
       }

@@ -1,5 +1,6 @@
 package holidayccg.ui;
 
+import flixel.FlxG;
 import holidayccg.globals.Dialog;
 import flixel.tweens.FlxTween;
 import flixel.addons.ui.FlxUI9SliceSprite;
@@ -28,8 +29,8 @@ class DialogFrame extends FlxGroup
 
 	public function new():Void
 	{
-		super(3);
-		add(frame = new GameFrame(Global.width, GameGlobals.TILE_SIZE * 4));
+		super(6);
+		add(frame = new GameFrame(GameGlobals.TILE_SIZE * 30, GameGlobals.TILE_SIZE * 4));
 		//
 		frame.x = 0;
 		frame.y = Global.height - frame.height;
@@ -48,17 +49,17 @@ class DialogFrame extends FlxGroup
 		cursor.y = frame.y + frame.height - 12 - cursor.height;
 
 		add(choiceA = new GameText());
-		choiceA.x = frame.x + 24;
-		choiceA.y = frame.y + frame.height - 24 - choiceA.height;
+		// choiceA.x = frame.x + 24;
+		// choiceA.y = frame.y + frame.height - 24 - choiceA.height;
 
 		add(choiceB = new GameText());
-		choiceB.x = frame.x + frame.width - 24 - choiceB.width;
-		choiceB.y = frame.y + frame.height - 24 - choiceB.height;
+		// choiceB.x = frame.x + frame.width - 24 - choiceB.width;
+		// choiceB.y = frame.y + frame.height - 24 - choiceB.height;
 
 		add(selector = new GameText());
-		selector.text = ">";
-		selector.x = choiceA.x - selector.width - 4;
-		selector.y = choiceA.y;
+		selector.text = "]";
+		// selector.x = choiceA.x - selector.width - 4;
+		// selector.y = choiceA.y;
 
 		frame.scrollFactor.set();
 		text.scrollFactor.set();
@@ -81,14 +82,20 @@ class DialogFrame extends FlxGroup
 		if (dialogData.text.startsWith("Q:"))
 		{
 			choiceA.text = dialogData.text.substr(2, dialogData.text.indexOf("|") - 2);
-			choiceB.text = dialogData.text.substr(dialogData.text.indexOf("|") + 1, dialogData.text.indexOf("?") - 1);
+			choiceB.text = dialogData.text.substr(dialogData.text.indexOf("|") + 1, dialogData.text.indexOf("?") - dialogData.text.indexOf("|") - 1);
+
+			choiceA.x = frame.x + 24 + selector.width + 10;
+			choiceA.y = frame.y + frame.height - 24 - choiceA.height;
+
+			choiceB.x = frame.x + (frame.width / 2) + 10 + selector.width + 10;
+			choiceB.y = frame.y + frame.height - 24 - choiceB.height;
 
 			text.text = dialogData.text.substr(dialogData.text.indexOf("?") + 1);
 			choiceA.visible = true;
 			choiceB.visible = true;
 			selector.visible = true;
-			selector.x = choiceA.x - selector.width - 4;
-			selector.y = choiceA.y;
+			selector.x = choiceA.x - selector.width - 8;
+			selector.y = choiceA.y - 1;
 
 			isQuestion = true;
 			selected = 0;
@@ -108,7 +115,6 @@ class DialogFrame extends FlxGroup
 
 		frame.visible = true;
 		text.visible = true;
-		
 	}
 
 	public function hide():Void
@@ -133,14 +139,12 @@ class DialogFrame extends FlxGroup
 		if (selected == 0)
 		{
 			selected = 1;
-			selector.x = choiceB.x - selector.width - 4;
-			selector.y = choiceB.y;
+			selector.x = choiceB.x - selector.width - 10;
 		}
 		else
 		{
 			selected = 0;
-			selector.x = choiceA.x - selector.width - 4;
-			selector.y = choiceA.y;
+			selector.x = choiceA.x - selector.width - 10;
 		}
 	}
 }

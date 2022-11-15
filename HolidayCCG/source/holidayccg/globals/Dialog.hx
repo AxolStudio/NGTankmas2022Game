@@ -32,9 +32,9 @@ class Dialog
 	public static function close(DialogData:DialogData, Choice:Bool = true):Void
 	{
 		if (Choice)
-			Dialog.parseScripts(DialogData.yes);
+			Dialog.parseScripts(DialogData.yes.copy());
 		else
-			Dialog.parseScripts(DialogData.no);
+			Dialog.parseScripts(DialogData.no.copy());
 	}
 
 	public static function parseScripts(Scripts:Array<String>):Void

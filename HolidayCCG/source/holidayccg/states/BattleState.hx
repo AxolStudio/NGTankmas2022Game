@@ -116,29 +116,30 @@ class BattleState extends FlxSubState
 
 	override public function close():Void
 	{
-		super.close();
-
+		
 		for (e in enemyCards.members)
 		{
 			e.kill();
 			enemyCards.remove(e);
+			e.destroy();
 		}
-
 		for (p in playerCards.members)
 		{
 			p.kill();
 			playerCards.remove(p);
+			p.destroy();
 		}
-
 		for (p in playedCards.members)
 		{
 			p.kill();
 			playedCards.remove(p);
+			p.destroy();
 		}
-
 		enemyCards.clear();
 		playerCards.clear();
 		playedCards.clear();
+
+		super.close();
 	}
 
 	public function init(PlayerDeck:Deck, VSWho:String):Void
