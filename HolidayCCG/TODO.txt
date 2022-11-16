@@ -1,0 +1,5 @@
+add rarity icon to cards
+add illustrations
+add shop
+add animation for opening packs of cards
+allow selling of batches of cards

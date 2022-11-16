@@ -45,6 +45,10 @@ class PlayState extends FlxState
 		GameGlobals.PlayState = this;
 		GameGlobals.init();
 
+		#if debug
+		GameGlobals.Player.collection.add(10, 1);
+		#end
+
 		destroySubStates = false;
 
 		add(mapLayer = new FlxTypedGroup<FlxTilemap>());

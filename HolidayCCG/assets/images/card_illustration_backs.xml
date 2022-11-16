@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="card_illustration_back_player-sprites.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+	<SubTexture name="enemy" x="0" y="0" width="88" height="52" frameX="-0" frameY="-0" frameWidth="88" frameHeight="52"/>
+	<SubTexture name="player" x="0" y="53" width="88" height="52" frameX="-0" frameY="-0" frameWidth="88" frameHeight="52"/>
+</TextureAtlas>

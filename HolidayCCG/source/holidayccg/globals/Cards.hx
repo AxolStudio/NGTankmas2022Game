@@ -1,5 +1,6 @@
 package holidayccg.globals;
 
+import holidayccg.ui.GameText;
 import flixel.util.FlxDestroyUtil;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxSpriteGroup;
@@ -91,11 +92,16 @@ class Collection
 	}
 }
 
+@:access(flixel.text.FlxBitmapText._lines)
+@:access(flixel.text.FlxBitmapText.updateText)
 class CardGraphic extends FlxSpriteGroup
 {
 	public var back:FlxSprite;
-	public var value:FlxSprite;
+	public var value:GameText;
 	public var attacks:Array<FlxSprite> = [];
+	public var name:GameText;
+	public var nameLine1:GameText;
+	public var nameLine2:GameText;
 
 	public var battleFieldPos:Int = -1;
 
@@ -143,28 +149,50 @@ class CardGraphic extends FlxSpriteGroup
 
 		// add illustration
 
-		add(value = GraphicsCache.loadFlxSpriteFromAtlas("card_values"));
+		// add(value = GraphicsCache.loadFlxSpriteFromAtlas("card_values"));
 
-		var tmpA:FlxSprite = GraphicsCache.loadFlxSpriteFromAtlas("attack_arrows");
+		name = new GameText(Font.CARD_TEXT); // name.alignment = FlxTextAlign.CENTER;
+		name.width = 90;
+		name.autoSize = false;
+		name.multiLine = true;
+		name.fieldWidth = 90;
+		name.wordWrap = true;
+
+		add(nameLine1 = new GameText(Font.CARD_TEXT));
+
+		nameLine1.y = back.y + back.height - 35;
+
+		add(nameLine2 = new GameText(Font.CARD_TEXT));
+
+		nameLine2.y = back.y + back.height - 22;
+
+		add(value = new GameText(Font.CARD_NUMBERS));
+		value.x = back.x + 5;
+		value.y = back.y + 5;
+
+		var tmpA:FlxSprite = new FlxSprite(Global.asset("assets/images/attack_UP.png"));
+		tmpA.x = back.x + back.width - tmpA.width - 5;
+		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
 
-		tmpA = GraphicsCache.loadFlxSpriteFromAtlas("attack_arrows");
+		tmpA = new FlxSprite(Global.asset("assets/images/attack_DOWN.png"));
+		tmpA.x = back.x + back.width - tmpA.width - 5;
+		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
 
-		tmpA = GraphicsCache.loadFlxSpriteFromAtlas("attack_arrows");
+		tmpA = new FlxSprite(Global.asset("assets/images/attack_RIGHT.png"));
+		tmpA.x = back.x + back.width - tmpA.width - 5;
+		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
 
-		tmpA = GraphicsCache.loadFlxSpriteFromAtlas("attack_arrows");
+		tmpA = new FlxSprite(Global.asset("assets/images/attack_LEFT.png"));
+		tmpA.x = back.x + back.width - tmpA.width - 5;
+		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
-
-		attacks[0].animation.frameName = "N";
-		attacks[1].animation.frameName = "S";
-		attacks[2].animation.frameName = "E";
-		attacks[3].animation.frameName = "W";
 
 		back.scrollFactor.set(0, 0);
 		outline.scrollFactor.set(0, 0);
@@ -193,7 +221,24 @@ class CardGraphic extends FlxSpriteGroup
 
 		back.animation.frameName = Owner == PLAYER ? "player" : "enemy";
 
-		value.animation.frameName = Std.string(card.value);
+		name.text = card.name.toUpperCase();
+		name.updateText();
+
+		if (name.numLines > 1)
+		{
+			nameLine1.text = name._lines[0];
+			nameLine2.text = name._lines[1];
+		}
+		else
+		{
+			nameLine1.text = name.text;
+		}
+
+		nameLine1.x = back.x + (back.width / 2) - (nameLine1.width / 2);
+		nameLine2.x = back.x + (back.width / 2) - (nameLine2.width / 2);
+
+		value.text = Std.string(card.value);
+
 		shown = false;
 		selected = false;
 
@@ -266,6 +311,8 @@ class CardGraphic extends FlxSpriteGroup
 		attacks[1].visible = visible && shown && card.attacks.contains("S");
 		attacks[2].visible = visible && shown && card.attacks.contains("E");
 		attacks[3].visible = visible && shown && card.attacks.contains("W");
+		nameLine1.visible = visible && shown;
+		nameLine2.visible = visible && shown && name.numLines > 1;
 		outline.visible = visible && selected;
 	}
 

@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import flixel.util.FlxDirectionFlags;
 import flixel.text.FlxText.FlxTextAlign;
 import holidayccg.globals.Cards;
 import holidayccg.globals.GameGlobals;
@@ -14,6 +15,7 @@ import holidayccg.ui.GameFrame;
 import flixel.FlxSubState;
 
 using flixel.util.FlxSpriteUtil;
+using holidayccg.globals.GameGlobals.TitleCase;
 
 class CollectionState extends FlxSubState
 {
@@ -40,7 +42,19 @@ class CollectionState extends FlxSubState
 	public static inline var MONEY_X:Int = 948;
 	public static inline var MONEY_Y:Int = 10;
 
+	public static inline var CARD_SWAPPING_X:Int = 60;
+
+	public var swapping:Bool = false;
+
 	public var moneyText:GameText;
+	public var swappingCardArrow:FlxSprite;
+
+	public var swappingCardInDeck:Int = -1;
+	public var swappingCardID:Int = -1;
+
+	public var tmpSwappingCard:CardGraphic;
+
+	public var cardName:GameText;
 
 	public function new(Callback:Void->Void):Void
 	{
@@ -65,6 +79,32 @@ class CollectionState extends FlxSubState
 
 		collection.x = COLLECTION_X;
 		collection.y = COLLECTION_Y;
+
+		add(swappingCardArrow = new FlxSprite(Global.asset("assets/images/swapCard_arrows.png")));
+		swappingCardArrow.scrollFactor.set();
+		swappingCardArrow.x = 168;
+		swappingCardArrow.y = 94;
+
+		swappingCardArrow.setFacingFlip(FlxDirectionFlags.LEFT, false, false);
+		swappingCardArrow.setFacingFlip(FlxDirectionFlags.RIGHT, true, false);
+
+		swappingCardArrow.visible = false;
+
+		add(tmpSwappingCard = new CardGraphic());
+		tmpSwappingCard.scrollFactor.set();
+		tmpSwappingCard.spawn(1);
+		tmpSwappingCard.x = 10 + CARD_SWAPPING_X;
+		tmpSwappingCard.y = 10 + DECK_Y;
+		tmpSwappingCard.shown = true;
+
+		tmpSwappingCard.visible = false;
+
+		add(cardName = new GameText());
+		cardName.scrollFactor.set();
+		//cardName.alignment = FlxTextAlign.CENTER;
+		cardName.x = (Global.width / 2) - (cardName.width / 2);
+		cardName.y = 512;
+		// cardName.visible = false;
 	}
 
 	override function close()
@@ -115,6 +155,10 @@ class CollectionState extends FlxSubState
 
 			card.x = 10 + (collection.members.length % COLLECTION_COUNT_W) * (96 + COLLECTION_SPACE_W);
 			card.y = 10 + (Std.int(collection.members.length / COLLECTION_COUNT_W) * (96 + COLLECTION_SPACE_H));
+
+			if (GameGlobals.Player.deck.cards.contains(cID))
+				card.inDeck = true;
+
 			collection.add(card);
 		}
 
@@ -122,6 +166,9 @@ class CollectionState extends FlxSubState
 		selectedCard = 0;
 
 		inDeck = true;
+
+		cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
+		cardName.x = (Global.width / 2) - (cardName.width / 2);
 
 		ready = true;
 	}
@@ -142,12 +189,16 @@ class CollectionState extends FlxSubState
 					deckList.members[selectedCard].selected = false;
 					selectedCard--;
 					deckList.members[selectedCard].selected = true;
+					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 				}
 				else
 				{
 					deckList.members[selectedCard].selected = false;
 					selectedCard = deckList.members.length - 1;
 					deckList.members[selectedCard].selected = true;
+					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 				}
 			}
 			else
@@ -157,6 +208,8 @@ class CollectionState extends FlxSubState
 					collection.members[selectedCard].cardGraphic.selected = false;
 					selectedCard--;
 					collection.members[selectedCard].cardGraphic.selected = true;
+					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 				}
 				else
 				{
@@ -164,6 +217,9 @@ class CollectionState extends FlxSubState
 					selectedCard += COLLECTION_COUNT_W - 1;
 					selectedCard = Std.int(Math.min(selectedCard, collection.members.length - 1));
 					collection.members[selectedCard].cardGraphic.selected = true;
+
+					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 				}
 			}
 		}
@@ -176,12 +232,16 @@ class CollectionState extends FlxSubState
 					deckList.members[selectedCard].selected = false;
 					selectedCard++;
 					deckList.members[selectedCard].selected = true;
+					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 				}
 				else
 				{
 					deckList.members[selectedCard].selected = false;
 					selectedCard = 0;
 					deckList.members[selectedCard].selected = true;
+					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 				}
 			}
 			else
@@ -193,12 +253,16 @@ class CollectionState extends FlxSubState
 					if (selectedCard > collection.members.length - 1)
 						selectedCard -= selectedCard % COLLECTION_COUNT_W;
 					collection.members[selectedCard].cardGraphic.selected = true;
+					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 				}
 				else
 				{
 					collection.members[selectedCard].cardGraphic.selected = false;
 					selectedCard -= COLLECTION_COUNT_W - 1;
 					collection.members[selectedCard].cardGraphic.selected = true;
+					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 				}
 			}
 		}
@@ -212,9 +276,13 @@ class CollectionState extends FlxSubState
 			{
 				if (selectedCard < COLLECTION_COUNT_W)
 				{
+					if (swapping)
+						return;
 					collection.members[selectedCard].cardGraphic.selected = false;
 					selectedCard = 0;
 					deckList.members[selectedCard].selected = true;
+					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 					inDeck = true;
 				}
 				else
@@ -222,6 +290,8 @@ class CollectionState extends FlxSubState
 					collection.members[selectedCard].cardGraphic.selected = false;
 					selectedCard -= COLLECTION_COUNT_W;
 					collection.members[selectedCard].cardGraphic.selected = true;
+					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 
 					if (collection.y + collection.members[selectedCard].cardGraphic.y < COLLECTION_Y)
 					{
@@ -234,9 +304,13 @@ class CollectionState extends FlxSubState
 		{
 			if (inDeck)
 			{
+				if (swapping)
+					return;
 				deckList.members[selectedCard].selected = false;
 				selectedCard = 0;
 				collection.members[selectedCard].cardGraphic.selected = true;
+				cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
+				cardName.x = (Global.width / 2) - (cardName.width / 2);
 				inDeck = false;
 			}
 			else
@@ -246,15 +320,109 @@ class CollectionState extends FlxSubState
 					collection.members[selectedCard].cardGraphic.selected = false;
 					selectedCard += COLLECTION_COUNT_W;
 					collection.members[selectedCard].cardGraphic.selected = true;
+					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
 
 					if (collection.y + collection.members[selectedCard].y + 140 > 530)
-						collection.y = 530 - (collection.members[selectedCard].y + 140);
+						collection.y = 510 - (collection.members[selectedCard].y + 140);
 				}
 				else
 				{
 					// do nothing!
 				}
 			}
+		}
+		else if (Controls.justPressed.A)
+		{
+			if (!swapping)
+			{
+				if (inDeck)
+				{
+					swapping = true;
+					swappingCardInDeck = selectedCard;
+					swappingCardID = -1;
+
+					deckList.members[selectedCard].selected = false;
+					deckList.members[selectedCard].visible = false;
+					tmpSwappingCard.spawn(deckList.members[selectedCard].card.id);
+					tmpSwappingCard.visible = true;
+					tmpSwappingCard.shown = true;
+					selectedCard = 0;
+					collection.members[selectedCard].cardGraphic.selected = true;
+					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					swappingCardArrow.visible = true;
+					swappingCardArrow.facing = FlxDirectionFlags.LEFT;
+					inDeck = false;
+				}
+				else if (!collection.members[selectedCard].inDeck)
+				{
+					// we want to put this card into the deck
+					swapping = true;
+					swappingCardInDeck = -1;
+					swappingCardID = collection.members[selectedCard].cardGraphic.card.id;
+					collection.members[selectedCard].cardGraphic.selected = false;
+					selectedCard = 0;
+					inDeck = true;
+					deckList.members[selectedCard].selected = true;
+					swappingCardArrow.visible = true;
+					swappingCardArrow.facing = FlxDirectionFlags.RIGHT;
+					tmpSwappingCard.spawn(swappingCardID);
+					tmpSwappingCard.visible = true;
+					tmpSwappingCard.shown = true;
+					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
+				}
+			}
+			else if (swapping)
+			{
+				if (inDeck)
+				{
+					deckList.members[selectedCard].spawn(collection.members[selectedCard].cardGraphic.card.id);
+					deckList.members[selectedCard].shown = true;
+					tmpSwappingCard.visible = false;
+					swapping = false;
+					swappingCardArrow.visible = false;
+					GameGlobals.Player.deck.cards[selectedCard] = collection.members[selectedCard].cardGraphic.card.id;
+					swappingCardInDeck = -1;
+					swappingCardID = -1;
+					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
+
+					updateInDeck();
+				}
+				else
+				{
+					if (collection.members[selectedCard].inDeck)
+						return;
+					deckList.members[swappingCardInDeck].spawn(collection.members[selectedCard].cardGraphic.card.id);
+					deckList.members[swappingCardInDeck].visible = true;
+					deckList.members[swappingCardInDeck].shown = true;
+					tmpSwappingCard.visible = false;
+					swapping = false;
+					swappingCardArrow.visible = false;
+					GameGlobals.Player.deck.cards[swappingCardInDeck] = collection.members[selectedCard].cardGraphic.card.id;
+
+					selectedCard = swappingCardInDeck;
+					deckList.members[selectedCard].selected = true;
+					inDeck = true;
+					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
+					cardName.x = (Global.width / 2) - (cardName.width / 2);
+
+					swappingCardInDeck = -1;
+					swappingCardID = -1;
+
+					updateInDeck();
+				}
+			}
+		}
+	}
+
+	public function updateInDeck():Void
+	{
+		for (c in collection.members)
+		{
+			c.inDeck = GameGlobals.Player.deck.cards.contains(c.cardGraphic.card.id);
 		}
 	}
 }
@@ -264,6 +432,9 @@ class CardInfo extends FlxSpriteGroup
 	public var card:Card;
 	public var cardGraphic:CardGraphic;
 	public var count:GameText;
+	public var inDeckIcon:FlxSprite;
+
+	public var inDeck(default, set):Bool = false;
 
 	public function new(Card:Card, Count:Int):Void
 	{
@@ -276,9 +447,26 @@ class CardInfo extends FlxSpriteGroup
 		count = new GameText();
 		count.text = 'x$Count';
 		count.scrollFactor.set();
-		count.x = cardGraphic.x + 92 - count.width;
-		count.y = cardGraphic.y + 118 - count.height;
+
+		count.x = cardGraphic.x + 90 - count.width;
+		count.y = cardGraphic.y + cardGraphic.height - 4;
+
+		inDeckIcon = new FlxSprite(Global.asset("assets/images/in_deck_icon.png"));
+		inDeckIcon.scrollFactor.set();
+		inDeckIcon.x = cardGraphic.x + 4;
+		inDeckIcon.y = cardGraphic.y + cardGraphic.height - 4;
+
 		add(cardGraphic);
 		add(count);
+
+		add(inDeckIcon);
+		inDeck = false;
+	}
+
+	private function set_inDeck(Value:Bool):Bool
+	{
+		inDeck = Value;
+		inDeckIcon.visible = Value;
+		return Value;
 	}
 }

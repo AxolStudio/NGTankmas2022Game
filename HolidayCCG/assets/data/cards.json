@@ -33,5 +33,12 @@
     "value": 1,
     "attacks": ["N", "S"],
     "rarity": "starter"
+  },
+  {
+    "id": 10,
+    "name": "the gronch",
+    "value": 6,
+    "attacks": ["N", "E"],
+    "rarity": "rare"
   }
 ]

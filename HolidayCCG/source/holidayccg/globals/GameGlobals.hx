@@ -42,3 +42,36 @@ class GameGlobals
 		// otherwise, load!
 	}
 }
+
+class TitleCase
+{
+	public static var exempt:Array<String> = [
+		"a", "an", "the", "at", "by", "for", "in", "of", "on", "to", "up", "and", "as", "but", "or", "nor"
+	];
+
+	public static var roman = ~/^(?=[MDCLXVI])M*(C[MD]|D?C*)(X[CL]|L?X*)(I[XV]|V?I*)$/i;
+
+	public static function toTitleCase(str:String):String
+	{
+		var words:Array<String> = str.toLowerCase().split(" ");
+
+		for (i in 0...words.length)
+		{
+			if (roman.match(words[i]))
+				words[i] = words[i].toUpperCase();
+			else if (i == 0 || exempt.indexOf(words[i]) == -1)
+				words[i] = words[i].charAt(0).toUpperCase() + words[i].substr(1);
+		}
+
+		return words.join(" ");
+	}
+}
+
+class Slugify
+{
+	public static function toSlug(str:String):String
+	{
+		var regex = ~/[^a-z0-9]+/g;
+		return regex.replace(str.toLowerCase(), '_');
+	}
+}
