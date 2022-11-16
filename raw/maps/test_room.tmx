@@ -45,12 +45,5 @@
     <property name="sprite" value="npc"/>
    </properties>
   </object>
-  <object id="9" name="choice test" class="NPC" x="544" y="384" width="32" height="32">
-   <properties>
-    <property name="facing" value="DOWN"/>
-    <property name="objectType" value="npc"/>
-    <property name="sprite" value="npc"/>
-   </properties>
-  </object>
  </objectgroup>
 </map>

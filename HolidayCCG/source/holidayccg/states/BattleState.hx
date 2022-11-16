@@ -116,7 +116,6 @@ class BattleState extends FlxSubState
 
 	override public function close():Void
 	{
-		
 		for (e in enemyCards.members)
 		{
 			e.kill();
@@ -860,24 +859,40 @@ class BattleEndState extends FlxSubState
 				cG.spawn(c, CardOwner.OPPONENT);
 				cG.x = startX + ((cG.width + 20) * cardSelections.length);
 
-				cG.y = back.y + winText.height + 100;
+				cG.y = -Global.height;
 				cardSelections.add(cG);
 			}
 
 			selectMessage = new GameText();
-			selectMessage.text = "Select a card to add to your deck!";
+			selectMessage.text = "Select a card to add to your collection!";
 			selectMessage.scrollFactor.set();
 			Global.screenCenter(selectMessage);
 			selectMessage.y = back.y + winText.height + 50;
 			add(selectMessage);
 
-			startFlippingCards();
+			revealCards();
 		}
 		else
 		{
 			winText.animation.frameName = "lose";
 
 			showExit();
+		}
+	}
+
+	public function revealCards():Void
+	{
+		for (c in 0...cardSelections.length)
+		{
+			FlxTween.linearMotion(cardSelections.members[c], cardSelections.members[c].x, cardSelections.members[c].y, cardSelections.members[c].x,
+				back.y + winText.height + 100, .1, true, {
+					type: FlxTweenType.ONESHOT,
+					startDelay: c * .05,
+					onComplete: c == cardSelections.length - 1 ?(_) ->
+					{
+						startFlippingCards();
+					} : null
+				});
 		}
 	}
 
@@ -889,27 +904,27 @@ class BattleEndState extends FlxSubState
 			cardSelections.members[0].reveal();
 		});
 		var t2:FlxTimer = new FlxTimer();
-		t2.start(1.2, (_) ->
+		t2.start(1.1, (_) ->
 		{
 			cardSelections.members[1].reveal();
 		});
 		var t3:FlxTimer = new FlxTimer();
-		t3.start(1.4, (_) ->
+		t3.start(1.2, (_) ->
 		{
 			cardSelections.members[2].reveal();
 		});
 		var t4:FlxTimer = new FlxTimer();
-		t4.start(1.6, (_) ->
+		t4.start(1.3, (_) ->
 		{
 			cardSelections.members[3].reveal();
 		});
 		var t5:FlxTimer = new FlxTimer();
-		t5.start(1.8, (_) ->
+		t5.start(1.4, (_) ->
 		{
 			cardSelections.members[4].reveal();
 		});
 		var t6:FlxTimer = new FlxTimer();
-		t6.start(2, (_) ->
+		t6.start(1.6, (_) ->
 		{
 			selecting = true;
 			selectCard(4);

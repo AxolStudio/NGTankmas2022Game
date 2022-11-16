@@ -7,6 +7,7 @@ class Player
 {
 	public var collection:Collection;
 	public var deck:Deck;
+	public var money:Int;
 
 	public function new():Void
 	{
@@ -15,5 +16,7 @@ class Player
 			collection.add(i + 1, 1);
 
 		deck = new Deck([1, 2, 3, 4, 5]);
+
+		money = 0;
 	}
 }

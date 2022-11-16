@@ -38,6 +38,8 @@ class PlayState extends FlxState
 
 	public var battleState:BattleState;
 
+	public var collectionState:CollectionState;
+
 	override public function create()
 	{
 		GameGlobals.PlayState = this;
@@ -63,6 +65,7 @@ class PlayState extends FlxState
 		setMap("test room");
 
 		battleState = new BattleState(returnFromBattle);
+		collectionState = new CollectionState(returnFromCollection);
 
 		fadeIn();
 	}
@@ -139,11 +142,25 @@ class PlayState extends FlxState
 		return null;
 	}
 
+	public function openCollection():Void
+	{
+		ready = false;
+		collectionState.refresh();
+		openSubState(collectionState);
+	}
+
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
 		if (!ready || player.moving)
 			return;
+
+		var pause:Bool = Controls.justPressed.PAUSE;
+		if (pause && !talking)
+		{
+			openCollection();
+			return;
+		}
 
 		var a:Bool = Controls.justPressed.A;
 
@@ -205,6 +222,11 @@ class PlayState extends FlxState
 	public function returnFromBattle(Actions:String):Void
 	{
 		Dialog.parseScripts([Actions]);
+	}
+
+	public function returnFromCollection():Void
+	{
+		ready = true;
 	}
 
 	public function startBattle(Vs:String):Void
