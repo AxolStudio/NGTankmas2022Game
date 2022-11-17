@@ -1,22 +1,22 @@
 package holidayccg.states;
 
-import holidayccg.ui.GameText;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.FlxSubState;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
+import holidayccg.globals.Cards.Card;
+import holidayccg.globals.Cards.CardGraphic;
+import holidayccg.globals.Cards.CardOwner;
+import holidayccg.globals.Cards.Deck;
+import holidayccg.globals.Cards;
+import holidayccg.globals.GameGlobals;
 import holidayccg.globals.Opponent;
 import holidayccg.ui.GameFrame;
-import flixel.text.FlxText;
-import flixel.util.FlxTimer;
-import holidayccg.globals.Cards;
-import holidayccg.globals.Cards.Card;
-import flixel.util.FlxSort;
-import holidayccg.globals.Cards.Deck;
-import flixel.FlxG;
-import flixel.tweens.FlxTween;
-import holidayccg.globals.Cards.CardOwner;
-import holidayccg.globals.Cards.CardGraphic;
-import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.FlxSprite;
-import holidayccg.globals.GameGlobals;
-import flixel.FlxSubState;
+import holidayccg.ui.GameText;
+
+using StringTools;
 
 class BattleState extends FlxSubState
 {
@@ -75,9 +75,19 @@ class BattleState extends FlxSubState
 
 	public var doingTut:Bool = false;
 
+	public var battleTut:BattleTutorial;
+	public var whichTut:Int = -1;
+
+	public var returnFromTutCallback:Void->Void;
+
+	public var didTut:Bool = false;
+
 	public function new(Callback:String->Void):Void
 	{
 		super();
+
+		destroySubStates = false;
+
 		bgColor = GameGlobals.ColorPalette[14];
 
 		callback = Callback;
@@ -143,10 +153,19 @@ class BattleState extends FlxSubState
 		super.close();
 	}
 
+	public function returnFromTutorial():Void
+	{
+		returnFromTutCallback();
+		returnFromTutCallback = null;
+	}
+
 	public function init(PlayerDeck:Deck, VSWho:String):Void
 	{
-		if (VSWho == "intro guy")
+		if (VSWho.startsWith("intro guy"))
+		{
 			doingTut = true;
+			battleTut = new BattleTutorial(returnFromTutorial);
+		}
 
 		playerHand = new Deck(PlayerDeck.cards.copy());
 
@@ -200,6 +219,14 @@ class BattleState extends FlxSubState
 		selectedCard = -1;
 	}
 
+	public function showTut(Step:Int, Callback:Void->Void):Void
+	{
+		whichTut = Step;
+		battleTut.init(whichTut);
+		returnFromTutCallback = Callback;
+		openSubState(battleTut);
+	}
+
 	public function start():Void
 	{
 		FlxTween.tween(blackout, {alpha: 0}, 1, {
@@ -207,7 +234,13 @@ class BattleState extends FlxSubState
 			onComplete: (_) ->
 			{
 				// placeBlocker();
-				placeCards();
+				if (doingTut)
+					showTut(1, () ->
+					{
+						placeCards();
+					});
+				else
+					placeCards();
 			}
 		});
 	}
@@ -248,7 +281,13 @@ class BattleState extends FlxSubState
 				startDelay: 0.5 + (i * 0.1),
 				onComplete: i == enemyCards.length - 1 ?(_) ->
 				{
-					startGame();
+					if (doingTut)
+						showTut(2, () ->
+						{
+							startGame();
+						});
+					else
+						startGame();
 				} : null
 			}, (Value:Float) ->
 				{
@@ -260,6 +299,14 @@ class BattleState extends FlxSubState
 	public function startGame():Void
 	{
 		// show a 'start!' message
+
+		if (doingTut)
+			currentTurn = CardOwner.PLAYER;
+		else
+		{
+			// random player
+			currentTurn = FlxG.random.bool() ? CardOwner.PLAYER : CardOwner.OPPONENT;
+		}
 		currentMode = (currentTurn == CardOwner.PLAYER) ? PLAYER_TURN : ENEMY_TURN;
 		if (currentMode == PLAYER_TURN)
 		{
@@ -496,11 +543,32 @@ class BattleState extends FlxSubState
 			if (lastMode == PLAYER_CARD_PLACING)
 				startEnemyTurn();
 			else if (lastMode == ENEMY_TURN)
-				startPlayerTurn();
+			{
+				if (doingTut && playedCards.length == 2 && !didTut)
+				{
+					showTut(10, () ->
+					{
+						didTut = true;
+						startPlayerTurn();
+					});
+				}
+				else
+					startPlayerTurn();
+			}
 		}
 		else
 		{
-			battleEnd();
+			if (doingTut)
+				showTut(11, () ->
+				{
+					var t:FlxTimer = new FlxTimer();
+					t.start(FlxG.elapsed, (_) ->
+					{
+						battleEnd();
+					}, 1);
+				});
+			else
+				battleEnd();
 		}
 	}
 
@@ -625,8 +693,13 @@ class BattleState extends FlxSubState
 					gameGrid[selectedSpot] = c.card.id;
 					c.battleFieldPos = selectedSpot;
 					playedCards.add(c);
-
-					checkAttacks(selectedSpot, PLAYER);
+					if (doingTut && !didTut)
+						showTut(7, () ->
+						{
+							checkAttacks(selectedSpot, PLAYER);
+						});
+					else
+						checkAttacks(selectedSpot, PLAYER);
 				}
 			});
 		}
@@ -744,7 +817,13 @@ class BattleState extends FlxSubState
 		else if (Controls.justPressed.A)
 		{
 			// card has been selected! move it out to show that!
-			cardPicked();
+			if (doingTut && !didTut)
+				showTut(6, () ->
+				{
+					cardPicked();
+				})
+			else
+				cardPicked();
 		}
 	}
 

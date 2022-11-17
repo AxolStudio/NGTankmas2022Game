@@ -20,8 +20,8 @@
             "scale": 4,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 790.875,
-                "y": 82
+                "x": 439.625,
+                "y": 300
             }
         },
         "test_room_02.tmx": {
@@ -42,16 +42,16 @@
     "map.lastUsedFormat": "tmx",
     "openFiles": [
         "test_room.tmx",
+        "test_room_02.tmx",
         "base_tiles.tsx",
-        "decorative_tiles.tsx",
-        "test_room_02.tmx"
+        "decorative_tiles.tsx"
     ],
     "project": "tankmas.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "test_room_02.tmx",
         "decorative_tiles.tsx",
         "base_tiles.tsx",
+        "test_room_02.tmx",
         "test_room.tmx",
         "temp.tsx"
     ],
