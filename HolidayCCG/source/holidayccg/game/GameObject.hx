@@ -127,11 +127,15 @@ class GameObject extends FlxSprite
 			&& DY == 0 ? FlxDirectionFlags.LEFT : DX == 1
 			&& DY == 0 ? FlxDirectionFlags.RIGHT : DY == -1 ? FlxDirectionFlags.UP : FlxDirectionFlags.DOWN;
 
-		var map:FlxTilemap = GameGlobals.PlayState.map;
-		if (map.getTile(Std.int(x / GameGlobals.TILE_SIZE) + DX, Std.int(y / GameGlobals.TILE_SIZE) + DY) >= 40)
+		var baseMap:FlxTilemap = GameGlobals.PlayState.baseMap;
+		var decorativeMap:FlxTilemap = GameGlobals.PlayState.decorativeMap;
+		var mapX:Int = Std.int(x / GameGlobals.TILE_SIZE) + DX;
+		var mapY:Int = Std.int(y / GameGlobals.TILE_SIZE) + DY;
+
+		if (baseMap.getTile(mapX, mapY) >= 40 || decorativeMap.getTile(mapX, mapY) >= 1)
 			return;
 
-		if (GameGlobals.PlayState.checkForObjects(Std.int(x / GameGlobals.TILE_SIZE) + DX, Std.int(y / GameGlobals.TILE_SIZE) + DY) != null)
+		if (GameGlobals.PlayState.checkForObjects(mapX, mapY) != null)
 			return;
 
 		moving = true;

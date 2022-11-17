@@ -11,7 +11,7 @@
       {
         "requirements": ["flag:seenIntro"],
         "text": "Q:Yes|No?Do you want a refresher on the rules?",
-        "yes": ["battle:intro guy 2?dialog:intro guy 2?dialog:intro guy 3"],
+        "yes": ["battle:intro guy 2?dialog:intro guy?dialog:intro guy 3"],
         "no": []
       }
     ]

@@ -4,16 +4,24 @@
         "."
     ],
     "fileStates": {
+        "base_tiles.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 4
+        },
+        "decorative_tiles.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 3
+        },
         "temp.tsx": {
             "scaleInDock": 2,
             "scaleInEditor": 1
         },
         "test_room.tmx": {
-            "scale": 2,
+            "scale": 4,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 480.25,
-                "y": 356.5
+                "x": 790.875,
+                "y": 82
             }
         },
         "test_room_02.tmx": {
@@ -23,8 +31,8 @@
             "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 480.25,
-                "y": 356.5
+                "x": 383.25,
+                "y": 208
             }
         }
     },
@@ -34,12 +42,18 @@
     "map.lastUsedFormat": "tmx",
     "openFiles": [
         "test_room.tmx",
-        "temp.tsx"
+        "base_tiles.tsx",
+        "decorative_tiles.tsx",
+        "test_room_02.tmx"
     ],
     "project": "tankmas.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "temp.tsx",
-        "test_room.tmx"
-    ]
+        "test_room_02.tmx",
+        "decorative_tiles.tsx",
+        "base_tiles.tsx",
+        "test_room.tmx",
+        "temp.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
 }

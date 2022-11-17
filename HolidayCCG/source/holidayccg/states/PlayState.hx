@@ -22,7 +22,8 @@ class PlayState extends FlxState
 	public var objectLayer:FlxTypedGroup<GameObject>;
 	public var playerLayer:FlxTypedGroup<GameObject>;
 
-	public var map:FlxTilemap = null;
+	public var baseMap:FlxTilemap = null;
+	public var decorativeMap:FlxTilemap = null;
 
 	public var player:GameObject;
 
@@ -95,11 +96,15 @@ class PlayState extends FlxState
 	{
 		mapData = GameGlobals.MapList.get(RoomName);
 
-		if (map != null)
+		if (baseMap != null)
 		{
-			map.kill();
-			mapLayer.remove(map, true);
-			map = new FlxTilemap();
+			baseMap.kill();
+			mapLayer.remove(baseMap, true);
+			baseMap = new FlxTilemap();
+
+			decorativeMap.kill();
+			mapLayer.remove(decorativeMap, true);
+			decorativeMap = new FlxTilemap();
 
 			for (o in objectLayer.members)
 			{
@@ -109,17 +114,23 @@ class PlayState extends FlxState
 			objectLayer.clear();
 		}
 		else
-			map = new FlxTilemap();
+		{
+			baseMap = new FlxTilemap();
+			decorativeMap = new FlxTilemap();
+		}
 
-		map.loadMapFromArray(mapData.backgroundData, mapData.widthInTiles, mapData.heightInTiles, Global.asset("assets/images/temp_tiles.png"),
+		baseMap.loadMapFromArray(mapData.baseLayerData, mapData.widthInTiles, mapData.heightInTiles, Global.asset("assets/images/base_tiles.png"),
 			GameGlobals.TILE_SIZE, GameGlobals.TILE_SIZE, FlxTilemapAutoTiling.OFF, 0, 0, 40);
-		map.x = 0;
-		map.y = 0;
-		mapLayer.add(map);
+		decorativeMap.loadMapFromArray(mapData.decorativeLayerData, mapData.widthInTiles, mapData.heightInTiles,
+			Global.asset("assets/images/decorative_tiles.png"), GameGlobals.TILE_SIZE, GameGlobals.TILE_SIZE, FlxTilemapAutoTiling.OFF, 0, 1, 1);
 
-		FlxG.worldBounds.set(0, 2, map.width, map.height - 2);
+		decorativeMap.x = decorativeMap.y = baseMap.x = baseMap.y = 0;
+		mapLayer.add(baseMap);
+		mapLayer.add(decorativeMap);
 
-		FlxG.camera.setScrollBounds(0, map.width, 2, map.height - 2);
+		FlxG.worldBounds.set(0, 2, baseMap.width, baseMap.height - 2);
+
+		FlxG.camera.setScrollBounds(0, baseMap.width, 2, baseMap.height - 2);
 
 		// add objects
 		var o:GameObject = null;
@@ -255,7 +266,7 @@ class PlayState extends FlxState
 
 	public function checkPlayerMove():Void
 	{
-		if (player.x >= map.width)
+		if (player.x >= baseMap.width)
 		{
 			// moved to the right room
 			switchToRoom(RIGHT);
@@ -265,7 +276,7 @@ class PlayState extends FlxState
 			// moved to the left room
 			switchToRoom(LEFT);
 		}
-		else if (player.y >= map.height)
+		else if (player.y >= baseMap.height)
 		{
 			// moved to the bottom room
 			switchToRoom(DOWN);
@@ -289,16 +300,16 @@ class PlayState extends FlxState
 				switch (Dir)
 				{
 					case UP:
-						player.y = map.y + map.height - (GameGlobals.TILE_SIZE * 2);
+						player.y = baseMap.y + baseMap.height - (GameGlobals.TILE_SIZE * 2);
 
 					case DOWN:
-						player.y = map.y + GameGlobals.TILE_SIZE;
+						player.y = baseMap.y + GameGlobals.TILE_SIZE;
 
 					case LEFT:
-						player.x = map.x + map.width - (GameGlobals.TILE_SIZE * 2);
+						player.x = baseMap.x + baseMap.width - (GameGlobals.TILE_SIZE * 2);
 
 					case RIGHT:
-						player.x = map.x + GameGlobals.TILE_SIZE;
+						player.x = baseMap.x + GameGlobals.TILE_SIZE;
 
 					default:
 				}

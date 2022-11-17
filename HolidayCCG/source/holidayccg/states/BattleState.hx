@@ -73,6 +73,8 @@ class BattleState extends FlxSubState
 
 	public var winner:CardOwner;
 
+	public var doingTut:Bool = false;
+
 	public function new(Callback:String->Void):Void
 	{
 		super();
@@ -143,6 +145,9 @@ class BattleState extends FlxSubState
 
 	public function init(PlayerDeck:Deck, VSWho:String):Void
 	{
+		if (VSWho == "intro guy")
+			doingTut = true;
+
 		playerHand = new Deck(PlayerDeck.cards.copy());
 
 		var vs:Array<String> = VSWho.split("?");
@@ -859,6 +864,7 @@ class BattleEndState extends FlxSubState
 		if (Winner == CardOwner.PLAYER)
 		{
 			GameGlobals.Player.money += opponent.reward;
+			opponent.reward = opponent.subsequentReward;
 			winText.animation.frameName = "win";
 
 			add(cardSelections = new FlxTypedGroup<CardGraphic>());

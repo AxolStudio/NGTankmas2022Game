@@ -3,12 +3,7 @@
     "name": "intro guy",
     "deck": [1, 2, 3, 4, 5],
     "sideboard": [],
-    "reward": 100
-  },
-  {
-    "name": "intro guy 2",
-    "deck": [1, 2, 3, 4, 5],
-    "sideboard": [],
-    "reward": 0
+    "reward": 100,
+    "subsequentReward": 0
   }
 ]

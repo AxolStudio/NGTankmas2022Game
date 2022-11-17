@@ -30,6 +30,7 @@ class MapBuilder
 					width: Std.int(json.get("width")),
 					layers: cast(json.get("layers"), Array<Dynamic>),
 					properties: cast(json.get("properties"), Array<Dynamic>),
+					tilesets: cast(json.get("tilesets"), Array<Dynamic>),
 				}
 
 				e = macro new holidayccg.game.GameMap($v{mapData});
@@ -56,4 +57,5 @@ typedef MapStructure =
 	var layers:Null<Array<Dynamic>>;
 	var properties:Null<Array<Dynamic>>;
 	var width:Null<Int>;
+	var tilesets:Null<Array<Dynamic>>;
 }

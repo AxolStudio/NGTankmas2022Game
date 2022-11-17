@@ -2,14 +2,18 @@ package holidayccg.game;
 
 import flixel.util.FlxDirectionFlags;
 
+using StringTools;
+
 class GameMap
 {
 	public var name:String = "";
 	public var widthInTiles:Int = -1;
 	public var heightInTiles:Int = -1;
-	public var backgroundData:Array<Int> = [];
+	public var baseLayerData:Array<Int> = [];
+	public var decorativeLayerData:Array<Int> = [];
 	public var objects:Array<MapObject> = [];
 	public var neighbors:Map<FlxDirectionFlags, String> = [];
+	public var tilesetFirstIDs:Array<Int> = [-1, -1];
 
 	// track which tileset?a
 	public function new(Data:holidayccg.macros.MapBuilder.MapStructure):Void
@@ -37,18 +41,37 @@ class GameMap
 				neighbors.set(RIGHT, Data.properties[p].value);
 			}
 		}
+
+		for (t in 0...Data.tilesets.length)
+		{
+			if (Std.string(Data.tilesets[t].source).contains("base"))
+				tilesetFirstIDs[0] = Data.tilesets[t].firstgid;
+			else if (Std.string(Data.tilesets[t].source).contains("decorative"))
+				tilesetFirstIDs[1] = Data.tilesets[t].firstgid;
+		}
+
 		widthInTiles = Data.width;
 		heightInTiles = Data.height;
-		var tileLayer:Dynamic = null;
+		var baseLayer:Dynamic = null;
+		var decorativeLayer:Dynamic = null;
 		var objectLayer:Dynamic = null;
 		for (l in 0...Data.layers.length)
 		{
-			if (Data.layers[l].name == "tiles")
-				tileLayer = Data.layers[l];
+			if (Data.layers[l].name == "base")
+				baseLayer = Data.layers[l];
+			else if (Data.layers[l].name == "decorations")
+				decorativeLayer = Data.layers[l];
 			else if (Data.layers[l].name == "objects")
 				objectLayer = Data.layers[l];
 		}
-		backgroundData = [for (i in 0...tileLayer.data.length) Std.int(tileLayer.data[i] - 1)];
+		baseLayerData = [
+			for (i in 0...baseLayer.data.length)
+				baseLayer.data[i] > 0 ? Std.int(baseLayer.data[i] - tilesetFirstIDs[0]) : 0
+		];
+		decorativeLayerData = [
+			for (i in 0...decorativeLayer.data.length)
+				decorativeLayer.data[i] > 0 ? Std.int(decorativeLayer.data[i] - tilesetFirstIDs[1]) : 0
+		];
 		objects = [for (i in 0...objectLayer.objects.length) new MapObject(objectLayer.objects[i])];
 	}
 }
