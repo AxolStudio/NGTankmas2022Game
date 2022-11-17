@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="uncommon-sprites.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+	<SubTexture name="common"	x="21"	y="0"	width="20"	height="20" frameX="-0" frameY="-0" frameWidth="20" frameHeight="20"/>
+	<SubTexture name="rare"	x="0"	y="0"	width="20"	height="20" frameX="-0" frameY="-0" frameWidth="20" frameHeight="20"/>
+	<SubTexture name="starter"	x="21"	y="21"	width="17"	height="19" frameX="-2" frameY="-1" frameWidth="20" frameHeight="20"/>
+	<SubTexture name="uncommon"	x="0"	y="21"	width="20"	height="20" frameX="-0" frameY="-0" frameWidth="20" frameHeight="20"/>
+</TextureAtlas>

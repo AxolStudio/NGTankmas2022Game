@@ -808,6 +808,7 @@ class BattleEndState extends FlxSubState
 	public var cursor:GameText;
 	public var selecting:Bool = false;
 	public var selectMessage:GameText;
+	public var prizeMoney:GameText;
 
 	public var opponent:Opponent;
 
@@ -821,26 +822,35 @@ class BattleEndState extends FlxSubState
 		add(back = new GameFrame(780, 440));
 		back.scrollFactor.set();
 		Global.screenCenter(back);
+		back.x = Std.int(back.x);
+		back.y = Std.int(back.y);
 
 		winText = holidayccg.globals.GraphicsCache.loadFlxSpriteFromAtlas("battle_text");
-		winText.x = back.x + (back.width / 2) - (winText.width / 2);
+		winText.x = Std.int(back.x + (back.width / 2) - (winText.width / 2));
 		winText.y = back.y + 20;
 		winText.scrollFactor.set();
 		add(winText);
 
 		add(doneButton = new GameText());
 		doneButton.text = "Done";
-		doneButton.x = back.x + (back.width / 2) - (doneButton.width / 2);
+		doneButton.x = Std.int(back.x + (back.width / 2) - (doneButton.width / 2));
 		doneButton.y = back.y + back.height - doneButton.height - 20;
 		doneButton.scrollFactor.set();
 		doneButton.visible = false;
 
 		add(cursor = new GameText());
 		cursor.text = "]";
-		cursor.x = doneButton.x - cursor.width - 10;
+		cursor.x = Std.int(doneButton.x - cursor.width - 10);
 		cursor.y = doneButton.y;
 		cursor.scrollFactor.set();
 		cursor.visible = false;
+
+		add(prizeMoney = new GameText());
+		prizeMoney.text = "You won: $" + opponent.reward + " from your Opponent!";
+		prizeMoney.x = Std.int(back.x + (back.width / 2) - (prizeMoney.width / 2));
+		prizeMoney.y = doneButton.y - prizeMoney.height - 20;
+		prizeMoney.scrollFactor.set();
+		prizeMoney.visible = false;
 
 		selectedCard = -1;
 
@@ -848,6 +858,7 @@ class BattleEndState extends FlxSubState
 
 		if (Winner == CardOwner.PLAYER)
 		{
+			GameGlobals.Player.money += opponent.reward;
 			winText.animation.frameName = "win";
 
 			add(cardSelections = new FlxTypedGroup<CardGraphic>());
@@ -857,8 +868,7 @@ class BattleEndState extends FlxSubState
 			{
 				cG = new CardGraphic();
 				cG.spawn(c, CardOwner.OPPONENT);
-				cG.x = startX + ((cG.width + 20) * cardSelections.length);
-
+				cG.x = Std.int(startX + ((cG.width + 20) * cardSelections.length));
 				cG.y = -Global.height;
 				cardSelections.add(cG);
 			}
@@ -982,6 +992,7 @@ class BattleEndState extends FlxSubState
 				selecting = false;
 				// deselectCard(selectedCard);
 				cardSelections.members[selectedCard].selected = false;
+				prizeMoney.visible = true;
 				showExit();
 			}
 		}

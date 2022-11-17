@@ -1,5 +1,7 @@
 package holidayccg.states;
 
+import holidayccg.globals.Dialog;
+import holidayccg.globals.GraphicsCache;
 import flixel.util.FlxDirectionFlags;
 import flixel.text.FlxText.FlxTextAlign;
 import holidayccg.globals.Cards;
@@ -62,6 +64,15 @@ class CollectionState extends FlxSubState
 
 		bgColor = 0xffffffff;
 
+		openCallback = () ->
+		{
+			if (!Dialog.Flags.get("seenCollTut"))
+			{
+				ready = false;
+				openSubState(new CollectionTutorial(returnFromTutorial));
+			}
+		}
+
 		closeCallback = Callback;
 
 		add(collection = new FlxTypedSpriteGroup<CardInfo>());
@@ -101,8 +112,8 @@ class CollectionState extends FlxSubState
 
 		add(cardName = new GameText());
 		cardName.scrollFactor.set();
-		//cardName.alignment = FlxTextAlign.CENTER;
-		cardName.x = (Global.width / 2) - (cardName.width / 2);
+		// cardName.alignment = FlxTextAlign.CENTER;
+		cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 		cardName.y = 512;
 		// cardName.visible = false;
 	}
@@ -141,7 +152,7 @@ class CollectionState extends FlxSubState
 		{
 			deckCard = new CardGraphic();
 			deckCard.spawn(GameGlobals.Player.deck.cards[d]);
-			deckCard.x = 10 + DECK_X + (d * (96 + DECK_SPACE));
+			deckCard.x = Std.int(10 + DECK_X + (d * (96 + DECK_SPACE)));
 			deckCard.y = 10 + DECK_Y;
 			deckCard.scrollFactor.set();
 			deckList.add(deckCard);
@@ -153,8 +164,8 @@ class CollectionState extends FlxSubState
 		{
 			card = new CardInfo(Cards.CardList.get(cID), count);
 
-			card.x = 10 + (collection.members.length % COLLECTION_COUNT_W) * (96 + COLLECTION_SPACE_W);
-			card.y = 10 + (Std.int(collection.members.length / COLLECTION_COUNT_W) * (96 + COLLECTION_SPACE_H));
+			card.x = Std.int(10 + (collection.members.length % COLLECTION_COUNT_W) * (96 + COLLECTION_SPACE_W));
+			card.y = Std.int(10 + (Std.int(collection.members.length / COLLECTION_COUNT_W) * (96 + COLLECTION_SPACE_H)));
 
 			if (GameGlobals.Player.deck.cards.contains(cID))
 				card.inDeck = true;
@@ -168,8 +179,15 @@ class CollectionState extends FlxSubState
 		inDeck = true;
 
 		cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
-		cardName.x = (Global.width / 2) - (cardName.width / 2);
+		cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 
+		ready = true;
+	}
+
+	public function returnFromTutorial():Void
+	{
+		Dialog.Flags.set("seenCollTut", true);
+		GameGlobals.save();
 		ready = true;
 	}
 
@@ -190,7 +208,7 @@ class CollectionState extends FlxSubState
 					selectedCard--;
 					deckList.members[selectedCard].selected = true;
 					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 				}
 				else
 				{
@@ -198,7 +216,7 @@ class CollectionState extends FlxSubState
 					selectedCard = deckList.members.length - 1;
 					deckList.members[selectedCard].selected = true;
 					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 				}
 			}
 			else
@@ -209,7 +227,7 @@ class CollectionState extends FlxSubState
 					selectedCard--;
 					collection.members[selectedCard].cardGraphic.selected = true;
 					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 				}
 				else
 				{
@@ -219,7 +237,7 @@ class CollectionState extends FlxSubState
 					collection.members[selectedCard].cardGraphic.selected = true;
 
 					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 				}
 			}
 		}
@@ -233,7 +251,7 @@ class CollectionState extends FlxSubState
 					selectedCard++;
 					deckList.members[selectedCard].selected = true;
 					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 				}
 				else
 				{
@@ -241,7 +259,7 @@ class CollectionState extends FlxSubState
 					selectedCard = 0;
 					deckList.members[selectedCard].selected = true;
 					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 				}
 			}
 			else
@@ -254,7 +272,7 @@ class CollectionState extends FlxSubState
 						selectedCard -= selectedCard % COLLECTION_COUNT_W;
 					collection.members[selectedCard].cardGraphic.selected = true;
 					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 				}
 				else
 				{
@@ -262,7 +280,7 @@ class CollectionState extends FlxSubState
 					selectedCard -= COLLECTION_COUNT_W - 1;
 					collection.members[selectedCard].cardGraphic.selected = true;
 					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 				}
 			}
 		}
@@ -282,7 +300,7 @@ class CollectionState extends FlxSubState
 					selectedCard = 0;
 					deckList.members[selectedCard].selected = true;
 					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 					inDeck = true;
 				}
 				else
@@ -291,7 +309,7 @@ class CollectionState extends FlxSubState
 					selectedCard -= COLLECTION_COUNT_W;
 					collection.members[selectedCard].cardGraphic.selected = true;
 					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 
 					if (collection.y + collection.members[selectedCard].cardGraphic.y < COLLECTION_Y)
 					{
@@ -310,7 +328,7 @@ class CollectionState extends FlxSubState
 				selectedCard = 0;
 				collection.members[selectedCard].cardGraphic.selected = true;
 				cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
-				cardName.x = (Global.width / 2) - (cardName.width / 2);
+				cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 				inDeck = false;
 			}
 			else
@@ -321,7 +339,7 @@ class CollectionState extends FlxSubState
 					selectedCard += COLLECTION_COUNT_W;
 					collection.members[selectedCard].cardGraphic.selected = true;
 					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 
 					if (collection.y + collection.members[selectedCard].y + 140 > 530)
 						collection.y = 510 - (collection.members[selectedCard].y + 140);
@@ -350,7 +368,7 @@ class CollectionState extends FlxSubState
 					selectedCard = 0;
 					collection.members[selectedCard].cardGraphic.selected = true;
 					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 					swappingCardArrow.visible = true;
 					swappingCardArrow.facing = FlxDirectionFlags.LEFT;
 					inDeck = false;
@@ -371,25 +389,27 @@ class CollectionState extends FlxSubState
 					tmpSwappingCard.visible = true;
 					tmpSwappingCard.shown = true;
 					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 				}
 			}
 			else if (swapping)
 			{
 				if (inDeck)
 				{
-					deckList.members[selectedCard].spawn(collection.members[selectedCard].cardGraphic.card.id);
+					deckList.members[selectedCard].spawn(swappingCardID);
 					deckList.members[selectedCard].shown = true;
 					tmpSwappingCard.visible = false;
 					swapping = false;
 					swappingCardArrow.visible = false;
-					GameGlobals.Player.deck.cards[selectedCard] = collection.members[selectedCard].cardGraphic.card.id;
+					GameGlobals.Player.deck.cards[selectedCard] = swappingCardID;
 					swappingCardInDeck = -1;
 					swappingCardID = -1;
 					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 
 					updateInDeck();
+
+					GameGlobals.save();
 				}
 				else
 				{
@@ -407,12 +427,14 @@ class CollectionState extends FlxSubState
 					deckList.members[selectedCard].selected = true;
 					inDeck = true;
 					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
-					cardName.x = (Global.width / 2) - (cardName.width / 2);
+					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 
 					swappingCardInDeck = -1;
 					swappingCardID = -1;
 
 					updateInDeck();
+
+					GameGlobals.save();
 				}
 			}
 		}
@@ -435,6 +457,7 @@ class CardInfo extends FlxSpriteGroup
 	public var inDeckIcon:FlxSprite;
 
 	public var inDeck(default, set):Bool = false;
+	public var rarity:FlxSprite;
 
 	public function new(Card:Card, Count:Int):Void
 	{
@@ -449,17 +472,24 @@ class CardInfo extends FlxSpriteGroup
 		count.scrollFactor.set();
 
 		count.x = cardGraphic.x + 90 - count.width;
-		count.y = cardGraphic.y + cardGraphic.height - 4;
+		count.y = cardGraphic.y + cardGraphic.height - 6;
 
 		inDeckIcon = new FlxSprite(Global.asset("assets/images/in_deck_icon.png"));
 		inDeckIcon.scrollFactor.set();
-		inDeckIcon.x = cardGraphic.x + 4;
+		inDeckIcon.x = cardGraphic.x + 2;
 		inDeckIcon.y = cardGraphic.y + cardGraphic.height - 4;
+
+		rarity = GraphicsCache.loadFlxSpriteFromAtlas("rarity");
+		rarity.scrollFactor.set();
+		rarity.x = cardGraphic.x - 10 + (cardGraphic.width / 2) - (rarity.width / 2);
+		rarity.y = cardGraphic.y - 10 + cardGraphic.height + 2;
+		rarity.animation.frameName = card.rarity;
 
 		add(cardGraphic);
 		add(count);
 
 		add(inDeckIcon);
+		add(rarity);
 		inDeck = false;
 	}
 

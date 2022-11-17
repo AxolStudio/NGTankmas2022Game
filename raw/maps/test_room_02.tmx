@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="10">
  <editorsettings>
-  <export target="../../HolidayCCG/assets/data/maps/test_room.tmj" format="json"/>
+  <export format="json"/>
  </editorsettings>
  <properties>
-  <property name="exit_DOWN" value="test room 02"/>
+  <property name="exit_DOWN" value=""/>
   <property name="exit_LEFT" value=""/>
   <property name="exit_RIGHT" value=""/>
-  <property name="exit_UP" value=""/>
-  <property name="name" value="test room"/>
+  <property name="exit_UP" value="test room"/>
+  <property name="name" value="test room 02"/>
  </properties>
  <tileset firstgid="1" source="temp.tsx"/>
  <layer id="1" name="tiles" width="30" height="17">
@@ -29,16 +29,11 @@
 71,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,70,
 71,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,70,
 71,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,70,
-54,68,68,68,68,68,68,68,68,68,68,68,49,1,1,1,1,48,68,68,68,68,68,68,68,68,68,68,68,55
+54,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,55
 </data>
  </layer>
  <objectgroup id="2" name="objects" tintcolor="#5500ff">
-  <object id="2" name="playerStart" class="PlayerStart" x="448" y="480" width="32" height="32">
-   <properties>
-    <property name="facing" value="UP"/>
-   </properties>
-  </object>
-  <object id="5" name="intro guy" class="NPC" x="448" y="320" width="32" height="32">
+  <object id="5" name="happy guy" class="NPC" x="352" y="160" width="32" height="32">
    <properties>
     <property name="facing" value="DOWN"/>
     <property name="objectType" value="npc"/>

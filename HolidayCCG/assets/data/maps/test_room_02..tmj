@@ -19,7 +19,7 @@
             71, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 70,
             71, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 70,
             71, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 70,
-            54, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 49, 1, 1, 1, 1, 48, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 55],
+            54, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 55],
          "height":17,
          "id":1,
          "name":"tiles",
@@ -36,33 +36,10 @@
          "name":"objects",
          "objects":[
                 {
-                 "class":"PlayerStart",
-                 "height":32,
-                 "id":2,
-                 "name":"playerStart",
-                 "properties":[
-                        {
-                         "name":"facing",
-                         "type":"string",
-                         "value":"UP"
-                        }, 
-                        {
-                         "name":"objectType",
-                         "propertytype":"ObjectTypes",
-                         "type":"string",
-                         "value":"player"
-                        }],
-                 "rotation":0,
-                 "visible":true,
-                 "width":32,
-                 "x":448,
-                 "y":480
-                }, 
-                {
                  "class":"NPC",
                  "height":32,
                  "id":5,
-                 "name":"intro guy",
+                 "name":"happy guy",
                  "properties":[
                         {
                          "name":"facing",
@@ -82,8 +59,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":32,
-                 "x":448,
-                 "y":320
+                 "x":352,
+                 "y":160
                 }],
          "opacity":1,
          "tintcolor":"#5500ff",
@@ -99,7 +76,7 @@
         {
          "name":"exit_DOWN",
          "type":"string",
-         "value":"test room 02"
+         "value":""
         }, 
         {
          "name":"exit_LEFT",
@@ -114,12 +91,12 @@
         {
          "name":"exit_UP",
          "type":"string",
-         "value":""
+         "value":"test room"
         }, 
         {
          "name":"name",
          "type":"string",
-         "value":"test room"
+         "value":"test room 02"
         }],
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

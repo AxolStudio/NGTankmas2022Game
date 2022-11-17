@@ -1,39 +1,165 @@
 <font>
 	<info face="E:\Owner\Documents\NGTankmas2022Game\raw\alphabet-export" size="16" bold="0"  italic="0"/>
-	<common lineHeight="16" scaleW="41" scaleH="44" pages="1" />
+	<common lineHeight="16" scaleW="128" scaleH="64" pages="1" />
 	<pages>
 		<page id="0" file="E:\Owner\Documents\NGTankmas2022Game\raw\alphabet-export.png" />
 	</pages>
 	<chars count="28">
-		<char id="65" x="8" y="11" width="7" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- A -->
-		<char id="66" x="27" y="11" width="6" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- B -->
-		<char id="67" x="33" y="11" width="5" height="11" xoffset="0" yoffset="5" xadvance="6" /><!-- C -->
-		<char id="68" x="21" y="0" width="6" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- D -->
-		<char id="69" x="32" y="33" width="5" height="11" xoffset="0" yoffset="5" xadvance="6" /><!-- E -->
-		<char id="70" x="32" y="22" width="5" height="11" xoffset="0" yoffset="5" xadvance="6" /><!-- F -->
-		<char id="71" x="27" y="33" width="5" height="11" xoffset="0" yoffset="5" xadvance="6" /><!-- G -->
-		<char id="72" x="37" y="33" width="4" height="11" xoffset="0" yoffset="5" xadvance="5" /><!-- H -->
-		<char id="73" x="37" y="22" width="4" height="11" xoffset="0" yoffset="5" xadvance="5" /><!-- I -->
-		<char id="74" x="14" y="33" width="7" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- J -->
-		<char id="75" x="33" y="0" width="5" height="11" xoffset="0" yoffset="5" xadvance="6" /><!-- K -->
-		<char id="76" x="21" y="22" width="6" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- L -->
-		<char id="77" x="0" y="0" width="8" height="11" xoffset="0" yoffset="5" xadvance="9" /><!-- M -->
-		<char id="78" x="7" y="33" width="7" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- N -->
-		<char id="79" x="15" y="11" width="6" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- O -->
-		<char id="80" x="21" y="11" width="6" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- P -->
-		<char id="81" x="14" y="22" width="7" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- Q -->
-		<char id="82" x="15" y="0" width="6" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- R -->
-		<char id="83" x="27" y="22" width="5" height="11" xoffset="0" yoffset="5" xadvance="6" /><!-- S -->
-		<char id="84" x="8" y="0" width="7" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- T -->
-		<char id="85" x="21" y="33" width="6" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- U -->
-		<char id="86" x="7" y="22" width="7" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- V -->
-		<char id="87" x="0" y="11" width="8" height="11" xoffset="0" yoffset="5" xadvance="9" /><!-- W -->
-		<char id="88" x="0" y="22" width="7" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- X -->
-		<char id="89" x="0" y="33" width="7" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- Y -->
-		<char id="90" x="27" y="0" width="6" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- Z -->
+		<char id="65" x="12" y="15" width="7" height="11" xoffset="0" yoffset="5" xadvance="9" /><!-- A -->
+		<char id="66" x="43" y="15" width="6" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- B -->
+		<char id="67" x="53" y="15" width="5" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- C -->
+		<char id="68" x="33" y="0" width="6" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- D -->
+		<char id="69" x="52" y="45" width="5" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- E -->
+		<char id="70" x="52" y="30" width="5" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- F -->
+		<char id="71" x="43" y="45" width="5" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- G -->
+		<char id="72" x="61" y="45" width="4" height="11" xoffset="0" yoffset="5" xadvance="6" /><!-- H -->
+		<char id="73" x="61" y="30" width="4" height="11" xoffset="0" yoffset="5" xadvance="6" /><!-- I -->
+		<char id="74" x="22" y="45" width="7" height="11" xoffset="0" yoffset="5" xadvance="9" /><!-- J -->
+		<char id="75" x="53" y="0" width="5" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- K -->
+		<char id="76" x="33" y="30" width="6" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- L -->
+		<char id="77" x="0" y="0" width="8" height="11" xoffset="0" yoffset="5" xadvance="10" /><!-- M -->
+		<char id="78" x="11" y="45" width="7" height="11" xoffset="0" yoffset="5" xadvance="9" /><!-- N -->
+		<char id="79" x="23" y="15" width="6" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- O -->
+		<char id="80" x="33" y="15" width="6" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- P -->
+		<char id="81" x="22" y="30" width="7" height="11" xoffset="0" yoffset="5" xadvance="9" /><!-- Q -->
+		<char id="82" x="23" y="0" width="6" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- R -->
+		<char id="83" x="43" y="30" width="5" height="11" xoffset="0" yoffset="5" xadvance="7" /><!-- S -->
+		<char id="84" x="12" y="0" width="7" height="11" xoffset="0" yoffset="5" xadvance="9" /><!-- T -->
+		<char id="85" x="33" y="45" width="6" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- U -->
+		<char id="86" x="11" y="30" width="7" height="11" xoffset="0" yoffset="5" xadvance="9" /><!-- V -->
+		<char id="87" x="0" y="15" width="8" height="11" xoffset="0" yoffset="5" xadvance="10" /><!-- W -->
+		<char id="88" x="0" y="30" width="7" height="11" xoffset="0" yoffset="5" xadvance="9" /><!-- X -->
+		<char id="89" x="0" y="45" width="7" height="11" xoffset="0" yoffset="5" xadvance="9" /><!-- Y -->
+		<char id="90" x="43" y="0" width="6" height="11" xoffset="0" yoffset="5" xadvance="8" /><!-- Z -->
 		<char id="32" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="6" /><!--   -->
-		<char id="9" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="48" /><!-- 	 -->
+		<char id="9" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="120" /><!-- 	 -->
 	</chars>
-	<kernings count="0">
+	<kernings count="126">
+		<kerning first="65"  second="67"  amount="-1" />
+		<kerning first="65"  second="71"  amount="-1" />
+		<kerning first="65"  second="79"  amount="-1" />
+		<kerning first="65"  second="81"  amount="-1" />
+		<kerning first="65"  second="84"  amount="-1" />
+		<kerning first="65"  second="85"  amount="-1" />
+		<kerning first="65"  second="86"  amount="-1" />
+		<kerning first="65"  second="87"  amount="-1" />
+		<kerning first="65"  second="89"  amount="-1" />
+		<kerning first="66"  second="65"  amount="-2" />
+		<kerning first="66"  second="69"  amount="-1" />
+		<kerning first="66"  second="76"  amount="-1" />
+		<kerning first="66"  second="80"  amount="-1" />
+		<kerning first="66"  second="82"  amount="-1" />
+		<kerning first="66"  second="85"  amount="-1" />
+		<kerning first="66"  second="86"  amount="-1" />
+		<kerning first="66"  second="87"  amount="-1" />
+		<kerning first="66"  second="89"  amount="-1" />
+		<kerning first="67"  second="65"  amount="-2" />
+		<kerning first="67"  second="79"  amount="-1" />
+		<kerning first="67"  second="82"  amount="-1" />
+		<kerning first="68"  second="65"  amount="-3" />
+		<kerning first="68"  second="68"  amount="-1" />
+		<kerning first="68"  second="69"  amount="-1" />
+		<kerning first="68"  second="73"  amount="-2" />
+		<kerning first="68"  second="76"  amount="-1" />
+		<kerning first="68"  second="77"  amount="-1" />
+		<kerning first="68"  second="78"  amount="-1" />
+		<kerning first="68"  second="79"  amount="-1" />
+		<kerning first="68"  second="80"  amount="-1" />
+		<kerning first="68"  second="82"  amount="-1" />
+		<kerning first="68"  second="85"  amount="-1" />
+		<kerning first="68"  second="86"  amount="-1" />
+		<kerning first="68"  second="87"  amount="-1" />
+		<kerning first="68"  second="89"  amount="-2" />
+		<kerning first="69"  second="67"  amount="-1" />
+		<kerning first="69"  second="79"  amount="-1" />
+		<kerning first="70"  second="65"  amount="-4" />
+		<kerning first="70"  second="67"  amount="-1" />
+		<kerning first="70"  second="71"  amount="-1" />
+		<kerning first="70"  second="79"  amount="-1" />
+		<kerning first="71"  second="69"  amount="-1" />
+		<kerning first="71"  second="79"  amount="-1" />
+		<kerning first="71"  second="82"  amount="-1" />
+		<kerning first="71"  second="85"  amount="-1" />
+		<kerning first="72"  second="79"  amount="-1" />
+		<kerning first="73"  second="67"  amount="-2" />
+		<kerning first="73"  second="71"  amount="-2" />
+		<kerning first="73"  second="79"  amount="-2" />
+		<kerning first="74"  second="65"  amount="-4" />
+		<kerning first="74"  second="79"  amount="-2" />
+		<kerning first="75"  second="79"  amount="-1" />
+		<kerning first="76"  second="67"  amount="-2" />
+		<kerning first="76"  second="84"  amount="-4" />
+		<kerning first="76"  second="86"  amount="-1" />
+		<kerning first="76"  second="87"  amount="-1" />
+		<kerning first="76"  second="89"  amount="-1" />
+		<kerning first="76"  second="71"  amount="-2" />
+		<kerning first="76"  second="79"  amount="-2" />
+		<kerning first="76"  second="85"  amount="-2" />
+		<kerning first="77"  second="71"  amount="-1" />
+		<kerning first="77"  second="79"  amount="-1" />
+		<kerning first="78"  second="67"  amount="-1" />
+		<kerning first="78"  second="71"  amount="-1" />
+		<kerning first="78"  second="79"  amount="-1" />
+		<kerning first="79"  second="65"  amount="-2" />
+		<kerning first="79"  second="66"  amount="-1" />
+		<kerning first="79"  second="68"  amount="-1" />
+		<kerning first="79"  second="69"  amount="-1" />
+		<kerning first="79"  second="70"  amount="-1" />
+		<kerning first="79"  second="72"  amount="-1" />
+		<kerning first="79"  second="73"  amount="-2" />
+		<kerning first="79"  second="75"  amount="-1" />
+		<kerning first="79"  second="76"  amount="-1" />
+		<kerning first="79"  second="77"  amount="-1" />
+		<kerning first="79"  second="78"  amount="-1" />
+		<kerning first="79"  second="80"  amount="-1" />
+		<kerning first="79"  second="82"  amount="-1" />
+		<kerning first="79"  second="84"  amount="-1" />
+		<kerning first="79"  second="85"  amount="-1" />
+		<kerning first="79"  second="86"  amount="-1" />
+		<kerning first="79"  second="87"  amount="-1" />
+		<kerning first="79"  second="88"  amount="-1" />
+		<kerning first="79"  second="89"  amount="-1" />
+		<kerning first="80"  second="65"  amount="-4" />
+		<kerning first="80"  second="69"  amount="-1" />
+		<kerning first="80"  second="76"  amount="-1" />
+		<kerning first="80"  second="79"  amount="-1" />
+		<kerning first="80"  second="80"  amount="-1" />
+		<kerning first="80"  second="85"  amount="-1" />
+		<kerning first="80"  second="89"  amount="-1" />
+		<kerning first="81"  second="85"  amount="-1" />
+		<kerning first="82"  second="67"  amount="-1" />
+		<kerning first="82"  second="71"  amount="-1" />
+		<kerning first="82"  second="89"  amount="-1" />
+		<kerning first="82"  second="84"  amount="-1" />
+		<kerning first="82"  second="85"  amount="-1" />
+		<kerning first="82"  second="86"  amount="-1" />
+		<kerning first="82"  second="87"  amount="-1" />
+		<kerning first="82"  second="89"  amount="-1" />
+		<kerning first="83"  second="73"  amount="-2" />
+		<kerning first="83"  second="77"  amount="-1" />
+		<kerning first="83"  second="84"  amount="-1" />
+		<kerning first="83"  second="85"  amount="-1" />
+		<kerning first="84"  second="65"  amount="-4" />
+		<kerning first="84"  second="67"  amount="-1" />
+		<kerning first="84"  second="79"  amount="-1" />
+		<kerning first="85"  second="65"  amount="-2" />
+		<kerning first="85"  second="67"  amount="-1" />
+		<kerning first="85"  second="71"  amount="-1" />
+		<kerning first="85"  second="79"  amount="-1" />
+		<kerning first="85"  second="83"  amount="-1" />
+		<kerning first="86"  second="65"  amount="-5" />
+		<kerning first="86"  second="67"  amount="-1" />
+		<kerning first="86"  second="71"  amount="-1" />
+		<kerning first="86"  second="79"  amount="-1" />
+		<kerning first="86"  second="83"  amount="-1" />
+		<kerning first="87"  second="65"  amount="-1" />
+		<kerning first="87"  second="67"  amount="-1" />
+		<kerning first="87"  second="71"  amount="-1" />
+		<kerning first="87"  second="79"  amount="-1" />
+		<kerning first="89"  second="65"  amount="-5" />
+		<kerning first="89"  second="67"  amount="-1" />
+		<kerning first="89"  second="79"  amount="-1" />
+		<kerning first="89"  second="83"  amount="-1" />
+		<kerning first="90"  second="79"  amount="-1" />
 	</kernings>
 </font>

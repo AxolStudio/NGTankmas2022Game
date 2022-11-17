@@ -11,7 +11,7 @@
       {
         "requirements": ["flag:seenIntro"],
         "text": "Q:Yes|No?Do you want a refresher on the rules?",
-        "yes": ["battle:intro guy?dialog:intro guy 2?dialog:intro guy 3"],
+        "yes": ["battle:intro guy 2?dialog:intro guy 2?dialog:intro guy 3"],
         "no": []
       }
     ]
@@ -72,6 +72,17 @@
       {
         "requirements": [],
         "text": "We can go again if you want!",
+        "yes": [],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "happy guy",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm happy!",
         "yes": [],
         "no": []
       }

@@ -1,10 +1,16 @@
 package holidayccg.globals;
 
+import holidayccg.globals.Cards.Collection;
+import holidayccg.globals.Cards.Deck;
+import flixel.util.FlxSave;
 import flixel.FlxSprite;
 import holidayccg.game.Player;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import holidayccg.states.PlayState;
+import openfl.display.StageQuality;
+import openfl.filters.ShaderFilter;
+import flixel.system.FlxAssets.FlxShader;
 
 @:build(holidayccg.macros.MapBuilder.build()) // MapList
 class GameGlobals
@@ -25,21 +31,77 @@ class GameGlobals
 	public static inline var SCREEN_WIDTH:Int = 30;
 	public static inline var SCREEN_HEIGHT:Int = 20;
 
+	public static var GameSave:FlxSave;
+
 	public static function init():Void
 	{
 		if (initialized)
 			return;
 		initialized = true;
 
+		FlxG.game.setFilters([new ShaderFilter(new FlxShader())]);
+		FlxG.game.stage.quality = StageQuality.LOW;
+		FlxG.resizeWindow(960, 540);
+
+		FlxG.camera.pixelPerfectRender = true;
+		FlxG.camera.antialiasing = false;
+		FlxG.autoPause = false;
+
 		// check for a save file
+		GameSave = new FlxSave();
+		GameSave.bind("HolidayCCG");
 
-		// if one exists, load the player's collection, money and deck(s)
-		// also load all the flags
-		// also load the opponents
-
-		// if none, make a new player!
 		Player = new Player();
-		// otherwise, load!
+
+		if (GameSave.data.savedData != null #if debug && false #end)
+		{
+			var SavedData:SaveData = GameSave.data.savedData;
+			Dialog.Flags = SavedData.dialogFlags.copy();
+			Player.money = SavedData.money;
+			Player.collection = SavedData.collection;
+			Player.deck = SavedData.deck;
+			Opponent.OpponentList = SavedData.opponents.copy();
+		}
+	}
+
+	public static function save():Void
+	{
+		var SavedData:SaveData = {
+			money: Player.money,
+			collection: Player.collection,
+			deck: Player.deck,
+			opponents: Opponent.OpponentList.copy(),
+			dialogFlags: Dialog.Flags.copy(),
+			savedTime: Date.now()
+		};
+		GameSave.data.savedData = SavedData;
+		GameSave.flush();
+	}
+
+	public static function GetInputName(Input:String):String
+	{
+		if (Controls.mode == Keys)
+		{
+			return switch (Input)
+			{
+				case "move": "WASD or ARROW KEYS";
+				case "a": "Z, J or SPACE";
+				case "b": "X, K or ESCAPE";
+				case "pause": "P or ENTER";
+				default: "UNKNOWN";
+			}
+		}
+		else
+		{
+			return switch (Input)
+			{
+				case "move": "D-PAD or LEFT STICK";
+				case "a": "A or X";
+				case "b": "B or Y";
+				case "pause": "START";
+				default: "UNKNOWN";
+			}
+		}
 	}
 }
 
@@ -74,4 +136,14 @@ class Slugify
 		var regex = ~/[^a-z0-9]+/g;
 		return regex.replace(str.toLowerCase(), '_');
 	}
+}
+
+typedef SaveData =
+{
+	var money:Int;
+	var collection:Collection;
+	var deck:Deck;
+	var dialogFlags:Map<String, Bool>;
+	var opponents:Map<String, Opponent>;
+	var savedTime:Date;
 }

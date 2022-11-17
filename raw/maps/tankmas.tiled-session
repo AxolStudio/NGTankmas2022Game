@@ -15,11 +15,23 @@
                 "x": 480.25,
                 "y": 356.5
             }
+        },
+        "test_room_02.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 480.25,
+                "y": 356.5
+            }
         }
     },
     "last.exportedFilePath": "E:/Owner/Documents/NGTankmas2022Game/HolidayCCG/assets/data/maps",
     "last.imagePath": "E:/Owner/Documents/NGTankmas2022Game/HolidayCCG/assets/images",
-    "map.lastUsedExportFilter": "All Files (*)",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
     "openFiles": [
         "test_room.tmx",
         "temp.tsx"

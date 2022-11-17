@@ -118,7 +118,7 @@ class GameObject extends FlxSprite
 		}
 	}
 
-	public function move(DX:Int, DY:Int):Void
+	public function move(DX:Int, DY:Int, ?Callback:Void->Void):Void
 	{
 		if (moving)
 			return;
@@ -143,6 +143,8 @@ class GameObject extends FlxSprite
 			onComplete: (_) ->
 			{
 				moving = false;
+				if (Callback != null)
+					Callback();
 			}
 		});
 	}

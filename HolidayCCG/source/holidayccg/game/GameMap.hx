@@ -1,5 +1,7 @@
 package holidayccg.game;
 
+import flixel.util.FlxDirectionFlags;
+
 class GameMap
 {
 	public var name:String = "";
@@ -7,6 +9,7 @@ class GameMap
 	public var heightInTiles:Int = -1;
 	public var backgroundData:Array<Int> = [];
 	public var objects:Array<MapObject> = [];
+	public var neighbors:Map<FlxDirectionFlags, String> = [];
 
 	// track which tileset?a
 	public function new(Data:holidayccg.macros.MapBuilder.MapStructure):Void
@@ -16,7 +19,22 @@ class GameMap
 			if (Data.properties[p].name == "name")
 			{
 				name = Data.properties[p].value;
-				break;
+			}
+			else if (Data.properties[p].name == "exit_DOWN")
+			{
+				neighbors.set(DOWN, Data.properties[p].value);
+			}
+			else if (Data.properties[p].name == "exit_UP")
+			{
+				neighbors.set(UP, Data.properties[p].value);
+			}
+			else if (Data.properties[p].name == "exit_LEFT")
+			{
+				neighbors.set(LEFT, Data.properties[p].value);
+			}
+			else if (Data.properties[p].name == "exit_RIGHT")
+			{
+				neighbors.set(RIGHT, Data.properties[p].value);
 			}
 		}
 		widthInTiles = Data.width;

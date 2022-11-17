@@ -1,22 +1,20 @@
 package holidayccg.states;
 
-import holidayccg.game.Player;
-import holidayccg.globals.Cards.Deck;
-import holidayccg.ui.DialogFrame;
-import holidayccg.globals.Dialog;
-import holidayccg.game.GameObject;
-import holidayccg.game.GameMap;
-import holidayccg.globals.GameGlobals;
 import flixel.FlxCamera.FlxCameraFollowStyle;
+import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tile.FlxBaseTilemap.FlxTilemapAutoTiling;
 import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import flixel.FlxSprite;
-import flixel.FlxG;
 import flixel.util.FlxDirectionFlags;
+import holidayccg.game.GameMap;
+import holidayccg.game.GameObject;
+import holidayccg.globals.Dialog;
+import holidayccg.globals.GameGlobals;
+import holidayccg.ui.DialogFrame;
 
 class PlayState extends FlxState
 {
@@ -40,11 +38,16 @@ class PlayState extends FlxState
 
 	public var collectionState:CollectionState;
 
+	public var mapData:GameMap;
+
+	public var tutSeen:Bool = false;
+
 	override public function create()
 	{
 		GameGlobals.PlayState = this;
 		GameGlobals.init();
 
+		trace(FlxG.camera.pixelPerfectRender);
 		#if debug
 		GameGlobals.Player.collection.add(10, 1);
 		#end
@@ -71,6 +74,8 @@ class PlayState extends FlxState
 		battleState = new BattleState(returnFromBattle);
 		collectionState = new CollectionState(returnFromCollection);
 
+		tutSeen = Dialog.Flags.exists("tutSeen");
+
 		fadeIn();
 	}
 
@@ -88,12 +93,20 @@ class PlayState extends FlxState
 
 	public function setMap(RoomName:String):Void
 	{
-		var mapData:GameMap = GameGlobals.MapList.get(RoomName);
+		mapData = GameGlobals.MapList.get(RoomName);
 
 		if (map != null)
 		{
 			map.kill();
+			mapLayer.remove(map, true);
 			map = new FlxTilemap();
+
+			for (o in objectLayer.members)
+			{
+				o.kill();
+				objectLayer.remove(o, true);
+			}
+			objectLayer.clear();
 		}
 		else
 			map = new FlxTilemap();
@@ -153,9 +166,26 @@ class PlayState extends FlxState
 		openSubState(collectionState);
 	}
 
+	public function returnFromTutorial():Void
+	{
+		ready = true;
+		tutSeen = true;
+		Dialog.Flags.set("tutSeen", true);
+		GameGlobals.save();
+	}
+
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (ready && !tutSeen)
+		{
+			tutSeen = true;
+			ready = false;
+			openSubState(new PlayStateTutorial(returnFromTutorial));
+			return;
+		}
+
 		if (!ready || player.moving)
 			return;
 
@@ -214,18 +244,73 @@ class PlayState extends FlxState
 			up = down = false;
 
 		if (up)
-			player.move(0, -1);
+			player.move(0, -1, checkPlayerMove);
 		else if (down)
-			player.move(0, 1);
+			player.move(0, 1, checkPlayerMove);
 		else if (left)
-			player.move(-1, 0);
+			player.move(-1, 0, checkPlayerMove);
 		else if (right)
-			player.move(1, 0);
+			player.move(1, 0, checkPlayerMove);
+	}
+
+	public function checkPlayerMove():Void
+	{
+		if (player.x >= map.width)
+		{
+			// moved to the right room
+			switchToRoom(RIGHT);
+		}
+		else if (player.x <= 0)
+		{
+			// moved to the left room
+			switchToRoom(LEFT);
+		}
+		else if (player.y >= map.height)
+		{
+			// moved to the bottom room
+			switchToRoom(DOWN);
+		}
+		else if (player.y <= 0)
+		{
+			// moved to the top room
+			switchToRoom(UP);
+		}
+	}
+
+	public function switchToRoom(Dir:FlxDirectionFlags):Void
+	{
+		ready = false;
+
+		FlxTween.tween(blackOut, {alpha: 1}, 1, {
+			ease: FlxEase.quadOut,
+			onComplete: (_) ->
+			{
+				setMap(mapData.neighbors.get(Dir));
+				switch (Dir)
+				{
+					case UP:
+						player.y = map.y + map.height - (GameGlobals.TILE_SIZE * 2);
+
+					case DOWN:
+						player.y = map.y + GameGlobals.TILE_SIZE;
+
+					case LEFT:
+						player.x = map.x + map.width - (GameGlobals.TILE_SIZE * 2);
+
+					case RIGHT:
+						player.x = map.x + GameGlobals.TILE_SIZE;
+
+					default:
+				}
+				fadeIn();
+			}
+		});
 	}
 
 	public function returnFromBattle(Actions:String):Void
 	{
 		Dialog.parseScripts([Actions]);
+		GameGlobals.save();
 	}
 
 	public function returnFromCollection():Void

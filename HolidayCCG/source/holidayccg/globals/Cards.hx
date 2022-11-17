@@ -18,10 +18,10 @@ class Card
 	public var id:Int = -1;
 	public var name:String = "";
 	public var value:Int = 0;
-	public var rarity:CardRarity = CardRarity.COMMON;
+	public var rarity:String = "common";
 	public var attacks:Array<String> = [];
 
-	public function new(id:Int, name:String, value:Int, attacks:Array<String>, rarity:CardRarity)
+	public function new(id:Int, name:String, value:Int, attacks:Array<String>, rarity:String)
 	{
 		this.id = id;
 		this.name = name;
@@ -107,6 +107,7 @@ class CardGraphic extends FlxSpriteGroup
 
 	public var card:Card;
 
+	// public var rarity:FlxSprite;
 	// public var x(get, set):Float;
 	// public var y(get, set):Float;
 	// public var alpha(default, set):Float;
@@ -130,6 +131,10 @@ class CardGraphic extends FlxSpriteGroup
 		card = null;
 		owner = null;
 		outline = FlxDestroyUtil.destroy(outline);
+		name = FlxDestroyUtil.destroy(name);
+		nameLine1 = FlxDestroyUtil.destroy(nameLine1);
+		nameLine2 = FlxDestroyUtil.destroy(nameLine2);
+		// rarity = FlxDestroyUtil.destroy(rarity);
 
 		super.destroy();
 	}
@@ -167,32 +172,36 @@ class CardGraphic extends FlxSpriteGroup
 		nameLine2.y = back.y + back.height - 22;
 
 		add(value = new GameText(Font.CARD_NUMBERS));
-		value.x = back.x + 5;
-		value.y = back.y + 5;
+		value.x = Std.int(back.x + 5);
+		value.y = Std.int(back.y + 4);
 
 		var tmpA:FlxSprite = new FlxSprite(Global.asset("assets/images/attack_UP.png"));
-		tmpA.x = back.x + back.width - tmpA.width - 5;
+		tmpA.x = Std.int(back.x + back.width - tmpA.width - 4);
 		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
 
 		tmpA = new FlxSprite(Global.asset("assets/images/attack_DOWN.png"));
-		tmpA.x = back.x + back.width - tmpA.width - 5;
+		tmpA.x = Std.int(back.x + back.width - tmpA.width - 4);
 		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
 
 		tmpA = new FlxSprite(Global.asset("assets/images/attack_RIGHT.png"));
-		tmpA.x = back.x + back.width - tmpA.width - 5;
+		tmpA.x = Std.int(back.x + back.width - tmpA.width - 4);
 		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
 
 		tmpA = new FlxSprite(Global.asset("assets/images/attack_LEFT.png"));
-		tmpA.x = back.x + back.width - tmpA.width - 5;
+		tmpA.x = Std.int(back.x + back.width - tmpA.width - 4);
 		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
+
+		// add(rarity = GraphicsCache.loadFlxSpriteFromAtlas("rarity"));
+		// rarity.x = back.x + back.width - rarity.width - 5;
+		// rarity.y = back.y + back.height - rarity.height - 5;
 
 		back.scrollFactor.set(0, 0);
 		outline.scrollFactor.set(0, 0);
@@ -201,6 +210,10 @@ class CardGraphic extends FlxSpriteGroup
 		attacks[1].scrollFactor.set(0, 0);
 		attacks[2].scrollFactor.set(0, 0);
 		attacks[3].scrollFactor.set(0, 0);
+		name.scrollFactor.set(0, 0);
+		nameLine1.scrollFactor.set(0, 0);
+		nameLine2.scrollFactor.set(0, 0);
+		// rarity.scrollFactor.set(0, 0);
 
 		offset.x = offset.y = 5;
 		width -= 10;
@@ -234,10 +247,12 @@ class CardGraphic extends FlxSpriteGroup
 			nameLine1.text = name.text;
 		}
 
-		nameLine1.x = back.x + (back.width / 2) - (nameLine1.width / 2);
-		nameLine2.x = back.x + (back.width / 2) - (nameLine2.width / 2);
+		nameLine1.x = Std.int(back.x + (back.width / 2) - (nameLine1.width / 2));
+		nameLine2.x = Std.int(back.x + (back.width / 2) - (nameLine2.width / 2));
 
 		value.text = Std.string(card.value);
+
+		// rarity.animation.frameName = card.rarity;
 
 		shown = false;
 		selected = false;
@@ -313,6 +328,7 @@ class CardGraphic extends FlxSpriteGroup
 		attacks[3].visible = visible && shown && card.attacks.contains("W");
 		nameLine1.visible = visible && shown;
 		nameLine2.visible = visible && shown && name.numLines > 1;
+		// rarity.visible = visible && shown;
 		outline.visible = visible && selected;
 	}
 
@@ -376,14 +392,6 @@ class CardGraphic extends FlxSpriteGroup
 	// {
 	// 	return back.height;
 	// }
-}
-
-@:enum abstract CardRarity(String)
-{
-	var COMMON = "common";
-	var UNCOMMON = "uncommon";
-	var RARE = "rare";
-	var STARTER = "starter";
 }
 
 @:enum abstract CardOwner(Int)
