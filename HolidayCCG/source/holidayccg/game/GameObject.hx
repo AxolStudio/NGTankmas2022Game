@@ -132,7 +132,7 @@ class GameObject extends FlxSprite
 		var mapX:Int = Std.int(x / GameGlobals.TILE_SIZE) + DX;
 		var mapY:Int = Std.int(y / GameGlobals.TILE_SIZE) + DY;
 
-		if (baseMap.getTile(mapX, mapY) >= 40 || decorativeMap.getTile(mapX, mapY) >= 1)
+		if (baseMap.getTile(mapX, mapY) >= 90 || decorativeMap.getTile(mapX, mapY) >= 1)
 			return;
 
 		if (GameGlobals.PlayState.checkForObjects(mapX, mapY) != null)

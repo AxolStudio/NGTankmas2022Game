@@ -17,11 +17,14 @@
             "scaleInEditor": 1
         },
         "test_room.tmx": {
-            "scale": 4,
-            "selectedLayer": 1,
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 439.625,
-                "y": 300
+                "x": 541.75,
+                "y": 204.5
             }
         },
         "test_room_02.tmx": {
@@ -29,10 +32,10 @@
                 2
             ],
             "scale": 2,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 383.25,
-                "y": 208
+                "x": 479.75,
+                "y": 417
             }
         }
     },

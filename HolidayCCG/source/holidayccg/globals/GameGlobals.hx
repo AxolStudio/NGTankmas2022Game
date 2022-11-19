@@ -62,6 +62,10 @@ class GameGlobals
 			Player.deck = SavedData.deck;
 			Opponent.OpponentList = SavedData.opponents.copy();
 		}
+
+		// #if debug
+		Player.money = 100000;
+		// #end
 	}
 
 	public static function save():Void

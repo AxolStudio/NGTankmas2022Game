@@ -1,9 +1,10 @@
-( ) 1: Get battle tutorial done
-( ) 2: add the shop logic to buy/sell cards
-( ) 3: add a screen when you get a new pack of cards to show off what you got
+(X) 1: Get battle tutorial done
+(X) 2: add the shop logic to buy/sell cards
+(X) 3: add a screen when you get a new pack of cards to show off what you got
 (X) 4: add logic to have 2 layers of the maps
 ( ) 5: add the 'hidden item' logic in the map
 ( ) 6: Starting player coin flip logic
 ( ) 7: build a title screen/way to clear your saved data
 ( ) 8: build a credits screen
 ( ) 9: implement card illustrations
+( ) 10: More festive transition screen

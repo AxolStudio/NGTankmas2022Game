@@ -11,7 +11,13 @@ import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 
 @:build(holidayccg.macros.CardBuilder.build()) // CardList
-class Cards {}
+class Cards
+{
+	public static var commons:Array<Int> = [];
+	public static var uncommons:Array<Int> = [];
+	public static var rares:Array<Int> = [];
+	public static var epics:Array<Int> = [];
+}
 
 class Card
 {
@@ -32,10 +38,33 @@ class Card
 
 	public static function buildCard(Data:Dynamic):Card
 	{
-		return new Card(Data.id, Data.name, Data.value, Data.attacks, Data.rarity);
-	}
+		switch (Data.rarity)
+		{
+			case "C":
+				Cards.commons.push(Data.id);
 
-	// function to generate the card graphic
+			case "U":
+				Cards.uncommons.push(Data.id);
+			case "R":
+				Cards.rares.push(Data.id);
+			case "E":
+				Cards.epics.push(Data.id);
+			default:
+		}
+		return new Card(Data.id, Data.name, Data.value, Data.attacks.split(','), switch (Data.rarity)
+		{
+			case "C":
+				"common";
+			case "U":
+				"uncommon";
+			case "R":
+				"rare";
+			case "E":
+				"epic";
+			default:
+				"starter";
+		});
+	}
 }
 
 class Deck

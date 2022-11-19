@@ -1,44 +1,177 @@
 [
   {
     "id": 1,
-    "name": "sugar plum fairy",
+    "name": "Sugar Plum Fairy",
     "value": 3,
-    "attacks": ["N", "E"],
-    "rarity": "starter"
+    "attacks": "N,E",
+    "rarity": "C"
   },
   {
     "id": 2,
-    "name": "nutcracker",
+    "name": "Nutcracker",
     "value": 5,
-    "attacks": ["W", "N"],
-    "rarity": "starter"
+    "attacks": "W,N",
+    "rarity": "C"
   },
   {
     "id": 3,
-    "name": "mouse king",
+    "name": "Mouse King",
     "value": 4,
-    "attacks": ["S", "E"],
-    "rarity": "starter"
+    "attacks": "S,E",
+    "rarity": "C"
   },
   {
     "id": 4,
-    "name": "yule goat",
+    "name": "Yule Goat",
     "value": 2,
-    "attacks": ["E", "W"],
-    "rarity": "starter"
+    "attacks": "E,W",
+    "rarity": "C"
   },
   {
     "id": 5,
-    "name": "frost fairy",
+    "name": "Frost Fairy",
     "value": 1,
-    "attacks": ["N", "S"],
-    "rarity": "starter"
+    "attacks": "N,S",
+    "rarity": "C"
+  },
+  {
+    "id": 6,
+    "name": "Tree Angle",
+    "value": 4,
+    "attacks": "N",
+    "rarity": "C"
+  },
+  {
+    "id": 7,
+    "name": "Gingerbread Man",
+    "value": 3,
+    "attacks": "S",
+    "rarity": "C"
+  },
+  {
+    "id": 8,
+    "name": "Gingerbread Woman",
+    "value": 3,
+    "attacks": "E",
+    "rarity": "C"
+  },
+  {
+    "id": 9,
+    "name": "Headless Gingerbread Man",
+    "value": 4,
+    "attacks": "E,W,S",
+    "rarity": "U"
   },
   {
     "id": 10,
-    "name": "the gronch",
+    "name": "Ensorcelled Snowman",
     "value": 6,
-    "attacks": ["N", "E"],
-    "rarity": "rare"
+    "attacks": "N,W",
+    "rarity": "U"
+  },
+  {
+    "id": 11,
+    "name": "3 Magi",
+    "value": 5,
+    "attacks": "N,W,E",
+    "rarity": "U"
+  },
+  {
+    "id": 12,
+    "name": "Jack Frost",
+    "value": 4,
+    "attacks": "N,S,E,W",
+    "rarity": "U"
+  },
+  {
+    "id": 13,
+    "name": "Secularism",
+    "value": 1,
+    "attacks": "N,S,E,W",
+    "rarity": "U"
+  },
+  {
+    "id": 14,
+    "name": "Caganer",
+    "value": 2,
+    "attacks": "S",
+    "rarity": "U"
+  },
+  {
+    "id": 15,
+    "name": "Mari Lwyd ",
+    "value": 6,
+    "attacks": "N,S",
+    "rarity": "U"
+  },
+  {
+    "id": 16,
+    "name": "Yule Cat",
+    "value": 7,
+    "attacks": "E,S",
+    "rarity": "R"
+  },
+  {
+    "id": 17,
+    "name": "Frost Wolf",
+    "value": 8,
+    "attacks": "W",
+    "rarity": "R"
+  },
+  {
+    "id": 18,
+    "name": "Hans",
+    "value": 9,
+    "attacks": "S",
+    "rarity": "R"
+  },
+  {
+    "id": 19,
+    "name": "The Gronch",
+    "value": 6,
+    "attacks": "N,E",
+    "rarity": "R"
+  },
+  {
+    "id": 20,
+    "name": "Biblically-acurate Angel",
+    "value": 7,
+    "attacks": "E,W",
+    "rarity": "E"
+  },
+  {
+    "id": 21,
+    "name": "Gingerbread Dinosaur",
+    "value": 8,
+    "attacks": "W,S",
+    "rarity": "R"
+  },
+  {
+    "id": 22,
+    "name": "Yeti",
+    "value": 9,
+    "attacks": "E,W",
+    "rarity": "E"
+  },
+  {
+    "id": 23,
+    "name": "The Boss",
+    "value": "A",
+    "attacks": "S,W,E",
+    "rarity": "E"
+  },
+  {
+    "id": 24,
+    "name": "Krampus",
+    "value": "A",
+    "attacks": "N,S,W",
+    "rarity": "E"
+  },
+  {
+    "id": 25,
+    "name": "Baby Jesus",
+    "value": "A",
+    "attacks": "N,S,E,W",
+    "rarity": "E"
   }
 ]

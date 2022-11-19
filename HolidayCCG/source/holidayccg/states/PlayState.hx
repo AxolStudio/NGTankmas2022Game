@@ -43,6 +43,8 @@ class PlayState extends FlxState
 
 	public var tutSeen:Bool = false;
 
+	public var shopState:ShopState;
+
 	override public function create()
 	{
 		GameGlobals.PlayState = this;
@@ -74,6 +76,7 @@ class PlayState extends FlxState
 
 		battleState = new BattleState(returnFromBattle);
 		collectionState = new CollectionState(returnFromCollection);
+		shopState = new ShopState(returnFromShop);
 
 		tutSeen = Dialog.Flags.exists("tutSeen");
 
@@ -120,7 +123,7 @@ class PlayState extends FlxState
 		}
 
 		baseMap.loadMapFromArray(mapData.baseLayerData, mapData.widthInTiles, mapData.heightInTiles, Global.asset("assets/images/base_tiles.png"),
-			GameGlobals.TILE_SIZE, GameGlobals.TILE_SIZE, FlxTilemapAutoTiling.OFF, 0, 0, 40);
+			GameGlobals.TILE_SIZE, GameGlobals.TILE_SIZE, FlxTilemapAutoTiling.OFF, 0, 0, 90);
 		decorativeMap.loadMapFromArray(mapData.decorativeLayerData, mapData.widthInTiles, mapData.heightInTiles,
 			Global.asset("assets/images/decorative_tiles.png"), GameGlobals.TILE_SIZE, GameGlobals.TILE_SIZE, FlxTilemapAutoTiling.OFF, 0, 1, 1);
 
@@ -286,6 +289,17 @@ class PlayState extends FlxState
 			// moved to the top room
 			switchToRoom(UP);
 		}
+	}
+
+	public function openShop():Void
+	{
+		ready = false;
+		openSubState(shopState);
+	}
+
+	public function returnFromShop():Void
+	{
+		ready = true;
 	}
 
 	public function switchToRoom(Dir:FlxDirectionFlags):Void

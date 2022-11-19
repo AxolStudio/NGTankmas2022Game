@@ -229,7 +229,7 @@ class BattleState extends FlxSubState
 
 	public function start():Void
 	{
-		FlxTween.tween(blackout, {alpha: 0}, 1, {
+		FlxTween.tween(blackout, {alpha: 0}, .33, {
 			type: FlxTweenType.ONESHOT,
 			onComplete: (_) ->
 			{
@@ -878,8 +878,16 @@ class BattleState extends FlxSubState
 		{
 			callback(winner == CardOwner.PLAYER ? win : lose);
 		}
-		close();
+
+		FlxTween.tween(blackout, {alpha: 0}, .33, {
+			type: FlxTweenType.ONESHOT,
+			onComplete: (_) ->
+			{
+				close();
+			}
+		});
 	}
+		
 }
 
 class BattleEndState extends FlxSubState

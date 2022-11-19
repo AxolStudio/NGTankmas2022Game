@@ -41,10 +41,15 @@ class Dialog
 	{
 		var willBattle:String = "";
 		var willTalk:String = "";
+		var willOpenShop:Bool = false;
 
 		for (f in Scripts)
 		{
-			if (f.startsWith("flag:"))
+			if (f == "openShop")
+			{
+				willOpenShop = true;
+			}
+			else if (f.startsWith("flag:"))
 			{
 				Dialog.Flags.set(f.substr(5), true);
 			}
@@ -67,6 +72,8 @@ class Dialog
 			GameGlobals.PlayState.startBattle(willBattle);
 		else if (willTalk != "")
 			Dialog.talk(willTalk);
+		else if (willOpenShop)
+			GameGlobals.PlayState.openShop();
 	}
 
 	public static function talk(Who:String):Bool
@@ -78,9 +85,14 @@ class Dialog
 			{
 				if (meetsRequirements(dialogs[i].requirements))
 				{
-					// show the dialog box!
-
-					GameGlobals.PlayState.showDialog(dialogs[i]);
+					if (dialogs[i].text == "")
+					{
+						parseScripts(dialogs[i].yes.copy());
+					}
+					else
+					{
+						GameGlobals.PlayState.showDialog(dialogs[i]);
+					}
 					return true;
 				}
 			}

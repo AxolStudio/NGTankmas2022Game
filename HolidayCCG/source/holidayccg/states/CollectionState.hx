@@ -1,5 +1,7 @@
 package holidayccg.states;
 
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxTween.FlxTweenType;
 import holidayccg.globals.Dialog;
 import holidayccg.globals.GraphicsCache;
 import flixel.util.FlxDirectionFlags;
@@ -58,19 +60,35 @@ class CollectionState extends FlxSubState
 
 	public var cardName:GameText;
 
+	public var blackout:FlxSprite;
+
 	public function new(Callback:Void->Void):Void
 	{
 		super();
 
 		bgColor = 0xffffffff;
 
+		blackout = new FlxSprite();
+		blackout.makeGraphic(Global.width, Global.height, GameGlobals.ColorPalette[1]);
+		blackout.alpha = 1;
+		blackout.scrollFactor.set();
+
 		openCallback = () ->
 		{
-			if (!Dialog.Flags.get("seenCollTut"))
-			{
-				ready = false;
-				openSubState(new CollectionTutorial(returnFromTutorial));
-			}
+			FlxTween.tween(blackout, {alpha: 0}, .33, {
+				type: FlxTweenType.ONESHOT,
+				onComplete: (_) ->
+				{
+					if (!Dialog.Flags.get("seenCollTut"))
+					{
+						ready = false;
+						openSubState(new CollectionTutorial(returnFromTutorial));
+					}
+					else
+						ready = true;
+
+				}
+			});
 		}
 
 		closeCallback = Callback;
@@ -116,6 +134,8 @@ class CollectionState extends FlxSubState
 		cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 		cardName.y = 512;
 		// cardName.visible = false;
+
+		add(blackout);
 	}
 
 	override function close()
@@ -138,6 +158,17 @@ class CollectionState extends FlxSubState
 		collection.clear();
 
 		super.close();
+	}
+
+	public function exit():Void
+	{
+		FlxTween.tween(blackout, {alpha: 0}, .33, {
+			type: FlxTweenType.ONESHOT,
+			onComplete: (_) ->
+			{
+				close();
+			}
+		});
 	}
 
 	public function refresh():Void
@@ -180,8 +211,6 @@ class CollectionState extends FlxSubState
 
 		cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
 		cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
-
-		ready = true;
 	}
 
 	public function returnFromTutorial():Void
@@ -197,7 +226,7 @@ class CollectionState extends FlxSubState
 		if (!ready)
 			return;
 		if (Controls.justPressed.PAUSE)
-			close();
+			exit();
 		else if (Controls.justPressed.LEFT)
 		{
 			if (inDeck)
