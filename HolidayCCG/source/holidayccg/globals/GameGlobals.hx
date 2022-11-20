@@ -53,7 +53,7 @@ class GameGlobals
 
 		Player = new Player();
 
-		if (GameSave.data.savedData != null #if debug && false #end)
+		if (GameSave.data.savedData != null) // #if debug && false #end)
 		{
 			var SavedData:SaveData = GameSave.data.savedData;
 			Dialog.Flags = SavedData.dialogFlags.copy();
@@ -65,6 +65,11 @@ class GameGlobals
 
 		// #if debug
 		Player.money = 100000;
+
+		for (c in Cards.CardList.keys())
+		{
+			Player.collection.add(c, 1);
+		}
 		// #end
 	}
 

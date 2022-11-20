@@ -172,7 +172,10 @@ class BattleState extends FlxSubState
 			battleTut = new BattleTutorial(returnFromTutorial);
 		}
 
-		playerHand = new Deck(PlayerDeck.cards.copy());
+		if (doingTut)
+			playerHand = new Deck([1, 2, 3, 4, 5]);
+		else
+			playerHand = new Deck(PlayerDeck.cards.copy());
 
 		var vs:Array<String> = VSWho.split("?");
 		enemy = Opponent.OpponentList.get(vs[0]);

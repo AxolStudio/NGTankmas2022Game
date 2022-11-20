@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import flixel.math.FlxMath;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxTween.FlxTweenType;
 import holidayccg.globals.Dialog;
@@ -37,9 +38,11 @@ class CollectionState extends FlxSubState
 	public static inline var DECK_SPACE:Int = 9;
 
 	public static inline var COLLECTION_X:Int = 11;
-	public static inline var COLLECTION_Y:Int = 211;
-	public static inline var COLLECTION_SPACE_W:Int = 23;
-	public static inline var COLLECTION_SPACE_H:Int = 23;
+	public static inline var COLLECTION_Y:Int = 188;
+	public static inline var COLLECTION_SPACE_W:Int = 18;
+	public static inline var COLLECTION_SPACE_H:Int = 20;
+
+	public static inline var COLLECTION_HEIGHT:Int = 322;
 
 	public static inline var COLLECTION_COUNT_W:Int = 8;
 
@@ -47,6 +50,12 @@ class CollectionState extends FlxSubState
 	public static inline var MONEY_Y:Int = 10;
 
 	public static inline var CARD_SWAPPING_X:Int = 60;
+
+	public static inline var SCROLL_TOP:Int = 187;
+	public static inline var SCROLL_BOTTOM:Int = 510;
+	public static inline var SCROLL_LEFT:Int = 929;
+
+	public var scrollBar:FlxSprite;
 
 	public var swapping:Bool = false;
 
@@ -86,7 +95,6 @@ class CollectionState extends FlxSubState
 					}
 					else
 						ready = true;
-
 				}
 			});
 		}
@@ -132,8 +140,10 @@ class CollectionState extends FlxSubState
 		cardName.scrollFactor.set();
 		// cardName.alignment = FlxTextAlign.CENTER;
 		cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
-		cardName.y = 512;
+		cardName.y = 514;
 		// cardName.visible = false;
+
+		add(scrollBar = new FlxSprite());
 
 		add(blackout);
 	}
@@ -196,7 +206,7 @@ class CollectionState extends FlxSubState
 			card = new CardInfo(Cards.CardList.get(cID), count);
 
 			card.x = Std.int(10 + (collection.members.length % COLLECTION_COUNT_W) * (96 + COLLECTION_SPACE_W));
-			card.y = Std.int(10 + (Std.int(collection.members.length / COLLECTION_COUNT_W) * (96 + COLLECTION_SPACE_H)));
+			card.y = Std.int(10 + (Std.int(collection.members.length / COLLECTION_COUNT_W) * (140 + COLLECTION_SPACE_H)));
 
 			if (GameGlobals.Player.deck.cards.contains(cID))
 				card.inDeck = true;
@@ -211,6 +221,12 @@ class CollectionState extends FlxSubState
 
 		cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
 		cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
+
+		scrollBar.makeGraphic(20, Math.ceil((COLLECTION_HEIGHT / collection.height) * (SCROLL_BOTTOM - SCROLL_TOP)), GameGlobals.ColorPalette[1]);
+		scrollBar.drawRect(1, 1, 18, scrollBar.height - 2, 0xff595652);
+		scrollBar.scrollFactor.set();
+		scrollBar.x = SCROLL_LEFT;
+		scrollBar.y = SCROLL_TOP;
 	}
 
 	public function returnFromTutorial():Void
@@ -340,9 +356,10 @@ class CollectionState extends FlxSubState
 					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
 					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 
-					if (collection.y + collection.members[selectedCard].cardGraphic.y < COLLECTION_Y)
+					if (collection.members[selectedCard].cardGraphic.y - COLLECTION_SPACE_H < COLLECTION_Y)
 					{
-						collection.y = COLLECTION_Y - collection.members[selectedCard].cardGraphic.y;
+						collection.y = COLLECTION_Y - ((Std.int(selectedCard / COLLECTION_COUNT_W)) * (140 + COLLECTION_SPACE_H));
+						updateScrollBar();
 					}
 				}
 			}
@@ -362,7 +379,7 @@ class CollectionState extends FlxSubState
 			}
 			else
 			{
-				if (selectedCard < deckList.members.length - COLLECTION_COUNT_W)
+				if (selectedCard + COLLECTION_COUNT_W < collection.members.length)
 				{
 					collection.members[selectedCard].cardGraphic.selected = false;
 					selectedCard += COLLECTION_COUNT_W;
@@ -370,8 +387,11 @@ class CollectionState extends FlxSubState
 					cardName.text = collection.members[selectedCard].cardGraphic.card.name.toTitleCase();
 					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
 
-					if (collection.y + collection.members[selectedCard].y + 140 > 530)
-						collection.y = 510 - (collection.members[selectedCard].y + 140);
+					if (collection.members[selectedCard].y + 150 + COLLECTION_SPACE_H > COLLECTION_Y + COLLECTION_HEIGHT)
+					{
+						collection.y = COLLECTION_Y + COLLECTION_HEIGHT - ((Std.int(selectedCard / COLLECTION_COUNT_W) + 1) * (150 + COLLECTION_SPACE_H));
+						updateScrollBar();
+					}
 				}
 				else
 				{
@@ -475,6 +495,13 @@ class CollectionState extends FlxSubState
 		{
 			c.inDeck = GameGlobals.Player.deck.cards.contains(c.cardGraphic.card.id);
 		}
+	}
+
+	public function updateScrollBar():Void
+	{
+		scrollBar.y = SCROLL_TOP
+			+ Std.int((collection.y - COLLECTION_Y) * ((SCROLL_BOTTOM - SCROLL_TOP - scrollBar.height) / (COLLECTION_HEIGHT - collection.height)));
+		scrollBar.y = FlxMath.bound(scrollBar.y, SCROLL_TOP, SCROLL_BOTTOM - scrollBar.height);
 	}
 }
 

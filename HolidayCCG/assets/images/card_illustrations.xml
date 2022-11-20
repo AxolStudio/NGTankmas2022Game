@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="1_SPF-sprites.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+	<SubTexture name="1_SPF.png"	x="0"	y="0"	width="90"	height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+</TextureAtlas>

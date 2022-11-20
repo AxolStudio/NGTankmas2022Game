@@ -131,6 +131,7 @@ class CardGraphic extends FlxSpriteGroup
 	public var name:GameText;
 	public var nameLine1:GameText;
 	public var nameLine2:GameText;
+	public var illustration:FlxSprite;
 
 	public var battleFieldPos:Int = -1;
 
@@ -163,6 +164,7 @@ class CardGraphic extends FlxSpriteGroup
 		name = FlxDestroyUtil.destroy(name);
 		nameLine1 = FlxDestroyUtil.destroy(nameLine1);
 		nameLine2 = FlxDestroyUtil.destroy(nameLine2);
+		illustration = FlxDestroyUtil.destroy(illustration);
 		// rarity = FlxDestroyUtil.destroy(rarity);
 
 		super.destroy();
@@ -182,6 +184,8 @@ class CardGraphic extends FlxSpriteGroup
 		add(back = GraphicsCache.loadFlxSpriteFromAtlas("card_backs"));
 
 		// add illustration
+		add(illustration = GraphicsCache.loadFlxSpriteFromAtlas("card_illustrations"));
+		illustration.x = illustration.y = 3;
 
 		// add(value = GraphicsCache.loadFlxSpriteFromAtlas("card_values"));
 
@@ -242,6 +246,7 @@ class CardGraphic extends FlxSpriteGroup
 		name.scrollFactor.set(0, 0);
 		nameLine1.scrollFactor.set(0, 0);
 		nameLine2.scrollFactor.set(0, 0);
+		illustration.scrollFactor.set(0, 0);
 		// rarity.scrollFactor.set(0, 0);
 
 		offset.x = offset.y = 5;
@@ -262,6 +267,8 @@ class CardGraphic extends FlxSpriteGroup
 		owner = Owner;
 
 		back.animation.frameName = Owner == PLAYER ? "player" : "enemy";
+
+		illustration.animation.frameName = Std.string(card.id);
 
 		name.text = card.name.toUpperCase();
 		name.updateText();
@@ -357,6 +364,7 @@ class CardGraphic extends FlxSpriteGroup
 		attacks[3].visible = visible && shown && card.attacks.contains("W");
 		nameLine1.visible = visible && shown;
 		nameLine2.visible = visible && shown && name.numLines > 1;
+		illustration.visible = visible && shown;
 		// rarity.visible = visible && shown;
 		outline.visible = visible && selected;
 	}
