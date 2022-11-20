@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import holidayccg.globals.GraphicsCache;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
@@ -82,6 +83,8 @@ class BattleState extends FlxSubState
 
 	public var didTut:Bool = false;
 
+	public var coinFlip:CoinFlip;
+
 	public function new(Callback:String->Void):Void
 	{
 		super();
@@ -122,6 +125,8 @@ class BattleState extends FlxSubState
 		blackout.scrollFactor.set();
 
 		lastMode = null;
+
+		coinFlip = new CoinFlip(returnFromCoinFlip);
 
 		openCallback = start;
 	}
@@ -307,10 +312,30 @@ class BattleState extends FlxSubState
 			// random player
 			currentTurn = FlxG.random.bool() ? CardOwner.PLAYER : CardOwner.OPPONENT;
 		}
+		coinFlip.init(currentTurn == CardOwner.PLAYER ? "Green" : "Red");
+		var t:FlxTimer = new FlxTimer();
+		t.start(FlxG.elapsed, (_) ->
+		{
+			openSubState(coinFlip);
+		}, 1);
+	}
+
+	public function returnFromCoinFlip():Void
+	{
 		currentMode = (currentTurn == CardOwner.PLAYER) ? PLAYER_TURN : ENEMY_TURN;
 		if (currentMode == PLAYER_TURN)
 		{
-			startPlayerTurn();
+			var t:FlxTimer = new FlxTimer();
+			t.start(FlxG.elapsed, (_) ->
+			{
+				if (doingTut)
+					showTut(5, () ->
+					{
+						startPlayerTurn();
+					});
+				else
+					startPlayerTurn();
+			}, 1);
 		}
 		else
 		{
@@ -887,7 +912,6 @@ class BattleState extends FlxSubState
 			}
 		});
 	}
-		
 }
 
 class BattleEndState extends FlxSubState
@@ -1130,6 +1154,193 @@ class BattleEndState extends FlxSubState
 	public function exitState():Void
 	{
 		close();
+	}
+}
+
+class CoinFlip extends FlxSubState
+{
+	public var coin:FlxSprite;
+	public var winner:String;
+
+	public var callback:Void->Void;
+
+	public function new(Callback:Void->Void):Void
+	{
+		super();
+
+		openCallback = start;
+		callback = Callback;
+
+		add(coin = GraphicsCache.loadFlxSpriteFromAtlas("coinflip"));
+		coin.scrollFactor.set();
+	}
+
+	public function init(Winner:String = "Green"):Void
+	{
+		winner = Winner;
+		var anim:Array<String> = [];
+		var flips:Int = 0;
+
+		var odd:Array<Int> = [1, 3];
+		var even:Array<Int> = [2, 4];
+
+		if (FlxG.random.bool())
+		{
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			anim.push("start_green_01.png");
+			if (winner == "Green")
+			{
+				flips = odd[FlxG.random.int(0, 1)];
+			}
+			else
+			{
+				flips = even[FlxG.random.int(0, 1)];
+			}
+			for (i in 0...flips)
+			{
+				if (i % 2 == 0)
+				{
+					anim.push("flip_to_green_01.png");
+					anim.push("flip_to_green_02.png");
+					anim.push("flip_to_green_03.png");
+				}
+				else
+				{
+					anim.push("flip_to_red_01.png");
+					anim.push("flip_to_red_02.png");
+					anim.push("flip_to_red_03.png");
+				}
+			}
+		}
+		else
+		{
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			anim.push("start_red_01.png");
+			if (winner == "Red")
+			{
+				flips = odd[FlxG.random.int(0, 1)];
+			}
+			else
+			{
+				flips = even[FlxG.random.int(0, 1)];
+			}
+			for (i in 0...flips)
+			{
+				if (i % 2 == 0)
+				{
+					anim.push("flip_to_red_01.png");
+					anim.push("flip_to_red_02.png");
+					anim.push("flip_to_red_03.png");
+				}
+				else
+				{
+					anim.push("flip_to_green_01.png");
+					anim.push("flip_to_green_02.png");
+					anim.push("flip_to_green_03.png");
+				}
+			}
+		}
+		if (winner == "Green")
+		{
+			anim.push("flip_green_end_01.png");
+			anim.push("flip_green_end_02.png");
+			anim.push("flip_green_end_03.png");
+			anim.push("flip_green_end_04.png");
+			anim.push("flip_green_end_05.png");
+			anim.push("flip_green_end_06.png");
+			anim.push("flip_green_end_07.png");
+			anim.push("flip_green_end_08.png");
+			anim.push("flip_green_end_09.png");
+			anim.push("flip_green_end_10.png");
+			anim.push("flip_green_end_11.png");
+			anim.push("flip_green_end_12.png");
+			anim.push("flip_green_end_13.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+			anim.push("flip_green_end_14.png");
+		}
+		else
+		{
+			anim.push("flip_red_end_01.png");
+			anim.push("flip_red_end_02.png");
+			anim.push("flip_red_end_03.png");
+			anim.push("flip_red_end_04.png");
+			anim.push("flip_red_end_05.png");
+			anim.push("flip_red_end_06.png");
+			anim.push("flip_red_end_07.png");
+			anim.push("flip_red_end_08.png");
+			anim.push("flip_red_end_09.png");
+			anim.push("flip_red_end_10.png");
+			anim.push("flip_red_end_11.png");
+			anim.push("flip_red_end_12.png");
+			anim.push("flip_red_end_13.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+			anim.push("flip_red_end_14.png");
+		}
+
+		coin.animation.addByNames("flip", anim, 12, false);
+		coin.animation.finishCallback = (a:String) ->
+		{
+			if (a == "flip")
+				close();
+		};
+
+		closeCallback = () ->
+		{
+			callback();
+		};
+	}
+
+	public function start():Void
+	{
+		coin.x = Global.width / 2 - coin.width / 2;
+		coin.y = Global.height / 2 - coin.height / 2;
+		coin.animation.play("flip", true);
+	}
+
+	override public function close():Void
+	{
+		coin.animation.remove("flip");
+		super.close();
 	}
 }
 

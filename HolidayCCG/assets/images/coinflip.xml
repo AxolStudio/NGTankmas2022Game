@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="flip_green_end_09-sprites.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+	<SubTexture name="flip_green_end_01.png" x="307" y="0" width="151" height="151" frameX="-24" frameY="-3" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_02.png" x="0" y="490" width="152" height="106" frameX="-24" frameY="-36" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_03.png" x="459" y="144" width="150" height="54" frameX="-32" frameY="-31" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_04.png" x="459" y="72" width="151" height="71" frameX="-30" frameY="-26" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_05.png" x="459" y="400" width="140" height="96" frameX="-35" frameY="-36" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_06.png" x="154" y="87" width="152" height="106" frameX="-30" frameY="-36" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_07.png" x="459" y="254" width="149" height="72" frameX="-23" frameY="-66" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_08.png" x="0" y="0" width="153" height="48" frameX="-22" frameY="-85" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_09.png" x="0" y="147" width="153" height="48" frameX="-26" frameY="-85" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_10.png" x="459" y="199" width="150" height="54" frameX="-29" frameY="-82" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_11.png" x="0" y="337" width="153" height="46" frameX="-24" frameY="-91" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_12.png" x="0" y="196" width="153" height="46" frameX="-23" frameY="-91" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_13.png" x="154" y="43" width="152" height="43" frameX="-24" frameY="-97" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_green_end_14.png" x="154" y="0" width="152" height="42" frameX="-24" frameY="-98" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_to_green_01.png" x="307" y="152" width="151" height="151" frameX="-24" frameY="-3" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_to_green_02.png" x="154" y="301" width="152" height="42" frameX="-24" frameY="-34" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_to_green_03.png" x="306" y="344" width="152" height="105" frameX="-24" frameY="-8" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_01.png" x="307" y="152" width="151" height="151" frameX="-24" frameY="-3" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_02.png" x="306" y="450" width="152" height="106" frameX="-24" frameY="-36" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_03.png" x="459" y="144" width="150" height="54" frameX="-32" frameY="-31" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_04.png" x="459" y="0" width="151" height="71" frameX="-30" frameY="-26" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_05.png" x="459" y="497" width="140" height="96" frameX="-35" frameY="-36" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_06.png" x="154" y="194" width="152" height="106" frameX="-30" frameY="-36" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_07.png" x="459" y="327" width="149" height="72" frameX="-23" frameY="-66" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_08.png" x="0" y="98" width="153" height="48" frameX="-22" frameY="-85" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_09.png" x="0" y="49" width="153" height="48" frameX="-26" frameY="-85" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_10.png" x="459" y="199" width="150" height="54" frameX="-29" frameY="-82" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_11.png" x="0" y="243" width="153" height="46" frameX="-24" frameY="-91" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_12.png" x="0" y="290" width="153" height="46" frameX="-23" frameY="-91" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_13.png" x="153" y="470" width="152" height="43" frameX="-24" frameY="-97" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_red_end_14.png" x="153" y="427" width="152" height="42" frameX="-24" frameY="-98" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_to_red_01.png" x="307" y="0" width="151" height="151" frameX="-24" frameY="-3" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_to_red_02.png" x="153" y="557" width="152" height="42" frameX="-24" frameY="-34" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="flip_to_red_03.png" x="0" y="384" width="152" height="105" frameX="-24" frameY="-8" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="start_green_01.png" x="153" y="384" width="152" height="42" frameX="-24" frameY="-147" frameWidth="200" frameHeight="200"/>
+	<SubTexture name="start_red_01.png" x="153" y="514" width="152" height="42" frameX="-24" frameY="-147" frameWidth="200" frameHeight="200"/>
+</TextureAtlas>

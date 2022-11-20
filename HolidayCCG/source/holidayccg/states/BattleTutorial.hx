@@ -128,7 +128,7 @@ class BattleTutorial extends FlxSubState
 		tutorial12.y = Math.ceil((Global.height - tutorial1.height) / 2);
 
 		// 13
-		add(tutorial13 = new TutorialMessage("Your Opponents may change their Decks around after being defeated - so try battling them again from time-to-time!",
+		add(tutorial13 = new TutorialMessage("Other Opponents may change their Decks around after being defeated - so try battling them again from time-to-time!",
 			0, 0,
 			Math.ceil(Global.width / 2)));
 		tutorial13.x = Math.ceil((Global.width - tutorial1.width) / 2);
@@ -188,10 +188,10 @@ class BattleTutorial extends FlxSubState
 						card.visible = true;
 						showing++;
 
-					case 4:
-						card.visible = tutorial5.visible = false;
-						tutorial6.visible = true;
-						showing++;
+					// case 4:
+					// 	card.visible = tutorial5.visible = false;
+					// 	tutorial6.visible = true;
+					// 	showing++;
 
 					case 7:
 						tutorial8.visible = false;

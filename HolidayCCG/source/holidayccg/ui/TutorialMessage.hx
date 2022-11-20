@@ -71,7 +71,7 @@ class TutorialMessage extends FlxGroup
 		for (l in lines)
 		{
 			l.x = Math.ceil(x + (frame.width / 2) - (l.width / 2));
-			trace(l.x);
+			// trace(l.x);
 		}
 		return x;
 	}
@@ -83,7 +83,7 @@ class TutorialMessage extends FlxGroup
 		for (l in 0...lines.length)
 		{
 			lines[l].y = Math.ceil(y + 10 + (lines[l].height + lineSpacing) * l);
-			trace(lines[l].y);
+			// trace(lines[l].y);
 		}
 
 		return y;

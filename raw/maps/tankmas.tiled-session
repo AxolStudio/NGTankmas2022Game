@@ -10,7 +10,7 @@
         },
         "decorative_tiles.tsx": {
             "scaleInDock": 4,
-            "scaleInEditor": 3
+            "scaleInEditor": 4
         },
         "temp.tsx": {
             "scaleInDock": 2,
