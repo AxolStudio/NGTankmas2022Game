@@ -49,7 +49,7 @@ class ShopState extends FlxSubState
 	public var showingMessage:Bool = false;
 	public var showingReceipt:Bool = false;
 
-	public var blackout:FlxSprite;
+	
 
 	public var notEnoughMoney:TutorialMessage;
 	public var packOpening:OpenPackState;
@@ -129,11 +129,7 @@ class ShopState extends FlxSubState
 
 		notEnoughMoney.visible = false;
 
-		add(blackout = new FlxSprite());
-		blackout.makeGraphic(Global.width, Global.height, GameGlobals.ColorPalette[1]);
-		blackout.alpha = 1;
-		blackout.scrollFactor.set();
-
+		
 		packOpening = new OpenPackState(returnFromOpening);
 
 		super.create();
@@ -149,15 +145,11 @@ class ShopState extends FlxSubState
 		selectChoice(0);
 		money.text = "$" + GameGlobals.Player.money;
 		money.x = Global.width - money.width - 24;
-
-		blackout.alpha = 1;
-		FlxTween.tween(blackout, {alpha: 0}, 0.33, {
-			type: FlxTweenType.ONESHOT,
-			onComplete: (_) ->
-			{
+GameGlobals.transIn(() ->
+		{
+		
 				ready = true;
-			}
-		});
+					});
 	}
 
 	public function selectChoice(Choice:Int):Void
@@ -289,13 +281,8 @@ class ShopState extends FlxSubState
 	public function exit():Void
 	{
 		ready = false;
-		FlxTween.tween(blackout, {alpha: 1}, 0.33, {
-			type: FlxTweenType.ONESHOT,
-			onComplete: (_) ->
-			{
-				close();
-			}
-		});
+		GameGlobals.transOut(()->{close();});
+		
 	}
 
 	public function showMessage():Void
@@ -303,6 +290,15 @@ class ShopState extends FlxSubState
 		notEnoughMoney.visible = true;
 		showingMessage = true;
 	}
+
+	override function draw()
+	{
+		super.draw();
+		if (GameGlobals.transition.transitioning)
+			GameGlobals.transition.draw();
+	}
+
+	
 }
 
 class OpenPackState extends FlxSubState

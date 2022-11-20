@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import flixel.util.FlxTimer;
 import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -26,8 +27,6 @@ class PlayState extends FlxState
 	public var decorativeMap:FlxTilemap = null;
 
 	public var player:GameObject;
-
-	public var blackOut:FlxSprite;
 
 	public var ready:Bool = false;
 
@@ -66,10 +65,6 @@ class PlayState extends FlxState
 
 		FlxG.camera.follow(player, FlxCameraFollowStyle.TOPDOWN);
 
-		add(blackOut = new FlxSprite(0, 0));
-		blackOut.makeGraphic(Global.width, Global.height, GameGlobals.ColorPalette[1]);
-		blackOut.scrollFactor.set();
-
 		super.create();
 
 		setMap("test room");
@@ -85,13 +80,9 @@ class PlayState extends FlxState
 
 	public function fadeIn():Void
 	{
-		blackOut.alpha = 1;
-		FlxTween.tween(blackOut, {alpha: 0}, 1, {
-			ease: FlxEase.quadOut,
-			onComplete: (_) ->
-			{
-				ready = true;
-			}
+		GameGlobals.transIn(() ->
+		{
+			ready = true;
 		});
 	}
 
@@ -176,8 +167,12 @@ class PlayState extends FlxState
 	public function openCollection():Void
 	{
 		ready = false;
-		collectionState.refresh();
-		openSubState(collectionState);
+
+		GameGlobals.transOut(() ->
+		{
+			// collectionState.refresh();
+			openSubState(collectionState);
+		});
 	}
 
 	public function returnFromTutorial():Void
@@ -196,7 +191,9 @@ class PlayState extends FlxState
 		{
 			tutSeen = true;
 			ready = false;
+
 			openSubState(new PlayStateTutorial(returnFromTutorial));
+
 			return;
 		}
 
@@ -294,59 +291,78 @@ class PlayState extends FlxState
 	public function openShop():Void
 	{
 		ready = false;
-		openSubState(shopState);
+		GameGlobals.transOut(() ->
+		{
+			openSubState(shopState);
+		});
 	}
 
 	public function returnFromShop():Void
 	{
-		ready = true;
+		GameGlobals.transIn(() ->
+		{
+			ready = true;
+		});
 	}
 
 	public function switchToRoom(Dir:FlxDirectionFlags):Void
 	{
 		ready = false;
 
-		FlxTween.tween(blackOut, {alpha: 1}, 1, {
-			ease: FlxEase.quadOut,
-			onComplete: (_) ->
+		GameGlobals.transOut(() ->
+		{
+			setMap(mapData.neighbors.get(Dir));
+			switch (Dir)
 			{
-				setMap(mapData.neighbors.get(Dir));
-				switch (Dir)
-				{
-					case UP:
-						player.y = baseMap.y + baseMap.height - (GameGlobals.TILE_SIZE * 2);
+				case UP:
+					player.y = baseMap.y + baseMap.height - (GameGlobals.TILE_SIZE * 2);
 
-					case DOWN:
-						player.y = baseMap.y + GameGlobals.TILE_SIZE;
+				case DOWN:
+					player.y = baseMap.y + GameGlobals.TILE_SIZE;
 
-					case LEFT:
-						player.x = baseMap.x + baseMap.width - (GameGlobals.TILE_SIZE * 2);
+				case LEFT:
+					player.x = baseMap.x + baseMap.width - (GameGlobals.TILE_SIZE * 2);
 
-					case RIGHT:
-						player.x = baseMap.x + GameGlobals.TILE_SIZE;
+				case RIGHT:
+					player.x = baseMap.x + GameGlobals.TILE_SIZE;
 
-					default:
-				}
-				fadeIn();
+				default:
 			}
+			fadeIn();
 		});
 	}
 
 	public function returnFromBattle(Actions:String):Void
 	{
-		Dialog.parseScripts([Actions]);
-		GameGlobals.save();
+		GameGlobals.transIn(() ->
+		{
+			Dialog.parseScripts([Actions]);
+			GameGlobals.save();
+		});
 	}
 
 	public function returnFromCollection():Void
 	{
-		ready = true;
+		GameGlobals.transIn(() ->
+		{
+			ready = true;
+		});
 	}
 
 	public function startBattle(Vs:String):Void
 	{
 		ready = false;
 		battleState.init(GameGlobals.Player.deck, Vs);
-		openSubState(battleState);
+		GameGlobals.transOut(() ->
+		{
+			openSubState(battleState);
+		});
+	}
+
+	override function draw()
+	{
+		super.draw();
+		if (GameGlobals.transition.transitioning)
+			GameGlobals.transition.draw();
 	}
 }

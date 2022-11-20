@@ -34,8 +34,6 @@ class BattleState extends FlxSubState
 
 	public var currentMode:BattleMode = SETUP;
 
-	public var blackout:FlxSprite;
-
 	public static inline var PlayerHandX:Int = 96;
 	public static inline var PlayerHandY:Int = 150;
 
@@ -85,6 +83,8 @@ class BattleState extends FlxSubState
 
 	public var coinFlip:CoinFlip;
 
+	public var table:FlxSprite;
+
 	public function new(Callback:String->Void):Void
 	{
 		super();
@@ -92,6 +92,10 @@ class BattleState extends FlxSubState
 		destroySubStates = false;
 
 		bgColor = GameGlobals.ColorPalette[14];
+
+		add(table = new FlxSprite(Global.asset("assets/images/table.png")));
+		Global.screenCenter(table);
+		table.scrollFactor.set();
 
 		callback = Callback;
 
@@ -118,11 +122,6 @@ class BattleState extends FlxSubState
 		cardPlaceTarget.loadGraphic(Global.asset("assets/images/card_outline.png"));
 		cardPlaceTarget.scrollFactor.set();
 		cardPlaceTarget.visible = false;
-
-		add(blackout = new FlxSprite());
-		blackout.makeGraphic(Global.width, Global.height, GameGlobals.ColorPalette[1]);
-		blackout.alpha = 1;
-		blackout.scrollFactor.set();
 
 		lastMode = null;
 
@@ -189,8 +188,6 @@ class BattleState extends FlxSubState
 		gameGrid = [for (i in 0...9) 0];
 		// gameGrid[FlxG.random.int(0, 8)] = -1;
 
-		blackout.alpha = 1;
-
 		ready = false;
 
 		var cardG:CardGraphic = null;
@@ -235,21 +232,25 @@ class BattleState extends FlxSubState
 		openSubState(battleTut);
 	}
 
+	override function draw()
+	{
+		super.draw();
+		if (GameGlobals.transition.transitioning)
+			GameGlobals.transition.draw();
+	}
+
 	public function start():Void
 	{
-		FlxTween.tween(blackout, {alpha: 0}, .33, {
-			type: FlxTweenType.ONESHOT,
-			onComplete: (_) ->
-			{
-				// placeBlocker();
-				if (doingTut)
-					showTut(1, () ->
-					{
-						placeCards();
-					});
-				else
+		GameGlobals.transIn(() ->
+		{
+			// placeBlocker();
+			if (doingTut)
+				showTut(1, () ->
+				{
 					placeCards();
-			}
+				});
+			else
+				placeCards();
 		});
 	}
 
@@ -907,12 +908,9 @@ class BattleState extends FlxSubState
 			callback(winner == CardOwner.PLAYER ? win : lose);
 		}
 
-		FlxTween.tween(blackout, {alpha: 0}, .33, {
-			type: FlxTweenType.ONESHOT,
-			onComplete: (_) ->
-			{
-				close();
-			}
+		GameGlobals.transOut(() ->
+		{
+			close();
 		});
 	}
 }

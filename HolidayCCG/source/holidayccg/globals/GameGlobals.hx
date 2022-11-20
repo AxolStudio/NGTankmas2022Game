@@ -1,5 +1,6 @@
 package holidayccg.globals;
 
+import holidayccg.states.TransitionState;
 import holidayccg.globals.Cards.Collection;
 import holidayccg.globals.Cards.Deck;
 import flixel.util.FlxSave;
@@ -33,11 +34,15 @@ class GameGlobals
 
 	public static var GameSave:FlxSave;
 
+	public static var transition:TransitionState;
+
 	public static function init():Void
 	{
 		if (initialized)
 			return;
 		initialized = true;
+
+		transition = new TransitionState();
 
 		FlxG.game.setFilters([new ShaderFilter(new FlxShader())]);
 		FlxG.game.stage.quality = StageQuality.LOW;
@@ -111,6 +116,16 @@ class GameGlobals
 				default: "UNKNOWN";
 			}
 		}
+	}
+
+	public static function transIn(Callback:Void->Void):Void
+	{
+		transition.start(true, Callback);
+	}
+
+	public static function transOut(Callback:Void->Void):Void
+	{
+		transition.start(false, Callback);
 	}
 }
 

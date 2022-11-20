@@ -69,37 +69,17 @@ class CollectionState extends FlxSubState
 
 	public var cardName:GameText;
 
-	public var blackout:FlxSprite;
-
 	public function new(Callback:Void->Void):Void
 	{
 		super();
 
+		destroySubStates = false;
+
 		bgColor = 0xffffffff;
 
-		blackout = new FlxSprite();
-		blackout.makeGraphic(Global.width, Global.height, GameGlobals.ColorPalette[1]);
-		blackout.alpha = 1;
-		blackout.scrollFactor.set();
-
-		openCallback = () ->
-		{
-			FlxTween.tween(blackout, {alpha: 0}, .33, {
-				type: FlxTweenType.ONESHOT,
-				onComplete: (_) ->
-				{
-					if (!Dialog.Flags.get("seenCollTut"))
-					{
-						ready = false;
-						openSubState(new CollectionTutorial(returnFromTutorial));
-					}
-					else
-						ready = true;
-				}
-			});
-		}
-
 		closeCallback = Callback;
+		
+		openCallback = refresh;
 
 		add(collection = new FlxTypedSpriteGroup<CardInfo>());
 
@@ -144,8 +124,6 @@ class CollectionState extends FlxSubState
 		// cardName.visible = false;
 
 		add(scrollBar = new FlxSprite());
-
-		add(blackout);
 	}
 
 	override function close()
@@ -172,12 +150,9 @@ class CollectionState extends FlxSubState
 
 	public function exit():Void
 	{
-		FlxTween.tween(blackout, {alpha: 0}, .33, {
-			type: FlxTweenType.ONESHOT,
-			onComplete: (_) ->
-			{
-				close();
-			}
+		GameGlobals.transOut(() ->
+		{
+			close();
 		});
 	}
 
@@ -227,6 +202,24 @@ class CollectionState extends FlxSubState
 		scrollBar.scrollFactor.set();
 		scrollBar.x = SCROLL_LEFT;
 		scrollBar.y = SCROLL_TOP;
+
+		GameGlobals.transIn(() ->
+		{
+			if (!Dialog.Flags.get("seenCollTut"))
+			{
+				ready = false;
+				openSubState(new CollectionTutorial(returnFromTutorial));
+			}
+			else
+				ready = true;
+		});
+	}
+
+	override function draw()
+	{
+		super.draw();
+		if (GameGlobals.transition.transitioning)
+			GameGlobals.transition.draw();
 	}
 
 	public function returnFromTutorial():Void
