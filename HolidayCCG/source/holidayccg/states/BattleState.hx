@@ -675,6 +675,22 @@ class BattleState extends FlxSubState
 			// place the card
 			placeCard();
 		}
+		else if (Controls.justPressed.B)
+		{
+			ready = false;
+			cardPlaceTarget.visible = true;
+			var c:CardGraphic = getCardGraphicFromHand(selectedCard, CardOwner.PLAYER);
+			c.selected = false;
+
+			FlxTween.linearMotion(c, c.x, c.y, PlayerHandX, PlayerHandY + (selectedCard * HandCardSpacing), .2, true, {
+				type: FlxTweenType.ONESHOT,
+				onComplete: (_) ->
+				{
+					sortHand(CardOwner.PLAYER);
+					startPlayerTurn();
+				}
+			});
+		}
 	}
 
 	public function moveTarget():Void

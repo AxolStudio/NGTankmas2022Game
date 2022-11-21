@@ -29,6 +29,12 @@ class GameObject extends FlxSprite
 	public function spawn(Name:String, Which:String, X:Float, Y:Float, ?Facing:FlxDirectionFlags = FlxDirectionFlags.DOWN):Void
 	{
 		name = Name;
+
+		if (name == "player")
+			offset.y = 1;
+		else
+			offset.y = 0;
+
 		buildAnimations(Which);
 
 		animation.finishCallback = (animName:String) ->

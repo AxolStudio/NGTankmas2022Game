@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TextureAtlas imagePath="orange_elf2_DOWN_0-sprites.png">
+<TextureAtlas imagePath="red_elf2_DOWN_0-sprites.png">
 	<!--
 	Created with ShoeBox
 	http://renderhjs.net/shoebox/
 	-->
-	<SubTexture name="blue_elf1_DOWN_0.png"	x="75"	y="29"	width="20"	height="28" frameX="-6" frameY="-2" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="blue_elf2_DOWN_0.png"	x="52"	y="28"	width="22"	height="27" frameX="-5" frameY="-3" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="green_elf1_DOWN_0.png"	x="75"	y="90"	width="20"	height="28" frameX="-6" frameY="-2" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="green_elf2_DOWN_0.png"	x="52"	y="0"	width="22"	height="27" frameX="-5" frameY="-3" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="orange_elf1_DOWN_0.png"	x="96"	y="32"	width="20"	height="28" frameX="-6" frameY="-2" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="orange_elf2_DOWN_0.png"	x="52"	y="56"	width="22"	height="27" frameX="-5" frameY="-3" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="player_DOWN_0.png"	x="0"	y="0"	width="26"	height="31" frameX="-3" frameY="-0" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="player_DOWN_1.png"	x="0"	y="65"	width="25"	height="32" frameX="-3" frameY="-0" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="player_DOWN_2.png"	x="26"	y="32"	width="25"	height="32" frameX="-4" frameY="-0" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="player_SIDE_0.png"	x="75"	y="58"	width="20"	height="31" frameX="-6" frameY="-0" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="player_SIDE_1.png"	x="96"	y="61"	width="20"	height="31" frameX="-6" frameY="-0" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="player_SIDE_2.png"	x="96"	y="0"	width="20"	height="31" frameX="-6" frameY="-0" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="player_UP_0.png"	x="27"	y="0"	width="24"	height="31" frameX="-4" frameY="-0" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="player_UP_1.png"	x="0"	y="32"	width="25"	height="32" frameX="-3" frameY="-0" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="player_UP_2.png"	x="26"	y="65"	width="25"	height="32" frameX="-4" frameY="-0" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="red_elf1_DOWN_0.png"	x="75"	y="0"	width="20"	height="28" frameX="-6" frameY="-2" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="red_elf2_DOWN_0.png"	x="52"	y="84"	width="22"	height="27" frameX="-5" frameY="-3" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="blue_elf1_DOWN_0.png" x="84" y="34" width="22" height="30" frameX="-5" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="blue_elf2_DOWN_0.png" x="50" y="104" width="24" height="29" frameX="-4" frameY="-2" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="green_elf1_DOWN_0.png" x="29" y="35" width="22" height="30" frameX="-5" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="green_elf2_DOWN_0.png" x="75" y="104" width="24" height="29" frameX="-4" frameY="-2" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="orange_elf1_DOWN_0.png" x="106" y="96" width="22" height="30" frameX="-5" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="orange_elf2_DOWN_0.png" x="0" y="102" width="24" height="29" frameX="-4" frameY="-2" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="player_DOWN_0.png" x="0" y="33" width="28" height="33" frameX="-2" frameY="-1" frameWidth="32" frameHeight="34"/>
+	<SubTexture name="player_DOWN_1.png" x="33" y="0" width="27" height="34" frameX="-2" frameY="-0" frameWidth="32" frameHeight="34"/>
+	<SubTexture name="player_DOWN_2.png" x="56" y="35" width="27" height="34" frameX="-3" frameY="-0" frameWidth="32" frameHeight="34"/>
+	<SubTexture name="player_SIDE_0.png" x="61" y="0" width="22" height="33" frameX="-5" frameY="-1" frameWidth="32" frameHeight="34"/>
+	<SubTexture name="player_SIDE_1.png" x="83" y="70" width="22" height="33" frameX="-5" frameY="-1" frameWidth="32" frameHeight="34"/>
+	<SubTexture name="player_SIDE_2.png" x="84" y="0" width="22" height="33" frameX="-5" frameY="-1" frameWidth="32" frameHeight="34"/>
+	<SubTexture name="player_UP_0.png" x="56" y="70" width="26" height="33" frameX="-3" frameY="-0" frameWidth="32" frameHeight="33"/>
+	<SubTexture name="player_UP_1.png" x="0" y="67" width="27" height="34" frameX="-2" frameY="-0" frameWidth="32" frameHeight="34"/>
+	<SubTexture name="player_UP_2.png" x="28" y="67" width="27" height="34" frameX="-3" frameY="-0" frameWidth="32" frameHeight="34"/>
+	<SubTexture name="red_elf1_DOWN_0.png" x="106" y="65" width="22" height="30" frameX="-5" frameY="-1" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="red_elf2_DOWN_0.png" x="25" y="102" width="24" height="29" frameX="-4" frameY="-2" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="shop_DOWN_0.png" x="0" y="0" width="32" height="32" frameX="-0" frameY="-0" frameWidth="32" frameHeight="32"/>
 </TextureAtlas>
