@@ -1,18 +1,15 @@
 package holidayccg.states;
 
-import holidayccg.globals.GraphicsCache;
+import holidayccg.globals.Sounds;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import holidayccg.globals.Cards.Card;
-import holidayccg.globals.Cards.CardGraphic;
-import holidayccg.globals.Cards.CardOwner;
-import holidayccg.globals.Cards.Deck;
 import holidayccg.globals.Cards;
 import holidayccg.globals.GameGlobals;
+import holidayccg.globals.GraphicsCache;
 import holidayccg.globals.Opponent;
 import holidayccg.ui.GameFrame;
 import holidayccg.ui.GameText;
@@ -274,7 +271,20 @@ class BattleState extends FlxSubState
 		{
 			FlxTween.num(playerCards.members[i].x, PlayerHandX, 0.5, {
 				type: FlxTweenType.ONESHOT,
-				startDelay: i * 0.1
+				startDelay: i * 0.1,
+				onComplete: (_) ->
+				{
+					Sounds.playOneOf([
+						"cardSlide1",
+						"cardSlide2",
+						"cardSlide3",
+						"cardSlide4",
+						"cardSlide6",
+						"cardSlide6",
+						"cardSlide7",
+						"cardSlide8"
+					]);
+				}
 			}, (Value:Float) ->
 				{
 					playerCards.members[i].x = Value;
@@ -290,6 +300,16 @@ class BattleState extends FlxSubState
 				startDelay: 0.5 + (i * 0.1),
 				onComplete: i == enemyCards.length - 1 ?(_) ->
 				{
+					Sounds.playOneOf([
+						"cardSlide1",
+						"cardSlide2",
+						"cardSlide3",
+						"cardSlide4",
+						"cardSlide6",
+						"cardSlide6",
+						"cardSlide7",
+						"cardSlide8"
+					]);
 					if (doingTut)
 						showTut(2, () ->
 						{
@@ -297,7 +317,19 @@ class BattleState extends FlxSubState
 						});
 					else
 						startGame();
-				} : null
+				} : (_) ->
+				{
+					Sounds.playOneOf([
+						"cardSlide1",
+						"cardSlide2",
+						"cardSlide3",
+						"cardSlide4",
+						"cardSlide6",
+						"cardSlide6",
+						"cardSlide7",
+						"cardSlide8"
+					]);
+				}
 			}, (Value:Float) ->
 				{
 					enemyCards.members[i].x = Value;
@@ -476,6 +508,8 @@ class BattleState extends FlxSubState
 				cardG.battleFieldPos = bestSpot;
 				playedCards.add(cardG);
 
+				Sounds.playOneOf(["cardPlace1", "cardPlace2", "cardPlace3", "cardPlace4"]);
+
 				checkAttacks(bestSpot, OPPONENT);
 			}
 		});
@@ -514,6 +548,17 @@ class BattleState extends FlxSubState
 
 			c.selected = true;
 			c.x = PlayerHandX + (c.width * .33); // Tween?
+
+			Sounds.playOneOf([
+				"cardSlide1",
+				"cardSlide2",
+				"cardSlide3",
+				"cardSlide4",
+				"cardSlide6",
+				"cardSlide6",
+				"cardSlide7",
+				"cardSlide8"
+			]);
 			sortHand(CardOwner.PLAYER);
 		}
 	}
@@ -561,6 +606,16 @@ class BattleState extends FlxSubState
 		c.selected = false;
 		c.x = PlayerHandX;
 		selectedCard = -1;
+		Sounds.playOneOf([
+			"cardSlide1",
+			"cardSlide2",
+			"cardSlide3",
+			"cardSlide4",
+			"cardSlide6",
+			"cardSlide6",
+			"cardSlide7",
+			"cardSlide8"
+		]);
 
 		sortHand(CardOwner.PLAYER);
 	}
@@ -686,6 +741,16 @@ class BattleState extends FlxSubState
 				type: FlxTweenType.ONESHOT,
 				onComplete: (_) ->
 				{
+					Sounds.playOneOf([
+						"cardSlide1",
+						"cardSlide2",
+						"cardSlide3",
+						"cardSlide4",
+						"cardSlide6",
+						"cardSlide6",
+						"cardSlide7",
+						"cardSlide8"
+					]);
 					sortHand(CardOwner.PLAYER);
 					startPlayerTurn();
 				}
@@ -731,6 +796,7 @@ class BattleState extends FlxSubState
 				type: FlxTweenType.ONESHOT,
 				onComplete: (_) ->
 				{
+					Sounds.playOneOf(["cardPlace1", "cardPlace2", "cardPlace3", "cardPlace4"]);
 					// remove the card from the player's hand
 					playerHand.cards[selectedCard] = -1;
 					playerCards.remove(c, true);
@@ -882,6 +948,16 @@ class BattleState extends FlxSubState
 			type: FlxTweenType.ONESHOT,
 			onComplete: (_) ->
 			{
+				Sounds.playOneOf([
+					"cardSlide1",
+					"cardSlide2",
+					"cardSlide3",
+					"cardSlide4",
+					"cardSlide6",
+					"cardSlide6",
+					"cardSlide7",
+					"cardSlide8"
+				]);
 				startSelectingSpot();
 			}
 		});
@@ -1034,8 +1110,30 @@ class BattleEndState extends FlxSubState
 					startDelay: c * .05,
 					onComplete: c == cardSelections.length - 1 ?(_) ->
 					{
+						Sounds.playOneOf([
+							"cardSlide1",
+							"cardSlide2",
+							"cardSlide3",
+							"cardSlide4",
+							"cardSlide6",
+							"cardSlide6",
+							"cardSlide7",
+							"cardSlide8"
+						]);
 						startFlippingCards();
-					} : null
+					} : (_) ->
+					{
+						Sounds.playOneOf([
+							"cardSlide1",
+							"cardSlide2",
+							"cardSlide3",
+							"cardSlide4",
+							"cardSlide6",
+							"cardSlide6",
+							"cardSlide7",
+							"cardSlide8"
+						]);
+					}
 				});
 		}
 	}
@@ -1081,6 +1179,16 @@ class BattleEndState extends FlxSubState
 	{
 		cardSelections.members[Card].selected = false;
 		cardSelections.members[Card].y -= 20;
+		Sounds.playOneOf([
+			"cardSlide1",
+			"cardSlide2",
+			"cardSlide3",
+			"cardSlide4",
+			"cardSlide6",
+			"cardSlide6",
+			"cardSlide7",
+			"cardSlide8"
+		]);
 	}
 
 	public function selectCard(Card:Int):Void
@@ -1091,6 +1199,16 @@ class BattleEndState extends FlxSubState
 		}
 		cardSelections.members[Card].selected = true;
 		cardSelections.members[Card].y += 20;
+		Sounds.playOneOf([
+			"cardSlide1",
+			"cardSlide2",
+			"cardSlide3",
+			"cardSlide4",
+			"cardSlide6",
+			"cardSlide6",
+			"cardSlide7",
+			"cardSlide8"
+		]);
 		selectedCard = Card;
 	}
 
@@ -1154,6 +1272,16 @@ class BattleEndState extends FlxSubState
 					FlxTween.linearMotion(cG, cG.x, cG.y, Global.width / 2 - cG.width / 2, Global.height + 10, .5, true, {
 						onComplete: (_) ->
 						{
+							Sounds.playOneOf([
+								"cardSlide1",
+								"cardSlide2",
+								"cardSlide3",
+								"cardSlide4",
+								"cardSlide6",
+								"cardSlide6",
+								"cardSlide7",
+								"cardSlide8"
+							]);
 							exitState();
 						}
 					});
@@ -1338,7 +1466,9 @@ class CoinFlip extends FlxSubState
 		coin.animation.finishCallback = (a:String) ->
 		{
 			if (a == "flip")
+			{
 				close();
+			}
 		};
 
 		closeCallback = () ->
@@ -1352,6 +1482,16 @@ class CoinFlip extends FlxSubState
 		coin.x = Global.width / 2 - coin.width / 2;
 		coin.y = Global.height / 2 - coin.height / 2;
 		coin.animation.play("flip", true);
+		var t:FlxTimer = new FlxTimer();
+		t.start(1, (_) ->
+		{
+			Sounds.playSound("coin_up",1);
+		}, 1);
+		var t2:FlxTimer = new FlxTimer();
+		t2.start((coin.animation.frames / 12) - 1, (_) ->
+		{
+			Sounds.playSound("coin_down",1);
+		}, 1);
 	}
 
 	override public function close():Void

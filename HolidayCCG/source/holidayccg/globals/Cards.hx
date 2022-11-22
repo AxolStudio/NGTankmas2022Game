@@ -313,6 +313,16 @@ class CardGraphic extends FlxSpriteGroup
 				FlxTween.tween(scale, {x: 1}, .1, {
 					onComplete: (_) ->
 					{
+						Sounds.playOneOf([
+							"cardSlide1",
+							"cardSlide2",
+							"cardSlide3",
+							"cardSlide4",
+							"cardSlide6",
+							"cardSlide6",
+							"cardSlide7",
+							"cardSlide8"
+						]);
 						flipping = false;
 					}
 				});
@@ -330,6 +340,16 @@ class CardGraphic extends FlxSpriteGroup
 				FlxTween.tween(scale, {x: 1}, .1, {
 					onComplete: (_) ->
 					{
+						Sounds.playOneOf([
+							"cardSlide1",
+							"cardSlide2",
+							"cardSlide3",
+							"cardSlide4",
+							"cardSlide6",
+							"cardSlide6",
+							"cardSlide7",
+							"cardSlide8"
+						]);
 						flipping = false;
 					}
 				});
@@ -347,6 +367,16 @@ class CardGraphic extends FlxSpriteGroup
 				FlxTween.tween(scale, {x: 1}, .1, {
 					onComplete: (_) ->
 					{
+						Sounds.playOneOf([
+							"cardSlide1",
+							"cardSlide2",
+							"cardSlide3",
+							"cardSlide4",
+							"cardSlide6",
+							"cardSlide6",
+							"cardSlide7",
+							"cardSlide8"
+						]);
 						flipping = false;
 					}
 				});
