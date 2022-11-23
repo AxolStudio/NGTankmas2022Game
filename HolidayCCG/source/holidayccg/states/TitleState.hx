@@ -201,11 +201,16 @@ class TitleState extends FlxState
 
 	public function returnFromCredits():Void
 	{
-		ready = true;
+		GameGlobals.transIn(() ->
+		{
+			ready = true;
+		});
 	}
 
 	public function returnFromConfirmState():Void
 	{
+		persistentDraw = false;
+		persistentUpdate = false;
 		ready = true;
 	}
 
@@ -227,6 +232,8 @@ class TitleState extends FlxState
 				// if they ahve a save, confirm!
 				if (GameGlobals.hasSave)
 				{
+					persistentDraw = true;
+					persistentUpdate = true;
 					openSubState(new ConfirmState(returnFromConfirmState));
 				}
 				else
@@ -315,7 +322,7 @@ class ConfirmState extends FlxSubState
 	public var choiceNo:GameText;
 	public var cursor:GameText;
 
-	public var selected:Int = 1;
+	public var selected:Int = -1;
 
 	public static inline var lineSpacing:Float = 4;
 
@@ -333,27 +340,30 @@ class ConfirmState extends FlxSubState
 		cursor.text = "]";
 
 		text = new GameText();
-		text.text = "You have Saved Data from a previous game. Are you sure you want to start a new game? This will ERASE your existing data!";
+		text.text = "You have Saved Data from a previous game.\nAre you sure you want to start a new game?\nThis will ERASE your existing data!";
 		text.wordWrap = true;
 		text.multiLine = true;
 
 		text.autoSize = false;
-		text.fieldWidth = Std.int((Global.width / 2) - 48);
+		text.fieldWidth = Std.int((Global.width * .8) - 20);
 		text.updateText();
 
 		lines = [];
 
 		var line:GameText = null;
 		var h:Float = 20;
+		var w:Float = 0;
 		for (l in text._lines)
 		{
 			line = new GameText();
 			line.text = l;
 			h += line.height + lineSpacing;
 			lines.push(line);
+			if (line.width > w)
+				w = line.width;
 		}
 
-		back = new GameFrame(Global.width / 2, h + line.height);
+		back = new GameFrame(w + 20, h + lineSpacing + (line.height * 2));
 		back.x = Global.width / 2 - back.width / 2;
 		back.y = Global.height / 2 - back.height / 2;
 
@@ -368,21 +378,26 @@ class ConfirmState extends FlxSubState
 
 		choiceYes = new GameText();
 		choiceYes.text = "Yes";
-		choiceYes.x = back.x + 24 + cursor.x + 10;
+		choiceYes.x = Global.width / 2 - choiceYes.width - 10;
 		choiceYes.y = back.y + back.height - choiceYes.height - 10;
 		add(choiceYes);
 
 		choiceNo = new GameText();
 		choiceNo.text = "No";
-		choiceNo.x = back.x + back.width - choiceNo.width - 10;
+		choiceNo.x = Global.width / 2 + 10 + cursor.width + 10;
 		choiceNo.y = back.y + back.height - choiceNo.height - 10;
 		add(choiceNo);
 
 		cursor.x = choiceNo.x - 10 - cursor.width;
 		cursor.y = choiceNo.y;
 		add(cursor);
+	}
 
-		ready = true;
+	override function create()
+	{
+		super.create();
+
+		// ready = true;
 	}
 
 	override function draw()
@@ -396,7 +411,12 @@ class ConfirmState extends FlxSubState
 	{
 		super.update(elapsed);
 
-		if (ready)
+		if (!ready && selected == -1)
+		{
+			ready = true;
+			selected = 1;
+		}
+		else if (ready)
 		{
 			if (Controls.justPressed.LEFT || Controls.justPressed.RIGHT)
 			{

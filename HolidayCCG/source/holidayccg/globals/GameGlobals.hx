@@ -44,6 +44,8 @@ class GameGlobals
 			return;
 		initialized = true;
 
+		FlxG.mouse.visible = false;
+
 		transition = new TransitionState();
 
 		FlxG.game.setFilters([new ShaderFilter(new FlxShader())]);
