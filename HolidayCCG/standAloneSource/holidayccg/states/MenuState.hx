@@ -26,6 +26,6 @@ class MenuState extends flixel.FlxState
 		super.update(elapsed);
 
 		if (Controls.justPressed.A)
-			Global.switchState(new holidayccg.states.PlayState());
+			Global.switchState(new holidayccg.states.TitleState());
 	}
 }

@@ -36,6 +36,8 @@ class GameGlobals
 
 	public static var transition:TransitionState;
 
+	public static var hasSave:Bool = false;
+
 	public static function init():Void
 	{
 		if (initialized)
@@ -60,12 +62,12 @@ class GameGlobals
 
 		if (GameSave.data.savedData != null) // #if debug && false #end)
 		{
-			var SavedData:SaveData = GameSave.data.savedData;
-			Dialog.Flags = SavedData.dialogFlags.copy();
-			Player.money = SavedData.money;
-			Player.collection = SavedData.collection;
-			Player.deck = SavedData.deck;
-			Opponent.OpponentList = SavedData.opponents.copy();
+			hasSave = true;
+		}
+		else
+		{
+			//	NO SAVE!
+			hasSave = false;
 		}
 
 		// #if debug
@@ -76,6 +78,18 @@ class GameGlobals
 			Player.collection.add(c, 1);
 		}
 		// #end
+
+		PlayState = new PlayState();
+	}
+
+	public static function loadSave():Void
+	{
+		var SavedData:SaveData = GameSave.data.savedData;
+		Dialog.Flags = SavedData.dialogFlags.copy();
+		Player.money = SavedData.money;
+		Player.collection = SavedData.collection;
+		Player.deck = SavedData.deck;
+		Opponent.OpponentList = SavedData.opponents.copy();
 	}
 
 	public static function save():Void

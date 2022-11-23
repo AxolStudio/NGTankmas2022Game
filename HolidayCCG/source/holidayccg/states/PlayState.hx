@@ -44,12 +44,10 @@ class PlayState extends FlxState
 
 	public var shopState:ShopState;
 
-	override public function create()
+	override public function new()
 	{
-		GameGlobals.PlayState = this;
-		GameGlobals.init();
+		super();
 
-		trace(FlxG.camera.pixelPerfectRender);
 		#if debug
 		GameGlobals.Player.collection.add(10, 1);
 		#end
@@ -63,25 +61,35 @@ class PlayState extends FlxState
 
 		playerLayer.add(player = new GameObject());
 
-		FlxG.camera.follow(player, FlxCameraFollowStyle.TOPDOWN);
-
-		super.create();
-
-		setMap("test room");
-
 		battleState = new BattleState(returnFromBattle);
 		collectionState = new CollectionState(returnFromCollection);
 		shopState = new ShopState(returnFromShop);
 
+		setMap("test room");
+	}
+
+	override public function destroy():Void
+	{
+		trace("PlayState destroy");
+	}
+
+	override function create()
+	{
 		tutSeen = Dialog.Flags.exists("tutSeen");
+
+		super.create();
 
 		fadeIn();
 	}
 
 	public function fadeIn():Void
 	{
+		FlxG.worldBounds.set(0, 2, baseMap.width, baseMap.height - 2);
+		FlxG.camera.setScrollBounds(0, baseMap.width, 2, baseMap.height - 2);
 		GameGlobals.transIn(() ->
 		{
+			FlxG.camera.follow(player, FlxCameraFollowStyle.TOPDOWN);
+			FlxG.camera.snapToTarget();
 			ready = true;
 		});
 	}
@@ -122,10 +130,6 @@ class PlayState extends FlxState
 		mapLayer.add(baseMap);
 		mapLayer.add(decorativeMap);
 
-		FlxG.worldBounds.set(0, 2, baseMap.width, baseMap.height - 2);
-
-		FlxG.camera.setScrollBounds(0, baseMap.width, 2, baseMap.height - 2);
-
 		// add objects
 		var o:GameObject = null;
 		for (obj in mapData.objects)
@@ -144,7 +148,6 @@ class PlayState extends FlxState
 				default:
 			}
 		}
-		FlxG.camera.snapToTarget();
 	}
 
 	public function showDialog(Dialog:DialogData):Void
