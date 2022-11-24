@@ -29,25 +29,25 @@ class CreditState extends FlxSubState
 		text = new GameText();
 		text.text = "Tim I Hely: Programming, Design";
 		text.x = Global.width / 2 - text.width / 2;
-		text.y = 50;
+		text.y = 60;
 		add(text);
 
 		text = new GameText();
 		text.text = "bingowaders: Sprites, Card Illustrations";
 		text.x = Global.width / 2 - text.width / 2;
-		text.y = 70;
+		text.y = 100;
 		add(text);
 
 		text = new GameText();
 		text.text = "Gallow: Tiles";
 		text.x = Global.width / 2 - text.width / 2;
-		text.y = 90;
+		text.y = 140;
 		add(text);
 
 		text = new GameText();
 		text.text = "Albe: Music";
 		text.x = Global.width / 2 - text.width / 2;
-		text.y = 110;
+		text.y = 180;
 		add(text);
 
 		text = new GameText();

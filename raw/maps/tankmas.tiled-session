@@ -20,11 +20,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2,
-            "selectedLayer": 2,
+            "scale": 4,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 541.75,
-                "y": 204.5
+                "x": 236.375,
+                "y": 360.75
             }
         },
         "test_room_02.tmx": {
