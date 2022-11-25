@@ -1,5 +1,8 @@
 package holidayccg.states;
 
+import holidayccg.ui.GameCamera;
+import flixel.util.FlxColor;
+import flixel.FlxCamera;
 import flixel.util.FlxTimer;
 import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
@@ -44,6 +47,8 @@ class PlayState extends FlxState
 
 	public var shopState:ShopState;
 
+	public var gameCamera:GameCamera;
+
 	override public function new()
 	{
 		super();
@@ -54,10 +59,14 @@ class PlayState extends FlxState
 
 		destroySubStates = false;
 
+		// gameCamera.bgColor = FlxColor.TRANSPARENT;
+
 		add(mapLayer = new FlxTypedGroup<FlxTilemap>());
 		add(objectLayer = new FlxTypedGroup<GameObject>());
 		add(playerLayer = new FlxTypedGroup<GameObject>());
 		add(dialog = new DialogFrame());
+
+		// dialog.cameras = [FlxG.camera];
 
 		playerLayer.add(player = new GameObject());
 
@@ -70,11 +79,23 @@ class PlayState extends FlxState
 
 	override public function destroy():Void
 	{
-		trace("PlayState destroy");
+		// trace("PlayState destroy");
 	}
 
 	override function create()
 	{
+		GameGlobals.transition.transitioning = true;
+		var c:FlxCamera = FlxG.camera;
+		FlxG.cameras.remove(FlxG.camera, false);
+		gameCamera = FlxG.cameras.add(new GameCamera(0, 0, Std.int(Global.width / 2), Std.int(Global.height / 2), 2), false);
+		mapLayer.cameras = [gameCamera];
+		objectLayer.cameras = [gameCamera];
+		playerLayer.cameras = [gameCamera];
+
+		FlxG.cameras.add(c, true);
+		c.bgColor = FlxColor.TRANSPARENT;
+		GameGlobals.transition.cameras = [c];
+
 		tutSeen = Dialog.Flags.exists("tutSeen");
 
 		super.create();
@@ -85,11 +106,12 @@ class PlayState extends FlxState
 	public function fadeIn():Void
 	{
 		FlxG.worldBounds.set(0, 2, baseMap.width, baseMap.height - 2);
-		FlxG.camera.setScrollBounds(0, baseMap.width, 2, baseMap.height - 2);
+		gameCamera.setScrollBounds(0, baseMap.width, 2, (baseMap.height - 2));
+		gameCamera.follow(player);
+		gameCamera.snapToTarget();
+
 		GameGlobals.transIn(() ->
 		{
-			FlxG.camera.follow(player, FlxCameraFollowStyle.TOPDOWN);
-			FlxG.camera.snapToTarget();
 			ready = true;
 		});
 	}
@@ -142,7 +164,10 @@ class PlayState extends FlxState
 				case NPC:
 					o = objectLayer.getFirstAvailable();
 					if (o == null)
+					{
 						objectLayer.add(o = new GameObject());
+					}
+
 					o.spawn(obj.name, obj.sprite, obj.x, obj.y, GameObject.facingFromString(obj.facing));
 
 				default:

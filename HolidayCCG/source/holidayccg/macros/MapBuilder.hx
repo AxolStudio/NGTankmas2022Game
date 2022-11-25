@@ -9,7 +9,7 @@ using StringTools;
 
 class MapBuilder
 {
-	@:access(flixel.system.macros.FlxAssetPaths.getFileReferences)
+	@:access(flixel.system.macros.FlxAssetPaths.addFileReferences)
 	public static macro function build():Array<Field>
 	{
 		var fields = Context.getBuildFields();
@@ -20,7 +20,7 @@ class MapBuilder
 		var json:haxe.DynamicAccess<Dynamic>;
 		var mapData:MapStructure;
 
-		for (file in flixel.system.macros.FlxAssetPaths.getFileReferences(#if ADVENT 'holidayccg/' + #end 'assets/data/maps/', false, ["tmj"]))
+		for (file in flixel.system.macros.FlxAssetPaths.addFileReferences([], #if ADVENT 'holidayccg/' + #end 'assets/data/maps/', false, ~/^.*\.(tmj)$/ig))
 		{
 			if (!file.name.startsWith("_"))
 			{

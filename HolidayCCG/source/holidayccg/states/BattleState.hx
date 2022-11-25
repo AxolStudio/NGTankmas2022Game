@@ -484,10 +484,7 @@ class BattleState extends FlxSubState
 		bestCard = choice[0];
 		bestSpot = choice[1];
 
-		// show the card then move it from the player's hand to the board
-		// trace(bestSpots);
-		// trace(enemyHand.cards);
-		// trace("bestValue:", bestValue, "bestSpot:", bestSpot, "bestCard:", bestCard);
+		
 
 		var cardG:CardGraphic = getCardGraphicFromHand(bestCard, CardOwner.OPPONENT);
 		cardG.shown = true;
@@ -668,7 +665,6 @@ class BattleState extends FlxSubState
 			}
 
 			currentMode = TURN_ENDING;
-			trace(currentMode);
 
 			turnEndTimer.start(.5, (_) ->
 			{

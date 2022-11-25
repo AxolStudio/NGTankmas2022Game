@@ -281,7 +281,7 @@ class Snow extends FlxSprite
 		flixel.util.FlxSpriteUtil.drawCircle(this, -1, -1, Depth * Depth, FlxColor.WHITE);
 		depth = Depth;
 		alpha = .15 * (13 - (depth * 2));
-		trace(depth, alpha);
+
 		speed = FlxG.random.int(10, 20) * depth * depth;
 		x = FlxG.random.int(Global.width + Global.height);
 		y = FlxG.random.int(-10, Global.height + 10);

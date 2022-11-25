@@ -45,6 +45,7 @@ class GameGlobals
 		initialized = true;
 
 		FlxG.mouse.visible = false;
+		FlxG.camera.bgColor = FlxColor.TRANSPARENT;
 
 		transition = new TransitionState();
 

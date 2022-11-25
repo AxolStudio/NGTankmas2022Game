@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import flixel.FlxG;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxTween;
 import flixel.addons.ui.FlxUI9SliceSprite;
@@ -14,6 +15,7 @@ class TransitionState extends FlxTypedGroup<FlxUI9SliceSprite>
 	public function new():Void
 	{
 		super();
+		cameras = [FlxG.camera];
 		var cane:FlxUI9SliceSprite = null;
 		for (i in 0...9)
 		{
