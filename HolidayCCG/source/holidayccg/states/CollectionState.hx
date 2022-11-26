@@ -69,6 +69,8 @@ class CollectionState extends FlxSubState
 
 	public var cardName:GameText;
 
+	// public var frame:GameFrame;
+
 	public function new(Callback:Void->Void):Void
 	{
 		super();
@@ -78,8 +80,11 @@ class CollectionState extends FlxSubState
 		bgColor = 0xffffffff;
 
 		closeCallback = Callback;
-		
+
 		openCallback = refresh;
+
+		// add(frame = new GameFrame(Global.width, Global.height));
+		// frame.scrollFactor.set();
 
 		add(collection = new FlxTypedSpriteGroup<CardInfo>());
 
