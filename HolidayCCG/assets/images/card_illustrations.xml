@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TextureAtlas imagePath="3_MouseKing-sprites.png">
+<TextureAtlas imagePath="12_JackFrost-sprites.png">
 	<!--
 	Created with ShoeBox
 	http://renderhjs.net/shoebox/
 	-->
-	<SubTexture name="1" x="0" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="2" x="0" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="3" x="0" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="4" x="91" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="5" x="91" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="6" x="91" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="10" x="0" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="11" x="0" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="12" x="91" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="1" x="182" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="2" x="182" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="3" x="182" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="4" x="91" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="5" x="91" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="6" x="182" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="7" x="91" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="8" x="0" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="9" x="0" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
 </TextureAtlas>
