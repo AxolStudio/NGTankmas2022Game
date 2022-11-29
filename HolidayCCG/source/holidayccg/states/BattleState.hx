@@ -151,6 +151,8 @@ class BattleState extends FlxSubState
 		playerCards.clear();
 		playedCards.clear();
 
+		doingTut = false;
+
 		super.close();
 	}
 
@@ -173,7 +175,7 @@ class BattleState extends FlxSubState
 		else
 			playerHand = new Deck(PlayerDeck.cards.copy());
 
-		var vs:Array<String> = VSWho.split("?");
+		var vs:Array<String> = VSWho.split(";");
 		enemy = Opponent.OpponentList.get(vs[0]);
 		win = vs[1];
 		lose = vs[2];
@@ -483,8 +485,6 @@ class BattleState extends FlxSubState
 		var choice:Array<Int> = choices[0].split('').map(function(v:String) return Std.parseInt(v));
 		bestCard = choice[0];
 		bestSpot = choice[1];
-
-		
 
 		var cardG:CardGraphic = getCardGraphicFromHand(bestCard, CardOwner.OPPONENT);
 		cardG.shown = true;
@@ -1257,6 +1257,7 @@ class BattleEndState extends FlxSubState
 				{
 					var cG:CardGraphic = cardSelections.members[selectedCard];
 					GameGlobals.Player.collection.add(cG.card.id, 1);
+
 					if (opponent.sideboard.length > 0)
 					{
 						// take a random card out of the sideboard, and replace the taken card with it
@@ -1481,12 +1482,12 @@ class CoinFlip extends FlxSubState
 		var t:FlxTimer = new FlxTimer();
 		t.start(1, (_) ->
 		{
-			Sounds.playSound("coin_up",1);
+			Sounds.playSound("coin_up", 1);
 		}, 1);
 		var t2:FlxTimer = new FlxTimer();
 		t2.start((coin.animation.frames / 12) - 1, (_) ->
 		{
-			Sounds.playSound("coin_down",1);
+			Sounds.playSound("coin_down", 1);
 		}, 1);
 	}
 

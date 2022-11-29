@@ -25,6 +25,8 @@ class DialogFrame extends FlxGroup
 	public var isQuestion:Bool = false;
 	public var selected:Int = -1;
 
+	public var isMessage:Bool = false;
+
 	public var dialogData:DialogData;
 
 	public function new():Void
@@ -76,13 +78,30 @@ class DialogFrame extends FlxGroup
 		selector.visible = false;
 	}
 
+	public function displayMessage(Message:String):Void
+	{
+		isQuestion = false;
+		selected = -1;
+		text.text = Message;
+		choiceA.visible = false;
+		choiceB.visible = false;
+		selector.visible = false;
+		cursor.y = frame.y + frame.height - 12 - cursor.height;
+		cursor.visible = true;
+		FlxTween.tween(cursor, {y: cursor.y - 4}, 0.2, {type: FlxTweenType.PINGPONG, startDelay: 0.1});
+		frame.visible = true;
+		text.visible = true;
+
+		isMessage = true;
+	}
+
 	public function display(DialogData:DialogData):Void
 	{
 		dialogData = DialogData;
 		if (dialogData.text.startsWith("Q:"))
 		{
 			choiceA.text = dialogData.text.substr(2, dialogData.text.indexOf("|") - 2);
-			choiceB.text = dialogData.text.substr(dialogData.text.indexOf("|") + 1, dialogData.text.indexOf("?") - dialogData.text.indexOf("|") - 1);
+			choiceB.text = dialogData.text.substr(dialogData.text.indexOf("|") + 1, dialogData.text.indexOf(";") - dialogData.text.indexOf("|") - 1);
 
 			choiceA.x = frame.x + 24 + selector.width + 10;
 			choiceA.y = frame.y + frame.height - 24 - choiceA.height;
@@ -90,7 +109,7 @@ class DialogFrame extends FlxGroup
 			choiceB.x = frame.x + (frame.width / 2) + 10 + selector.width + 10;
 			choiceB.y = frame.y + frame.height - 24 - choiceB.height;
 
-			text.text = dialogData.text.substr(dialogData.text.indexOf("?") + 1);
+			text.text = dialogData.text.substr(dialogData.text.indexOf(";") + 1);
 			choiceA.visible = true;
 			choiceB.visible = true;
 			selector.visible = true;
@@ -113,6 +132,8 @@ class DialogFrame extends FlxGroup
 			FlxTween.tween(cursor, {y: cursor.y - 4}, 0.2, {type: FlxTweenType.PINGPONG, startDelay: 0.1});
 		}
 
+		isMessage = false;
+
 		frame.visible = true;
 		text.visible = true;
 	}
@@ -131,7 +152,8 @@ class DialogFrame extends FlxGroup
 		choiceB.visible = false;
 		selector.visible = false;
 
-		Dialog.close(dialogData, selected != 1);
+		if (!isMessage)
+			Dialog.close(dialogData, selected != 1);
 	}
 
 	public function changeSelection():Void

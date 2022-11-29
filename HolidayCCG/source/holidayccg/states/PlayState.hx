@@ -74,7 +74,7 @@ class PlayState extends FlxState
 		collectionState = new CollectionState(returnFromCollection);
 		shopState = new ShopState(returnFromShop);
 
-		setMap("test room");
+		setMap("Central_Hub");
 	}
 
 	override public function destroy():Void
@@ -179,6 +179,13 @@ class PlayState extends FlxState
 	{
 		talking = true;
 		dialog.display(Dialog);
+		ready = true;
+	}
+
+	public function showMessage(Message:String):Void
+	{
+		talking = true;
+		dialog.displayMessage(Message);
 		ready = true;
 	}
 

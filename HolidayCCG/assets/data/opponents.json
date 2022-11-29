@@ -5,5 +5,47 @@
     "sideboard": [],
     "reward": 100,
     "subsequentReward": 0
+  },
+  {
+    "name": "workshop_01",
+    "deck": [6, 2, 3, 4, 5],
+    "sideboard": [7],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_02",
+    "deck": [1, 7, 3, 4, 5],
+    "sideboard": [8],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_03",
+    "deck": [6, 7, 3, 4, 5],
+    "sideboard": [8],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_04",
+    "deck": [1, 6, 3, 4, 5],
+    "sideboard": [7],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_05",
+    "deck": [1, 7, 3, 4, 5],
+    "sideboard": [8],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_06",
+    "deck": [1, 7, 6, 4, 5],
+    "sideboard": [8],
+    "reward": 20,
+    "subsequentReward": 5
   }
 ]

@@ -30,10 +30,9 @@ class GameObject extends FlxSprite
 	{
 		name = Name;
 
-		if (name == "player")
-			offset.y = 1;
-		else
-			offset.y = 0;
+		offset.y = 16;
+		if (Which == "yeti")
+			offset.x = 8;
 
 		buildAnimations(Which);
 
@@ -61,34 +60,42 @@ class GameObject extends FlxSprite
 			animation.remove('walk-R');
 		}
 		hasAnims = true;
-		animation.addByNames('stand-D', ['${Which}_DOWN_0.png'], 0, false);
-		animation.addByNames('stand-U', ['${Which}_UP_0.png'], 0, false);
-		animation.addByNames('stand-L', ['${Which}_SIDE_0.png'], 0, false);
-		animation.addByNames('stand-R', ['${Which}_SIDE_0.png'], 0, false, true);
-		animation.addByNames('walk-D', [
-			'${Which}_DOWN_1.png',
-			'${Which}_DOWN_0.png',
-			'${Which}_DOWN_2.png',
-			'${Which}_DOWN_0.png'
-		], 10, false);
-		animation.addByNames('walk-U', [
-			'${Which}_UP_1.png',
-			'${Which}_UP_0.png',
-			'${Which}_UP_2.png',
-			'${Which}_UP_0.png'
-		], 10, false);
-		animation.addByNames('walk-L', [
-			'${Which}_SIDE_1.png',
-			'${Which}_SIDE_0.png',
-			'${Which}_SIDE_2.png',
-			'${Which}_SIDE_0.png'
-		], 10, false);
-		animation.addByNames('walk-R', [
-			'${Which}_SIDE_1.png',
-			'${Which}_SIDE_0.png',
-			'${Which}_SIDE_2.png',
-			'${Which}_SIDE_0.png'
-		], 10, false, true);
+		if (Which != "player")
+		{
+			animation.addByNames('stand-D', ['${Which}_DOWN_0.png', '${Which}_DOWN_1.png'], 10, true);
+			animation.play("stand-D");
+		}
+		else
+		{
+			animation.addByNames('stand-D', ['${Which}_DOWN_0.png'], 0, false);
+			animation.addByNames('stand-U', ['${Which}_UP_0.png'], 0, false);
+			animation.addByNames('stand-L', ['${Which}_SIDE_0.png'], 0, false);
+			animation.addByNames('stand-R', ['${Which}_SIDE_0.png'], 0, false, true);
+			animation.addByNames('walk-D', [
+				'${Which}_DOWN_1.png',
+				'${Which}_DOWN_0.png',
+				'${Which}_DOWN_2.png',
+				'${Which}_DOWN_0.png'
+			], 16, false);
+			animation.addByNames('walk-U', [
+				'${Which}_UP_1.png',
+				'${Which}_UP_0.png',
+				'${Which}_UP_2.png',
+				'${Which}_UP_0.png'
+			], 16, false);
+			animation.addByNames('walk-L', [
+				'${Which}_SIDE_1.png',
+				'${Which}_SIDE_0.png',
+				'${Which}_SIDE_2.png',
+				'${Which}_SIDE_0.png'
+			], 16, false);
+			animation.addByNames('walk-R', [
+				'${Which}_SIDE_1.png',
+				'${Which}_SIDE_0.png',
+				'${Which}_SIDE_2.png',
+				'${Which}_SIDE_0.png'
+			], 16, false, true);
+		}
 	}
 
 	public function refreshAnimation():Void
@@ -138,8 +145,6 @@ class GameObject extends FlxSprite
 		var mapX:Int = Std.int(x / GameGlobals.TILE_SIZE) + DX;
 		var mapY:Int = Std.int(y / GameGlobals.TILE_SIZE) + DY;
 
-		
-		
 		if (baseMap.getTile(mapX, mapY) >= 90 || decorativeMap.getTile(mapX, mapY) >= 1)
 			return;
 

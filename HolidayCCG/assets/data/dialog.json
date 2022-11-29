@@ -4,14 +4,14 @@
     "dialogs": [
       {
         "requirements": ["flag!seenIntro"],
-        "text": "Hello, I'm the intro guy. I'm here to tell you about this game.",
-        "yes": ["flag:seenIntro", "battle:intro guy?dialog:intro guy 2?dialog:intro guy 3"],
+        "text": "Oh! Hey Kid! Who are you? What are you doing here at the North Pole?",
+        "yes": ["flag:seenIntro", "dialog:intro guy 2"],
         "no": []
       },
       {
         "requirements": ["flag:seenIntro"],
-        "text": "Q:Yes|No?Do you want a refresher on the rules?",
-        "yes": ["battle:intro guy?dialog:intro guy?dialog:intro guy 3"],
+        "text": "Q:Yes|No;Do you want a refresher on the rules?",
+        "yes": ["battle:intro guy;dialog:intro guy win;dialog:intro guy lose"],
         "no": []
       }
     ]
@@ -21,8 +21,8 @@
     "dialogs": [
       {
         "requirements": [],
-        "text": "Talk to me again if you need a refresher.",
-        "yes": [],
+        "text": "Oh? No toys are being delivered? Well... That's probably my fault...",
+        "yes": ["dialog:intro guy 3"],
         "no": []
       }
     ]
@@ -32,8 +32,197 @@
     "dialogs": [
       {
         "requirements": [],
-        "text": "Talk to me again and you can try again!",
+        "text": "You see, The Boss{ asked me to come up with the next big thing to give to kids... ",
+        "yes": ["dialog:intro guy 4"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 4",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "It took years, but I finally came up with it! The most amazing thing ever! It's a Collectable Card Game called Flip Fights!",
+        "yes": ["dialog:intro guy 5"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 5",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Before releasing it to the world, I started giving it out to the other elves to test and... well...",
+        "yes": ["dialog:intro guy 6"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 6",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Everyone kind of got addicted to it. They started playing it all the time, and they forgot to make toys!",
+        "yes": ["dialog:intro guy 7"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 7",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Hmm... Maybe you can help! Here, let me give you a starting deck...",
+        "yes": ["dialog:intro guy 8"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 8",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "(You received a Starter Deck of Flip Fight Cards!)",
+        "yes": ["dialog:intro guy 9"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 9",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "If you can find the 4 Champions and defeat them at Flip Fights, they might be convinced to put down the cards and start making toys again!",
+        "yes": ["dialog:intro guy 10"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 10",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Hey, it's flimsy logic, but this game was made in a couple of weeks, so just go with it!",
+        "yes": ["dialog:intro guy 11"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 11",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Let me teach you how the game works!",
+        "yes": ["battle:intro guy;dialog:intro guy win;dialog:intro guy lose"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy win",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "You won! Now you know how to play!",
+        "yes": ["dialog:intro guy end"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy lose",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "You lost, but that's not a big deal.",
+        "yes": ["dialog:intro guy end"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy end",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "You can talk to me for a refresher on the rules at any time! Go out and play against the other elves to get better cards, and then defeat the 4 Champions to save Christmas!",
         "yes": [],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_01",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Hey, newcomer! Play me!",
+        "yes": ["battle:workshop_01;message:Play me again!;message:You can play me anytime!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_02",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Um... do you want to play?",
+        "yes": ["battle:workshop_02;message:Oh...I lost...;message:Oh... I won?"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_03",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Do you like cards?",
+        "yes": ["battle:workshop_03;message:I still like cards...;message:I like cards!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_04",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm supposed to be making wooden train wheels! I'd rather be playing Flip Fights",
+        "yes": ["battle:workshop_04;message:I'd still rather lose than make train wheels!;message:I've made over 80 bazillion train wheels..."],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_05",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I build game consoles...",
+        "yes": [
+          "battle:workshop_05;message:I had to go to Elf School for 23 years to learn everything it takes to make gaming consoles.;message:Winning Flip Fights is more fun than making PS5s!"
+        ],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_06",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I've got the best cards in my deck!",
+        "yes": ["battle:workshop_06;message:It took me so long to get these cards...;message:See?"],
         "no": []
       }
     ]
@@ -44,7 +233,7 @@
       {
         "requirements": ["flag!CTwasBeat"],
         "text": "Q:Yes|No?Do you want to fight?",
-        "yes": ["battle:choice test?dialog:choice test 2?dialog:choice test 3"],
+        "yes": ["battle:choice test;dialog:choice test 2;dialog:choice test 3"],
         "no": []
       },
       {

@@ -19,7 +19,7 @@ class PlayStateTutorial extends FlxSubState
 			ready = true;
 		};
 
-		tutorialMessage1 = new TutorialMessage("Welcome to the NORTH POLE! {\n\nMove around with "
+		tutorialMessage1 = new TutorialMessage("Welcome to the NORTH POLE! \n\nMove around with "
 			+ GameGlobals.GetInputName("move")
 			+ " and speak/interact with "
 			+ GameGlobals.GetInputName("a")

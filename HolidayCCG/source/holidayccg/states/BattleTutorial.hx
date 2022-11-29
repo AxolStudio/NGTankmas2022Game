@@ -44,7 +44,8 @@ class BattleTutorial extends FlxSubState
 		};
 
 		// 1
-		add(tutorial1 = new TutorialMessage("This is the Battlefield!\nEvery game of ???? is played on this 3x3 grid.", 0, 0, Math.ceil(Global.width / 2)));
+		add(tutorial1 = new TutorialMessage("This is the Battlefield!\nEvery game of Flip Fights is played on this 3x3 grid.", 0, 0,
+			Math.ceil(Global.width / 2)));
 
 		tutorial1.x = Math.ceil((Global.width - tutorial1.width) / 2);
 		tutorial1.y = Math.ceil((Global.height - tutorial1.height) / 2);
