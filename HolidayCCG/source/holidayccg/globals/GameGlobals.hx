@@ -63,7 +63,7 @@ class GameGlobals
 
 		Player = new Player();
 
-		if (GameSave.data.savedData != null) // #if debug && false #end)
+		if (GameSave.data.savedData != null #if debug && false #end)
 		{
 			hasSave = true;
 		}
@@ -73,14 +73,14 @@ class GameGlobals
 			hasSave = false;
 		}
 
-		// #if debug
+		#if debug
 		Player.money = 100000;
 
 		for (c in Cards.CardList.keys())
 		{
 			Player.collection.add(c, 1);
 		}
-		// #end
+		#end
 
 		PlayState = new PlayState();
 	}

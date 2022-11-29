@@ -5,7 +5,7 @@
       {
         "requirements": ["flag!seenIntro"],
         "text": "Oh! Hey Kid! Who are you? What are you doing here at the North Pole?",
-        "yes": ["flag:seenIntro", "dialog:intro guy 2"],
+        "yes": ["dialog:intro guy 2"],
         "no": []
       },
       {
@@ -121,7 +121,7 @@
       {
         "requirements": [],
         "text": "Let me teach you how the game works!",
-        "yes": ["battle:intro guy;dialog:intro guy win;dialog:intro guy lose"],
+        "yes": ["flag:seenIntro", "battle:intro guy;dialog:intro guy win;dialog:intro guy lose"],
         "no": []
       }
     ]
@@ -227,58 +227,59 @@
       }
     ]
   },
-  {
-    "who": "choice test",
-    "dialogs": [
-      {
-        "requirements": ["flag!CTwasBeat"],
-        "text": "Q:Yes|No?Do you want to fight?",
-        "yes": ["battle:choice test;dialog:choice test 2;dialog:choice test 3"],
-        "no": []
-      },
-      {
-        "requirements": ["flag:CTwasBeat"],
-        "text": "I'm still recovering...",
-        "yes": [],
-        "no": []
-      }
-    ]
-  },
-  {
-    "who": "choice test 2",
-    "dialogs": [
-      {
-        "requirements": [],
-        "text": "Aw you beat me!",
-        "yes": ["flag:CTwasBeat"],
-        "no": []
-      }
-    ]
-  },
-  {
-    "who": "choice test 3",
-    "dialogs": [
-      {
-        "requirements": [],
-        "text": "We can go again if you want!",
-        "yes": [],
-        "no": []
-      }
-    ]
-  },
-  {
-    "who": "happy guy",
-    "dialogs": [
-      {
-        "requirements": [],
-        "text": "I'm happy!",
-        "yes": [],
-        "no": []
-      }
-    ]
-  },
+
   {
     "who": "shop",
     "dialogs": [{ "requirements": [], "text": "", "yes": ["openShop"], "no": [] }]
+  },
+  {
+    "who": "statue",
+    "dialogs": [
+      {
+        "requirements": ["flag:hasCaneBadge", "flag:hasWreathBadge"],
+        "text": "The statues eyes light up and they rapidly shatter into tiny ice particles and blow away with the wind! Sweet!",
+        "yes": ["destroy:statue"],
+        "no": []
+      },
+      {
+        "requirements": [],
+        "text": "The Statues bar your way. They have the shape of a candy cane and a wreath carved on their blades.",
+        "yes": [],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "work_boss",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm the boss of this workshop! I cannot be defeated at Flip Fights! AHAHAHAHAHAHA!",
+        "yes": ["battle:work_boss;dialog:work_boss lose;message:Come back when you have better cards, kid!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "work_boss lose",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "You beat me! I guess we'll have to go back to making toys! I'll get the rest of these elves back to work!",
+        "yes": ["dialog:work_boss end"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "work_boss end",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Oh! Take this Cane Badge - you'll need it to get past the statues guarding The Boss{!",
+        "yes": ["givebadge:cane", "flag:hasCaneBadge", "destroy:work_boss"],
+        "no": []
+      }
+    ]
   }
 ]

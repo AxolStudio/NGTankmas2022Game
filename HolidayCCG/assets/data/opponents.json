@@ -7,6 +7,13 @@
     "subsequentReward": 0
   },
   {
+    "name": "work_boss",
+    "deck": [5, 6, 7, 8, 9],
+    "sideboard": [],
+    "reward": 50,
+    "subsequentReward": 0
+  },
+  {
     "name": "workshop_01",
     "deck": [6, 2, 3, 4, 5],
     "sideboard": [7],

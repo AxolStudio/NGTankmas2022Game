@@ -1,9 +1,41 @@
 {
-    "activeFile": "S:/Shared drives/NGTankmas2020/maps/test_room.tmx",
+    "activeFile": "Workshop_3.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
+        "Castle_1.tmx": {
+            "scale": 2.2404166666666665,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 393.45359866096345,
+                "y": 271.82443741863494
+            }
+        },
+        "Castle_2.tmx": {
+            "scale": 2.2404166666666665,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 393.45359866096345,
+                "y": 271.82443741863494
+            }
+        },
+        "Castle_3.tmx": {
+            "scale": 2.2404166666666665,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 393.45359866096345,
+                "y": 401.7109912590664
+            }
+        },
+        "Castle_4.tmx": {
+            "scale": 2.2404166666666665,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 393.45359866096345,
+                "y": 271.82443741863494
+            }
+        },
         "Central_Hub.tmx": {
             "expandedObjectLayers": [
                 2
@@ -11,8 +43,8 @@
             "scale": 2.34,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 457.0512820512821,
-                "y": 270.94017094017096
+                "x": 456.62393162393164,
+                "y": 146.15384615384613
             }
         },
         "S:/Shared drives/NGTankmas2020/maps/base_tiles.tsx": {
@@ -33,11 +65,44 @@
             }
         },
         "Workshop_1.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
             "scale": 2.2404166666666665,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 480.04463455458443,
-                "y": 141.93788357820347
+                "x": 393.45359866096345,
+                "y": 270.4854007811047
+            }
+        },
+        "Workshop_2.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2.2404166666666665,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 393.45359866096345,
+                "y": 271.3780918727915
+            }
+        },
+        "Workshop_3.tmx": {
+            "scale": 2.2404166666666665,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 393.45359866096345,
+                "y": 271.82443741863494
+            }
+        },
+        "Workshop_4.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2.2404166666666665,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 393.45359866096345,
+                "y": 271.3780918727915
             }
         },
         "base_tiles.tsx": {
@@ -59,8 +124,8 @@
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 485.375,
-                "y": -19.75
+                "x": 480,
+                "y": 271.875
             }
         },
         "test_room_02.tmx": {
@@ -81,20 +146,31 @@
     "map.lastUsedFormat": "tmx",
     "openFiles": [
         "test_room.tmx",
-        "test_room_02.tmx",
-        "base_tiles.tsx",
-        "decorative_tiles.tsx",
-        "S:/Shared drives/NGTankmas2020/maps/test_room.tmx"
+        "Central_Hub.tmx",
+        "Workshop_1.tmx",
+        "Workshop_2.tmx",
+        "Workshop_3.tmx",
+        "Workshop_4.tmx",
+        "Castle_1.tmx",
+        "Castle_3.tmx",
+        "Castle_2.tmx",
+        "Castle_4.tmx"
     ],
     "project": "tankmas.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "test_room_02.tmx",
-        "base_tiles.tsx",
-        "S:/Shared drives/NGTankmas2020/maps/test_room.tmx",
-        "decorative_tiles.tsx",
         "test_room.tmx",
-        "temp.tsx"
+        "Central_Hub.tmx",
+        "Workshop_1.tmx",
+        "Workshop_2.tmx",
+        "Castle_4.tmx",
+        "Castle_2.tmx",
+        "Castle_3.tmx",
+        "Castle_1.tmx",
+        "Workshop_4.tmx",
+        "Workshop_3.tmx",
+        "test_room_02.tmx",
+        "base_tiles.tsx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

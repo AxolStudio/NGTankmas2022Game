@@ -154,6 +154,7 @@ class PlayState extends FlxState
 
 		// add objects
 		var o:GameObject = null;
+		var killed:Bool = false;
 		for (obj in mapData.objects)
 		{
 			switch (obj.objectType)
@@ -162,15 +163,46 @@ class PlayState extends FlxState
 					player.spawn("player", "player", obj.x, obj.y, GameObject.facingFromString(obj.facing));
 
 				case NPC:
-					o = objectLayer.getFirstAvailable();
-					if (o == null)
+					killed = Dialog.Flags.exists(obj.name + "-dead");
+					if (!killed)
 					{
-						objectLayer.add(o = new GameObject());
+						o = objectLayer.getFirstAvailable();
+						if (o == null)
+						{
+							objectLayer.add(o = new GameObject());
+						}
+
+						o.spawn(obj.name, obj.sprite, obj.x, obj.y, GameObject.facingFromString(obj.facing));
 					}
-
-					o.spawn(obj.name, obj.sprite, obj.x, obj.y, GameObject.facingFromString(obj.facing));
-
 				default:
+			}
+		}
+	}
+
+	public function giveBadge(badge:String):Void
+	{
+		var badgeState:GiveBadgeState = new GiveBadgeState(badge);
+		badgeState.closeCallback = () ->
+		{
+			ready = true;
+			badgeState.destroy();
+		};
+		openSubState(badgeState);
+	}
+
+	public function killObject(ObjectName:String):Void
+	{
+		for (o in objectLayer.members)
+		{
+			if (o.name == ObjectName)
+			{
+				FlxTween.tween(o, {alpha: 0}, 0.5, {
+					onComplete: (_) ->
+					{
+						o.kill();
+						objectLayer.remove(o, true);
+					}
+				});
 			}
 		}
 	}

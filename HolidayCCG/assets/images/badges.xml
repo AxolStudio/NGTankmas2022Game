@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="cane_badge-sprites.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+	<SubTexture name="cane_badge.png"	x="32"	y="0"	width="25"	height="32" frameX="-6" frameY="-0" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="wreath_badge.png"	x="0"	y="0"	width="31"	height="31" frameX="-1" frameY="-1" frameWidth="32" frameHeight="32"/>
+</TextureAtlas>

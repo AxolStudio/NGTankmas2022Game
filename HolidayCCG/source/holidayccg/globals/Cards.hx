@@ -286,7 +286,7 @@ class CardGraphic extends FlxSpriteGroup
 		nameLine1.x = Std.int(back.x + (back.width / 2) - (nameLine1.width / 2));
 		nameLine2.x = Std.int(back.x + (back.width / 2) - (nameLine2.width / 2));
 
-		value.text = Std.string(card.value);
+		value.text = card.value == 10 ? "A" : Std.string(card.value);
 
 		// rarity.animation.frameName = card.rarity;
 

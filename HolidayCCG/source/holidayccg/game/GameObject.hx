@@ -60,9 +60,13 @@ class GameObject extends FlxSprite
 			animation.remove('walk-R');
 		}
 		hasAnims = true;
-		if (Which != "player")
+		if (Which == "statue")
 		{
-			animation.addByNames('stand-D', ['${Which}_DOWN_0.png', '${Which}_DOWN_1.png'], 10, true);
+			animation.addByNames('stand-D', ['${Which}_DOWN_0.png'], 0, false);
+		}
+		else if (Which != "player")
+		{
+			animation.addByNames('stand-D', ['${Which}_DOWN_0.png', '${Which}_DOWN_1.png'], 4, true);
 			animation.play("stand-D");
 		}
 		else
@@ -145,11 +149,15 @@ class GameObject extends FlxSprite
 		var mapX:Int = Std.int(x / GameGlobals.TILE_SIZE) + DX;
 		var mapY:Int = Std.int(y / GameGlobals.TILE_SIZE) + DY;
 
-		if (baseMap.getTile(mapX, mapY) >= 90 || decorativeMap.getTile(mapX, mapY) >= 1)
-			return;
+		if (baseMap.getTile(mapX, mapY) >= 150
+			|| decorativeMap.getTile(mapX, mapY) >= 1
+			|| GameGlobals.PlayState.checkForObjects(mapX, mapY) != null)
+		{
+			moving = false;
 
-		if (GameGlobals.PlayState.checkForObjects(mapX, mapY) != null)
+			refreshAnimation();
 			return;
+		}
 
 		moving = true;
 

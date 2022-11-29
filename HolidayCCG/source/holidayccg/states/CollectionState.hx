@@ -445,6 +445,7 @@ class CollectionState extends FlxSubState
 				{
 					deckList.members[selectedCard].spawn(swappingCardID);
 					deckList.members[selectedCard].shown = true;
+
 					tmpSwappingCard.visible = false;
 					swapping = false;
 					swappingCardArrow.visible = false;
@@ -453,6 +454,8 @@ class CollectionState extends FlxSubState
 					swappingCardID = -1;
 					cardName.text = deckList.members[selectedCard].card.name.toTitleCase();
 					cardName.x = Std.int((Global.width / 2) - (cardName.width / 2));
+					for (c in collection.members)
+						c.cardGraphic.selected = false;
 
 					updateInDeck();
 
@@ -462,6 +465,7 @@ class CollectionState extends FlxSubState
 				{
 					if (collection.members[selectedCard].inDeck)
 						return;
+					collection.members[selectedCard].cardGraphic.selected = false;
 					deckList.members[swappingCardInDeck].spawn(collection.members[selectedCard].cardGraphic.card.id);
 					deckList.members[swappingCardInDeck].visible = true;
 					deckList.members[swappingCardInDeck].shown = true;
@@ -478,6 +482,8 @@ class CollectionState extends FlxSubState
 
 					swappingCardInDeck = -1;
 					swappingCardID = -1;
+					for (c in deckList.members)
+						c.selected = false;
 
 					updateInDeck();
 

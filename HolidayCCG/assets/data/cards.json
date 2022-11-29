@@ -156,21 +156,21 @@
   {
     "id": 23,
     "name": "The Boss",
-    "value": "A",
+    "value": 10,
     "attacks": "S,W,E",
     "rarity": "E"
   },
   {
     "id": 24,
     "name": "Krampus",
-    "value": "A",
+    "value": 10,
     "attacks": "N,S,W",
     "rarity": "E"
   },
   {
     "id": 25,
     "name": "Baby Jesus",
-    "value": "A",
+    "value": 10,
     "attacks": "N,S,E,W",
     "rarity": "E"
   }

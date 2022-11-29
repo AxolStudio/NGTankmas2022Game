@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="sparkle_02-sprites.png">
+	<!--
+	Created with ShoeBox
+	http://renderhjs.net/shoebox/
+	-->
+
+	<SubTexture name="sparkle_01.png" x="7" y="15" width="2" height="2" frameX="-15" frameY="-15" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="sparkle_02.png" x="0" y="15" width="6" height="6" frameX="-13" frameY="-13" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="sparkle_03.png" x="0" y="0" width="14" height="14" frameX="-9" frameY="-9" frameWidth="32" frameHeight="32"/>
+</TextureAtlas>

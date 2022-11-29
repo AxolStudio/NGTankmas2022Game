@@ -43,6 +43,7 @@ class Dialog
 		var willTalk:String = "";
 		var message:String = "";
 		var willOpenShop:Bool = false;
+		var givingBadge:String = "";
 
 		for (f in Scripts)
 		{
@@ -72,6 +73,15 @@ class Dialog
 				// start a battle!!
 				willBattle = f.substr(7);
 			}
+			else if (f.startsWith("destroy:"))
+			{
+				Dialog.Flags.set(f.substr(8) + "-dead", true);
+				GameGlobals.PlayState.killObject(f.substr(8));
+			}
+			else if (f.startsWith("givebadge:"))
+			{
+				givingBadge = f.substr(10);
+			}
 		}
 		if (willBattle != "")
 			GameGlobals.PlayState.startBattle(willBattle);
@@ -81,6 +91,8 @@ class Dialog
 			Dialog.talk(willTalk);
 		else if (willOpenShop)
 			GameGlobals.PlayState.openShop();
+		else if (givingBadge != "")
+			GameGlobals.PlayState.giveBadge(givingBadge);
 	}
 
 	public static function talk(Who:String):Bool
