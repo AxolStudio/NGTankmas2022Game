@@ -1023,6 +1023,8 @@ class BattleEndState extends FlxSubState
 
 	public var opponent:Opponent;
 
+	public var ready:Bool = false;
+
 	public function new(Winner:CardOwner, Opponent:Opponent, Callback:Void->Void):Void
 	{
 		super();
@@ -1172,6 +1174,7 @@ class BattleEndState extends FlxSubState
 		{
 			selecting = true;
 			selectCard(4);
+			ready = true;
 			// selectedCard = 4;
 			// showExit();
 		});
@@ -1219,11 +1222,15 @@ class BattleEndState extends FlxSubState
 		doneButton.visible = true;
 
 		cursor.visible = true;
+		ready = true;
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (!ready)
+			return;
 
 		if (selecting)
 		{

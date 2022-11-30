@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="14">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="16">
  <editorsettings>
   <export format="json"/>
  </editorsettings>
@@ -55,7 +55,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="objects" tintcolor="#5500ff">
-  <object id="11" name="workshop_04" class="NPC" x="608" y="64" width="32" height="32">
+  <object id="11" name="workshop_04" class="NPC" x="480" y="64" width="32" height="32">
    <properties>
     <property name="sprite" value="elf_yellow"/>
    </properties>
@@ -68,6 +68,16 @@
   <object id="13" name="workshop_05" class="NPC" x="832" y="416" width="32" height="32">
    <properties>
     <property name="sprite" value="elf_pink"/>
+   </properties>
+  </object>
+  <object id="14" name="workshop_07" class="NPC" x="640" y="448" width="32" height="32">
+   <properties>
+    <property name="sprite" value="elf_red"/>
+   </properties>
+  </object>
+  <object id="15" name="workshop_07" class="NPC" x="160" y="128" width="32" height="32">
+   <properties>
+    <property name="sprite" value="elf_red"/>
    </properties>
   </object>
  </objectgroup>

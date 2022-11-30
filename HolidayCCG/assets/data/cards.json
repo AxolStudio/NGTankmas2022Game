@@ -36,7 +36,7 @@
   },
   {
     "id": 6,
-    "name": "Tree Angle",
+    "name": "Tree Angel",
     "value": 4,
     "attacks": "N",
     "rarity": "C"
@@ -134,7 +134,7 @@
   },
   {
     "id": 20,
-    "name": "Biblically-acurate Angel",
+    "name": "Biblically-accurate Angel",
     "value": 7,
     "attacks": "E,W",
     "rarity": "E"

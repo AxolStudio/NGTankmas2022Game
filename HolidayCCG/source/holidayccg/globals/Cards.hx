@@ -1,5 +1,7 @@
 package holidayccg.globals;
 
+import flixel.FlxG;
+import flixel.system.debug.watch.Watch;
 import holidayccg.ui.GameText;
 import flixel.util.FlxDestroyUtil;
 import flixel.tweens.FlxTween;
@@ -150,6 +152,8 @@ class CardGraphic extends FlxSpriteGroup
 
 	public var flipping:Bool = false;
 
+	public var displayScale(default, set):Float = 1;
+
 	// public var width(get, never):Float;
 	// public var height(get, never):Float;
 
@@ -168,6 +172,52 @@ class CardGraphic extends FlxSpriteGroup
 		// rarity = FlxDestroyUtil.destroy(rarity);
 
 		super.destroy();
+	}
+
+	private function set_displayScale(Value:Float):Float
+	{
+		displayScale = Value;
+		scale.set(displayScale, displayScale);
+		updateHitbox();
+		back.updateHitbox();
+		outline.updateHitbox();
+		value.updateHitbox();
+		nameLine1.updateHitbox();
+		nameLine2.updateHitbox();
+		illustration.updateHitbox();
+		for (attack in attacks)
+		{
+			attack.updateHitbox();
+		}
+
+		updatePositions();
+
+		return displayScale;
+	}
+
+	public function updatePositions():Void
+	{
+		// adjust the positions of each element based on displayScale
+		outline.x = back.x - (5 * displayScale);
+		outline.y = back.y - (5 * displayScale);
+
+		illustration.x = back.x + (3 * displayScale);
+		illustration.y = back.y + (3 * displayScale);
+
+		nameLine1.x = Std.int(back.x + (back.width / 2) - (nameLine1.width / 2));
+		nameLine1.y = back.y + (back.height - (35 * displayScale));
+
+		nameLine2.x = Std.int(back.x + (back.width / 2) - (nameLine2.width / 2));
+		nameLine2.y = back.y + (back.height - (22 * displayScale));
+
+		value.x = back.x + (5 * displayScale);
+		value.y = back.y + (4 * displayScale);
+
+		for (attack in attacks)
+		{
+			attack.x = Std.int(back.x + back.width - attack.width - (4 * displayScale));
+			attack.y = back.y + (5 * displayScale);
+		}
 	}
 
 	public function new():Void
@@ -294,6 +344,8 @@ class CardGraphic extends FlxSpriteGroup
 		selected = false;
 
 		updateVisibility();
+
+		FlxG.watch.add(scale, "x");
 	}
 
 	public function flip(NewOwner:CardOwner):Void
@@ -310,7 +362,7 @@ class CardGraphic extends FlxSpriteGroup
 			onComplete: (_) ->
 			{
 				back.animation.frameName = owner == PLAYER ? "player" : "enemy";
-				FlxTween.tween(scale, {x: 1}, .1, {
+				FlxTween.tween(scale, {x: displayScale}, .1, {
 					onComplete: (_) ->
 					{
 						Sounds.playOneOf([
@@ -337,7 +389,7 @@ class CardGraphic extends FlxSpriteGroup
 			onComplete: (_) ->
 			{
 				shown = true;
-				FlxTween.tween(scale, {x: 1}, .1, {
+				FlxTween.tween(scale, {x: displayScale}, .1, {
 					onComplete: (_) ->
 					{
 						Sounds.playOneOf([

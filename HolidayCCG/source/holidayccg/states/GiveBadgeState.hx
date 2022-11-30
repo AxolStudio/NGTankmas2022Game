@@ -55,10 +55,12 @@ class GiveBadgeState extends FlxSubState
 		FlxTween.tween(blackout, {alpha: 0.8}, 0.25, {
 			onComplete: (_) ->
 			{
+				sparkles.add(new Sparkle(badge.width, badge.height));
 				FlxTween.tween(badge, {alpha: 1}, .5, {
 					onComplete: (_) ->
 					{
-						sparkles.add(new Sparkle());
+						
+						sparkles.add(new Sparkle(badge.width, badge.height));
 						badgeText = new TutorialMessage("You got the " + TitleCase.toTitleCase(whichBadge) + " Badge!");
 						badgeText.x = FlxG.width / 2 - badgeText.width / 2;
 						badgeText.y = badge.y + badge.height + 10;
@@ -84,10 +86,16 @@ class GiveBadgeState extends FlxSubState
 	public function exit()
 	{
 		ready = false;
-		FlxTween.tween(blackout, {alpha: 0}, 0.25, {
+		sparkles.kill();
+		FlxTween.tween(badge, {alpha: 0}, .5, {
 			onComplete: (_) ->
 			{
-				close();
+				FlxTween.tween(blackout, {alpha: 0}, 0.25, {
+					onComplete: (_) ->
+					{
+						close();
+					}
+				});
 			}
 		});
 	}
@@ -104,9 +112,15 @@ class GiveBadgeState extends FlxSubState
 
 class Sparkle extends FlxSprite
 {
-	public function new():Void
+	var rangeX:Float = 0;
+	var rangeY:Float = 0;
+
+	public function new(RangeX:Float = 0, RangeY:Float = 0):Void
 	{
 		super();
+
+		rangeX = RangeX;
+		rangeY = RangeY;
 
 		frames = GraphicsCache.getAtlasFrames(Global.asset("assets/images/sparkle.png"), Global.asset("assets/images/sparkle.xml"), "sparkle");
 		animation.addByStringIndices("sparkle", "sparkle_", ["01", "02", "03", "02", "01"], ".png", 8, false);
@@ -120,8 +134,8 @@ class Sparkle extends FlxSprite
 
 	public function spawn():Void
 	{
-		x = FlxG.random.float(Global.width / 2 - 32 - 16, Global.width / 2 + 32 - 16);
-		y = FlxG.random.float(Global.height / 2 - 32 - 16, Global.height / 2 + 32 - 16);
+		x = (Global.width / 2) - (width / 2) + FlxG.random.float(-(rangeX / 2), rangeX / 2);
+		y = (Global.height / 2) - (height / 2) + FlxG.random.float(-(rangeY / 2), rangeY / 2);
 
 		animation.play("sparkle");
 	}

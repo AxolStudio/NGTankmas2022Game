@@ -199,35 +199,6 @@
                  "width":32,
                  "x":480,
                  "y":64
-                }, 
-                {
-                 "class":"NPC",
-                 "height":32,
-                 "id":16,
-                 "name":"work_boss",
-                 "properties":[
-                        {
-                         "name":"facing",
-                         "propertytype":"FacingDirections",
-                         "type":"string",
-                         "value":"DOWN"
-                        }, 
-                        {
-                         "name":"objectType",
-                         "propertytype":"ObjectTypes",
-                         "type":"string",
-                         "value":"npc"
-                        }, 
-                        {
-                         "name":"sprite",
-                         "type":"string",
-                         "value":"elf_purple"
-                        }],
-                 "rotation":0,
-                 "visible":true,
-                 "width":32,
-                 "x":416,
-                 "y":384
                 }],
          "opacity":1,
          "tintcolor":"#5500ff",
@@ -237,7 +208,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":17,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "properties":[
         {

@@ -2,7 +2,7 @@
 (X) 2: add the shop logic to buy/sell cards
 (X) 3: add a screen when you get a new pack of cards to show off what you got
 (X) 4: add logic to have 2 layers of the maps
-( ) 5: add the 'hidden item' logic in the map
+(X) 5: add the 'hidden item' logic in the map
 (X) 6: Starting player coin flip logic
 (X) 7: build a title screen/way to clear your saved data
 (X) 8: build a credits screen
@@ -10,6 +10,8 @@
 (X) 10: More festive transition screen
 (X) 11: add scrollbar to collection
 (X) 12: finish checking badge animation
-( ) 13: add animation when finding new card
-( ) 14: add check to not be able to skip through victory screen without claiming a card
+(X) 13: add animation when finding new card
+(X) 14: add check to not be able to skip through victory screen without claiming a card
 (X) 15: Fix 1>A logic
+( ) 16: Finish maps!
+( ) 17: add more sound effcts!

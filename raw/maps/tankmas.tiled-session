@@ -1,5 +1,5 @@
 {
-    "activeFile": "Workshop_3.tmx",
+    "activeFile": "Central_Hub.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -43,8 +43,8 @@
             "scale": 2.34,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 456.19658119658123,
-                "y": 145.72649572649573
+                "x": 435.2564102564103,
+                "y": 269.2307692307692
             }
         },
         "S:/Shared drives/NGTankmas2020/maps/base_tiles.tsx": {
@@ -71,8 +71,8 @@
             "scale": 2.2404166666666665,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.59828900874095,
-                "y": 271.60126464571323
+                "x": 939.7805467732937,
+                "y": 269.5927096894179
             }
         },
         "Workshop_2.tmx": {
@@ -82,16 +82,19 @@
             "scale": 2.2404166666666665,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.59828900874095,
-                "y": 271.60126464571323
+                "x": 916.1242328435932,
+                "y": 274.9488562395388
             }
         },
         "Workshop_3.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
             "scale": 2.2404166666666665,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.59828900874095,
-                "y": 271.60126464571323
+                "x": 929.5145992188955,
+                "y": 261.1121443183932
             }
         },
         "Workshop_4.tmx": {
@@ -101,8 +104,8 @@
             "scale": 2.2404166666666665,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 393.89994420680677,
-                "y": 271.3780918727915
+                "x": 479.59828900874095,
+                "y": 271.60126464571323
             }
         },
         "base_tiles.tsx": {
@@ -160,15 +163,15 @@
     "property.type": "string",
     "recentFiles": [
         "test_room.tmx",
-        "Central_Hub.tmx",
-        "Workshop_1.tmx",
-        "Workshop_2.tmx",
         "Castle_4.tmx",
         "Castle_2.tmx",
         "Castle_3.tmx",
         "Castle_1.tmx",
         "Workshop_4.tmx",
         "Workshop_3.tmx",
+        "Workshop_2.tmx",
+        "Workshop_1.tmx",
+        "Central_Hub.tmx",
         "test_room_02.tmx",
         "base_tiles.tsx"
     ],

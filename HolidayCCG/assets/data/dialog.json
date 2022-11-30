@@ -98,7 +98,7 @@
     "dialogs": [
       {
         "requirements": [],
-        "text": "If you can find the 4 Champions and defeat them at Flip Fights, they might be convinced to put down the cards and start making toys again!",
+        "text": "Everyone is trying to get better at the game to take on the Champion. If you can defeat them, and take their title, then maybe they'll put down the cards and get back to work!",
         "yes": ["dialog:intro guy 10"],
         "no": []
       }
@@ -109,7 +109,7 @@
     "dialogs": [
       {
         "requirements": [],
-        "text": "Hey, it's flimsy logic, but this game was made in a couple of weeks, so just go with it!",
+        "text": "There is a Badge Holder in the workshop to the West, and another in the Village to the East.",
         "yes": ["dialog:intro guy 11"],
         "no": []
       }
@@ -117,6 +117,39 @@
   },
   {
     "who": "intro guy 11",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Collect cards by defeating the other elves until you can take on the Badge Holders to claim their badges...",
+        "yes": ["dialog:intro guy 12"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 12",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "...and then use them to get into the Boss's Castle in the North to fin and challenge the Champion!",
+        "yes": ["dialog:intro guy 13"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 13",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Hey, I know it's flimsy logic, but this game was made in a couple of weeks so just go with it!",
+        "yes": ["dialog:intro guy 14"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy 14",
     "dialogs": [
       {
         "requirements": [],
@@ -153,7 +186,7 @@
     "dialogs": [
       {
         "requirements": [],
-        "text": "You can talk to me for a refresher on the rules at any time! Go out and play against the other elves to get better cards, and then defeat the 4 Champions to save Christmas!",
+        "text": "You can talk to me for a refresher on the rules at any time! You need to find the 2 badges to get into the Boss's Castle and then find the Champion!",
         "yes": [],
         "no": []
       }
@@ -229,6 +262,96 @@
   },
 
   {
+    "who": "workshop_07",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "You want to play? Let's go!",
+        "yes": ["battle:workshop_07;message:We can go again if you want...;message:I'll play you anytime!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_08",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "How many cards do you have?",
+        "yes": ["battle:workshop_08;message:Supposedly, there are 25 cards in this game... I've only seen a few...;message:I've seen those before!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_09",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm training to beat the Champion!",
+        "yes": ["battle:workshop_09;message:We're not sure who the Champion is...;message:On my way!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_10",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I used to be an explorer, but now all I do is play Flip Fights!",
+        "yes": [
+          "battle:workshop_10;message:South of the Castle is the Untamed Wilderness. You won't find many opponents there.;message:Why go anywhere when you can win Flip Fight matches right here?"
+        ],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_11",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm trying to beat the Badge Holder and get his badge!",
+        "yes": ["battle:workshop_11;message:The Badge Holder is in the workshop somewhere...;message:It wasn't you?"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_12",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I just lost to the Badge Holder! They're so good!",
+        "yes": ["battle:workshop_12;message:The Cane Badge Holder is just past me!;message:Maybe I'll try playing them again..."],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_13",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Let's see how good you are!",
+        "yes": ["battle:workshop_13;message:I'm not the Badge Holder...;message:You'll never get a badge with those cards!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_14",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Cards?",
+        "yes": ["battle:workshop_13;message:Cards...;message:Cards!"],
+        "no": []
+      }
+    ]
+  },
+  {
     "who": "shop",
     "dialogs": [{ "requirements": [], "text": "", "yes": ["openShop"], "no": [] }]
   },
@@ -265,7 +388,7 @@
     "dialogs": [
       {
         "requirements": [],
-        "text": "You beat me! I guess we'll have to go back to making toys! I'll get the rest of these elves back to work!",
+        "text": "You beat me! I guess I'll have to go back to making toys! I'll get the rest of these elves back to work!",
         "yes": ["dialog:work_boss end"],
         "no": []
       }
@@ -276,8 +399,19 @@
     "dialogs": [
       {
         "requirements": [],
-        "text": "Oh! Take this Cane Badge - you'll need it to get past the statues guarding The Boss{!",
-        "yes": ["givebadge:cane", "flag:hasCaneBadge", "destroy:work_boss"],
+        "text": "Oh! Take this Cane Badge - you'll need it to get past the statues guarding the Champion!",
+        "yes": ["giveBadge:cane", "flag:hasCaneBadge", "destroy:work_boss"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "workshop_hidden_01",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "",
+        "yes": ["giveCard:16", "destroy:workshop_hidden_01"],
         "no": []
       }
     ]

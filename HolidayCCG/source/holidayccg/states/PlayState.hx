@@ -50,6 +50,8 @@ class PlayState extends FlxState
 
 	public var gameCamera:GameCamera;
 
+	public var newGame:Bool = true;
+
 	override public function new()
 	{
 		super();
@@ -165,7 +167,11 @@ class PlayState extends FlxState
 			switch (obj.objectType)
 			{
 				case PLAYER:
-					player.spawn("player", "player", obj.x, obj.y, GameObject.facingFromString(obj.facing));
+					if (newGame)
+					{
+						player.spawn("player", "player", obj.x, obj.y, GameObject.facingFromString(obj.facing));
+						newGame = false;
+					}
 
 				case NPC:
 					killed = Dialog.Flags.exists(obj.name + "-dead");
@@ -184,15 +190,26 @@ class PlayState extends FlxState
 		}
 	}
 
-	public function giveBadge(badge:String):Void
+	public function giveBadge(Badge:String):Void
 	{
-		var badgeState:GiveBadgeState = new GiveBadgeState(badge);
+		var badgeState:GiveBadgeState = new GiveBadgeState(Badge);
 		badgeState.closeCallback = () ->
 		{
 			ready = true;
 			badgeState.destroy();
 		};
 		openSubState(badgeState);
+	}
+
+	public function giveCard(Card:Int):Void
+	{
+		var cardState:GiveCardState = new GiveCardState(Card);
+		cardState.closeCallback = () ->
+		{
+			ready = true;
+			cardState.destroy();
+		};
+		openSubState(cardState);
 	}
 
 	public function killObject(ObjectName:String):Void
@@ -343,22 +360,22 @@ class PlayState extends FlxState
 
 	public function checkPlayerMove():Void
 	{
-		if (player.x >= baseMap.width)
+		if (player.x + player.height >= baseMap.y +baseMap.width - 1)
 		{
 			// moved to the right room
 			switchToRoom(RIGHT);
 		}
-		else if (player.x <= 0)
+		else if (player.x <= baseMap.x + 1)
 		{
 			// moved to the left room
 			switchToRoom(LEFT);
 		}
-		else if (player.y >= baseMap.height)
+		else if (player.y + player.height >= baseMap.y + baseMap.height - 1)
 		{
 			// moved to the bottom room
 			switchToRoom(DOWN);
 		}
-		else if (player.y <= 0)
+		else if (player.y <= baseMap.y + 1)
 		{
 			// moved to the top room
 			switchToRoom(UP);
@@ -388,20 +405,27 @@ class PlayState extends FlxState
 
 		GameGlobals.transOut(() ->
 		{
+			var oldX:Float = player.x;
+			var oldY:Float = player.y;
+
 			setMap(mapData.neighbors.get(Dir));
 			switch (Dir)
 			{
 				case UP:
+					player.x = oldX;
 					player.y = baseMap.y + baseMap.height - (GameGlobals.TILE_SIZE * 2);
 
 				case DOWN:
+					player.x = oldX;
 					player.y = baseMap.y + GameGlobals.TILE_SIZE;
 
 				case LEFT:
 					player.x = baseMap.x + baseMap.width - (GameGlobals.TILE_SIZE * 2);
+					player.y = oldY;
 
 				case RIGHT:
 					player.x = baseMap.x + GameGlobals.TILE_SIZE;
+					player.y = oldY;
 
 				default:
 			}

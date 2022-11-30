@@ -8,9 +8,9 @@
   },
   {
     "name": "work_boss",
-    "deck": [5, 6, 7, 8, 9],
+    "deck": [10, 6, 7, 8, 9],
     "sideboard": [],
-    "reward": 50,
+    "reward": 100,
     "subsequentReward": 0
   },
   {
@@ -52,6 +52,62 @@
     "name": "workshop_06",
     "deck": [1, 7, 6, 4, 5],
     "sideboard": [8],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_07",
+    "deck": [2, 7, 6, 4, 5],
+    "sideboard": [8],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_08",
+    "deck": [2, 7, 6, 3, 5],
+    "sideboard": [8],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_09",
+    "deck": [8, 4, 6, 3, 5],
+    "sideboard": [9],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_10",
+    "deck": [8, 1, 6, 7, 5],
+    "sideboard": [9],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_11",
+    "deck": [8, 3, 6, 7, 5],
+    "sideboard": [9],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_12",
+    "deck": [8, 1, 6, 7, 4],
+    "sideboard": [9],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_13",
+    "deck": [8, 3, 6, 7, 4],
+    "sideboard": [9],
+    "reward": 20,
+    "subsequentReward": 5
+  },
+  {
+    "name": "workshop_14",
+    "deck": [8, 2, 6, 7, 5],
+    "sideboard": [9],
     "reward": 20,
     "subsequentReward": 5
   }

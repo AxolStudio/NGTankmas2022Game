@@ -30,9 +30,12 @@ class GameObject extends FlxSprite
 	{
 		name = Name;
 
+		offset.x = 0;
 		offset.y = 16;
 		if (Which == "yeti")
 			offset.x = 8;
+		else if (Which == "sparkle")
+			offset.y = 0;
 
 		buildAnimations(Which);
 
@@ -60,6 +63,12 @@ class GameObject extends FlxSprite
 			animation.remove('walk-R');
 		}
 		hasAnims = true;
+		if (Which == "sparkle")
+		{
+			animation.addByStringIndices("stand-D", "sparkle_", [
+				"00", "00", "00", "00", "00", "00", "00", "00", "00", "00", "01", "02", "03", "02", "01"
+			], ".png", 8, true);
+		}
 		if (Which == "statue")
 		{
 			animation.addByNames('stand-D', ['${Which}_DOWN_0.png'], 0, false);
@@ -153,6 +162,7 @@ class GameObject extends FlxSprite
 			|| decorativeMap.getTile(mapX, mapY) >= 1
 			|| GameGlobals.PlayState.checkForObjects(mapX, mapY) != null)
 		{
+			trace(mapX, mapY, baseMap.getTile(mapX, mapY), decorativeMap.getTile(mapX, mapY), GameGlobals.PlayState.checkForObjects(mapX, mapY));
 			moving = false;
 
 			refreshAnimation();

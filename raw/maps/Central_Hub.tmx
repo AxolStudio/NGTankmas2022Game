@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="17">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="18">
  <editorsettings>
   <export target="../../HolidayCCG/assets/data/maps/Central_Hub.tmj" format="json"/>
  </editorsettings>
@@ -80,11 +80,6 @@
   <object id="15" name="statue" class="NPC" x="480" y="64" width="32" height="32">
    <properties>
     <property name="sprite" value="statue"/>
-   </properties>
-  </object>
-  <object id="16" name="work_boss" class="NPC" x="416" y="384" width="32" height="32">
-   <properties>
-    <property name="sprite" value="elf_purple"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="12">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="15">
  <editorsettings>
-  <export format="json"/>
+  <export target="../../HolidayCCG/assets/data/maps/Workshop_4.tmj" format="json"/>
  </editorsettings>
  <properties>
   <property name="exit_DOWN" value=""/>
@@ -58,6 +58,21 @@
   <object id="11" name="work_boss" class="NPC" x="96" y="96" width="32" height="32">
    <properties>
     <property name="sprite" value="elf_purple"/>
+   </properties>
+  </object>
+  <object id="12" name="workshop_12" class="NPC" x="128" y="288" width="32" height="32">
+   <properties>
+    <property name="sprite" value="elf_yellow"/>
+   </properties>
+  </object>
+  <object id="13" name="workshop_13" class="NPC" x="832" y="96" width="32" height="32">
+   <properties>
+    <property name="sprite" value="elf_black"/>
+   </properties>
+  </object>
+  <object id="14" name="workshop_14" class="NPC" x="480" y="288" width="32" height="32">
+   <properties>
+    <property name="sprite" value="elf_green"/>
    </properties>
   </object>
  </objectgroup>

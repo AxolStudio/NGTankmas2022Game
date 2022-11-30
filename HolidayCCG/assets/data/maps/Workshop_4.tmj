@@ -91,6 +91,93 @@
                  "width":32,
                  "x":96,
                  "y":96
+                }, 
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":12,
+                 "name":"workshop_12",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "propertytype":"FacingDirections",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "propertytype":"ObjectTypes",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"elf_yellow"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":128,
+                 "y":288
+                }, 
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":13,
+                 "name":"workshop_13",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "propertytype":"FacingDirections",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "propertytype":"ObjectTypes",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"elf_black"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":832,
+                 "y":96
+                }, 
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":14,
+                 "name":"workshop_14",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "propertytype":"FacingDirections",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "propertytype":"ObjectTypes",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"elf_green"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":480,
+                 "y":288
                 }],
          "opacity":1,
          "tintcolor":"#5500ff",
@@ -100,7 +187,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":12,
+ "nextobjectid":15,
  "orientation":"orthogonal",
  "properties":[
         {
