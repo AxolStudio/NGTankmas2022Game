@@ -847,7 +847,7 @@ class BattleState extends FlxSubState
 					if (gameGrid[NewCardSpot - 3] > 0)
 					{
 						card = getCardGraphicFromBattlefield(NewCardSpot - 3);
-						if (card.owner != Owner && card.card.value < newCard.value)
+						if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
 						{
 							card.flip(Owner);
 						}
@@ -862,7 +862,7 @@ class BattleState extends FlxSubState
 					if (gameGrid[NewCardSpot + 3] > 0)
 					{
 						card = getCardGraphicFromBattlefield(NewCardSpot + 3);
-						if (card.owner != Owner && card.card.value < newCard.value)
+						if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
 						{
 							card.flip(Owner);
 						}
@@ -877,7 +877,7 @@ class BattleState extends FlxSubState
 					if (gameGrid[NewCardSpot + 1] > 0)
 					{
 						card = getCardGraphicFromBattlefield(NewCardSpot + 1);
-						if (card.owner != Owner && card.card.value < newCard.value)
+						if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
 						{
 							card.flip(Owner);
 						}
@@ -892,7 +892,7 @@ class BattleState extends FlxSubState
 					if (gameGrid[NewCardSpot - 1] > 0)
 					{
 						card = getCardGraphicFromBattlefield(NewCardSpot - 1);
-						if (card.owner != Owner && card.card.value < newCard.value)
+						if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
 						{
 							card.flip(Owner);
 						}

@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import flixel.util.FlxSort;
 import holidayccg.ui.GameCamera;
 import flixel.util.FlxColor;
 import flixel.FlxCamera;
@@ -24,8 +25,8 @@ class PlayState extends FlxState
 {
 	public var mapLayer:FlxTypedGroup<FlxTilemap>;
 	public var objectLayer:FlxTypedGroup<GameObject>;
-	public var playerLayer:FlxTypedGroup<GameObject>;
 
+	// public var playerLayer:FlxTypedGroup<GameObject>;
 	public var baseMap:FlxTilemap = null;
 	public var decorativeMap:FlxTilemap = null;
 
@@ -63,12 +64,12 @@ class PlayState extends FlxState
 
 		add(mapLayer = new FlxTypedGroup<FlxTilemap>());
 		add(objectLayer = new FlxTypedGroup<GameObject>());
-		add(playerLayer = new FlxTypedGroup<GameObject>());
+		// add(playerLayer = new FlxTypedGroup<GameObject>());
 		add(dialog = new DialogFrame());
 
 		// dialog.cameras = [FlxG.camera];
 
-		playerLayer.add(player = new GameObject());
+		objectLayer.add(player = new GameObject());
 
 		battleState = new BattleState(returnFromBattle);
 		collectionState = new CollectionState(returnFromCollection);
@@ -90,7 +91,7 @@ class PlayState extends FlxState
 		gameCamera = FlxG.cameras.add(new GameCamera(0, 0, Std.int(Global.width / 2), Std.int(Global.height / 2), 2), false);
 		mapLayer.cameras = [gameCamera];
 		objectLayer.cameras = [gameCamera];
-		playerLayer.cameras = [gameCamera];
+		// playerLayer.cameras = [gameCamera];
 
 		FlxG.cameras.add(c, true);
 		c.bgColor = FlxColor.TRANSPARENT;
@@ -132,10 +133,14 @@ class PlayState extends FlxState
 
 			for (o in objectLayer.members)
 			{
-				o.kill();
-				objectLayer.remove(o, true);
+				if (o != player)
+				{
+					o.kill();
+					objectLayer.remove(o, true);
+				}
 			}
 			objectLayer.clear();
+			objectLayer.add(player);
 		}
 		else
 		{
@@ -329,6 +334,11 @@ class PlayState extends FlxState
 			player.move(-1, 0, checkPlayerMove);
 		else if (right)
 			player.move(1, 0, checkPlayerMove);
+
+		objectLayer.sort((Order, Obj1, Obj2) ->
+		{
+			return FlxSort.byValues(Order, Obj1.y + Obj1.height, Obj2.y + Obj2.height);
+		});
 	}
 
 	public function checkPlayerMove():Void

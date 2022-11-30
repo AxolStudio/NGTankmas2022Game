@@ -63,7 +63,7 @@ class GameGlobals
 
 		Player = new Player();
 
-		if (GameSave.data.savedData != null #if debug && false #end)
+		if (GameSave.data.savedData != null)
 		{
 			hasSave = true;
 		}

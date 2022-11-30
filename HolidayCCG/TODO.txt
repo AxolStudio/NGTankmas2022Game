@@ -9,3 +9,7 @@
 ( ) 9: implement card illustrations
 (X) 10: More festive transition screen
 (X) 11: add scrollbar to collection
+(X) 12: finish checking badge animation
+( ) 13: add animation when finding new card
+( ) 14: add check to not be able to skip through victory screen without claiming a card
+(X) 15: Fix 1>A logic
