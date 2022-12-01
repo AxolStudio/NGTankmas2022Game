@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="16">
  <editorsettings>
-  <export format="json"/>
+  <export target="../../HolidayCCG/assets/data/maps/Workshop_2.tmj" format="json"/>
  </editorsettings>
  <properties>
   <property name="exit_DOWN" value="Workshop_4"/>
@@ -75,9 +75,9 @@
     <property name="sprite" value="elf_red"/>
    </properties>
   </object>
-  <object id="15" name="workshop_07" class="NPC" x="160" y="128" width="32" height="32">
+  <object id="15" name="workshop_08" class="NPC" x="160" y="128" width="32" height="32">
    <properties>
-    <property name="sprite" value="elf_red"/>
+    <property name="sprite" value="elf_green"/>
    </properties>
   </object>
  </objectgroup>

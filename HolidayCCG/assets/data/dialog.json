@@ -260,7 +260,6 @@
       }
     ]
   },
-
   {
     "who": "workshop_07",
     "dialogs": [
@@ -412,6 +411,186 @@
         "requirements": [],
         "text": "",
         "yes": ["giveCard:16", "destroy:workshop_hidden_01"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_01",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I love Flip Fights!",
+        "yes": ["battle:town_01;message:You won! Let's play again sometime!;message:Unlucky, you'll win next time!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_02",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm training to beat the town badge holder, give me all you got!",
+        "yes": ["battle:town_02;message:You beat me, looks like I still have a way to go...;message:Come back anytime!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_03",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Brr... So cold... Let's play...",
+        "yes": ["battle:town_03;message:Congratulations... Brr...;message:Better luck next time... Brr..."],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_04",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I have built the perfect deck, try me!",
+        "yes": ["battle:town_04;message:Oh, looks like I made a miscalculation...;message:Unlucky, you're welcome to try again!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_05",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "A challenger? Alright, let's go!",
+        "yes": ["battle:town_05;message:Wow, you're good! You might have a shot at taking the badge!;message:You almost had me! Let's play again sometime!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_06",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Hey! Win a game against me and I'll give you a tip!",
+        "yes": [
+          "battle:town_06;message:You beat me fair and square, congrats! Look out for glimmers and sparkles around the place, and make sure to explore every nook and crevice!;message:You'll have to beat me if you want that tip!"
+        ],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_07",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Hey you, let's play a round!",
+        "yes": ["battle:town_07;message:I can't get enough of this game!;message:Hard luck, come back anytime!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_08",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "This game is the talk of the town, let's have a go!",
+        "yes": ["battle:town_08;message:Aw! Good job!;message:Better luck next time!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_09",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Yo, I don't think I fought you yet!",
+        "yes": ["battle:town_09;message:You beat me, well done!;message:I'm always down for a rematch!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_10",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I will earn the town badge, I need all the training I can get!",
+        "yes": ["battle:town_10;message:Hng... I need to try harder...;message:You can always try me again!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_11",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "The badge holder is one tough cookie, I need more practice!",
+        "yes": ["battle:town_11;message:Great job! The badge holder is around here somewhere, good luck!;message:You're good, keep trying!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_12",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm supposed to keep the snow off the paths, but I can't stop playing this game!",
+        "yes": ["battle:town_12;message:Amazing! Play me again!;message:Unfortunate, give it another go!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_13",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "This game is insane! Play a round with me!",
+        "yes": [
+          "battle:town_13;message:I love this game! Well done!;message:Tough break, come back to me when you're ready to play again, I'm always happy to!"
+        ],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_14",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I just lost to the badge holder again, I think I need to work on my strategy...",
+        "yes": ["battle:town_14;message:Yes, yes... I definitely need to work on my play...;message:Yes, that was an improvement..."],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_boss",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Oh deer, another challenger looking to claim my prestigious badge? Do your worst!",
+        "yes": ["battle:town_boss;dialog:town_boss lose;message:Yule never best me, I am the undefeated champion!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "town_boss lose",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "No... My rein of terror is snow-ver! I need a hot cocoa...",
+        "yes": ["giveBadge:wreath", "flag:hasWreathBadge", "destroy:town_boss"],
         "no": []
       }
     ]

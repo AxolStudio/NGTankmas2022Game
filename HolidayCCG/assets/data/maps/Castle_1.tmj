@@ -37,9 +37,9 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 285, 285, 287, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 286, 285, 285, 0,
             0, 0, 0, 273, 285, 285, 285, 287, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 286, 285, 285, 285, 274, 0, 0, 0,
-            0, 0, 0, 0, 457, 0, 0, 273, 285, 285, 285, 285, 285, 0, 0, 0, 0, 285, 285, 285, 285, 285, 274, 0, 0, 458, 0, 0, 0, 0,
+            0, 0, 0, 0, 457, 0, 0, 273, 285, 285, 285, 285, 478, 0, 0, 0, 0, 478, 285, 285, 285, 285, 274, 0, 0, 458, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 487, 0, 0, 0, 0, 0, 0, 487, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 479, 0, 0, 0, 0, 479, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -62,7 +62,65 @@
          "draworder":"topdown",
          "id":2,
          "name":"objects",
-         "objects":[],
+         "objects":[
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":12,
+                 "name":"castle_05",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "propertytype":"FacingDirections",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "propertytype":"ObjectTypes",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"elf_white"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":640,
+                 "y":128
+                }, 
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":13,
+                 "name":"castle_06",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "propertytype":"FacingDirections",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "propertytype":"ObjectTypes",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"elf_cyan"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":96,
+                 "y":96
+                }],
          "opacity":1,
          "tintcolor":"#5500ff",
          "type":"objectgroup",
@@ -71,7 +129,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":11,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "properties":[
         {

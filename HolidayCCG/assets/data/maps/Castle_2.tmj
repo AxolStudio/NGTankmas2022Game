@@ -62,7 +62,94 @@
          "draworder":"topdown",
          "id":2,
          "name":"objects",
-         "objects":[],
+         "objects":[
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":11,
+                 "name":"castle_03",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "propertytype":"FacingDirections",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "propertytype":"ObjectTypes",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"elf_black"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":832,
+                 "y":96
+                }, 
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":12,
+                 "name":"castle_04",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "propertytype":"FacingDirections",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "propertytype":"ObjectTypes",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"elf_purple"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":96,
+                 "y":96
+                }, 
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":13,
+                 "name":"castle_hidden_01",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "propertytype":"FacingDirections",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "propertytype":"ObjectTypes",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"sparkle"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":96,
+                 "y":288
+                }],
          "opacity":1,
          "tintcolor":"#5500ff",
          "type":"objectgroup",
@@ -71,7 +158,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":11,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "properties":[
         {

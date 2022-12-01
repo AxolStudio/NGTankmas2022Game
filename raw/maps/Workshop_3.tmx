@@ -55,11 +55,6 @@
 </data>
  </layer>
  <objectgroup id="2" name="objects" tintcolor="#5500ff">
-  <object id="11" name="workshop_08" class="NPC" x="160" y="64" width="32" height="32">
-   <properties>
-    <property name="sprite" value="elf_green"/>
-   </properties>
-  </object>
   <object id="12" name="workshop_09" class="NPC" x="864" y="160" width="32" height="32">
    <properties>
     <property name="sprite" value="elf_white"/>
@@ -73,11 +68,6 @@
   <object id="14" name="workshop_11" class="NPC" x="64" y="448" width="32" height="32">
    <properties>
     <property name="sprite" value="elf_blue"/>
-   </properties>
-  </object>
-  <object id="15" name="workshop_12" class="NPC" x="544" y="256" width="32" height="32">
-   <properties>
-    <property name="sprite" value="elf_cyan"/>
    </properties>
   </object>
   <object id="16" name="workshop_hidden_01" class="NPC" x="608" y="64" width="32" height="32">

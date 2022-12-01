@@ -5,35 +5,47 @@
     ],
     "fileStates": {
         "Castle_1.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
             "scale": 2.2404166666666665,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.59828900874095,
-                "y": 271.60126464571323
+                "x": 478.92877068997586,
+                "y": 270.9317463269481
             }
         },
         "Castle_2.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
             "scale": 2.2404166666666665,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.59828900874095,
-                "y": 271.60126464571323
+                "x": 478.92877068997586,
+                "y": 270.9317463269481
             }
         },
         "Castle_3.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
             "scale": 2.2404166666666665,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.59828900874095,
-                "y": 271.60126464571323
+                "x": 479.37511623581923,
+                "y": 271.3780918727915
             }
         },
         "Castle_4.tmx": {
-            "scale": 2.2404166666666665,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.59828900874095,
-                "y": 271.60126464571323
+                "x": 463.5,
+                "y": 265
             }
         },
         "Central_Hub.tmx": {
@@ -43,8 +55,8 @@
             "scale": 2.34,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 435.2564102564103,
-                "y": 269.2307692307692
+                "x": 435.47008547008545,
+                "y": 268.8034188034188
             }
         },
         "S:/Shared drives/NGTankmas2020/maps/base_tiles.tsx": {
@@ -64,48 +76,136 @@
                 "y": 272.6377865472442
             }
         },
+        "Town_1.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 496,
+                "y": 294
+            }
+        },
+        "Town_2.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 436,
+                "y": 271
+            }
+        },
+        "Town_3.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2.1216666666666666,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 479.8114689709348,
+                "y": 271.9560094265514
+            }
+        },
+        "Town_4.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2.1216666666666666,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 479.34014139827184,
+                "y": 271.4846818538885
+            }
+        },
+        "Wilderness_1.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2.1216666666666666,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 478.8688138256088,
+                "y": 271.0133542812255
+            }
+        },
+        "Wilderness_2.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2.1216666666666666,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 479.34014139827184,
+                "y": 271.4846818538885
+            }
+        },
+        "Wilderness_3.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 461,
+                "y": 292.5
+            }
+        },
+        "Wilderness_4.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2.1216666666666666,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 479.8114689709348,
+                "y": 271.9560094265514
+            }
+        },
         "Workshop_1.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2.2404166666666665,
+            "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 939.7805467732937,
-                "y": 269.5927096894179
+                "x": 516,
+                "y": 274
             }
         },
         "Workshop_2.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2.2404166666666665,
+            "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 916.1242328435932,
-                "y": 274.9488562395388
+                "x": 271.99999999999994,
+                "y": 273.3333333333333
             }
         },
         "Workshop_3.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2.2404166666666665,
+            "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 929.5145992188955,
-                "y": 261.1121443183932
+                "x": 351.33333333333326,
+                "y": 412.66666666666663
             }
         },
         "Workshop_4.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2.2404166666666665,
+            "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.59828900874095,
-                "y": 271.60126464571323
+                "x": 383,
+                "y": 303
             }
         },
         "base_tiles.tsx": {

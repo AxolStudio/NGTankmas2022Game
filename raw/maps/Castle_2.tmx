@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="11">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="14">
  <editorsettings>
-  <export format="json"/>
+  <export target="../../HolidayCCG/assets/data/maps/Castle_2.tmj" format="json"/>
  </editorsettings>
  <properties>
   <property name="exit_DOWN" value=""/>
@@ -54,5 +54,21 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="2" name="objects" tintcolor="#5500ff"/>
+ <objectgroup id="2" name="objects" tintcolor="#5500ff">
+  <object id="11" name="castle_03" class="NPC" x="832" y="96" width="32" height="32">
+   <properties>
+    <property name="sprite" value="elf_black"/>
+   </properties>
+  </object>
+  <object id="12" name="castle_04" class="NPC" x="96" y="96" width="32" height="32">
+   <properties>
+    <property name="sprite" value="elf_purple"/>
+   </properties>
+  </object>
+  <object id="13" name="castle_hidden_01" class="NPC" x="96" y="288" width="32" height="32">
+   <properties>
+    <property name="sprite" value="sparkle"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

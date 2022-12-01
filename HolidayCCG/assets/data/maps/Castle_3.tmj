@@ -62,7 +62,36 @@
          "draworder":"topdown",
          "id":2,
          "name":"objects",
-         "objects":[],
+         "objects":[
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":11,
+                 "name":"santa",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "propertytype":"FacingDirections",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "propertytype":"ObjectTypes",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"santa"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":448,
+                 "y":96
+                }],
          "opacity":1,
          "tintcolor":"#5500ff",
          "type":"objectgroup",
@@ -71,7 +100,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":11,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "properties":[
         {
