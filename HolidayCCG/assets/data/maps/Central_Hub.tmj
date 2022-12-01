@@ -214,7 +214,7 @@
         {
          "name":"exit_DOWN",
          "type":"string",
-         "value":""
+         "value":"Wilderness_1"
         }, 
         {
          "name":"exit_LEFT",
@@ -224,7 +224,7 @@
         {
          "name":"exit_RIGHT",
          "type":"string",
-         "value":""
+         "value":"Town_1"
         }, 
         {
          "name":"exit_UP",

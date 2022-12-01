@@ -110,5 +110,12 @@
     "sideboard": [9],
     "reward": 20,
     "subsequentReward": 5
+  },
+  {
+    "name": "yeti",
+    "deck": [17, 17, 17, 17, 17],
+    "sideboard": [],
+    "reward": 200,
+    "subsequentReward": 0
   }
 ]

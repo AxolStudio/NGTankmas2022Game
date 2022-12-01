@@ -594,5 +594,60 @@
         "no": []
       }
     ]
+  },
+  {
+    "who": "wild_01",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm just getting some fresh air... you want to play?",
+        "yes": ["battle:wild_01;message:I think I need more fresh air...;message:You should try to get some fresh air too!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "wild_02",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm on the hunt for a legendary monster!",
+        "yes": ["battle:wild_02;message:Maybe I'll head back. It's too cold out here!;message:They say it's bigger than a house!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "wild_03",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I haven't played anyone in Flip Fights for DAYS!",
+        "yes": ["battle:wild_03;message:Do you know the way back to town?;message:Winning really keeps me going!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "yeti",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "RWAR!",
+        "yes": ["battle:yeti;dialog:yeti lose;message:YEARRR!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "yeti lose",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "AWR...",
+        "yes": ["giveCard:22", "destroy:yeti"],
+        "no": []
+      }
+    ]
   }
 ]
