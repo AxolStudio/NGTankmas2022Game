@@ -649,5 +649,174 @@
         "no": []
       }
     ]
+  },
+  {
+    "who": "town_hidden_01",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "",
+        "yes": ["giveCard:20", "destroy:town_hidden_01"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "wild_hidden_01",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "",
+        "yes": ["giveCard:21", "destroy:wild_hidden_01"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "castle_05",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm the castle guard, I'm supposed to keep the Boss safe, but I'm too busy playing Flip Fights!",
+        "yes": ["battle:castle_05;message:You're are better than me...;message:You're good, but I'm better!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "castle_06",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Welcome to the Boss's Castle! Play me!",
+        "yes": ["battle:castle_06;message:The Boss has never lost to any of us elves...;message:You'll never beat the Boss like that!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "castle_04",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I'm supposed to be cleaning the dungeons, but I'd rather play cards!",
+        "yes": ["battle:castle_04;message:Back to cleaning, I guess...;message:I'll never clean again!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "castle_03",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I've been practicing my Flip Fight skills! Let's go!",
+        "yes": ["battle:castle_03;message:I guess I need more practice...;message:You should practice more!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "castle_02",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I've been playing this game longer than anybody!",
+        "yes": ["battle:castle_02;message:Well, I guess I've played enough...;message:I can't stop playing if I keep winning!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "castle_01",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "The Boss is the best Flip Fighter in the world!",
+        "yes": ["battle:castle_01;message:I think you might have a chance against the Boss...!;message:You'll never beat the Boss!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "santa",
+    "dialogs": [
+      {
+        "requirements": ["flag!beatSanta", "flag!spawnedKrampus", "flag!beatKrampus", "flag!hasAll"],
+        "text": "Ho ho ho... you've finally made it. Do not think that I will go easy on you, child. Prepare yourself!",
+        "yes": ["battle:santa;dialog:santa lose;message:Ho ho ho... come back when you're ready!"],
+        "no": []
+      },
+      {
+        "requirements": ["flag:beatSanta", "flag!spawnedKrampus", "flag!beatKrampus", "flag!hasAll"],
+        "text": "Oh? You thought I was the Boss? Ho ho ho... No... there is someone above than me!",
+        "yes": ["dialog:santa lose 3"],
+        "no": []
+      },
+      {
+        "requirements": ["flag:beatSanta", "flag:spawnedKrampus", "flag!beatKrampus", "flag!hasAll"],
+        "text": "You deal with him, now.",
+        "yes": [],
+        "no": []
+      },
+      {
+        "requirements": ["flag:beatSanta", "flag:spawnedKrampus", "flag:beatKrampus", "flag!hasAll"],
+        "text": "Come back and talk to me when you have collected 24 different cards.",
+        "yes": [],
+        "no": []
+      },
+      {
+        "requirements": ["flag:beatSanta", "flag:spawnedKrampus", "flag:beatKrampus", "flag:hasAll"],
+        "text": "Well done, kid! Here's the final card in the game! I'll see you soon!",
+        "yes": ["giveCard:25", "destroy:santa"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "santa lose",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I think you just made my naughty list...",
+        "yes": ["giveCard:23", "flag:beatSanta"],
+        "no": []
+      }
+    ]
+  },
+
+  {
+    "who": "santa lose 3",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Darling?",
+        "yes": ["flag:spawnedKrampus", "spawn:krampus"],
+        "no": []
+      }
+    ]
+  },
+
+  {
+    "who": "krampus",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "You have defeated Santa, but you will not defeat me!",
+        "yes": ["battle:krampus;dialog:krampus lose;message:You are no match for me!"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "krampus lose",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "What? HOW!? This cannot be! Noooooooo!",
+        "yes": ["destroy:krampus", "flag:beatKrampus", "giveCard:24", "gameOver"],
+        "no": []
+      }
+    ]
   }
 ]

@@ -992,7 +992,7 @@ class BattleState extends FlxSubState
 
 		// show new screen that shows winner, let's player pick card (if they won), and get money
 		winner = playerScore > enemyScore ? CardOwner.PLAYER : CardOwner.OPPONENT;
-		openSubState(new BattleEndState(winner, enemy, returnFromSubState));
+		openSubState(new BattleEndState(winner, enemy, returnFromSubState, enemy.name == "santa" || enemy.name == "krampus" || enemy.name == "yeti"));
 	}
 
 	public function returnFromSubState():Void
@@ -1025,7 +1025,7 @@ class BattleEndState extends FlxSubState
 
 	public var ready:Bool = false;
 
-	public function new(Winner:CardOwner, Opponent:Opponent, Callback:Void->Void):Void
+	public function new(Winner:CardOwner, Opponent:Opponent, Callback:Void->Void, isSpecial:Bool = false):Void
 	{
 		super();
 
@@ -1075,26 +1075,34 @@ class BattleEndState extends FlxSubState
 			opponent.reward = opponent.subsequentReward;
 			winText.animation.frameName = "win";
 
-			add(cardSelections = new FlxTypedGroup<CardGraphic>());
-
-			var cG:CardGraphic = null;
-			for (c in Opponent.deck.cards)
+			if (!isSpecial)
 			{
-				cG = new CardGraphic();
-				cG.spawn(c, CardOwner.OPPONENT);
-				cG.x = Std.int(startX + ((cG.width + 20) * cardSelections.length));
-				cG.y = -Global.height;
-				cardSelections.add(cG);
+				add(cardSelections = new FlxTypedGroup<CardGraphic>());
+
+				var cG:CardGraphic = null;
+				for (c in Opponent.deck.cards)
+				{
+					cG = new CardGraphic();
+					cG.spawn(c, CardOwner.OPPONENT);
+					cG.x = Std.int(startX + ((cG.width + 20) * cardSelections.length));
+					cG.y = -Global.height;
+					cardSelections.add(cG);
+				}
+
+				selectMessage = new GameText();
+				selectMessage.text = "Select a card to add to your collection!";
+				selectMessage.scrollFactor.set();
+				Global.screenCenter(selectMessage);
+				selectMessage.y = back.y + winText.height + 50;
+				add(selectMessage);
+
+				revealCards();
 			}
-
-			selectMessage = new GameText();
-			selectMessage.text = "Select a card to add to your collection!";
-			selectMessage.scrollFactor.set();
-			Global.screenCenter(selectMessage);
-			selectMessage.y = back.y + winText.height + 50;
-			add(selectMessage);
-
-			revealCards();
+			else
+			{
+				prizeMoney.visible = true;
+				showExit();
+			}
 		}
 		else
 		{

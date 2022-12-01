@@ -184,10 +184,31 @@ class PlayState extends FlxState
 						}
 
 						o.spawn(obj.name, obj.sprite, obj.x, obj.y, GameObject.facingFromString(obj.facing));
+
+						if (obj.name == "krampus")
+							o.kill();
 					}
 				default:
 			}
 		}
+	}
+
+	public function spawnObject(Who:String):Void
+	{
+		FlxG.camera.flash(0xffffffff, 0.2, () ->
+		{
+			FlxG.camera.flash(0xffffffff, 0.2, () ->
+			{
+				for (o in objectLayer.members)
+				{
+					if (o.name == Who)
+					{
+						o.revive();
+						return;
+					}
+				}
+			}, true);
+		}, true);
 	}
 
 	public function giveBadge(Badge:String):Void
@@ -360,7 +381,7 @@ class PlayState extends FlxState
 
 	public function checkPlayerMove():Void
 	{
-		if (player.x + player.height >= baseMap.y +baseMap.width - 1)
+		if (player.x + player.height >= baseMap.y + baseMap.width - 1)
 		{
 			// moved to the right room
 			switchToRoom(RIGHT);

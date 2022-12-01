@@ -36,6 +36,8 @@ class GameObject extends FlxSprite
 			offset.x = 8;
 		else if (Which == "sparkle")
 			offset.y = 0;
+		else if (Which == "santa" || Which == "krampus")
+			offset.x = 4;
 
 		buildAnimations(Which);
 
@@ -162,7 +164,7 @@ class GameObject extends FlxSprite
 			|| decorativeMap.getTile(mapX, mapY) >= 1
 			|| GameGlobals.PlayState.checkForObjects(mapX, mapY) != null)
 		{
-			trace(mapX, mapY, baseMap.getTile(mapX, mapY), decorativeMap.getTile(mapX, mapY), GameGlobals.PlayState.checkForObjects(mapX, mapY));
+			// trace(mapX, mapY, baseMap.getTile(mapX, mapY), decorativeMap.getTile(mapX, mapY), GameGlobals.PlayState.checkForObjects(mapX, mapY));
 			moving = false;
 
 			refreshAnimation();

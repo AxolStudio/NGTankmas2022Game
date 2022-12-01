@@ -44,7 +44,8 @@ class Dialog
 		var message:String = "";
 		var willOpenShop:Bool = false;
 		var givingBadge:String = "";
-		var givingCard:Int = -1;
+
+		var spawning:String = "";
 
 		for (f in Scripts)
 		{
@@ -86,7 +87,11 @@ class Dialog
 			}
 			else if (f.startsWith("giveCard:"))
 			{
-				givingCard = Std.parseInt(f.substr(9));
+				GameGlobals.PlayState.giveCard(Std.parseInt(f.substr(9)));
+			}
+			else if (f.startsWith("spawn:"))
+			{
+				spawning = f.substr(6);
 			}
 		}
 		if (willBattle != "")
@@ -99,8 +104,8 @@ class Dialog
 			GameGlobals.PlayState.openShop();
 		else if (givingBadge != "")
 			GameGlobals.PlayState.giveBadge(givingBadge);
-		else if (givingCard != -1)
-			GameGlobals.PlayState.giveCard(givingCard);
+		else if (spawning != "")
+			GameGlobals.PlayState.spawnObject(spawning);
 	}
 
 	public static function talk(Who:String):Bool

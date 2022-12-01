@@ -91,6 +91,35 @@
                  "width":32,
                  "x":448,
                  "y":96
+                }, 
+                {
+                 "class":"NPC",
+                 "height":32,
+                 "id":12,
+                 "name":"krampus",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "propertytype":"FacingDirections",
+                         "type":"string",
+                         "value":"DOWN"
+                        }, 
+                        {
+                         "name":"objectType",
+                         "propertytype":"ObjectTypes",
+                         "type":"string",
+                         "value":"npc"
+                        }, 
+                        {
+                         "name":"sprite",
+                         "type":"string",
+                         "value":"krampus"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":480,
+                 "y":96
                 }],
          "opacity":1,
          "tintcolor":"#5500ff",
@@ -100,7 +129,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":12,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "properties":[
         {

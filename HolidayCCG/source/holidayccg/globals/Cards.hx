@@ -107,6 +107,16 @@ class Collection
 		{
 			collection.set(ID, Amount);
 		}
+		if (!Dialog.Flags.exists("hasAll"))
+		{
+			var count:Int = 0;
+			for (k in collection.keys())
+			{
+				count++;
+			}
+			if (count == 24)
+				Dialog.Flags.set("hasAll", true);
+		}
 	}
 
 	public function remove(ID:Int, Amount:Int):Void

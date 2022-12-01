@@ -117,5 +117,166 @@
     "sideboard": [],
     "reward": 200,
     "subsequentReward": 0
+  },
+  {
+    "name": "town_10",
+    "deck": [7, 8, 9, 10, 11],
+    "sideboard": [12],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_11",
+    "deck": [12, 8, 9, 10, 11],
+    "sideboard": [13],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_03",
+    "deck": [7, 12, 9, 10, 11],
+    "sideboard": [13],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_07",
+    "deck": [13, 12, 9, 10, 11],
+    "sideboard": [14],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_12",
+    "deck": [7, 8, 9, 10, 12],
+    "sideboard": [13],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_13",
+    "deck": [14, 8, 13, 10, 11],
+    "sideboard": [12],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_04",
+    "deck": [12, 11, 4, 5, 6],
+    "sideboard": [13],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_08",
+    "deck": [14, 13, 9, 10, 11],
+    "sideboard": [15],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_09",
+    "deck": [13, 12, 14, 10, 11],
+    "sideboard": [15],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_01",
+    "deck": [7, 8, 9, 3, 4],
+    "sideboard": [10],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_02",
+    "deck": [7, 8, 6, 10, 4],
+    "sideboard": [11],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_05",
+    "deck": [3, 8, 6, 10, 4],
+    "sideboard": [9],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_06",
+    "deck": [3, 9, 6, 7, 4],
+    "sideboard": [8],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_14",
+    "deck": [10, 11, 12, 13, 14],
+    "sideboard": [15],
+    "reward": 30,
+    "subsequentReward": 10
+  },
+  {
+    "name": "town_boss",
+    "deck": [12, 13, 14, 15, 18],
+    "sideboard": [],
+    "reward": 150,
+    "subsequentReward": 0
+  },
+  {
+    "name": "santa",
+    "deck": [23, 22, 21, 20, 19],
+    "sideboard": [],
+    "reward": 300,
+    "subsequentReward": 0
+  },
+  {
+    "name": "krampus",
+    "deck": [23, 24, 22, 21, 20],
+    "sideboard": [],
+    "reward": 400,
+    "subsequentReward": 0
+  },
+  {
+    "name": "castle_01",
+    "deck": [13, 12, 17, 15, 14],
+    "sideboard": [19],
+    "reward": 40,
+    "subsequentReward": 15
+  },
+  {
+    "name": "castle_02",
+    "deck": [13, 11, 12, 15, 14],
+    "sideboard": [17],
+    "reward": 40,
+    "subsequentReward": 15
+  },
+  {
+    "name": "castle_03",
+    "deck": [12, 11, 17, 15, 14],
+    "sideboard": [19],
+    "reward": 40,
+    "subsequentReward": 15
+  },
+  {
+    "name": "castle_04",
+    "deck": [10, 11, 17, 15, 14],
+    "sideboard": [18],
+    "reward": 40,
+    "subsequentReward": 15
+  },
+  {
+    "name": "castle_05",
+    "deck": [10, 11, 12, 15, 14],
+    "sideboard": [18],
+    "reward": 40,
+    "subsequentReward": 15
+  },
+  {
+    "name": "castle_06",
+    "deck": [10, 11, 12, 13, 14],
+    "sideboard": [18],
+    "reward": 40,
+    "subsequentReward": 15
   }
 ]
