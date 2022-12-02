@@ -94,15 +94,14 @@ class BattleTutorial extends FlxSubState
 		tutorial7.y = Math.ceil((Global.height - tutorial1.height) / 2);
 
 		// 7
-		add(tutorial8 = new TutorialMessage("When a Card is placed on the Battlfield it will Attack every touching that is claimed by the other player, in the dirction of the Attacks on the Card.",
+		add(tutorial8 = new TutorialMessage("When a Card is placed on the Battlefield it will Attack every touching card that is claimed by the other player, in the dirction of the Attacks on the Card.",
 			0, 0, Math.ceil(Global.width / 2)));
 		tutorial8.x = Math.ceil((Global.width - tutorial1.width) / 2);
 		tutorial8.y = Math.ceil((Global.height - tutorial1.height) / 2);
 
 		// 8
-		add(tutorial9 = new TutorialMessage("If the Attacking Card has a higher Value than the Defending Card, the Defending Card is claimed by the Attacking Player and changes color.",
-			0,
-			0, Math.ceil(Global.width / 2)));
+		add(tutorial9 = new TutorialMessage("If the Attacking Card has a higher Value than the Defending Card, the Defending Card is claimed by the Attacking Player and changes color. Oh, and a value of 1 will beat a value of A!",
+			0, 0, Math.ceil(Global.width / 2)));
 		tutorial9.x = Math.ceil((Global.width - tutorial1.width) / 2);
 		tutorial9.y = Math.ceil((Global.height - tutorial1.height) / 2);
 

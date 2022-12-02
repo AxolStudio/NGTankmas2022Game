@@ -13,5 +13,5 @@
 (X) 13: add animation when finding new card
 (X) 14: add check to not be able to skip through victory screen without claiming a card
 (X) 15: Fix 1>A logic
-( ) 16: Finish maps!
+(X) 16: Finish maps!
 ( ) 17: add more sound effcts!

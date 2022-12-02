@@ -278,5 +278,26 @@
     "sideboard": [18],
     "reward": 40,
     "subsequentReward": 15
+  },
+  {
+    "name": "wild_01",
+    "deck": [6, 7, 8, 9, 10],
+    "sideboard": [12],
+    "reward": 15,
+    "subsequentReward": 5
+  },
+  {
+    "name": "wild_02",
+    "deck": [6, 7, 11, 9, 10],
+    "sideboard": [12],
+    "reward": 15,
+    "subsequentReward": 5
+  },
+  {
+    "name": "wild_03",
+    "deck": [13, 7, 11, 9, 10],
+    "sideboard": [12],
+    "reward": 15,
+    "subsequentReward": 5
   }
 ]

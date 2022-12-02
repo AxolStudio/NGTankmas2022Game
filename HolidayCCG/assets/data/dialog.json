@@ -32,7 +32,7 @@
     "dialogs": [
       {
         "requirements": [],
-        "text": "You see, The Boss{ asked me to come up with the next big thing to give to kids... ",
+        "text": "You see, the Boss asked me to come up with the next big thing to give to kids... ",
         "yes": ["dialog:intro guy 4"],
         "no": []
       }
@@ -131,7 +131,7 @@
     "dialogs": [
       {
         "requirements": [],
-        "text": "...and then use them to get into the Boss's Castle in the North to fin and challenge the Champion!",
+        "text": "...and then use them to get into the Boss's Castle in the North to find and challenge the Champion!",
         "yes": ["dialog:intro guy 13"],
         "no": []
       }
@@ -815,6 +815,17 @@
         "requirements": [],
         "text": "What? HOW!? This cannot be! Noooooooo!",
         "yes": ["destroy:krampus", "flag:beatKrampus", "giveCard:24", "gameOver"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "castle_hidden_01",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "",
+        "yes": ["giveCard:18", "destroy:castle_hidden_01"],
         "no": []
       }
     ]
