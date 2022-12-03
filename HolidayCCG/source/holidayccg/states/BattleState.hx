@@ -109,11 +109,11 @@ class BattleState extends FlxSubState
 		// blocker.loadGraphic(Global.asset("assets/images/blocker.png"));
 		// blocker.scrollFactor.set();
 
+		add(playedCards = new FlxTypedGroup<CardGraphic>());
+
 		add(enemyCards = new FlxTypedGroup<CardGraphic>());
 
 		add(playerCards = new FlxTypedGroup<CardGraphic>());
-
-		add(playedCards = new FlxTypedGroup<CardGraphic>());
 
 		add(cardPlaceTarget = new FlxSprite());
 		cardPlaceTarget.loadGraphic(Global.asset("assets/images/card_outline.png"));

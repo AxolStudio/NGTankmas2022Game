@@ -59,10 +59,9 @@ class GiveBadgeState extends FlxSubState
 				FlxTween.tween(badge, {alpha: 1}, .5, {
 					onComplete: (_) ->
 					{
-						
 						sparkles.add(new Sparkle(badge.width, badge.height));
 						badgeText = new TutorialMessage("You got the " + TitleCase.toTitleCase(whichBadge) + " Badge!");
-						badgeText.x = FlxG.width / 2 - badgeText.width / 2;
+						badgeText.x = Global.width / 2 - badgeText.width / 2;
 						badgeText.y = badge.y + badge.height + 10;
 						add(badgeText);
 

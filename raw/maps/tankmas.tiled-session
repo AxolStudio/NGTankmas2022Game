@@ -1,5 +1,5 @@
 {
-    "activeFile": "Castle_4.tmx",
+    "activeFile": "Central_Hub.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -11,8 +11,8 @@
             "scale": 2.2404166666666665,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 478.92877068997586,
-                "y": 270.9317463269481
+                "x": 479.59828900874095,
+                "y": 271.60126464571323
             }
         },
         "Castle_2.tmx": {
@@ -22,8 +22,8 @@
             "scale": 2.2404166666666665,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 478.92877068997586,
-                "y": 270.9317463269481
+                "x": 479.59828900874095,
+                "y": 271.60126464571323
             }
         },
         "Castle_3.tmx": {
@@ -33,8 +33,8 @@
             "scale": 2.2404166666666665,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.37511623581923,
-                "y": 271.3780918727915
+                "x": 479.59828900874095,
+                "y": 271.60126464571323
             }
         },
         "Castle_4.tmx": {
@@ -44,19 +44,19 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 463.5,
-                "y": 265
+                "x": 479.75,
+                "y": 271.75
             }
         },
         "Central_Hub.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2.34,
+            "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.70085470085473,
-                "y": 271.5811965811966
+                "x": 974,
+                "y": 62
             }
         },
         "S:/Shared drives/NGTankmas2020/maps/base_tiles.tsx": {
@@ -83,8 +83,8 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 496,
-                "y": 294
+                "x": 479.75,
+                "y": 271.75
             }
         },
         "Town_2.tmx": {
@@ -105,8 +105,8 @@
             "scale": 2.1216666666666666,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.8114689709348,
-                "y": 271.9560094265514
+                "x": 479.5758051846033,
+                "y": 271.72034564021993
             }
         },
         "Town_4.tmx": {
@@ -127,8 +127,8 @@
             "scale": 2.1216666666666666,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 478.8688138256088,
-                "y": 271.0133542812255
+                "x": 479.5758051846033,
+                "y": 271.72034564021993
             }
         },
         "Wilderness_2.tmx": {
@@ -138,8 +138,8 @@
             "scale": 2.1216666666666666,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 479.34014139827184,
-                "y": 271.9560094265514
+                "x": 479.5758051846033,
+                "y": 271.72034564021993
             }
         },
         "Wilderness_3.tmx": {
@@ -149,8 +149,8 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 461,
-                "y": 292.5
+                "x": 479.75,
+                "y": 271.75
             }
         },
         "Wilderness_4.tmx": {
@@ -271,17 +271,17 @@
     "property.type": "string",
     "recentFiles": [
         "test_room.tmx",
-        "Central_Hub.tmx",
-        "Workshop_1.tmx",
-        "Workshop_2.tmx",
-        "Workshop_3.tmx",
-        "Workshop_4.tmx",
-        "Castle_1.tmx",
-        "Castle_3.tmx",
-        "Castle_2.tmx",
         "Wilderness_4.tmx",
         "Wilderness_3.tmx",
-        "Wilderness_2.tmx"
+        "Wilderness_2.tmx",
+        "Wilderness_1.tmx",
+        "Town_4.tmx",
+        "Town_3.tmx",
+        "Town_2.tmx",
+        "Town_1.tmx",
+        "Castle_4.tmx",
+        "Castle_2.tmx",
+        "Castle_3.tmx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

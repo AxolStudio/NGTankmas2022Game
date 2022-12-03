@@ -65,13 +65,17 @@ class GameObject extends FlxSprite
 			animation.remove('walk-R');
 		}
 		hasAnims = true;
-		if (Which == "sparkle")
+		if (Which == "blockade")
+		{
+			animation.addByNames("stand-D", ["blockade_" + Std.string(FlxG.random.int(0, 2)) + ".png"], 0, false);
+		}
+		else if (Which == "sparkle")
 		{
 			animation.addByStringIndices("stand-D", "sparkle_", [
 				"00", "00", "00", "00", "00", "00", "00", "00", "00", "00", "01", "02", "03", "02", "01"
 			], ".png", 8, true);
 		}
-		if (Which == "statue")
+		else if (Which == "statue")
 		{
 			animation.addByNames('stand-D', ['${Which}_DOWN_0.png'], 0, false);
 		}

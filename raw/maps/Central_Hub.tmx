@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="18">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="28">
  <editorsettings>
   <export target="../../HolidayCCG/assets/data/maps/Central_Hub.tmj" format="json"/>
  </editorsettings>
  <properties>
-  <property name="exit_DOWN" value=""/>
+  <property name="exit_DOWN" value="Wilderness_1"/>
   <property name="exit_LEFT" value="Workshop_1"/>
-  <property name="exit_RIGHT" value=""/>
+  <property name="exit_RIGHT" value="Town_1"/>
   <property name="exit_UP" value="Castle_1"/>
   <property name="name" value="Central_Hub"/>
  </properties>
@@ -55,7 +55,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="objects" tintcolor="#5500ff">
-  <object id="11" name="playerStart" class="PlayerStart" x="480" y="480" width="32" height="32">
+  <object id="11" name="playerStart" class="PlayerStart" x="480" y="448" width="32" height="32">
    <properties>
     <property name="facing" value="UP"/>
    </properties>
@@ -80,6 +80,56 @@
   <object id="15" name="statue" class="NPC" x="480" y="64" width="32" height="32">
    <properties>
     <property name="sprite" value="statue"/>
+   </properties>
+  </object>
+  <object id="18" name="blockade" class="NPC" x="416" y="512" width="32" height="32">
+   <properties>
+    <property name="sprite" value="blockade"/>
+   </properties>
+  </object>
+  <object id="19" name="blockade" class="NPC" x="448" y="512" width="32" height="32">
+   <properties>
+    <property name="sprite" value="blockade"/>
+   </properties>
+  </object>
+  <object id="20" name="blockade" class="NPC" x="512" y="512" width="32" height="32">
+   <properties>
+    <property name="sprite" value="blockade"/>
+   </properties>
+  </object>
+  <object id="21" name="blockade" class="NPC" x="480" y="512" width="32" height="32">
+   <properties>
+    <property name="sprite" value="blockade"/>
+   </properties>
+  </object>
+  <object id="22" name="blockade" class="NPC" x="0" y="224" width="32" height="32">
+   <properties>
+    <property name="sprite" value="blockade"/>
+   </properties>
+  </object>
+  <object id="23" name="blockade" class="NPC" x="0" y="256" width="32" height="32">
+   <properties>
+    <property name="sprite" value="blockade"/>
+   </properties>
+  </object>
+  <object id="24" name="blockade" class="NPC" x="0" y="288" width="32" height="32">
+   <properties>
+    <property name="sprite" value="blockade"/>
+   </properties>
+  </object>
+  <object id="25" name="blockade" class="NPC" x="928" y="224" width="32" height="32">
+   <properties>
+    <property name="sprite" value="blockade"/>
+   </properties>
+  </object>
+  <object id="26" name="blockade" class="NPC" x="928" y="256" width="32" height="32">
+   <properties>
+    <property name="sprite" value="blockade"/>
+   </properties>
+  </object>
+  <object id="27" name="blockade" class="NPC" x="928" y="288" width="32" height="32">
+   <properties>
+    <property name="sprite" value="blockade"/>
    </properties>
   </object>
  </objectgroup>

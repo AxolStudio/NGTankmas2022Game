@@ -268,7 +268,7 @@ class PlayState extends FlxState
 	{
 		for (o in objectLayer.members)
 		{
-			if (Std.int(o.x / GameGlobals.TILE_SIZE) == X && Std.int(o.y / GameGlobals.TILE_SIZE) == Y)
+			if (o.alive && o.exists && Std.int(o.x / GameGlobals.TILE_SIZE) == X && Std.int(o.y / GameGlobals.TILE_SIZE) == Y)
 				return o;
 		}
 		return null;
@@ -276,6 +276,9 @@ class PlayState extends FlxState
 
 	public function openCollection():Void
 	{
+		if (!Dialog.checkFlag("seenIntro"))
+			return;
+		
 		ready = false;
 
 		GameGlobals.transOut(() ->

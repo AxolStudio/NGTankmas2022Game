@@ -23,9 +23,7 @@ class PlayStateTutorial extends FlxSubState
 			+ GameGlobals.GetInputName("move")
 			+ " and speak/interact with "
 			+ GameGlobals.GetInputName("a")
-			+ ".\nPress "
-			+ GameGlobals.GetInputName("pause")
-			+ " to access your COLLECTION.\n\nTry talking to this friendly fellow in front of you!\n\nPress "
+			+ "\n\nTry talking to this friendly fellow in front of you!\n\nPress "
 			+ GameGlobals.GetInputName("a")
 			+ " to continue.",
 			0, 0, Math.ceil(Global.width * .66));

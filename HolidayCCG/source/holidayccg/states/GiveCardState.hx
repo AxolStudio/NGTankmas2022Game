@@ -66,7 +66,7 @@ class GiveCardState extends FlxSubState
 						card.reveal();
 						sparkles.add(new Sparkle(card.width, card.height));
 						cardText = new TutorialMessage("You got a " + TitleCase.toTitleCase(card.card.name) + " Card!");
-						cardText.x = FlxG.width / 2 - cardText.width / 2;
+						cardText.x = Global.width / 2 - cardText.width / 2;
 						cardText.y = cardText.y + cardText.height + 10;
 						add(cardText);
 

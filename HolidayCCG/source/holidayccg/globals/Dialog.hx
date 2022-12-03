@@ -7,6 +7,11 @@ class Dialog
 {
 	public static var Flags:Map<String, Bool> = [];
 
+	public static function checkFlag(Flag:String):Bool
+	{
+		return Flags.exists(Flag) && Flags.get(Flag);
+	}
+
 	public static function meetsRequirements(Requirements:Array<String>):Bool
 	{
 		for (r in Requirements)

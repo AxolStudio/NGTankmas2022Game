@@ -95,13 +95,22 @@ class DialogFrame extends FlxGroup
 		isMessage = true;
 	}
 
+	public function fixText(Text:String):String
+	{
+		Text = Text.replace("{PAUSE}", GameGlobals.GetInputName("pause"));
+
+		return Text;
+	}
+
 	public function display(DialogData:DialogData):Void
 	{
 		dialogData = DialogData;
-		if (dialogData.text.startsWith("Q:"))
+		var dText:String = fixText(dialogData.text);
+
+		if (dText.startsWith("Q:"))
 		{
-			choiceA.text = dialogData.text.substr(2, dialogData.text.indexOf("|") - 2);
-			choiceB.text = dialogData.text.substr(dialogData.text.indexOf("|") + 1, dialogData.text.indexOf(";") - dialogData.text.indexOf("|") - 1);
+			choiceA.text = dText.substr(2, dText.indexOf("|") - 2);
+			choiceB.text = dText.substr(dText.indexOf("|") + 1, dText.indexOf(";") - dText.indexOf("|") - 1);
 
 			choiceA.x = frame.x + 24 + selector.width + 10;
 			choiceA.y = frame.y + frame.height - 24 - choiceA.height;
@@ -109,7 +118,7 @@ class DialogFrame extends FlxGroup
 			choiceB.x = frame.x + (frame.width / 2) + 10 + selector.width + 10;
 			choiceB.y = frame.y + frame.height - 24 - choiceB.height;
 
-			text.text = dialogData.text.substr(dialogData.text.indexOf(";") + 1);
+			text.text = dText.substr(dText.indexOf(";") + 1);
 			choiceA.visible = true;
 			choiceB.visible = true;
 			selector.visible = true;
@@ -123,7 +132,7 @@ class DialogFrame extends FlxGroup
 		{
 			isQuestion = false;
 			selected = -1;
-			text.text = dialogData.text;
+			text.text = dText;
 			choiceA.visible = false;
 			choiceB.visible = false;
 			selector.visible = false;

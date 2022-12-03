@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TextureAtlas imagePath="santa_DOWN_0-sprites.png">
+<TextureAtlas imagePath="player_DOWN_0-sprites.png">
 	<!--
 	Created with ShoeBox
 	http://renderhjs.net/shoebox/
 	-->
-	<SubTexture name="_0000_krampus_DOWN_1.png"	x="41"	y="162"	width="33"	height="63" frameX="-6" frameY="-1" frameWidth="40" frameHeight="64"/>
-	<SubTexture name="_0001_krampus_DOWN_0.png"	x="41"	y="98"	width="33"	height="63" frameX="-6" frameY="-1" frameWidth="40" frameHeight="64"/>
-	<SubTexture name="elf_black_DOWN_0.png"	x="182"	y="0"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_black_DOWN_1.png"	x="161"	y="156"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_blue_DOWN_0.png"	x="205"	y="39"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_blue_DOWN_1.png"	x="159"	y="78"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_cyan_DOWN_0.png"	x="159"	y="39"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_cyan_DOWN_1.png"	x="182"	y="39"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_green_DOWN_0.png"	x="136"	y="78"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_green_DOWN_1.png"	x="207"	y="156"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_pink_DOWN_0.png"	x="159"	y="0"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_pink_DOWN_1.png"	x="207"	y="117"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_purple_DOWN_0.png"	x="205"	y="78"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_purple_DOWN_1.png"	x="161"	y="117"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_red_DOWN_0.png"	x="136"	y="0"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_red_DOWN_1.png"	x="136"	y="39"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_white_DOWN_0.png"	x="182"	y="78"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_white_DOWN_1.png"	x="184"	y="117"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_yellow_DOWN_0.png"	x="184"	y="156"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="elf_yellow_DOWN_1.png"	x="205"	y="0"	width="22"	height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="player_DOWN_0.png"	x="78"	y="0"	width="28"	height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="player_DOWN_1.png"	x="75"	y="163"	width="28"	height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="player_DOWN_2.png"	x="107"	y="0"	width="28"	height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="player_SIDE_0.png"	x="133"	y="138"	width="27"	height="45" frameX="-3" frameY="-3" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="player_SIDE_1.png"	x="108"	y="92"	width="27"	height="45" frameX="-3" frameY="-3" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="player_SIDE_2.png"	x="133"	y="184"	width="27"	height="45" frameX="-3" frameY="-3" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="player_UP_0.png"	x="104"	y="163"	width="28"	height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="player_UP_1.png"	x="78"	y="46"	width="28"	height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="player_UP_2.png"	x="107"	y="46"	width="28"	height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="santa_DOWN_0.png"	x="0"	y="98"	width="40"	height="61" frameX="-0" frameY="-3" frameWidth="40" frameHeight="64"/>
-	<SubTexture name="santa_DOWN_1.png"	x="0"	y="160"	width="40"	height="61" frameX="-0" frameY="-3" frameWidth="40" frameHeight="64"/>
-	<SubTexture name="shop_DOWN_0.png"	x="45"	y="0"	width="32"	height="48" frameX="-0" frameY="-0" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="shop_DOWN_1.png"	x="45"	y="49"	width="32"	height="48" frameX="-0" frameY="-0" frameWidth="32" frameHeight="48"/>
-	<SubTexture name="sparkle_00.png"	x="7"	y="222"	width="1"	height="1" frameX="--2" frameY="--2" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="sparkle_01.png"	x="7"	y="226"	width="2"	height="2" frameX="-15" frameY="-15" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="sparkle_02.png"	x="0"	y="222"	width="6"	height="6" frameX="-13" frameY="-13" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="sparkle_03.png"	x="75"	y="209"	width="14"	height="14" frameX="-9" frameY="-9" frameWidth="32" frameHeight="32"/>
-	<SubTexture name="statue_DOWN_0.png"	x="75"	y="98"	width="32"	height="64" frameX="-0" frameY="-0" frameWidth="32" frameHeight="64"/>
-	<SubTexture name="yeti_DOWN_0.png"	x="0"	y="0"	width="44"	height="48" frameX="-2" frameY="-0" frameWidth="48" frameHeight="48"/>
-	<SubTexture name="yeti_DOWN_1.png"	x="0"	y="49"	width="44"	height="48" frameX="-2" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="krampus_DOWN_1.png" x="41" y="162" width="33" height="63" frameX="-6" frameY="-1" frameWidth="40" frameHeight="64"/>
+	<SubTexture name="krampus_DOWN_0.png" x="41" y="98" width="33" height="63" frameX="-6" frameY="-1" frameWidth="40" frameHeight="64"/>
+	<SubTexture name="blockade_0.png" x="104" y="209" width="26" height="17" frameX="-3" frameY="-15" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="blockade_1.png" x="161" y="195" width="19" height="27" frameX="-6" frameY="-5" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="blockade_2.png" x="75" y="209" width="28" height="23" frameX="-2" frameY="-9" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="elf_black_DOWN_0.png" x="182" y="78" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_black_DOWN_1.png" x="136" y="0" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_blue_DOWN_0.png" x="136" y="92" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_blue_DOWN_1.png" x="137" y="39" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_cyan_DOWN_0.png" x="160" y="39" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_cyan_DOWN_1.png" x="161" y="117" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_green_DOWN_0.png" x="161" y="156" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_green_DOWN_1.png" x="207" y="117" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_pink_DOWN_0.png" x="182" y="0" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_pink_DOWN_1.png" x="183" y="39" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_purple_DOWN_0.png" x="184" y="117" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_purple_DOWN_1.png" x="205" y="0" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_red_DOWN_0.png" x="206" y="39" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_red_DOWN_1.png" x="159" y="78" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_white_DOWN_0.png" x="207" y="156" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_white_DOWN_1.png" x="159" y="0" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_yellow_DOWN_0.png" x="184" y="156" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="elf_yellow_DOWN_1.png" x="205" y="78" width="22" height="38" frameX="-5" frameY="-10" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="player_DOWN_0.png" x="107" y="0" width="28" height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="player_DOWN_1.png" x="78" y="0" width="28" height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="player_DOWN_2.png" x="104" y="163" width="28" height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="player_SIDE_0.png" x="133" y="184" width="27" height="45" frameX="-3" frameY="-3" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="player_SIDE_1.png" x="108" y="92" width="27" height="45" frameX="-3" frameY="-3" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="player_SIDE_2.png" x="133" y="138" width="27" height="45" frameX="-3" frameY="-3" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="player_UP_0.png" x="108" y="46" width="28" height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="player_UP_1.png" x="45" y="49" width="28" height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="player_UP_2.png" x="75" y="163" width="28" height="45" frameX="-2" frameY="-3" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="santa_DOWN_0.png" x="0" y="98" width="40" height="61" frameX="-0" frameY="-3" frameWidth="40" frameHeight="64"/>
+	<SubTexture name="santa_DOWN_1.png" x="0" y="160" width="40" height="61" frameX="-0" frameY="-3" frameWidth="40" frameHeight="64"/>
+	<SubTexture name="shop_DOWN_0.png" x="45" y="0" width="32" height="48" frameX="-0" frameY="-0" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="shop_DOWN_1.png" x="75" y="114" width="32" height="48" frameX="-0" frameY="-0" frameWidth="32" frameHeight="48"/>
+	<SubTexture name="sparkle_00.png" x="3" y="222" width="1" height="1" frameX="--2" frameY="--2" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="sparkle_01.png" x="0" y="222" width="2" height="2" frameX="-15" frameY="-15" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="sparkle_02.png" x="0" y="226" width="6" height="6" frameX="-13" frameY="-13" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="sparkle_03.png" x="108" y="138" width="14" height="14" frameX="-9" frameY="-9" frameWidth="32" frameHeight="32"/>
+	<SubTexture name="statue_DOWN_0.png" x="75" y="49" width="32" height="64" frameX="-0" frameY="-0" frameWidth="32" frameHeight="64"/>
+	<SubTexture name="yeti_DOWN_0.png" x="0" y="49" width="44" height="48" frameX="-2" frameY="-0" frameWidth="48" frameHeight="48"/>
+	<SubTexture name="yeti_DOWN_1.png" x="0" y="0" width="44" height="48" frameX="-2" frameY="-0" frameWidth="48" frameHeight="48"/>
 </TextureAtlas>

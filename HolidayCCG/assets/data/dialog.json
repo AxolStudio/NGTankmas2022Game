@@ -154,18 +154,7 @@
       {
         "requirements": [],
         "text": "Let me teach you how the game works!",
-        "yes": ["flag:seenIntro", "battle:intro guy;dialog:intro guy win;dialog:intro guy lose"],
-        "no": []
-      }
-    ]
-  },
-  {
-    "who": "intro guy win",
-    "dialogs": [
-      {
-        "requirements": [],
-        "text": "You won! Now you know how to play!",
-        "yes": ["dialog:intro guy end"],
+        "yes": ["flag:seenIntro", "destroy:blockade", "battle:intro guy;dialog:intro guy win;dialog:intro guy lose"],
         "no": []
       }
     ]
@@ -182,7 +171,40 @@
     ]
   },
   {
+    "who": "intro guy win",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Great job! That's how you do it!",
+        "yes": ["dialog:intro guy end"],
+        "no": []
+      }
+    ]
+  },
+  {
     "who": "intro guy end",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "You can bring up your collection any time by pressing {PAUSE}. See what cards you've collected, and edit what's in your deck!",
+        "yes": ["dialog:intro guy end 2"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy end 2",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "Also, visit the shop to spend your $ and sell off any duplicate cards you might have.",
+        "yes": ["dialog:intro guy end 3"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "intro guy end 3",
     "dialogs": [
       {
         "requirements": [],
