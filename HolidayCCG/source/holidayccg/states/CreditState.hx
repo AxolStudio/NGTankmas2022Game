@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import holidayccg.globals.Sounds;
 import holidayccg.ui.GameText;
 import holidayccg.ui.GameFrame;
 import holidayccg.globals.GameGlobals;
@@ -71,6 +72,7 @@ class CreditState extends FlxSubState
 		{
 			if (Controls.justPressed.ANY)
 			{
+				Sounds.playSound("jingle");
 				ready = false;
 				GameGlobals.transOut(() ->
 				{

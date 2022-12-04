@@ -1,5 +1,6 @@
 package holidayccg.ui;
 
+import holidayccg.globals.Sounds;
 import flixel.FlxG;
 import holidayccg.globals.Dialog;
 import flixel.tweens.FlxTween;
@@ -149,6 +150,7 @@ class DialogFrame extends FlxGroup
 
 	public function hide():Void
 	{
+		Sounds.playSound("jingle");
 		if (!isQuestion)
 		{
 			Global.cancelTweensOf(cursor);
@@ -167,6 +169,7 @@ class DialogFrame extends FlxGroup
 
 	public function changeSelection():Void
 	{
+		Sounds.playSound("tink");
 		if (selected == 0)
 		{
 			selected = 1;

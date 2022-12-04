@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import holidayccg.globals.Sounds;
 import holidayccg.globals.GameGlobals;
 import holidayccg.ui.TutorialMessage;
 import flixel.FlxSubState;
@@ -42,6 +43,7 @@ class PlayStateTutorial extends FlxSubState
 			if (Controls.justPressed.A)
 			{
 				ready = false;
+				Sounds.playSound("jingle");
 				close();
 			}
 		}

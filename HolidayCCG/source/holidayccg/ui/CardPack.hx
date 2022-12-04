@@ -1,5 +1,6 @@
 package holidayccg.ui;
 
+import holidayccg.globals.Sounds;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
@@ -87,11 +88,13 @@ class CardPack extends FlxTypedGroup<FlxSprite>
 	public function open(Callback:Void->Void):Void
 	{
 		spark.visible = true;
+		Sounds.playSound("rip");
 		FlxTween.tween(spark, {x: base.x + base.width + 10}, .33, {
 			type: FlxTweenType.ONESHOT,
 			onComplete: (_) ->
 			{
 				spark.visible = false;
+				Sounds.playSound("cardTakeOutPackage1");
 				FlxTween.tween(top, {y: top.y - 20, alpha: 0}, .4, {
 					type: FlxTweenType.ONESHOT,
 					onComplete: (_) ->

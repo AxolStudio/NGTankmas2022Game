@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import holidayccg.globals.Sounds;
 import flixel.util.FlxTimer;
 import holidayccg.globals.Cards;
 import flixel.FlxG;
@@ -48,8 +49,6 @@ class ShopState extends FlxSubState
 	public var ready:Bool = false;
 	public var showingMessage:Bool = false;
 	public var showingReceipt:Bool = false;
-
-	
 
 	public var notEnoughMoney:TutorialMessage;
 	public var packOpening:OpenPackState;
@@ -129,7 +128,6 @@ class ShopState extends FlxSubState
 
 		notEnoughMoney.visible = false;
 
-		
 		packOpening = new OpenPackState(returnFromOpening);
 
 		super.create();
@@ -145,11 +143,10 @@ class ShopState extends FlxSubState
 		selectChoice(0);
 		money.text = "$" + GameGlobals.Player.money;
 		money.x = Global.width - money.width - 24;
-GameGlobals.transIn(() ->
+		GameGlobals.transIn(() ->
 		{
-		
-				ready = true;
-					});
+			ready = true;
+		});
 	}
 
 	public function selectChoice(Choice:Int):Void
@@ -175,8 +172,9 @@ GameGlobals.transIn(() ->
 
 		if (showingMessage)
 		{
-			if (Controls.justPressed.A || Controls.justPressed.B)
+			if (Controls.justPressed.ANY)
 			{
+				Sounds.playSound("jingle");
 				showingMessage = false;
 				notEnoughMoney.visible = false;
 			}
@@ -185,8 +183,9 @@ GameGlobals.transIn(() ->
 
 		if (showingReceipt)
 		{
-			if (Controls.justPressed.A || Controls.justPressed.B)
+			if (Controls.justPressed.ANY)
 			{
+				Sounds.playSound("jingle");
 				showingReceipt = false;
 				receipt.kill();
 			}
@@ -195,6 +194,7 @@ GameGlobals.transIn(() ->
 
 		if (Controls.justPressed.LEFT)
 		{
+			Sounds.playSound("tink");
 			if (selectedChoice == 0)
 				selectChoice(2);
 			else
@@ -202,6 +202,7 @@ GameGlobals.transIn(() ->
 		}
 		else if (Controls.justPressed.RIGHT)
 		{
+			Sounds.playSound("tink");
 			if (selectedChoice == 2)
 				selectChoice(0);
 			else
@@ -209,6 +210,7 @@ GameGlobals.transIn(() ->
 		}
 		else if (Controls.justPressed.A)
 		{
+			Sounds.playSound("jingle");
 			switch (selectedChoice)
 			{
 				case 0:
@@ -281,8 +283,10 @@ GameGlobals.transIn(() ->
 	public function exit():Void
 	{
 		ready = false;
-		GameGlobals.transOut(()->{close();});
-		
+		GameGlobals.transOut(() ->
+		{
+			close();
+		});
 	}
 
 	public function showMessage():Void
@@ -297,8 +301,6 @@ GameGlobals.transIn(() ->
 		if (GameGlobals.transition.transitioning)
 			GameGlobals.transition.draw();
 	}
-
-	
 }
 
 class OpenPackState extends FlxSubState
@@ -464,8 +466,9 @@ class OpenPackState extends FlxSubState
 
 		if (ready)
 		{
-			if (Controls.justPressed.A || Controls.justPressed.B)
+			if (Controls.justPressed.ANY)
 			{
+				Sounds.playSound("jingle");
 				ready = false;
 				cardRarities[0].visible = cardRarities[1].visible = cardRarities[2].visible = false;
 

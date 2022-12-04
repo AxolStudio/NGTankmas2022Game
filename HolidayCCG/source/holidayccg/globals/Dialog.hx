@@ -49,6 +49,7 @@ class Dialog
 		var message:String = "";
 		var willOpenShop:Bool = false;
 		var givingBadge:String = "";
+		var gamingOver:Bool = false;
 
 		var spawning:String = "";
 
@@ -98,6 +99,10 @@ class Dialog
 			{
 				spawning = f.substr(6);
 			}
+			else if (f == "gameOver")
+			{
+				gamingOver = true;
+			}
 		}
 		if (willBattle != "")
 			GameGlobals.PlayState.startBattle(willBattle);
@@ -111,6 +116,8 @@ class Dialog
 			GameGlobals.PlayState.giveBadge(givingBadge);
 		else if (spawning != "")
 			GameGlobals.PlayState.spawnObject(spawning);
+		else if (gamingOver)
+			GameGlobals.PlayState.gameOver();
 	}
 
 	public static function talk(Who:String):Bool

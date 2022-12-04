@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import holidayccg.globals.Sounds;
 import flixel.FlxSubState;
 import holidayccg.ui.GameFrame;
 import holidayccg.ui.GameText;
@@ -151,8 +152,9 @@ class TitleState extends FlxState
 		super.update(elapsed);
 		if (ready)
 		{
-			if (Controls.justPressed.A || Controls.justPressed.PAUSE)
+			if (Controls.justPressed.ANY)
 			{
+				Sounds.playSound("jingle");
 				if (!menuShown)
 				{
 					showMenu();
@@ -166,6 +168,7 @@ class TitleState extends FlxState
 			{
 				if (Controls.justPressed.DOWN)
 				{
+					Sounds.playSound("tink");
 					if (selected < options.length - 1)
 					{
 						selected++;
@@ -185,6 +188,7 @@ class TitleState extends FlxState
 				}
 				else if (Controls.justPressed.UP)
 				{
+					Sounds.playSound("tink");
 					if (selected > 0 && (selected != 1 || GameGlobals.hasSave))
 					{
 						selected--;
@@ -420,6 +424,7 @@ class ConfirmState extends FlxSubState
 		{
 			if (Controls.justPressed.LEFT || Controls.justPressed.RIGHT)
 			{
+				Sounds.playSound("tink");
 				if (selected == 1)
 				{
 					selected = 0;
@@ -433,6 +438,7 @@ class ConfirmState extends FlxSubState
 			}
 			else if (Controls.justPressed.A || Controls.justPressed.PAUSE)
 			{
+				Sounds.playSound("jingle");
 				ready = false;
 				if (selected == 0)
 				{
@@ -448,6 +454,7 @@ class ConfirmState extends FlxSubState
 			}
 			else if (Controls.justPressed.B)
 			{
+				Sounds.playSound("jingle");
 				ready = false;
 				close();
 			}

@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import holidayccg.globals.Sounds;
 import flixel.util.FlxDestroyUtil;
 import flixel.FlxG;
 import flixel.tweens.FlxTween;
@@ -60,6 +61,16 @@ class GiveCardState extends FlxSubState
 			onComplete: (_) ->
 			{
 				sparkles.add(new Sparkle(card.width, card.height));
+				Sounds.playOneOf([
+					"cardSlide1",
+					"cardSlide2",
+					"cardSlide3",
+					"cardSlide4",
+					"cardSlide6",
+					"cardSlide6",
+					"cardSlide7",
+					"cardSlide8"
+				]);
 				FlxTween.tween(card, {y: Global.height / 2 - card.height / 2 + 10}, .5, {
 					onComplete: (_) ->
 					{
@@ -69,7 +80,7 @@ class GiveCardState extends FlxSubState
 						cardText.x = Global.width / 2 - cardText.width / 2;
 						cardText.y = cardText.y + cardText.height + 10;
 						add(cardText);
-
+						Sounds.playSound("success");
 						ready = true;
 					}
 				});
@@ -83,6 +94,7 @@ class GiveCardState extends FlxSubState
 
 		if (ready && (Controls.justPressed.A || Controls.justPressed.B || Controls.justPressed.PAUSE))
 		{
+			Sounds.playSound("jingle");
 			exit();
 		}
 	}
@@ -91,6 +103,16 @@ class GiveCardState extends FlxSubState
 	{
 		ready = false;
 		sparkles.kill();
+		Sounds.playOneOf([
+			"cardSlide1",
+			"cardSlide2",
+			"cardSlide3",
+			"cardSlide4",
+			"cardSlide6",
+			"cardSlide6",
+			"cardSlide7",
+			"cardSlide8"
+		]);
 		FlxTween.tween(card, {y: -card.height}, .5, {
 			onComplete: (_) ->
 			{

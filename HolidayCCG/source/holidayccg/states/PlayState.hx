@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import holidayccg.globals.Sounds;
 import flixel.util.FlxSort;
 import holidayccg.ui.GameCamera;
 import flixel.util.FlxColor;
@@ -20,6 +21,8 @@ import holidayccg.game.GameObject;
 import holidayccg.globals.Dialog;
 import holidayccg.globals.GameGlobals;
 import holidayccg.ui.DialogFrame;
+
+using StringTools;
 
 class PlayState extends FlxState
 {
@@ -51,6 +54,8 @@ class PlayState extends FlxState
 	public var gameCamera:GameCamera;
 
 	public var newGame:Bool = true;
+
+	public var roomName:String = "";
 
 	override public function new()
 	{
@@ -113,15 +118,41 @@ class PlayState extends FlxState
 		gameCamera.follow(player);
 		gameCamera.snapToTarget();
 
+		switchMusic();
+
 		GameGlobals.transIn(() ->
 		{
 			ready = true;
 		});
 	}
 
+	public function switchMusic():Void
+	{
+		Sounds.playMusic(getMusicTrack(roomName));
+	}
+
+	public function getMusicTrack(RoomName:String):String
+	{
+		if (RoomName.startsWith("Workshop"))
+		{
+			return "workshop_map";
+		}
+		else if (RoomName.startsWith("Town") || RoomName.startsWith("Central_Hub"))
+		{
+			return "town_map";
+		}
+		else if (RoomName.startsWith("Wild"))
+		{
+			return "wild_map";
+		}
+
+		return "";
+	}
+
 	public function setMap(RoomName:String):Void
 	{
-		mapData = GameGlobals.MapList.get(RoomName);
+		roomName = RoomName;
+		mapData = GameGlobals.MapList.get(roomName);
 
 		if (baseMap != null)
 		{
@@ -278,7 +309,7 @@ class PlayState extends FlxState
 	{
 		if (!Dialog.checkFlag("seenIntro"))
 			return;
-		
+
 		ready = false;
 
 		GameGlobals.transOut(() ->
@@ -459,6 +490,7 @@ class PlayState extends FlxState
 
 	public function returnFromBattle(Actions:String):Void
 	{
+		switchMusic();
 		GameGlobals.transIn(() ->
 		{
 			Dialog.parseScripts([Actions]);
@@ -489,5 +521,16 @@ class PlayState extends FlxState
 		super.draw();
 		if (GameGlobals.transition.transitioning)
 			GameGlobals.transition.draw();
+	}
+
+	public function gameOver():Void
+	{
+		ready = false;
+		var gO:WinScreenState = new WinScreenState();
+		gO.closeCallback = () ->
+		{
+			ready = true;
+		};
+		openSubState(gO);
 	}
 }

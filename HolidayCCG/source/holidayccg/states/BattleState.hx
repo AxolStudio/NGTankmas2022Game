@@ -244,8 +244,27 @@ class BattleState extends FlxSubState
 			GameGlobals.transition.draw();
 	}
 
+	public function getMusicTrack(RoomName:String):String
+	{
+		if (RoomName.startsWith("Workshop"))
+		{
+			return "workshop_battle";
+		}
+		else if (RoomName.startsWith("Town") || RoomName.startsWith("Central_Hub"))
+		{
+			return "town_battle";
+		}
+		else if (RoomName.startsWith("Wild"))
+		{
+			return "wild_battle";
+		}
+
+		return "";
+	}
+
 	public function start():Void
 	{
+		Sounds.playMusic(getMusicTrack(GameGlobals.PlayState.roomName));
 		GameGlobals.transIn(() ->
 		{
 			// placeBlocker();
@@ -1039,7 +1058,7 @@ class BattleEndState extends FlxSubState
 		back.y = Std.int(back.y);
 
 		winText = holidayccg.globals.GraphicsCache.loadFlxSpriteFromAtlas("battle_text");
-		winText.x = Std.int(back.x + (back.width / 2) - (winText.width / 2));
+
 		winText.y = back.y + 20;
 		winText.scrollFactor.set();
 		add(winText);
@@ -1074,6 +1093,7 @@ class BattleEndState extends FlxSubState
 			GameGlobals.Player.money += opponent.reward;
 			opponent.reward = opponent.subsequentReward;
 			winText.animation.frameName = "win";
+			winText.x = Std.int(back.x + (back.width / 2) - (winText.width / 2));
 
 			if (!isSpecial)
 			{
@@ -1107,6 +1127,7 @@ class BattleEndState extends FlxSubState
 		else
 		{
 			winText.animation.frameName = "lose";
+			winText.x = Std.int(back.x + (back.width / 2) - (winText.width / 2));
 
 			showExit();
 		}

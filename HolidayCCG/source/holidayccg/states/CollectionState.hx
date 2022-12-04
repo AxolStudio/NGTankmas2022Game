@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import holidayccg.globals.Sounds;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxTween.FlxTweenType;
@@ -240,9 +241,13 @@ class CollectionState extends FlxSubState
 		if (!ready)
 			return;
 		if (Controls.justPressed.PAUSE)
+		{
+			Sounds.playSound("tink");
 			exit();
+		}
 		else if (Controls.justPressed.LEFT)
 		{
+			Sounds.playSound("tink");
 			if (inDeck)
 			{
 				if (selectedCard > 0)
@@ -286,6 +291,7 @@ class CollectionState extends FlxSubState
 		}
 		else if (Controls.justPressed.RIGHT)
 		{
+			Sounds.playSound("tink");
 			if (inDeck)
 			{
 				if (selectedCard < deckList.members.length - 1)
@@ -335,6 +341,7 @@ class CollectionState extends FlxSubState
 			}
 			else
 			{
+				Sounds.playSound("tink");
 				if (selectedCard < COLLECTION_COUNT_W)
 				{
 					if (swapping)
@@ -366,6 +373,7 @@ class CollectionState extends FlxSubState
 		{
 			if (inDeck)
 			{
+				Sounds.playSound("tink");
 				if (swapping)
 					return;
 				deckList.members[selectedCard].selected = false;
@@ -379,6 +387,7 @@ class CollectionState extends FlxSubState
 			{
 				if (selectedCard + COLLECTION_COUNT_W < collection.members.length)
 				{
+					Sounds.playSound("tink");
 					collection.members[selectedCard].cardGraphic.selected = false;
 					selectedCard += COLLECTION_COUNT_W;
 					collection.members[selectedCard].cardGraphic.selected = true;
@@ -399,6 +408,7 @@ class CollectionState extends FlxSubState
 		}
 		else if (Controls.justPressed.A)
 		{
+			Sounds.playSound("tink");
 			if (!swapping)
 			{
 				if (inDeck)

@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import holidayccg.globals.Sounds;
 import flixel.util.FlxDestroyUtil;
 import holidayccg.globals.GameGlobals;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -65,6 +66,8 @@ class GiveBadgeState extends FlxSubState
 						badgeText.y = badge.y + badge.height + 10;
 						add(badgeText);
 
+						Sounds.playSound("success");
+
 						ready = true;
 					}
 				});
@@ -78,6 +81,7 @@ class GiveBadgeState extends FlxSubState
 
 		if (ready && (Controls.justPressed.A || Controls.justPressed.B || Controls.justPressed.PAUSE))
 		{
+			Sounds.playSound("jingle");
 			exit();
 		}
 	}

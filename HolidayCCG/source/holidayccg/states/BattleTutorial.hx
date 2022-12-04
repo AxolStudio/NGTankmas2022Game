@@ -1,5 +1,6 @@
 package holidayccg.states;
 
+import holidayccg.globals.Sounds;
 import holidayccg.globals.Cards.CardGraphic;
 import holidayccg.globals.GameGlobals;
 import holidayccg.ui.TutorialMessage;
@@ -175,6 +176,7 @@ class BattleTutorial extends FlxSubState
 		{
 			if (Controls.justPressed.A || Controls.justPressed.B || Controls.justPressed.PAUSE)
 			{
+				Sounds.playSound("jingle");
 				switch (showing)
 				{
 					case 2:
