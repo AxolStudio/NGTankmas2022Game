@@ -152,7 +152,7 @@ class TitleState extends FlxState
 		super.update(elapsed);
 		if (ready)
 		{
-			if (Controls.justPressed.ANY)
+			if (Controls.justPressed.A || Controls.justPressed.PAUSE)
 			{
 				Sounds.playSound("jingle");
 				if (!menuShown)
