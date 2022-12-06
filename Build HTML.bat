@@ -8,7 +8,7 @@ FOR /F "tokens=1 delims= " %%i IN ('getPID') DO (
 "C:\Program Files\PowerToys\modules\Awake\PowerToys.Awake.exe" --pid %PID%
 
 ECHO "Building..."
-lime build HolidayCCG\Project.xml html5 -clean -final -Dfinal
+lime build Project.xml html5 -clean -final -Dfinal
 IF %ERRORLEVEL% == 0 GOTO SUCCESS
 ECHO "Build failed, exiting..."
 PAUSE

@@ -1,9 +1,2 @@
-build-and-push.bat
 export/
-raw/ref
-.vscode
-hxformat.json
-keys/
-dump/decoding_error.txt
-data_output
-haxe_libraries
+.haxelib/
