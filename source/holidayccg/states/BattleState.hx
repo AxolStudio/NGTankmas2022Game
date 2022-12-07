@@ -82,6 +82,8 @@ class BattleState extends FlxSubState
 
 	public var table:FlxSprite;
 
+	public var did8:Bool = false;
+
 	public function new(Callback:String->Void):Void
 	{
 		super();
@@ -532,7 +534,18 @@ class BattleState extends FlxSubState
 
 				Sounds.playOneOf(["cardPlace1", "cardPlace2", "cardPlace3", "cardPlace4"]);
 
-				checkAttacks(bestSpot, OPPONENT);
+				if (doingTut && !did8)
+				{
+					did8 = true;
+					showTut(8, () ->
+					{
+						checkAttacks(bestSpot, OPPONENT);
+					});
+				}
+				else
+				{
+					checkAttacks(bestSpot, OPPONENT);
+				}
 			}
 		});
 	}
@@ -652,7 +665,7 @@ class BattleState extends FlxSubState
 			{
 				if (doingTut && playedCards.length == 2 && !didTut)
 				{
-					showTut(10, () ->
+					showTut(11, () ->
 					{
 						didTut = true;
 						startPlayerTurn();
@@ -665,7 +678,7 @@ class BattleState extends FlxSubState
 		else
 		{
 			if (doingTut)
-				showTut(11, () ->
+				showTut(12, () ->
 				{
 					var t:FlxTimer = new FlxTimer();
 					t.start(FlxG.elapsed, (_) ->
@@ -852,73 +865,95 @@ class BattleState extends FlxSubState
 	public function checkAttacks(NewCardSpot:Int, Owner:CardOwner):Void
 	{
 		lastMode = currentMode;
-		currentMode = TURN_END;
-		var newCard:Card = Cards.CardList.get(gameGrid[NewCardSpot]);
+		currentMode = TURN_END_CHECK;
+
+		var flips:Array<Int> = [NewCardSpot];
+
+		var newCard:Card = null;
+		var newSpot:Int = -1;
+
 		var card:CardGraphic = null;
 
-		for (a in newCard.attacks)
+		var newFlips:Array<Int> = [];
+
+		while (flips.length > 0)
 		{
-			if (a == "N")
+			newFlips = flips.copy();
+			flips = [];
+
+			newSpot = newFlips.pop();
+			newCard = Cards.CardList.get(gameGrid[newSpot]);
+
+			for (a in newCard.attacks)
 			{
-				// compare card above
-				if (NewCardSpot > 2)
+				if (a == "N")
 				{
-					if (gameGrid[NewCardSpot - 3] > 0)
+					// compare card above
+					if (newSpot > 2)
 					{
-						card = getCardGraphicFromBattlefield(NewCardSpot - 3);
-						if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
+						if (gameGrid[newSpot - 3] > 0)
 						{
-							card.flip(Owner);
+							card = getCardGraphicFromBattlefield(newSpot - 3);
+							if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
+							{
+								card.flip(Owner);
+								flips.push(newSpot - 3);
+							}
 						}
 					}
 				}
-			}
-			else if (a == "S")
-			{
-				// compare card below
-				if (NewCardSpot < 6)
+				else if (a == "S")
 				{
-					if (gameGrid[NewCardSpot + 3] > 0)
+					// compare card below
+					if (newSpot < 6)
 					{
-						card = getCardGraphicFromBattlefield(NewCardSpot + 3);
-						if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
+						if (gameGrid[newSpot + 3] > 0)
 						{
-							card.flip(Owner);
+							card = getCardGraphicFromBattlefield(newSpot + 3);
+							if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
+							{
+								card.flip(Owner);
+								flips.push(newSpot + 3);
+							}
 						}
 					}
 				}
-			}
-			else if (a == "E")
-			{
-				// compare card to the right
-				if (NewCardSpot % 3 != 2)
+				else if (a == "E")
 				{
-					if (gameGrid[NewCardSpot + 1] > 0)
+					// compare card to the right
+					if (newSpot % 3 != 2)
 					{
-						card = getCardGraphicFromBattlefield(NewCardSpot + 1);
-						if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
+						if (gameGrid[newSpot + 1] > 0)
 						{
-							card.flip(Owner);
+							card = getCardGraphicFromBattlefield(newSpot + 1);
+							if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
+							{
+								card.flip(Owner);
+								flips.push(newSpot + 1);
+							}
 						}
 					}
 				}
-			}
-			else if (a == "W")
-			{
-				// compare card to the left
-				if (NewCardSpot % 3 != 0)
+				else if (a == "W")
 				{
-					if (gameGrid[NewCardSpot - 1] > 0)
+					// compare card to the left
+					if (newSpot % 3 != 0)
 					{
-						card = getCardGraphicFromBattlefield(NewCardSpot - 1);
-						if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
+						if (gameGrid[newSpot - 1] > 0)
 						{
-							card.flip(Owner);
+							card = getCardGraphicFromBattlefield(newSpot - 1);
+							if (card.owner != Owner && (card.card.value < newCard.value || (newCard.value == 1 && card.card.value == 10)))
+							{
+								card.flip(Owner);
+								flips.push(newSpot - 1);
+							}
 						}
 					}
 				}
 			}
 		}
+
+		currentMode = TURN_END;
 	}
 
 	public function letPlayerChooseCard():Void
@@ -1549,4 +1584,5 @@ class CoinFlip extends FlxSubState
 	var TURN_END = "turn_end";
 	var TURN_ENDING = "turn_ending";
 	var GAME_OVER = "game_over";
+	var TURN_END_CHECK = "turn_end_check";
 }

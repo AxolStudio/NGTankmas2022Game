@@ -103,6 +103,12 @@ class Dialog
 			{
 				gamingOver = true;
 			}
+			else if (f.startsWith("giveMedal:"))
+			{
+				#if ADVENT
+				data.NGio.unlockMedalByName(f.substr(10));
+				#end
+			}
 		}
 		if (willBattle != "")
 			GameGlobals.PlayState.startBattle(willBattle);

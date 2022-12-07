@@ -667,7 +667,7 @@
       {
         "requirements": [],
         "text": "AWR...",
-        "yes": ["giveCard:22", "destroy:yeti"],
+        "yes": ["giveCard:22", "destroy:yeti", "giveMedal:yeti"],
         "no": []
       }
     ]
@@ -790,7 +790,7 @@
       {
         "requirements": ["flag:beatSanta", "flag:spawnedKrampus", "flag:beatKrampus", "flag:hasAll"],
         "text": "Well done, kid! Here's the final card in the game! I'll see you soon!",
-        "yes": ["giveCard:25", "destroy:santa"],
+        "yes": ["giveCard:25", "destroy:santa", "giveMedal:allCards"],
         "no": []
       }
     ]
@@ -836,7 +836,7 @@
       {
         "requirements": [],
         "text": "What? HOW!? This cannot be! Noooooooo!",
-        "yes": ["destroy:krampus", "flag:beatKrampus", "giveCard:24", "gameOver"],
+        "yes": ["destroy:krampus", "flag:beatKrampus", "giveCard:24", "gameOver", "giveMedal:winGame"],
         "no": []
       }
     ]

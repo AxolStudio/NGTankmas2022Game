@@ -156,6 +156,20 @@ class CollectionState extends FlxSubState
 
 	public function exit():Void
 	{
+		if (swapping)
+		{
+			tmpSwappingCard.visible = false;
+			swapping = false;
+			swappingCardArrow.visible = false;
+			swappingCardInDeck = -1;
+			swappingCardID = -1;
+
+			for (c in deckList.members)
+				c.selected = false;
+
+			for (c in collection.members)
+				c.cardGraphic.selected = false;
+		}
 		GameGlobals.transOut(() ->
 		{
 			close();
