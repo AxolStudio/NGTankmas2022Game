@@ -248,9 +248,13 @@ class BattleState extends FlxSubState
 
 	public function getMusicTrack(RoomName:String):String
 	{
-		if (RoomName.startsWith("Workshop"))
+		if (enemy.name == "santa" || enemy.name == "krampus")
 		{
-			return "workshop_battle";
+			return "boss_battle";
+		}
+		else if (RoomName.startsWith("Workshop"))
+		{
+			return "work_battle";
 		}
 		else if (RoomName.startsWith("Town") || RoomName.startsWith("Central_Hub"))
 		{
@@ -259,6 +263,10 @@ class BattleState extends FlxSubState
 		else if (RoomName.startsWith("Wild"))
 		{
 			return "wild_battle";
+		}
+		else if (RoomName.startsWith("Castle"))
+		{
+			return "castle_battle";
 		}
 
 		return "";

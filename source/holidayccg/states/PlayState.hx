@@ -135,7 +135,7 @@ class PlayState extends FlxState
 	{
 		if (RoomName.startsWith("Workshop"))
 		{
-			return "workshop_map";
+			return "work_map";
 		}
 		else if (RoomName.startsWith("Town") || RoomName.startsWith("Central_Hub"))
 		{
@@ -144,6 +144,10 @@ class PlayState extends FlxState
 		else if (RoomName.startsWith("Wild"))
 		{
 			return "wild_map";
+		}
+		else if (RoomName.startsWith("Castle"))
+		{
+			return "castle_map";
 		}
 
 		return "";

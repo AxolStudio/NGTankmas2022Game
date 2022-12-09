@@ -4,23 +4,29 @@
 	Created with ShoeBox
 	http://renderhjs.net/shoebox/
 	-->
-	<SubTexture name="10" x="182" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="11" x="273" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="12" x="91" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="13" x="91" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="14" x="91" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="15" x="91" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="10" x="273" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="11" x="273" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="12" x="182" y="336" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="13" x="182" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="14" x="364" y="336" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="15" x="182" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="16" x="182" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="17" x="91" y="336" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="18" x="91" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="19" x="91" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
 	<SubTexture name="1" x="0" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="20" x="91" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="21" x="91" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
 	<SubTexture name="22" x="0" y="336" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
 	<SubTexture name="23" x="0" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
 	<SubTexture name="24" x="0" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
 	<SubTexture name="25" x="0" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="2" x="91" y="336" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="3" x="273" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="4" x="273" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="5" x="273" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="6" x="182" y="336" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="7" x="182" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="8" x="182" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
-	<SubTexture name="9" x="182" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="2" x="182" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="3" x="364" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="4" x="364" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="5" x="364" y="84" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="6" x="364" y="0" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="7" x="273" y="336" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="8" x="273" y="252" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
+	<SubTexture name="9" x="273" y="168" width="90" height="83" frameX="-0" frameY="-0" frameWidth="90" frameHeight="83"/>
 </TextureAtlas>
