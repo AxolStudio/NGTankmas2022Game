@@ -76,6 +76,8 @@ class TitleState extends FlxState
 
 		super.create();
 
+		Sounds.playMusic("title");
+
 		FlxG.camera.fade(GameGlobals.ColorPalette[1], 1, true, () ->
 		{
 			ready = true;
