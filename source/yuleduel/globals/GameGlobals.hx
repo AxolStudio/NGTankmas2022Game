@@ -45,21 +45,23 @@ class GameGlobals
 		initialized = true;
 
 		FlxG.mouse.visible = false;
-		FlxG.camera.bgColor = FlxColor.TRANSPARENT;
+		Global.camera.bgColor = FlxColor.TRANSPARENT;
+		Global.camera.pixelPerfectRender = true;
+		Global.camera.antialiasing = false;
+		FlxSprite.defaultAntialiasing = false;
 
 		transition = new TransitionState();
 
+		#if STAND_ALONE
 		FlxG.game.setFilters([new ShaderFilter(new FlxShader())]);
 		FlxG.game.stage.quality = StageQuality.LOW;
 		FlxG.resizeWindow(960, 540);
-
-		FlxG.camera.pixelPerfectRender = true;
-		FlxG.camera.antialiasing = false;
 		FlxG.autoPause = false;
+		#end
 
 		// check for a save file
 		GameSave = new FlxSave();
-		GameSave.bind("HolidayCCG");
+		GameSave.bind("YuleDuel");
 
 		Player = new Player();
 
@@ -84,6 +86,14 @@ class GameGlobals
 
 		PlayState = new PlayState();
 	}
+	
+	#if ADVENT
+	public static function uninit()
+	{
+		FlxG.mouse.visible = true;
+		FlxSprite.defaultAntialiasing = true;
+	}
+	#end
 
 	public static function loadSave():Void
 	{

@@ -296,7 +296,7 @@ class BattleState extends FlxSubState
 	// 		type: FlxTweenType.ONESHOT,
 	// 		onComplete: (_) ->
 	// 		{
-	// 			FlxG.camera.shake(0.01, 0.5);
+	// 			Global.camera.shake(0.01, 0.5);
 	// 			placeCards();
 	// 		}
 	// 	});
