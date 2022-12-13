@@ -26,6 +26,6 @@ class BootState extends flixel.FlxState
 	{
 		super.update(elapsed);
 
-		Global.switchState(new holidayccg.states.MenuState());
+		Global.switchState(new yuleduel.states.TitleState());
 	}
 }
