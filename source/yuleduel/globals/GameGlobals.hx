@@ -75,17 +75,6 @@ class GameGlobals
 			hasSave = false;
 		}
 
-		// #if debug
-		// Dialog.Flags.set("krampus-dead", true);
-		// GameGlobals.save();
-		// // Player.money = 100000;
-
-		// // for (c in Cards.CardList.keys())
-		// // {
-		// // 	Player.collection.add(c, 1);
-		// // }
-		// #end
-
 		PlayState = new PlayState();
 	}
 
@@ -99,13 +88,6 @@ class GameGlobals
 
 	public static function loadSave():Void
 	{
-		// #if debug
-		// Dialog.Flags.set("tutSeen", true);
-		// Dialog.Flags.set("krampus-dead", true);
-		// Dialog.Flags.set("blockade-dead", true);
-		// Dialog.Flags.set("seenIntro", true);
-		// GameGlobals.save();
-		// #end
 		var SavedData:SaveData = GameSave.data.savedData;
 		Dialog.Flags = SavedData.dialogFlags.copy();
 		Player.money = SavedData.money;
@@ -113,31 +95,50 @@ class GameGlobals
 		Player.deck = SavedData.deck;
 		Opponent.OpponentList = SavedData.opponents.copy();
 
+		// #if debug
+		// Dialog.Flags.set("tutSeen", true);
+		// Dialog.Flags.set("krampus-dead", true);
+		// Dialog.Flags.set("beatSanta", true);
+		// Dialog.Flags.set("yeti-dead", true);
+		// Dialog.Flags.set("blockade-dead", true);
+		// Dialog.Flags.set("seenIntro", true);
+		// GameGlobals.save();
+		// #end
+
+		PlayState.tutSeen = Dialog.Flags.exists("tutSeen");
+
 		// if they load the game and yeti is dead but they don't have his card, give it to them
 		if (Dialog.Flags.exists("yeti-dead"))
 		{
-			#if ADVENT
-			data.NGio.unlockMedalByName("yuleYeti");
-			#end
-			if (!Player.collection.collection.exists(22))
-				Player.collection.add(22, 1);
+			if (Dialog.Flags.get("yeti-dead"))
+			{
+				#if ADVENT data.NGio.unlockMedalByName("yuleYeti"); #end
+				if (!Player.collection.collection.exists(22))
+					Player.collection.add(22, 1);
+			}
 		}
 
 		// if they load the game and they had beaten santa but don't have his card, give it to them
-		if (Dialog.Flags.exists("santa-beaten"))
+		if (Dialog.Flags.exists("beatSanta"))
 		{
-			if (!Player.collection.collection.exists(23))
-				Player.collection.add(23, 1);
+			if (Dialog.Flags.get("beatSanta"))
+			{
+				if (!Player.collection.collection.exists(23))
+					Player.collection.add(23, 1);
+			}
 		}
 
 		// if they load the game and krampus is dead but they don't have his card, give it to them
 		if (Dialog.Flags.exists("krampus-dead"))
 		{
-			#if ADVENT
-			data.NGio.unlockMedalByName("yuleSanta");
-			#end
-			if (!Player.collection.collection.exists(24))
-				Player.collection.add(24, 1);
+			if (Dialog.Flags.get("krampus-dead"))
+			{
+				#if ADVENT
+				data.NGio.unlockMedalByName("yuleSanta");
+				#end
+				if (!Player.collection.collection.exists(24))
+					Player.collection.add(24, 1);
+			}
 		}
 
 		// fixes the baricades getting stuck on continue

@@ -61,10 +61,6 @@ class PlayState extends FlxState
 	{
 		super();
 
-		#if debug
-		GameGlobals.Player.collection.add(10, 1);
-		#end
-
 		destroySubStates = false;
 
 		// gameCamera.bgColor = FlxColor.TRANSPARENT;
@@ -104,7 +100,7 @@ class PlayState extends FlxState
 		c.bgColor = FlxColor.TRANSPARENT;
 		GameGlobals.transition.cameras = [c];
 
-		tutSeen = Dialog.Flags.exists("tutSeen");
+		
 
 		super.create();
 
