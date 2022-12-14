@@ -113,9 +113,29 @@ class GameGlobals
 		Player.deck = SavedData.deck;
 		Opponent.OpponentList = SavedData.opponents.copy();
 
+		// if they load the game and yeti is dead but they don't have his card, give it to them
+		if (Dialog.Flags.exists("yeti-dead"))
+		{
+			#if ADVENT
+			data.NGio.unlockMedalByName("yuleYeti");
+			#end
+			if (!Player.collection.collection.exists(22))
+				Player.collection.add(22, 1);
+		}
+
+		// if they load the game and they had beaten santa but don't have his card, give it to them
+		if (Dialog.Flags.exists("santa-beaten"))
+		{
+			if (!Player.collection.collection.exists(23))
+				Player.collection.add(23, 1);
+		}
+
 		// if they load the game and krampus is dead but they don't have his card, give it to them
 		if (Dialog.Flags.exists("krampus-dead"))
 		{
+			#if ADVENT
+			data.NGio.unlockMedalByName("yuleSanta");
+			#end
 			if (!Player.collection.collection.exists(24))
 				Player.collection.add(24, 1);
 		}
