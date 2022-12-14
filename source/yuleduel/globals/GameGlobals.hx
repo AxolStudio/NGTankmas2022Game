@@ -165,6 +165,13 @@ class GameGlobals
 			}
 		}
 
+		#if ADVENT
+		if (Player.collection.collection.exists(25))
+		{
+			data.NGio.unlockMedalByName("yuleAllCards");
+		}
+		#end
+
 		GameGlobals.save();
 	}
 
