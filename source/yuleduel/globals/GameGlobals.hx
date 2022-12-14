@@ -124,7 +124,9 @@ class GameGlobals
 		{
 			if (Dialog.Flags.get("yeti-dead"))
 			{
-				#if ADVENT data.NGio.unlockMedalByName("yuleYeti"); #end
+				#if ADVENT
+				data.NGio.unlockMedalByName("yuleYeti");
+				#end
 				if (!Player.collection.collection.exists(22))
 					Player.collection.add(22, 1);
 			}
@@ -145,6 +147,7 @@ class GameGlobals
 		{
 			if (Dialog.Flags.get("krampus-dead"))
 			{
+				Dialog.Flags.set("beatKrampus", true);
 				#if ADVENT
 				data.NGio.unlockMedalByName("yuleSanta");
 				#end
@@ -161,6 +164,8 @@ class GameGlobals
 				o.kill();
 			}
 		}
+
+		GameGlobals.save();
 	}
 
 	public static function save():Void
