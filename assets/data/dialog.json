@@ -11,7 +11,7 @@
       {
         "requirements": ["flag:seenIntro"],
         "text": "Q:Yes|No;Do you want a refresher on the rules?",
-        "yes": ["battle:intro guy;dialog:intro guy win;dialog:intro guy lose"],
+        "yes": ["destroy:blockade", "battle:intro guy;dialog:intro guy win;dialog:intro guy lose"],
         "no": []
       }
     ]

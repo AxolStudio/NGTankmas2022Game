@@ -107,6 +107,14 @@ class GameGlobals
 
 		PlayState.tutSeen = Dialog.Flags.exists("tutSeen");
 
+		if (Dialog.Flags.exists("seenIntro"))
+		{
+			if (Dialog.Flags.get("seenIntro"))
+			{
+				Dialog.Flags.set("blockade-dead", true);
+			}
+		}
+
 		// if they load the game and yeti is dead but they don't have his card, give it to them
 		if (Dialog.Flags.exists("yeti-dead"))
 		{
