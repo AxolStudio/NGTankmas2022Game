@@ -38,6 +38,8 @@ class GameGlobals
 
 	public static var hasSave:Bool = false;
 
+	public static var OpponentList:Map<String, Opponent> = [];
+
 	public static function init():Void
 	{
 		if (initialized)
@@ -64,6 +66,8 @@ class GameGlobals
 		GameSave.bind("YuleDuel");
 
 		Player = new Player();
+		Dialog.Flags = [];
+		OpponentList = Opponent.OpponentList.copy();
 
 		if (GameSave.data.savedData != null)
 		{
@@ -93,7 +97,7 @@ class GameGlobals
 		Player.money = SavedData.money;
 		Player.collection = SavedData.collection;
 		Player.deck = SavedData.deck;
-		Opponent.OpponentList = SavedData.opponents.copy();
+		OpponentList = SavedData.opponents.copy();
 
 		// #if debug
 		// Dialog.Flags.set("tutSeen", true);
@@ -165,7 +169,7 @@ class GameGlobals
 			money: Player.money,
 			collection: Player.collection,
 			deck: Player.deck,
-			opponents: Opponent.OpponentList.copy(),
+			opponents: OpponentList.copy(),
 			dialogFlags: Dialog.Flags.copy(),
 			savedTime: Date.now()
 		};

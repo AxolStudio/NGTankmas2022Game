@@ -179,11 +179,7 @@ class BattleState extends FlxSubState
 
 		var vs:Array<String> = VSWho.split(";");
 
-		trace(Opponent.OpponentList);
-
-		enemy = Opponent.OpponentList.get(vs[0]);
-
-		trace(enemy, vs[0]);
+		enemy = GameGlobals.OpponentList.get(vs[0]);
 
 		win = vs[1];
 		lose = vs[2];
