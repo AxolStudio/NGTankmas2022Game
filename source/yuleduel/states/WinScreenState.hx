@@ -20,7 +20,10 @@ class WinScreenState extends FlxSubState
 
 		add(message = new TutorialMessage("You SAVED Christmas!", 20, 20));
 
-		add(message2 = new TutorialMessage("See if you can collect EVERY Card, and then talk to Santa! (There are a total of 24 unique cards you can collect right now!)"));
+		add(message2 = new TutorialMessage("See if you can collect EVERY Card, and then talk to Santa!\n(There are a total of 24 unique cards you can collect right now!)",
+			20, 20,
+			Global.width
+			- 40));
 
 		message.visible = message2.visible = false;
 

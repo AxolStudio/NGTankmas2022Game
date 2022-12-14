@@ -836,7 +836,18 @@
       {
         "requirements": [],
         "text": "What? HOW!? This cannot be! Noooooooo!",
-        "yes": ["destroy:krampus", "flag:beatKrampus", "giveCard:24", "gameOver", "giveMedal:yuleSanta"],
+        "yes": ["flag:beatKrampus", "giveCard:24", "dialog:krampus lose 2"],
+        "no": []
+      }
+    ]
+  },
+  {
+    "who": "krampus lose 2",
+    "dialogs": [
+      {
+        "requirements": [],
+        "text": "I will be back! You will see!",
+        "yes": ["destroy:krampus", "gameOver", "giveMedal:yuleSanta"],
         "no": []
       }
     ]

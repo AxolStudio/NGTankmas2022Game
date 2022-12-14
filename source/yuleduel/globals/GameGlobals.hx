@@ -75,14 +75,16 @@ class GameGlobals
 			hasSave = false;
 		}
 
-		#if debug
-		Player.money = 100000;
+		// #if debug
+		// Dialog.Flags.set("krampus-dead", true);
+		// GameGlobals.save();
+		// // Player.money = 100000;
 
-		for (c in Cards.CardList.keys())
-		{
-			Player.collection.add(c, 1);
-		}
-		#end
+		// // for (c in Cards.CardList.keys())
+		// // {
+		// // 	Player.collection.add(c, 1);
+		// // }
+		// #end
 
 		PlayState = new PlayState();
 	}
@@ -97,6 +99,13 @@ class GameGlobals
 
 	public static function loadSave():Void
 	{
+		// #if debug
+		// Dialog.Flags.set("tutSeen", true);
+		// Dialog.Flags.set("krampus-dead", true);
+		// Dialog.Flags.set("blockade-dead", true);
+		// Dialog.Flags.set("seenIntro", true);
+		// GameGlobals.save();
+		// #end
 		var SavedData:SaveData = GameSave.data.savedData;
 		Dialog.Flags = SavedData.dialogFlags.copy();
 		Player.money = SavedData.money;
@@ -104,9 +113,16 @@ class GameGlobals
 		Player.deck = SavedData.deck;
 		Opponent.OpponentList = SavedData.opponents.copy();
 
+		// if they load the game and krampus is dead but they don't have his card, give it to them
+		if (Dialog.Flags.exists("krampus-dead"))
+		{
+			if (!Player.collection.collection.exists(24))
+				Player.collection.add(24, 1);
+		}
+
+		// fixes the baricades getting stuck on continue
 		for (o in PlayState.objectLayer.members)
 		{
-			trace(o.name);
 			if (Dialog.Flags.exists(o.name + "-dead"))
 			{
 				o.kill();
