@@ -33,6 +33,14 @@ class Global
 	inline static function get_state()
 		return FlxG.state;
 
+	public static var camera(get, set):FlxCamera;
+
+	inline static function get_camera()
+		return FlxG.camera;
+
+	inline static function set_camera(value:FlxCamera):FlxCamera
+		return FlxG.camera = value;
+
 	inline public static function switchState(state:FlxState)
 	{
 		FlxG.switchState(state);

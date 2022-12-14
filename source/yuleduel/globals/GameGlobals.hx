@@ -86,7 +86,7 @@ class GameGlobals
 
 		PlayState = new PlayState();
 	}
-	
+
 	#if ADVENT
 	public static function uninit()
 	{
@@ -103,6 +103,15 @@ class GameGlobals
 		Player.collection = SavedData.collection;
 		Player.deck = SavedData.deck;
 		Opponent.OpponentList = SavedData.opponents.copy();
+
+		for (o in PlayState.objectLayer.members)
+		{
+			trace(o.name);
+			if (Dialog.Flags.exists(o.name + "-dead"))
+			{
+				o.kill();
+			}
+		}
 	}
 
 	public static function save():Void

@@ -18,10 +18,5 @@ class Opponent
 		sideboard = Data.sideboard;
 		reward = Data.reward;
 		subsequentReward = Data.subsequentReward;
-
-		#if STAND_ALONE
-		trace(name);
-		trace(this);
-		#end
 	}
 }
