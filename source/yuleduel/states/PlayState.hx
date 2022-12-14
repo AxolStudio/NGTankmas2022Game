@@ -100,8 +100,6 @@ class PlayState extends FlxState
 		c.bgColor = FlxColor.TRANSPARENT;
 		GameGlobals.transition.cameras = [c];
 
-		
-
 		super.create();
 
 		fadeIn();
@@ -217,7 +215,10 @@ class PlayState extends FlxState
 						o.spawn(obj.name, obj.sprite, obj.x, obj.y, GameObject.facingFromString(obj.facing));
 
 						if (obj.name == "krampus")
-							o.kill();
+						{
+							if (!Dialog.checkFlag("spawnedKrampus") || Dialog.checkFlag("beatKrampus"))
+								o.kill();
+						}
 					}
 				default:
 			}
