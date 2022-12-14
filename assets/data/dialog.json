@@ -847,7 +847,7 @@
       {
         "requirements": [],
         "text": "I will be back! You will see!",
-        "yes": ["destroy:krampus", "gameOver", "giveMedal:yuleSanta"],
+        "yes": ["destroy:krampus", "giveMedal:yuleSanta", "gameOver"],
         "no": []
       }
     ]
