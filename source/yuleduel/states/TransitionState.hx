@@ -15,7 +15,7 @@ class TransitionState extends FlxTypedGroup<FlxUI9SliceSprite>
 	public function new():Void
 	{
 		super();
-		cameras = [FlxG.camera];
+		cameras = [Global.camera];
 		var cane:FlxUI9SliceSprite = null;
 		for (i in 0...9)
 		{

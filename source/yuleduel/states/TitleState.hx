@@ -78,7 +78,7 @@ class TitleState extends FlxState
 
 		Sounds.playMusic("title");
 
-		FlxG.camera.fade(GameGlobals.ColorPalette[1], 1, true, () ->
+		Global.camera.fade(GameGlobals.ColorPalette[1], 1, true, () ->
 		{
 			ready = true;
 		});
@@ -271,7 +271,8 @@ class TitleState extends FlxState
 		{
 			o.visible = true;
 		}
-		selected = 0;
+		// GK: removed was causing it to choose 0 even though it's disabled
+		// selected = 0;
 	}
 }
 

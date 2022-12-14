@@ -93,8 +93,8 @@ class PlayState extends FlxState
 	override function create()
 	{
 		GameGlobals.transition.transitioning = true;
-		var c:FlxCamera = FlxG.camera;
-		FlxG.cameras.remove(FlxG.camera, false);
+		var c:FlxCamera = Global.camera;
+		FlxG.cameras.remove(Global.camera, false);
 		gameCamera = FlxG.cameras.add(new GameCamera(0, 0, Std.int(Global.width / 2), Std.int(Global.height / 2), 2), false);
 		mapLayer.cameras = [gameCamera];
 		objectLayer.cameras = [gameCamera];
@@ -230,9 +230,9 @@ class PlayState extends FlxState
 
 	public function spawnObject(Who:String):Void
 	{
-		FlxG.camera.flash(0xffffffff, 0.2, () ->
+		Global.camera.flash(0xffffffff, 0.2, () ->
 		{
-			FlxG.camera.flash(0xffffffff, 0.2, () ->
+			Global.camera.flash(0xffffffff, 0.2, () ->
 			{
 				for (o in objectLayer.members)
 				{
