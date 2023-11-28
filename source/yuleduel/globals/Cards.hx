@@ -1,16 +1,17 @@
 package yuleduel.globals;
 
+import axollib.GraphicsCache;
 import flixel.FlxG;
-import flixel.system.debug.watch.Watch;
-import yuleduel.ui.GameText;
-import flixel.util.FlxDestroyUtil;
-import flixel.tweens.FlxTween;
-import flixel.group.FlxSpriteGroup;
-import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
-import flixel.math.FlxMath;
-import flixel.text.FlxText;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.group.FlxSpriteGroup;
+import flixel.math.FlxMath;
+import flixel.system.debug.watch.Watch;
+import flixel.text.FlxText;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxDestroyUtil;
+import yuleduel.ui.GameText;
 
 @:build(yuleduel.macros.CardBuilder.build()) // CardList
 class Cards
@@ -235,7 +236,7 @@ class CardGraphic extends FlxSpriteGroup
 		super();
 
 		add(outline = new FlxSprite());
-		outline.loadGraphic(Global.asset("assets/images/card_outline.png"));
+		outline.loadGraphic(GraphicsCache.loadGraphic(Global.asset("assets/images/card_outline.png")));
 		outline.offset.x = outline.offset.y = 5;
 		outline.width -= 10;
 		outline.height -= 10;
@@ -268,25 +269,25 @@ class CardGraphic extends FlxSpriteGroup
 		value.x = Std.int(back.x + 5);
 		value.y = Std.int(back.y + 4);
 
-		var tmpA:FlxSprite = new FlxSprite(Global.asset("assets/images/attack_UP.png"));
+		var tmpA:FlxSprite = new FlxSprite(GraphicsCache.loadGraphic(Global.asset("assets/images/attack_UP.png")));
 		tmpA.x = Std.int(back.x + back.width - tmpA.width - 4);
 		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
 
-		tmpA = new FlxSprite(Global.asset("assets/images/attack_DOWN.png"));
+		tmpA = new FlxSprite(GraphicsCache.loadGraphic(Global.asset("assets/images/attack_DOWN.png")));
 		tmpA.x = Std.int(back.x + back.width - tmpA.width - 4);
 		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
 
-		tmpA = new FlxSprite(Global.asset("assets/images/attack_RIGHT.png"));
+		tmpA = new FlxSprite(GraphicsCache.loadGraphic(Global.asset("assets/images/attack_RIGHT.png")));
 		tmpA.x = Std.int(back.x + back.width - tmpA.width - 4);
 		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
 		add(tmpA);
 
-		tmpA = new FlxSprite(Global.asset("assets/images/attack_LEFT.png"));
+		tmpA = new FlxSprite(GraphicsCache.loadGraphic(Global.asset("assets/images/attack_LEFT.png")));
 		tmpA.x = Std.int(back.x + back.width - tmpA.width - 4);
 		tmpA.y = back.y + 5;
 		attacks.push(tmpA);
@@ -523,7 +524,7 @@ class CardGraphic extends FlxSpriteGroup
 	// }
 }
 
-@:enum abstract CardOwner(Int)
+enum abstract CardOwner(Int)
 {
 	var PLAYER = 0;
 	var OPPONENT = 1;

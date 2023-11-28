@@ -1,15 +1,16 @@
 package yuleduel.game;
 
+import axollib.GraphicsCache;
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.tile.FlxTilemap;
 import flixel.tweens.FlxTween;
-import yuleduel.globals.GameGlobals;
-import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.FlxObject;
 import flixel.util.FlxDirectionFlags;
+import yuleduel.globals.GameGlobals;
 
-using yuleduel.globals.GraphicsCache;
+using axollib.GraphicsCache;
 
 class GameObject extends FlxSprite
 {

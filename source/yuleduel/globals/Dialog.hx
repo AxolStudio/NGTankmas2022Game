@@ -105,9 +105,8 @@ class Dialog
 			}
 			else if (f.startsWith("giveMedal:"))
 			{
-				#if ADVENT
-				data.NGio.unlockMedalByName(f.substr(10));
-				#end
+				NGAPI.unlockMedal(Std.parseInt(f.substr(10)));
+
 			}
 		}
 		if (willBattle != "")

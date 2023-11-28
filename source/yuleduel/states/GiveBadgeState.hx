@@ -1,15 +1,15 @@
 package yuleduel.states;
 
-import yuleduel.globals.Sounds;
+import axollib.GraphicsCache;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.FlxSubState;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxDestroyUtil;
 import yuleduel.globals.GameGlobals;
-import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.FlxG;
-import flixel.tweens.FlxTween;
-import yuleduel.globals.GraphicsCache;
-import flixel.FlxSprite;
+import yuleduel.globals.Sounds;
 import yuleduel.ui.TutorialMessage;
-import flixel.FlxSubState;
 
 class GiveBadgeState extends FlxSubState
 {
@@ -125,7 +125,7 @@ class Sparkle extends FlxSprite
 		rangeX = RangeX;
 		rangeY = RangeY;
 
-		frames = GraphicsCache.getAtlasFrames(Global.asset("assets/images/sparkle.png"), Global.asset("assets/images/sparkle.xml"), "sparkle");
+		frames = GraphicsCache.loadAtlasFrames(Global.asset("assets/images/sparkle.png"), Global.asset("assets/images/sparkle.xml"), "sparkle");
 		animation.addByStringIndices("sparkle", "sparkle_", ["01", "02", "03", "02", "01"], ".png", 8, false);
 		scrollFactor.set();
 		animation.finishCallback = (_) ->

@@ -1,17 +1,18 @@
 package yuleduel.globals;
 
-import yuleduel.states.TransitionState;
-import yuleduel.globals.Cards.Collection;
-import yuleduel.globals.Cards.Deck;
-import flixel.util.FlxSave;
-import flixel.FlxSprite;
-import yuleduel.game.Player;
+import axollib.GraphicsCache;
 import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.system.FlxAssets.FlxShader;
 import flixel.util.FlxColor;
-import yuleduel.states.PlayState;
+import flixel.util.FlxSave;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
-import flixel.system.FlxAssets.FlxShader;
+import yuleduel.game.Player;
+import yuleduel.globals.Cards.Collection;
+import yuleduel.globals.Cards.Deck;
+import yuleduel.states.PlayState;
+import yuleduel.states.TransitionState;
 
 @:build(yuleduel.macros.MapBuilder.build()) // MapList
 class GameGlobals
@@ -47,6 +48,13 @@ class GameGlobals
 		initialized = true;
 
 		FlxG.mouse.visible = false;
+		preloadGraphics();
+
+		NGAPI.init();
+
+		
+
+
 		Global.camera.bgColor = FlxColor.TRANSPARENT;
 		Global.camera.pixelPerfectRender = true;
 		Global.camera.antialiasing = false;
@@ -90,6 +98,13 @@ class GameGlobals
 	}
 	#end
 
+	public static function preloadGraphics():Void
+	{
+		GraphicsCache.preloadGraphics();
+
+		// getOrMakeGradient(FlxG.width, FlxG.height, [0x0, 0xff000000, 0xff000000, 0xff000000, 0x0], 1, 180);
+	}
+
 	public static function loadSave():Void
 	{
 		var SavedData:SaveData = GameSave.data.savedData;
@@ -124,9 +139,8 @@ class GameGlobals
 		{
 			if (Dialog.Flags.get("yeti-dead"))
 			{
-				#if ADVENT
-				data.NGio.unlockMedalByName("yuleYeti");
-				#end
+				NGAPI.unlockMedal(76228);
+
 				if (!Player.collection.collection.exists(22))
 					Player.collection.add(22, 1);
 			}
@@ -137,6 +151,8 @@ class GameGlobals
 		{
 			if (Dialog.Flags.get("beatSanta"))
 			{
+				NGAPI.unlockMedal(76227);
+				
 				if (!Player.collection.collection.exists(23))
 					Player.collection.add(23, 1);
 			}
@@ -148,9 +164,7 @@ class GameGlobals
 			if (Dialog.Flags.get("krampus-dead"))
 			{
 				Dialog.Flags.set("beatKrampus", true);
-				#if ADVENT
-				data.NGio.unlockMedalByName("yuleSanta");
-				#end
+
 				if (!Player.collection.collection.exists(24))
 					Player.collection.add(24, 1);
 			}
@@ -165,12 +179,12 @@ class GameGlobals
 			}
 		}
 
-		#if ADVENT
+
 		if (Player.collection.collection.exists(25))
 		{
-			data.NGio.unlockMedalByName("yuleAllCards");
+			NGAPI.unlockMedal(76229);
 		}
-		#end
+
 
 		GameGlobals.save();
 	}

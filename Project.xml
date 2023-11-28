@@ -4,7 +4,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Yule Duel" file="yuleduel" main="Main" version="0.0.1" company="Axol Studio, LLC" />
+	<app title="Yule Duel" file="yuleduel" main="Main" version="1.0.0" company="Axol Studio, LLC" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -16,10 +16,13 @@
 	<!-- ____________________________ Window Settings ___________________________ -->
 
 	<!--These window settings apply to all targets-->
-	<window width="960" height="540" fps="60" background="#000000" hardware="true" vsync="false" />
+	<window width="960" height="540" fps="60" background="#000000" hardware="true" vsync="true" />
+
+	<window allow-high-dpi="false" antialiasing="0" allow-shaders="true" require-shaders="true"
+		depth-buffer="true" stencil-buffer="true" />
 
 	<!--HTML5-specific-->
-	<window if="html5" resizable="false" />
+	<window if="html5" resizable="true" />
 
 	<!--Desktop-specific-->
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="false" />
@@ -39,12 +42,16 @@
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
+	<include path="axollib/include.xml" />
+
 	<haxelib name="flixel" />
 
 	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="tjson" />
+
+	<haxelib name="newgrounds" />
 
 	<!--In case you want to use the ui package-->
 	<!--<haxelib name="flixel-ui" />-->

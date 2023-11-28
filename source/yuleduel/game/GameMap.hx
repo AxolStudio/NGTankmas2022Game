@@ -105,7 +105,7 @@ class MapObject
 	}
 }
 
-@:enum abstract MapObjectType(String)
+enum abstract MapObjectType(String)
 {
 	var PLAYER = "player";
 	var NPC = "npc";

@@ -1,6 +1,6 @@
 package yuleduel.states;
 
-import yuleduel.globals.Sounds;
+import axollib.GraphicsCache;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
@@ -9,8 +9,8 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import yuleduel.globals.Cards;
 import yuleduel.globals.GameGlobals;
-import yuleduel.globals.GraphicsCache;
 import yuleduel.globals.Opponent;
+import yuleduel.globals.Sounds;
 import yuleduel.ui.GameFrame;
 import yuleduel.ui.GameText;
 
@@ -101,7 +101,7 @@ class BattleState extends FlxSubState
 		turnEndTimer = new FlxTimer();
 
 		add(battlefield = new FlxSprite());
-		battlefield.loadGraphic(Global.asset("assets/images/battlefield.png"));
+		battlefield.loadGraphic(GraphicsCache.loadGraphic(Global.asset("assets/images/battlefield.png")));
 		battlefield.scrollFactor.set(0, 0);
 		Global.screenCenter(battlefield);
 		battlefield.x = BattleFieldX;
@@ -118,7 +118,7 @@ class BattleState extends FlxSubState
 		add(playerCards = new FlxTypedGroup<CardGraphic>());
 
 		add(cardPlaceTarget = new FlxSprite());
-		cardPlaceTarget.loadGraphic(Global.asset("assets/images/card_outline.png"));
+		cardPlaceTarget.loadGraphic(GraphicsCache.loadGraphic(Global.asset("assets/images/card_outline.png")));
 		cardPlaceTarget.scrollFactor.set();
 		cardPlaceTarget.visible = false;
 
@@ -1096,7 +1096,7 @@ class BattleEndState extends FlxSubState
 		back.x = Std.int(back.x);
 		back.y = Std.int(back.y);
 
-		winText = yuleduel.globals.GraphicsCache.loadFlxSpriteFromAtlas("battle_text");
+		winText = GraphicsCache.loadFlxSpriteFromAtlas("battle_text");
 
 		winText.y = back.y + 20;
 		winText.scrollFactor.set();
@@ -1566,7 +1566,7 @@ class CoinFlip extends FlxSubState
 			Sounds.playSound("coin_up", 1);
 		}, 1);
 		var t2:FlxTimer = new FlxTimer();
-		t2.start((coin.animation.frames / 12) - 1, (_) ->
+		t2.start((coin.animation.numFrames / 12) - 1, (_) ->
 		{
 			Sounds.playSound("coin_down", 1);
 		}, 1);
@@ -1579,7 +1579,7 @@ class CoinFlip extends FlxSubState
 	}
 }
 
-@:enum abstract BattleMode(String)
+enum abstract BattleMode(String)
 {
 	var SETUP = "setup";
 	var PLAYER_TURN = "player_turn";

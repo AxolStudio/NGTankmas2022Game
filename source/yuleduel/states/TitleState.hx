@@ -32,8 +32,7 @@ class TitleState extends FlxState
 
 	override public function create():Void
 	{
-		GameGlobals.initialized = false;
-		GameGlobals.init();
+		
 
 		add(background = new FlxSprite(Global.asset("assets/images/title-back.png")));
 		add(backSnow = new FlxTypedGroup<Snow>());

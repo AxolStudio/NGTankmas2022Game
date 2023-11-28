@@ -1,14 +1,30 @@
 package;
 
+import axollib.AxolAPI;
+import axollib.DissolveState;
 import flixel.FlxG;
 import flixel.FlxGame;
+import yuleduel.globals.GameGlobals;
 
 class Main extends openfl.display.Sprite
 {
 	public function new()
 	{
 		super();
-		addChild(new FlxGame(0, 0, BootState));
+		AxolAPI.firstState = yuleduel.states.TitleState;
+		AxolAPI.init = initializeGame;
+
+		addChild(new FlxGame(0, 0, DissolveState));
+
+		FlxG.mouse.visible = false;
+	}
+
+	private function initializeGame():Void
+	{
+		Controls.init();
+
+		GameGlobals.initialized = false;
+		GameGlobals.init();
 	}
 }
 

@@ -24,7 +24,7 @@ class GameText extends FlxBitmapText
 	}
 }
 
-@:enum abstract Font(String)
+enum abstract Font(String)
 {
 	var DEFAULT = "default";
 	var CARD_TEXT = "card text";
