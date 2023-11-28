@@ -14,7 +14,7 @@ class Main extends openfl.display.Sprite
 		AxolAPI.firstState = yuleduel.states.TitleState;
 		AxolAPI.init = initializeGame;
 
-		addChild(new FlxGame(0, 0, DissolveState));
+		addChild(new FlxGame(0, 0, DissolveState, 60, 60, true));
 
 		FlxG.mouse.visible = false;
 	}
